@@ -28,3 +28,6 @@ README.md: $(MDS)
 
 clean:
 	rm -f $(LOGS) ok.* err.* md.*
+
+.PRECIOUS: $(LOGS) README.md
+
