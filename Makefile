@@ -7,7 +7,7 @@ all: README.md $(LOGS)
 
 log.%: Dockerfile.%
 	rm -f ok.$* err.$*
-	if docker build --rm -f Dockerfile.$* . >log.$* 2>&1; then \
+	if docker build --no-cache --rm -f Dockerfile.$* . >log.$* 2>&1; then \
 		touch ok.$*; \
 	else \
 		touch err.$*; \
