@@ -2,8 +2,6 @@ ALL=$(wildcard Dockerfile.*)
 LOGS=$(ALL:Dockerfile.%=log.%)
 MDS=$(ALL:Dockerfile.%=md.%)
 
-BASEURL=https://github.com/avsm/opam-pr-build-results
-
 all: README.md $(LOGS)
 	@ :
 
@@ -17,9 +15,9 @@ log.%: Dockerfile.%
 
 md.%: log.%
 	if [ -e ok.$* ]; then \
-		echo '| [$*]($(BASEURL)/log.$*) | OK |' > $@; \
+		echo '| [$*](log.$*) | OK |' > $@; \
 	else \
-		echo '| [$*]($(BASEURL)/log.$*) | FAIL |' > $@; \
+		echo '| [$*](log.$*) | FAIL |' > $@; \
 	fi
 
 README.md: $(MDS)
