@@ -24,6 +24,7 @@ md.%: log.%
 
 README.md: $(MDS)
 	echo "| distro | result |" > $@
+	echo "| ------ | ------ |" >> $@
 	cat $^ >> $@
 
 clean:
