@@ -4,7 +4,7 @@ MDS=$(ALL:Dockerfile.%=md.%)
 
 BASEURL=https://github.com/avsm/opam-pr-build-results
 
-all: README.md
+all: README.md $(LOGS)
 	@ :
 
 log.%: Dockerfile.%
