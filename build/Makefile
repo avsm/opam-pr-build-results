@@ -15,13 +15,14 @@ log.%: Dockerfile.%
 
 md.%: log.%
 	if [ -e ok.$* ]; then \
-		echo '| [$*](log.$*) | OK |' > $@; \
+		echo '| [$*](build/log.$*) | OK |' > $@; \
 	else \
-		echo '| [$*](log.$*) | FAIL |' > $@; \
+		echo '| [$*](build/log.$*) | FAIL |' > $@; \
 	fi
 
 README.md: $(MDS)
-	echo "| distro | result |" > $@
+	cat header.md > $@
+	echo "| Distro | Result |" >> $@
 	echo "| ------ | ------ |" >> $@
 	cat $^ >> $@
 

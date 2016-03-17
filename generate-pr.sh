@@ -20,6 +20,7 @@ HEADREF=`curl -s https://api.github.com/repos/$REPO/pulls/$PR | jq -r .head.ref`
 REMOTEREPO=`curl -s https://api.github.com/repos/$REPO/pulls/$PR | jq -r .head.repo.full_name`
 git branch -D $PR || true
 git checkout -B $PR
-dockerfile-gen -b origin,master -b https://github.com/${REMOTEREPO}.git,$HEADREF -c 4.02.3 $PACKAGES
-(git add Dockerfile.* && git commit -m 'sync' -a) || true
+dockerfile-gen -o build -b origin,master -b https://github.com/${REMOTEREPO}.git,$HEADREF -c 4.02.3 $PACKAGES
+echo "# OPAM PR [$PR](https://github.com/ocaml/opam-repository/pulls/$PR)\n\n" > build/header.md
+(git add build && git commit -m 'sync' -a) || true
 git checkout master

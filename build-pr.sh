@@ -8,7 +8,10 @@ if [ "$PR" = "" ]; then
 fi
 
 git checkout $PR
+cd build
 make clean
 make -j 24 
-(git add log.* README.md && git commit -m 'sync' -a && git push origin $PR --force) || true
+cd ..
+mv build/README.md .
+(git add build README.md && git commit -m 'sync' -a && git push origin $PR --force) || true
 git checkout master
