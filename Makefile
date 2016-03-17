@@ -9,7 +9,7 @@ all: README.md $(LOGS)
 
 log.%: Dockerfile.%
 	rm -f ok.$* err.$*
-	if docker build --rm -f Dockerfile.$* . >log.$* 2>&1; then \
+	if echo docker build --rm -f Dockerfile.$* . >log.$* 2>&1; then \
 		touch ok.$*; \
 	else \
 		touch err.$*; \
@@ -19,7 +19,7 @@ md.%: log.%
 	if [ -e ok.$* ]; then \
 		echo '| [$*]($(BASEURL)/log.$*) | OK |' > $@; \
 	else \
-		echo '| [$*]($(BASEURL)/log.$* | FAIL |' > $@; \
+		echo '| [$*]($(BASEURL)/log.$*) | FAIL |' > $@; \
 	fi
 
 README.md: $(MDS)
