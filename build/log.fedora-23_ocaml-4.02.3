@@ -1,0 +1,318 @@
+Sending build context to Docker daemon 32.77 kB
+Step 1 : FROM ocaml/opam:fedora-23_ocaml-4.02.3
+ ---> 2bc316275cf8
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/jpdeplaix/opam-repository.git master && opam update -u" &&   sudo -u opam sh -c "opam depext -u llvm" &&   sudo -u opam sh -c "opam install -y -j 2 -v llvm"
+ ---> Running in b07275cc1ba4
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0m[91m   53236a1..44da465  master     -> origin/master
+[0mUpdating 53236a1..44da465
+Fast-forward
+ compilers/4.04.0/4.04.0+pr490/4.04.0+pr490.descr   |  1 -
+ .../4.04.0+pr512.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr512/4.04.0+pr512.descr   |  1 +
+ packages/alt-ergo/alt-ergo.0.95.2/opam             | 18 +++++++----
+ packages/alt-ergo/alt-ergo.0.99.1/opam             | 22 ++++++++++----
+ packages/alt-ergo/alt-ergo.1.01/opam               | 29 ++++++++----------
+ packages/amqp-client/amqp-client.0.9.0/opam        |  2 +-
+ packages/camlpdf/camlpdf.2.1.1/opam                | 10 ++++---
+ packages/dockerfile/dockerfile.1.3.0/descr         | 18 +++++++++++
+ packages/dockerfile/dockerfile.1.3.0/opam          | 22 ++++++++++++++
+ packages/dockerfile/dockerfile.1.3.0/url           |  2 ++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/descr         | 10 +++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/findlib       |  1 +
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/opam          | 35 ++++++++++++++++++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/url           |  2 ++
+ packages/markup/markup.0.7.1/descr                 | 20 +++++++++++++
+ packages/markup/markup.0.7.1/opam                  | 27 +++++++++++++++++
+ packages/markup/markup.0.7.1/url                   |  2 ++
+ packages/mirage-profile/mirage-profile.0.1/opam    |  5 ++--
+ packages/mirage-profile/mirage-profile.0.3/opam    |  5 ++--
+ packages/mirage-profile/mirage-profile.0.4/opam    |  5 ++--
+ packages/mirage-profile/mirage-profile.0.5/opam    |  5 ++--
+ packages/mirage-profile/mirage-profile.0.6.1/opam  |  3 +-
+ packages/mirage-profile/mirage-profile.0.6/opam    |  5 ++--
+ packages/mirage-unix/mirage-unix.2.2.3/opam        |  3 +-
+ packages/mirage-unix/mirage-unix.2.3.1/opam        |  3 +-
+ packages/ppx_deriving/ppx_deriving.3.3/descr       |  5 ++++
+ packages/ppx_deriving/ppx_deriving.3.3/opam        | 29 ++++++++++++++++++
+ packages/ppx_deriving/ppx_deriving.3.3/url         |  2 ++
+ .../ppx_jsobject_conv.0.0.1/descr                  |  6 ++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/opam | 25 ++++++++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/url  |  3 ++
+ 32 files changed, 279 insertions(+), 49 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr490/4.04.0+pr490.descr
+ rename compilers/4.04.0/{4.04.0+pr490/4.04.0+pr490.comp => 4.04.0+pr512/4.04.0+pr512.comp} (79%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr512/4.04.0+pr512.descr
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/descr
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/opam
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/url
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/descr
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/findlib
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/opam
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/url
+ create mode 100644 packages/markup/markup.0.7.1/descr
+ create mode 100644 packages/markup/markup.0.7.1/opam
+ create mode 100644 packages/markup/markup.0.7.1/url
+ create mode 100644 packages/ppx_deriving/ppx_deriving.3.3/descr
+ create mode 100644 packages/ppx_deriving/ppx_deriving.3.3/opam
+ create mode 100644 packages/ppx_deriving/ppx_deriving.3.3/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/jpdeplaix/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/llvm/llvm.3.8/descr            |  3 ++
+ packages/llvm/llvm.3.8/files/install.sh | 50 +++++++++++++++++++++++++++++++++
+ packages/llvm/llvm.3.8/opam             | 23 +++++++++++++++
+ packages/llvm/llvm.3.8/url              |  2 ++
+ 4 files changed, 78 insertions(+)
+ create mode 100644 packages/llvm/llvm.3.8/descr
+ create mode 100755 packages/llvm/llvm.3.8/files/install.sh
+ create mode 100644 packages/llvm/llvm.3.8/opam
+ create mode 100644 packages/llvm/llvm.3.8/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux fedora
+# The following system packages are needed:
+#  - m4
+#  - ncurses-devel
+#  - pkgconfig
+# The following scripts need to be run:
+#  - https://gist.githubusercontent.com/jpdeplaix/17b5de3e88ee0bdbd603/raw
+package m4 is not installed
+package ncurses-devel is not installed
+package pkgconfig is not installed
+Not running as root, the following command will be run through "sudo":
+    yum -y update
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf -y update'.
+See 'man dnf' and 'man yum2dnf' for more information.
+To transfer transaction metadata from yum to DNF, run:
+'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
+
+[0mLast metadata expiration check performed 0:00:10 ago on Thu Mar 17 21:27:57 2016.
+Dependencies resolved.
+================================================================================
+ Package                 Arch        Version                 Repository    Size
+================================================================================
+Installing:
+ libsecret               x86_64      0.18.3-1.fc23           fedora       156 k
+Upgrading:
+ binutils                x86_64      2.25-17.fc23            updates      5.6 M
+ dnf                     noarch      1.1.7-2.fc23            updates      295 k
+ dnf-conf                noarch      1.1.7-2.fc23            updates       92 k
+ dnf-yum                 noarch      1.1.7-2.fc23            updates       86 k
+ gnutls                  x86_64      3.4.10-1.fc23           updates      659 k
+ libsolv                 x86_64      0.6.19-2.fc23           updates      349 k
+ man-db                  x86_64      2.7.1-11.fc23           updates      826 k
+ nss                     x86_64      3.23.0-1.0.fc23         updates      871 k
+ nss-softokn             x86_64      3.23.0-1.0.fc23         updates      317 k
+ nss-softokn-freebl      x86_64      3.23.0-1.0.fc23         updates      214 k
+ nss-sysinit             x86_64      3.23.0-1.0.fc23         updates       57 k
+ nss-tools               x86_64      3.23.0-1.0.fc23         updates      494 k
+ nss-util                x86_64      3.23.0-1.0.fc23         updates       82 k
+ openssh                 x86_64      7.2p2-1.fc23            updates      442 k
+ openssh-clients         x86_64      7.2p2-1.fc23            updates      663 k
+ pinentry                x86_64      0.9.6-4.fc23            updates       81 k
+ python3-dnf             noarch      1.1.7-2.fc23            updates      455 k
+ sqlite-libs             x86_64      3.11.0-3.fc23           updates      449 k
+
+Transaction Summary
+================================================================================
+Install   1 Package
+Upgrade  18 Packages
+
+Total download size: 12 M
+Downloading Packages:
+[91m/usr/share/doc/dnf/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/libsolv/BUGS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/python3-dnf/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/gnutls/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/sqlite-libs/README.md: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/man/man5/cert8.db.5.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0mgnutls-3.4.10-1.fc23.x86_64: Delta RPM rebuild failed
+sqlite-libs-3.11.0-3.fc23.x86_64: Delta RPM rebuild failed
+dnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
+python3-dnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
+libsolv-0.6.19-2.fc23.x86_64: Delta RPM rebuild failed
+nss-3.23.0-1.0.fc23.x86_64: Delta RPM rebuild failed
+--------------------------------------------------------------------------------
+Total                                           3.0 MB/s |  12 MB     00:03     
+Delta RPMs reduced 12.0 MB of updates to 11.6 MB (3.1% saved)
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Upgrading   : nss-util-3.23.0-1.0.fc23.x86_64                            1/37 
+  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                  2/37 
+  Upgrading   : sqlite-libs-3.11.0-3.fc23.x86_64                           3/37 
+  Upgrading   : nss-softokn-3.23.0-1.0.fc23.x86_64                         4/37 
+  Upgrading   : nss-sysinit-3.23.0-1.0.fc23.x86_64                         5/37 
+  Upgrading   : nss-3.23.0-1.0.fc23.x86_64                                 6/37 
+  Upgrading   : openssh-7.2p2-1.fc23.x86_64                                7/37 
+  Upgrading   : dnf-conf-1.1.7-2.fc23.noarch                               8/37 
+  Upgrading   : python3-dnf-1.1.7-2.fc23.noarch                            9/37 
+  Upgrading   : dnf-1.1.7-2.fc23.noarch                                   10/37 
+  Installing  : libsecret-0.18.3-1.fc23.x86_64                            11/37 
+  Upgrading   : pinentry-0.9.6-4.fc23.x86_64                              12/37 
+  Upgrading   : dnf-yum-1.1.7-2.fc23.noarch                               13/37 
+  Upgrading   : openssh-clients-7.2p2-1.fc23.x86_64                       14/37 
+  Upgrading   : nss-tools-3.23.0-1.0.fc23.x86_64                          15/37 
+  Upgrading   : man-db-2.7.1-11.fc23.x86_64                               16/37 
+  Upgrading   : libsolv-0.6.19-2.fc23.x86_64                              17/37 
+  Upgrading   : gnutls-3.4.10-1.fc23.x86_64                               18/37 
+  Upgrading   : binutils-2.25-17.fc23.x86_64                              19/37 
+  Cleanup     : dnf-yum-1.1.6-2.fc23.noarch                               20/37 
+  Cleanup     : dnf-1.1.6-2.fc23.noarch                                   21/37 
+  Cleanup     : python3-dnf-1.1.6-2.fc23.noarch                           22/37 
+  Cleanup     : dnf-conf-1.1.6-2.fc23.noarch                              23/37 
+  Cleanup     : libsolv-0.6.14-7.fc23.x86_64                              24/37 
+  Cleanup     : nss-tools-3.22.2-1.0.fc23.x86_64                          25/37 
+  Cleanup     : nss-sysinit-3.22.2-1.0.fc23.x86_64                        26/37 
+  Cleanup     : nss-3.22.2-1.0.fc23.x86_64                                27/37 
+  Cleanup     : nss-softokn-3.22.2-1.0.fc23.x86_64                        28/37 
+  Cleanup     : openssh-clients-7.2p1-2.fc23.x86_64                       29/37 
+  Cleanup     : openssh-7.2p1-2.fc23.x86_64                               30/37 
+  Cleanup     : nss-util-3.22.2-1.0.fc23.x86_64                           31/37 
+  Cleanup     : sqlite-libs-3.11.0-2.fc23.x86_64                          32/37 
+  Cleanup     : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 33/37 
+  Cleanup     : pinentry-0.9.6-3.fc23.x86_64                              34/37 
+  Cleanup     : man-db-2.7.1-10.fc23.x86_64                               35/37 
+  Cleanup     : gnutls-3.4.9-1.fc23.x86_64                                36/37 
+  Cleanup     : binutils-2.25-15.fc23.x86_64                              37/37 
+  Verifying   : libsecret-0.18.3-1.fc23.x86_64                             1/37 
+  Verifying   : binutils-2.25-17.fc23.x86_64                               2/37 
+  Verifying   : dnf-1.1.7-2.fc23.noarch                                    3/37 
+  Verifying   : python3-dnf-1.1.7-2.fc23.noarch                            4/37 
+  Verifying   : dnf-conf-1.1.7-2.fc23.noarch                               5/37 
+  Verifying   : dnf-yum-1.1.7-2.fc23.noarch                                6/37 
+  Verifying   : gnutls-3.4.10-1.fc23.x86_64                                7/37 
+  Verifying   : libsolv-0.6.19-2.fc23.x86_64                               8/37 
+  Verifying   : man-db-2.7.1-11.fc23.x86_64                                9/37 
+  Verifying   : nss-3.23.0-1.0.fc23.x86_64                                10/37 
+  Verifying   : nss-softokn-3.23.0-1.0.fc23.x86_64                        11/37 
+  Verifying   : nss-util-3.23.0-1.0.fc23.x86_64                           12/37 
+  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                 13/37 
+  Verifying   : nss-tools-3.23.0-1.0.fc23.x86_64                          14/37 
+  Verifying   : nss-sysinit-3.23.0-1.0.fc23.x86_64                        15/37 
+  Verifying   : openssh-7.2p2-1.fc23.x86_64                               16/37 
+  Verifying   : openssh-clients-7.2p2-1.fc23.x86_64                       17/37 
+  Verifying   : pinentry-0.9.6-4.fc23.x86_64                              18/37 
+  Verifying   : sqlite-libs-3.11.0-3.fc23.x86_64                          19/37 
+  Verifying   : libsolv-0.6.14-7.fc23.x86_64                              20/37 
+  Verifying   : gnutls-3.4.9-1.fc23.x86_64                                21/37 
+  Verifying   : binutils-2.25-15.fc23.x86_64                              22/37 
+  Verifying   : man-db-2.7.1-10.fc23.x86_64                               23/37 
+  Verifying   : pinentry-0.9.6-3.fc23.x86_64                              24/37 
+  Verifying   : nss-3.22.2-1.0.fc23.x86_64                                25/37 
+  Verifying   : python3-dnf-1.1.6-2.fc23.noarch                           26/37 
+  Verifying   : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 27/37 
+  Verifying   : nss-sysinit-3.22.2-1.0.fc23.x86_64                        28/37 
+  Verifying   : nss-tools-3.22.2-1.0.fc23.x86_64                          29/37 
+  Verifying   : nss-util-3.22.2-1.0.fc23.x86_64                           30/37 
+  Verifying   : dnf-1.1.6-2.fc23.noarch                                   31/37 
+  Verifying   : dnf-conf-1.1.6-2.fc23.noarch                              32/37 
+  Verifying   : dnf-yum-1.1.6-2.fc23.noarch                               33/37 
+  Verifying   : nss-softokn-3.22.2-1.0.fc23.x86_64                        34/37 
+  Verifying   : openssh-7.2p1-2.fc23.x86_64                               35/37 
+  Verifying   : openssh-clients-7.2p1-2.fc23.x86_64                       36/37 
+  Verifying   : sqlite-libs-3.11.0-2.fc23.x86_64                          37/37 
+
+Installed:
+  libsecret.x86_64 0.18.3-1.fc23                                                
+
+Upgraded:
+  binutils.x86_64 2.25-17.fc23        dnf.noarch 1.1.7-2.fc23                  
+  dnf-conf.noarch 1.1.7-2.fc23        dnf-yum.noarch 1.1.7-2.fc23              
+  gnutls.x86_64 3.4.10-1.fc23         libsolv.x86_64 0.6.19-2.fc23             
+  man-db.x86_64 2.7.1-11.fc23         nss.x86_64 3.23.0-1.0.fc23               
+  nss-softokn.x86_64 3.23.0-1.0.fc23  nss-softokn-freebl.x86_64 3.23.0-1.0.fc23
+  nss-sysinit.x86_64 3.23.0-1.0.fc23  nss-tools.x86_64 3.23.0-1.0.fc23         
+  nss-util.x86_64 3.23.0-1.0.fc23     openssh.x86_64 7.2p2-1.fc23              
+  openssh-clients.x86_64 7.2p2-1.fc23 pinentry.x86_64 0.9.6-4.fc23             
+  python3-dnf.noarch 1.1.7-2.fc23     sqlite-libs.x86_64 3.11.0-3.fc23         
+
+Complete!
+# OS package update successful
+Not running as root, the following command will be run through "sudo":
+    yum install -y m4 ncurses-devel pkgconfig
+Not running as root, the following command will be run through "sudo":
+    rpm -q m4 ncurses-devel pkgconfig
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf install -y m4 ncurses-devel pkgconfig'.
+See 'man dnf' and 'man yum2dnf' for more information.
+To transfer transaction metadata from yum to DNF, run:
+'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
+
+[0mLast metadata expiration check: 0:00:38 ago on Thu Mar 17 21:27:57 2016.
+Dependencies resolved.
+================================================================================
+ Package             Arch         Version                    Repository    Size
+================================================================================
+Installing:
+ m4                  x86_64       1.4.17-8.fc23              fedora       266 k
+ ncurses-devel       x86_64       5.9-21.20150214.fc23       fedora       732 k
+ pkgconfig           x86_64       1:0.28-9.fc23              fedora        60 k
+
+Transaction Summary
+================================================================================
+Install  3 Packages
+
+Total download size: 1.0 M
+Installed size: 2.8 M
+Downloading Packages:
+--------------------------------------------------------------------------------
+Total                                           597 kB/s | 1.0 MB     00:01     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Installing  : pkgconfig-1:0.28-9.fc23.x86_64                              1/3 
+  Installing  : ncurses-devel-5.9-21.20150214.fc23.x86_64                   2/3 
+  Installing  : m4-1.4.17-8.fc23.x86_64                                     3/3 
+  Verifying   : m4-1.4.17-8.fc23.x86_64                                     1/3 
+  Verifying   : ncurses-devel-5.9-21.20150214.fc23.x86_64                   2/3 
+  Verifying   : pkgconfig-1:0.28-9.fc23.x86_64                              3/3 
+
+Installed:
+  m4.x86_64 1.4.17-8.fc23           ncurses-devel.x86_64 5.9-21.20150214.fc23   
+  pkgconfig.x86_64 1:0.28-9.fc23   
+
+Complete!
+m4-1.4.17-8.fc23.x86_64
+ncurses-devel-5.9-21.20150214.fc23.x86_64
+pkgconfig-0.28-9.fc23.x86_64
+# OS packages installation successful
+[91m  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0[0m[91m  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0[0m[91m100   230  100   230    0     0   1379      0 --:--:-- --:--:-- --:--:--  1377
+[0m[91m+ sudo add-apt-repository 'deb http://llvm.org/apt/precise/ llvm-toolchain-precise-3.8 main'
+[0m[91msudo: add-apt-repository: command not found
+[0m[91mopam-depext: internal error, uncaught exception:
+             Failure("Command \"curl -L \\\"https://gist.githubusercontent.com/jpdeplaix/17b5de3e88ee0bdbd603/raw\\\" | sh -ex -\" failed")
+             
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/jpdeplaix/opam-repository.git master && opam update -u" &&   sudo -u opam sh -c "opam depext -u llvm" &&   sudo -u opam sh -c "opam install -y -j 2 -v llvm"' returned a non-zero code: 1

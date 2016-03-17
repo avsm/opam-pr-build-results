@@ -1,0 +1,137 @@
+Sending build context to Docker daemon 35.84 kB
+Step 1 : FROM ocaml/opam:ubuntu-14.04_ocaml-4.02.3
+ ---> 1e061994301f
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/jpdeplaix/opam-repository.git master && opam update -u" &&   sudo -u opam sh -c "opam depext -u llvm" &&   sudo -u opam sh -c "opam install -y -j 2 -v llvm"
+ ---> Running in b150e1e4fd9f
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0m[91m   c86ad1e..44da465  master     -> origin/master
+[0mUpdating c86ad1e..44da465
+Fast-forward
+ compilers/4.04.0/4.04.0+pr490/4.04.0+pr490.descr   |  1 -
+ .../4.04.0+pr512.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr512/4.04.0+pr512.descr   |  1 +
+ packages/alt-ergo/alt-ergo.0.95.2/opam             | 18 +++++++----
+ packages/alt-ergo/alt-ergo.0.99.1/opam             | 22 ++++++++++----
+ packages/alt-ergo/alt-ergo.1.01/opam               | 29 ++++++++----------
+ packages/amqp-client/amqp-client.0.9.0/opam        |  2 +-
+ packages/camlpdf/camlpdf.2.1.1/opam                | 10 ++++---
+ packages/dockerfile/dockerfile.1.3.0/descr         | 18 +++++++++++
+ packages/dockerfile/dockerfile.1.3.0/opam          | 22 ++++++++++++++
+ packages/dockerfile/dockerfile.1.3.0/url           |  2 ++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/descr         | 10 +++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/findlib       |  1 +
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/opam          | 35 ++++++++++++++++++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/url           |  2 ++
+ packages/markup/markup.0.7.1/descr                 | 20 +++++++++++++
+ packages/markup/markup.0.7.1/opam                  | 27 +++++++++++++++++
+ packages/markup/markup.0.7.1/url                   |  2 ++
+ packages/mirage-profile/mirage-profile.0.1/opam    |  5 ++--
+ packages/mirage-profile/mirage-profile.0.3/opam    |  5 ++--
+ packages/mirage-profile/mirage-profile.0.4/opam    |  5 ++--
+ packages/mirage-profile/mirage-profile.0.5/opam    |  5 ++--
+ packages/mirage-profile/mirage-profile.0.6.1/opam  |  3 +-
+ packages/mirage-profile/mirage-profile.0.6/opam    |  5 ++--
+ packages/mirage-unix/mirage-unix.2.2.3/opam        |  3 +-
+ packages/mirage-unix/mirage-unix.2.3.1/opam        |  3 +-
+ .../ppx_jsobject_conv.0.0.1/descr                  |  6 ++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/opam | 25 ++++++++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/url  |  3 ++
+ 29 files changed, 243 insertions(+), 49 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr490/4.04.0+pr490.descr
+ rename compilers/4.04.0/{4.04.0+pr490/4.04.0+pr490.comp => 4.04.0+pr512/4.04.0+pr512.comp} (79%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr512/4.04.0+pr512.descr
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/descr
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/opam
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/url
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/descr
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/findlib
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/opam
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/url
+ create mode 100644 packages/markup/markup.0.7.1/descr
+ create mode 100644 packages/markup/markup.0.7.1/opam
+ create mode 100644 packages/markup/markup.0.7.1/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/jpdeplaix/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/llvm/llvm.3.8/descr            |  3 ++
+ packages/llvm/llvm.3.8/files/install.sh | 50 +++++++++++++++++++++++++++++++++
+ packages/llvm/llvm.3.8/opam             | 23 +++++++++++++++
+ packages/llvm/llvm.3.8/url              |  2 ++
+ 4 files changed, 78 insertions(+)
+ create mode 100644 packages/llvm/llvm.3.8/descr
+ create mode 100755 packages/llvm/llvm.3.8/files/install.sh
+ create mode 100644 packages/llvm/llvm.3.8/opam
+ create mode 100644 packages/llvm/llvm.3.8/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux ubuntu
+# The following system packages are needed:
+#  - m4
+#  - ncurses-dev
+#  - pkg-config
+# The following scripts need to be run:
+#  - https://gist.githubusercontent.com/jpdeplaix/17b5de3e88ee0bdbd603/raw
+# The following new OS packages need to be installed: ncurses-dev
+Not running as root, the following command will be run through "sudo":
+    apt-get update
+Ign http://archive.ubuntu.com trusty InRelease
+Get:1 http://archive.ubuntu.com trusty-updates InRelease [65.9 kB]
+Get:2 http://archive.ubuntu.com trusty-security InRelease [65.9 kB]
+Hit http://archive.ubuntu.com trusty Release.gpg
+Get:3 http://archive.ubuntu.com trusty-updates/main Sources [331 kB]
+Get:4 http://archive.ubuntu.com trusty-updates/restricted Sources [5217 B]
+Get:5 http://archive.ubuntu.com trusty-updates/universe Sources [190 kB]
+Get:6 http://archive.ubuntu.com trusty-updates/main amd64 Packages [918 kB]
+Get:7 http://archive.ubuntu.com trusty-updates/restricted amd64 Packages [23.5 kB]
+Get:8 http://archive.ubuntu.com trusty-updates/universe amd64 Packages [440 kB]
+Get:9 http://archive.ubuntu.com trusty-security/main Sources [137 kB]
+Get:10 http://archive.ubuntu.com trusty-security/restricted Sources [3920 B]
+Get:11 http://archive.ubuntu.com trusty-security/universe Sources [39.1 kB]
+Get:12 http://archive.ubuntu.com trusty-security/main amd64 Packages [550 kB]
+Get:13 http://archive.ubuntu.com trusty-security/restricted amd64 Packages [20.2 kB]
+Get:14 http://archive.ubuntu.com trusty-security/universe amd64 Packages [162 kB]
+Hit http://archive.ubuntu.com trusty Release
+Hit http://archive.ubuntu.com trusty/main Sources
+Hit http://archive.ubuntu.com trusty/restricted Sources
+Hit http://archive.ubuntu.com trusty/universe Sources
+Hit http://archive.ubuntu.com trusty/main amd64 Packages
+Hit http://archive.ubuntu.com trusty/restricted amd64 Packages
+Hit http://archive.ubuntu.com trusty/universe amd64 Packages
+Fetched 2952 kB in 4s (591 kB/s)
+Reading package lists...
+# OS package update successful
+Not running as root, the following command will be run through "sudo":
+    apt-get install -qq -yy ncurses-dev
+# OS packages installation successful
+[91m  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0 [0m[91m   0  [0m[91m   0      0      0 --:--:-- --:--:-- --:--:--     0[0m[91m100   230  100   230    0     0   1047      0 --:--:-- --:--:-- --:--:--  1050
+[0m[91m+ sudo add-apt-repository deb http://llvm.org/apt/precise/ llvm-toolchain-precise-3.8 main
+[0m[91m+ wget -O - http://llvm.org/apt/llvm-snapshot.gpg.key
+sh: 4: wget: not found
+[0m[91m+ sudo apt-key add -
+[0m[91mgpg: no valid OpenPGP data found.
+[0m[91mopam-depext: internal error, uncaught exception:
+             Failure("Command \"curl -L \\\"https://gist.githubusercontent.com/jpdeplaix/17b5de3e88ee0bdbd603/raw\\\" | sh -ex -\" failed")
+             
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/jpdeplaix/opam-repository.git master && opam update -u" &&   sudo -u opam sh -c "opam depext -u llvm" &&   sudo -u opam sh -c "opam install -y -j 2 -v llvm"' returned a non-zero code: 1
