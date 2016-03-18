@@ -1,0 +1,373 @@
+Sending build context to Docker daemon 33.79 kB
+Step 1 : FROM ocaml/opam:oraclelinux-7_ocaml-4.02.3
+ ---> 3ce250af9294
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/damiendoligez/opam-repository.git planets-fix-deps && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"
+ ---> Running in 2a660d86d0d0
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 53236a1..6a72e90
+Fast-forward
+ compilers/4.04.0/4.04.0+pr490/4.04.0+pr490.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr507/4.04.0+pr507.descr   |  1 -
+ .../4.04.0+pr512.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr512/4.04.0+pr512.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr513/4.04.0+pr513.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr513/4.04.0+pr513.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr514/4.04.0+pr514.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr514/4.04.0+pr514.descr   |  1 +
+ .../4.04.0+pr515.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr515/4.04.0+pr515.descr   |  1 +
+ packages/alt-ergo/alt-ergo.0.95.2/opam             | 18 ++++++----
+ packages/alt-ergo/alt-ergo.0.99.1/opam             | 22 +++++++++----
+ packages/alt-ergo/alt-ergo.1.01/opam               | 29 +++++++----------
+ packages/amqp-client/amqp-client.0.9.0/opam        |  2 +-
+ packages/camlpdf/camlpdf.2.1.1/opam                | 10 +++---
+ packages/camlzip/camlzip.1.04/opam                 |  3 ++
+ packages/camlzip/camlzip.1.05/opam                 |  3 ++
+ packages/clangml/clangml.0.5.1/opam                | 10 ++++--
+ packages/clangml/clangml.0.5.2/opam                |  9 +++--
+ packages/clangml/clangml.3.5.0/descr               |  1 +
+ .../clangml/clangml.3.5.0/files/clangml.install    |  3 ++
+ packages/clangml/clangml.3.5.0/opam                | 38 ++++++++++++++++++++++
+ packages/clangml/clangml.3.5.0/url                 |  2 ++
+ packages/clangml/clangml.3.6.0.1/opam              |  9 +++--
+ packages/clangml/clangml.3.6.0.2/opam              |  9 +++--
+ packages/clangml/clangml.3.6.0/opam                |  9 +++--
+ packages/containers/containers.0.12/opam           |  1 +
+ packages/core/core.109.31.00/opam                  |  2 +-
+ packages/dockerfile/dockerfile.1.3.0/descr         | 18 ++++++++++
+ packages/dockerfile/dockerfile.1.3.0/opam          | 22 +++++++++++++
+ packages/dockerfile/dockerfile.1.3.0/url           |  2 ++
+ packages/gapi-ocaml/gapi-ocaml.0.2.10/descr        | 10 ++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.10/findlib      |  1 +
+ packages/gapi-ocaml/gapi-ocaml.0.2.10/opam         | 35 ++++++++++++++++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.10/url          |  2 ++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/descr         | 10 ++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/findlib       |  1 +
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/opam          | 35 ++++++++++++++++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/url           |  2 ++
+ packages/markup/markup.0.7.1/descr                 | 20 ++++++++++++
+ packages/markup/markup.0.7.1/opam                  | 27 +++++++++++++++
+ packages/markup/markup.0.7.1/url                   |  2 ++
+ packages/mirage-profile/mirage-profile.0.1/opam    |  5 +--
+ packages/mirage-profile/mirage-profile.0.3/opam    |  5 +--
+ packages/mirage-profile/mirage-profile.0.4/opam    |  5 +--
+ packages/mirage-profile/mirage-profile.0.5/opam    |  5 +--
+ packages/mirage-profile/mirage-profile.0.6.1/opam  |  3 +-
+ packages/mirage-profile/mirage-profile.0.6/opam    |  5 +--
+ packages/mirage-unix/mirage-unix.2.2.3/opam        |  3 +-
+ packages/mirage-unix/mirage-unix.2.3.1/opam        |  3 +-
+ packages/mirage/mirage.2.7.1/descr                 | 12 +++++++
+ packages/mirage/mirage.2.7.1/opam                  | 32 ++++++++++++++++++
+ packages/mirage/mirage.2.7.1/url                   |  2 ++
+ packages/nodejs/nodejs.0.1/opam                    |  4 +--
+ packages/nodejs/nodejs.0.2/opam                    |  2 +-
+ packages/nodejs/nodejs.0.3/opam                    |  2 +-
+ packages/nodejs/nodejs.0.4/opam                    |  2 +-
+ packages/nodejs/nodejs.0.5/opam                    |  2 +-
+ .../ocplib-json-typed/ocplib-json-typed.0.2/descr  |  9 +++++
+ .../ocplib-json-typed/ocplib-json-typed.0.2/opam   | 15 +++++++++
+ .../ocplib-json-typed/ocplib-json-typed.0.2/url    |  2 ++
+ packages/ppx_deriving/ppx_deriving.3.3/descr       |  5 +++
+ packages/ppx_deriving/ppx_deriving.3.3/opam        | 29 +++++++++++++++++
+ packages/ppx_deriving/ppx_deriving.3.3/url         |  2 ++
+ .../ppx_jsobject_conv.0.0.1/descr                  |  6 ++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/opam | 25 ++++++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/url  |  3 ++
+ packages/prob-cache/prob-cache.1.0.0/opam          |  2 +-
+ packages/valentine/valentine.1.0.0/descr           |  3 ++
+ .../valentine.1.0.0/files/_oasis_remove_.ml        |  7 ++++
+ .../valentine.1.0.0/files/valentine.install        |  6 ++++
+ packages/valentine/valentine.1.0.0/opam            | 27 +++++++++++++++
+ packages/valentine/valentine.1.0.0/url             |  2 ++
+ packages/vchan/vchan.0.9.2/descr                   |  4 ---
+ packages/vchan/vchan.0.9.2/findlib                 |  1 -
+ packages/vchan/vchan.0.9.2/opam                    | 24 --------------
+ packages/vchan/vchan.0.9.2/url                     |  2 --
+ packages/vchan/vchan.0.9.3/descr                   |  4 ---
+ packages/vchan/vchan.0.9.3/findlib                 |  1 -
+ packages/vchan/vchan.0.9.3/opam                    | 24 --------------
+ packages/vchan/vchan.0.9.3/url                     |  2 --
+ packages/vchan/vchan.0.9.5/opam                    | 13 ++++----
+ packages/vchan/vchan.0.9.6/opam                    | 16 +++++----
+ packages/vchan/vchan.0.9.7/opam                    | 17 ++++++----
+ packages/vchan/vchan.1.0.0/opam                    | 17 ++++++----
+ packages/vchan/vchan.2.0.0/opam                    | 16 +++++----
+ packages/vchan/vchan.2.0.1/opam                    | 14 ++++----
+ packages/vchan/vchan.2.0.2/opam                    | 15 +++++----
+ packages/vchan/vchan.2.0.3/opam                    |  3 +-
+ packages/vmnet/vmnet.1.0.0/opam                    |  4 +--
+ packages/vmnet/vmnet.1.0.1/opam                    |  4 +--
+ packages/vmnet/vmnet.1.0.2/opam                    |  4 +--
+ 92 files changed, 631 insertions(+), 188 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr490/4.04.0+pr490.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr507/4.04.0+pr507.descr
+ rename compilers/4.04.0/{4.04.0+pr507/4.04.0+pr507.comp => 4.04.0+pr512/4.04.0+pr512.comp} (81%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr512/4.04.0+pr512.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr513/4.04.0+pr513.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr513/4.04.0+pr513.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr514/4.04.0+pr514.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr514/4.04.0+pr514.descr
+ rename compilers/4.04.0/{4.04.0+pr490/4.04.0+pr490.comp => 4.04.0+pr515/4.04.0+pr515.comp} (79%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr515/4.04.0+pr515.descr
+ create mode 100644 packages/clangml/clangml.3.5.0/descr
+ create mode 100644 packages/clangml/clangml.3.5.0/files/clangml.install
+ create mode 100644 packages/clangml/clangml.3.5.0/opam
+ create mode 100644 packages/clangml/clangml.3.5.0/url
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/descr
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/opam
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/url
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.10/descr
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.10/findlib
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.10/opam
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.10/url
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/descr
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/findlib
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/opam
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/url
+ create mode 100644 packages/markup/markup.0.7.1/descr
+ create mode 100644 packages/markup/markup.0.7.1/opam
+ create mode 100644 packages/markup/markup.0.7.1/url
+ create mode 100644 packages/mirage/mirage.2.7.1/descr
+ create mode 100644 packages/mirage/mirage.2.7.1/opam
+ create mode 100644 packages/mirage/mirage.2.7.1/url
+ create mode 100644 packages/ocplib-json-typed/ocplib-json-typed.0.2/descr
+ create mode 100644 packages/ocplib-json-typed/ocplib-json-typed.0.2/opam
+ create mode 100644 packages/ocplib-json-typed/ocplib-json-typed.0.2/url
+ create mode 100644 packages/ppx_deriving/ppx_deriving.3.3/descr
+ create mode 100644 packages/ppx_deriving/ppx_deriving.3.3/opam
+ create mode 100644 packages/ppx_deriving/ppx_deriving.3.3/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/url
+ create mode 100644 packages/valentine/valentine.1.0.0/descr
+ create mode 100644 packages/valentine/valentine.1.0.0/files/_oasis_remove_.ml
+ create mode 100644 packages/valentine/valentine.1.0.0/files/valentine.install
+ create mode 100644 packages/valentine/valentine.1.0.0/opam
+ create mode 100644 packages/valentine/valentine.1.0.0/url
+ delete mode 100644 packages/vchan/vchan.0.9.2/descr
+ delete mode 100644 packages/vchan/vchan.0.9.2/findlib
+ delete mode 100644 packages/vchan/vchan.0.9.2/opam
+ delete mode 100644 packages/vchan/vchan.0.9.2/url
+ delete mode 100644 packages/vchan/vchan.0.9.3/descr
+ delete mode 100644 packages/vchan/vchan.0.9.3/findlib
+ delete mode 100644 packages/vchan/vchan.0.9.3/opam
+ delete mode 100644 packages/vchan/vchan.0.9.3/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/damiendoligez/opam-repository
+ * branch            planets-fix-deps -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/planets/planets.0.1.14/opam | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux ol
+# No extra OS packages requirements found.
+The following actions will be performed:
+  - install conf-m4            1                                [required by ocamlfind]
+  - install conf-pkg-config    1.0                              [required by conf-ncurses]
+  - install conf-ncurses       1                                [required by ocamlfind]
+  - install ocamlfind          1.6.2                            [required by core, labltk]
+  - install type_conv          113.00.02                        [required by comparelib, bin_prot, pa_structural_sexp]
+  - install pipebang           113.00.00                        [required by core]
+  - install ounit              2.0.0                            [required by pa_ounit]
+  - install labltk             8.06.0                           [required by planets]
+  - install herelib            112.35.00                        [required by core]
+  - install variantslib        109.15.03                        [required by core]
+  - install sexplib            113.00.00                        [required by core]
+  - install fieldslib          113.00.00                        [required by core]
+  - install enumerate          111.08.00                        [required by core]
+  - install comparelib         113.00.00                        [required by core]
+  - install bin_prot           113.00.00                        [required by core]
+  - install pa_ounit           113.00.00                        [required by core]
+  - install pa_structural_sexp 113.00.00                        [required by core]
+  - install pa_test            112.24.00                        [required by core]
+  - install typerep            113.00.00                        [required by core_kernel]
+  - install pa_bench           113.00.00                        [required by core]
+  - install custom_printf      113.00.00                        [required by core]
+  - install core_kernel        113.00.00                        [required by core]
+  - install core               113.00.00                        [required by planets]
+  - install planets            0.1.14   
+===== 24 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[bin_prot: http] Command started
+[comparelib: http] Command started
+[core: http] Command started
+[bin_prot: http] Command started
+[bin_prot.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/bin_prot-113.00.00.tar.gz downloaded
+[core_kernel: http] Command started
+[comparelib: http] Command started
+[comparelib.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/comparelib-113.00.00.tar.gz downloaded
+[custom_printf: http] Command started
+[custom_printf: http] Command started
+[custom_printf.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/custom_printf-113.00.00.tar.gz downloaded
+[enumerate: http] Command started
+[enumerate: http] Command started
+[enumerate.111.08.00] https://ocaml.janestreet.com/ocaml-core/111.08.00/individual/enumerate-111.08.00.tar.gz downloaded
+[fieldslib: http] Command started
+[fieldslib: http] Command started
+[fieldslib.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/fieldslib-113.00.00.tar.gz downloaded
+[herelib: http] Command started
+[herelib: http] Command started
+[herelib.112.35.00] https://ocaml.janestreet.com/ocaml-core/112.35/files/herelib-112.35.00.tar.gz downloaded
+[labltk: http] Command started
+[core_kernel: http] Command started
+[labltk: http] Command started
+[core_kernel.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/core_kernel-113.00.00.tar.gz downloaded
+[ocamlfind: http] Command started
+[labltk.8.06.0] https://forge.ocamlcore.org/frs/download.php/1455/labltk-8.06.0.tar.gz downloaded
+[ounit: http] Command started
+[core: http] Command started
+[core.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/core-113.00.00.tar.gz downloaded
+[pa_bench: http] Command started
+[ounit: http] Command started
+[ounit.2.0.0] http://forge.ocamlcore.org/frs/download.php/1258/ounit-2.0.0.tar.gz downloaded
+[pa_ounit: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
+[pa_structural_sexp: http] Command started
+[pa_bench: http] Command started
+[pa_bench.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/pa_bench-113.00.00.tar.gz downloaded
+[pa_test: http] Command started
+[pa_ounit: http] Command started
+[pa_ounit.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/pa_ounit-113.00.00.tar.gz downloaded
+[pipebang: http] Command started
+[pipebang: http] Command started
+[pipebang.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/pipebang-113.00.00.tar.gz downloaded
+[planets: http] Command started
+[pa_test: http] Command started
+[pa_test.112.24.00] https://ocaml.janestreet.com/ocaml-core/112.24/files/pa_test-112.24.tar.gz downloaded
+[sexplib: http] Command started
+[planets: http] Command started
+[planets.0.1.14] https://bitbucket.org/yminsky/planets/get/0.1.14.tar.bz2 downloaded
+[type_conv: http] Command started
+[pa_structural_sexp: http] Command started
+[pa_structural_sexp.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/pa_structural_sexp-113.00.00.tar.gz downloaded
+[typerep: http] Command started
+[sexplib: http] Command started
+[sexplib.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/sexplib-113.00.00.tar.gz downloaded
+[variantslib: http] Command started
+[type_conv: http] Command started
+[type_conv.113.00.02] https://ocaml.janestreet.com/ocaml-core/113.00/files/type_conv-113.00.02.tar.gz downloaded
+[typerep: http] Command started
+[typerep.113.00.00] https://ocaml.janestreet.com/ocaml-core/113.00/files/typerep-113.00.00.tar.gz downloaded
+[variantslib: http] Command started
+[variantslib.109.15.03] https://ocaml.janestreet.com/ocaml-core/109.15.00/individual/variantslib-109.15.03.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[conf-m4: sh echo | m4] Command started
+[conf-pkg-config: pkg-config] Command started
++ sh "-exc" "echo | m4" (CWD=/home/opam/.opam/4.02.3/build/conf-m4.1)
+- 
+- + echo
+- + m4
+-> installed conf-m4.1
++ pkg-config "--help" (CWD=/home/opam/.opam/4.02.3/build/conf-pkg-config.1.0)
+- Usage:
+-   pkg-config [OPTION...]
+- 
+- Help Options:
+-   -h, --help                              Show help options
+- 
+- Application Options:
+-   --version                               output version of pkg-config
+-   --modversion                            output version for package
+-   --atleast-pkgconfig-version=VERSION     require given version of pkg-config
+-   --libs                                  output all linker flags
+-   --static                                output linker flags for static linking
+-   --short-errors                          print short errors
+-   --libs-only-l                           output -l flags
+-   --libs-only-other                       output other libs (e.g. -pthread)
+-   --libs-only-L                           output -L flags
+-   --cflags                                output all pre-processor and compiler flags
+-   --cflags-only-I                         output -I flags
+-   --cflags-only-other                     output cflags not covered by the cflags-only-I option
+-   --variable=NAME                         get the value of variable named NAME
+-   --define-variable=NAME=VALUE            set variable NAME to VALUE
+-   --exists                                return 0 if the module(s) exist
+-   --print-variables                       output list of variables defined by the module
+-   --uninstalled                           return 0 if the uninstalled version of one or more module(s) or their dependencies will be used
+-   --atleast-version=VERSION               return 0 if the module is at least version VERSION
+-   --exact-version=VERSION                 return 0 if the module is at exactly version VERSION
+-   --max-version=VERSION                   return 0 if the module is at no newer than version VERSION
+-   --list-all                              list all known packages
+-   --debug                                 show verbose debug information
+-   --print-errors                          show verbose information about missing or conflicting packages,default if --cflags or --libs given on the command line
+-   --silence-errors                        be silent about errors (default unless --cflags or --libsgiven on the command line)
+-   --errors-to-stdout                      print errors from --print-errors to stdout not stderr
+-   --print-provides                        print which packages the package provides
+-   --print-requires                        print which packages the package requires
+-   --print-requires-private                print which packages the package requires for static linking
+- 
+-> installed conf-pkg-config.1.0
+[conf-ncurses: pkg-config ncurses] Command started
++ pkg-config "ncurses" (CWD=/home/opam/.opam/4.02.3/build/conf-ncurses.1)
+[91m[ERROR] The compilation of conf-ncurses failed at "pkg-config ncurses".
+[0m[91m
+#=== ERROR while installing conf-ncurses.1 ====================================#
+# opam-version         1.2.2 (2dee5d69c0bd29731e6cb2ee537f0adf72404ba4)
+# os                   linux
+# command              pkg-config ncurses
+# path                 /home/opam/.opam/4.02.3/build/conf-ncurses.1
+# compiler             4.02.3
+# exit-code            1
+# env-file             /home/opam/.opam/4.02.3/build/conf-ncurses.1/conf-ncurses-191-487c34.env
+# stdout-file          /home/opam/.opam/4.02.3/build/conf-ncurses.1/conf-ncurses-191-487c34.out
+# stderr-file          /home/opam/.opam/4.02.3/build/conf-ncurses.1/conf-ncurses-191-487c34.err
+
+[0m
+
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions were aborted
+  - install bin_prot           113.00.00
+  - install comparelib         113.00.00
+  - install core               113.00.00
+  - install core_kernel        113.00.00
+  - install custom_printf      113.00.00
+  - install enumerate          111.08.00
+  - install fieldslib          113.00.00
+  - install herelib            112.35.00
+  - install labltk             8.06.0   
+  - install ocamlfind          1.6.2    
+  - install ounit              2.0.0    
+  - install pa_bench           113.00.00
+  - install pa_ounit           113.00.00
+  - install pa_structural_sexp 113.00.00
+  - install pa_test            112.24.00
+  - install pipebang           113.00.00
+  - install planets            0.1.14   
+  - install sexplib            113.00.00
+  - install type_conv          113.00.02
+  - install typerep            113.00.00
+  - install variantslib        109.15.03
+The following actions failed
+  - install conf-ncurses 1
+The following changes have been performed
+  - install conf-m4         1  
+  - install conf-pkg-config 1.0
+
+=-=- conf-ncurses.1 troobleshooting -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=> This package relies on external (system) dependencies that may be missing.
+   `opam depext conf-ncurses.1' may help you find the correct installation for
+   your system.
+[91m
+The former state can be restored with:
+    opam switch import "~/.opam/4.02.3/backup/state-20160218163010.export"
+'opam install -y -j 2 -v planets' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/damiendoligez/opam-repository.git planets-fix-deps && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"' returned a non-zero code: 4
