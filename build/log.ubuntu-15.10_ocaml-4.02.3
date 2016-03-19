@@ -1,0 +1,275 @@
+Running this Dockerfile:
+FROM ocaml/opam:ubuntu-15.10_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git depexts-for-re && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u re2" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v re2"Sending build context to Docker daemon 37.38 kB
+Step 1 : FROM ocaml/opam:ubuntu-15.10_ocaml-4.02.3
+ ---> 3e4629f92ebb
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git depexts-for-re && opam update -u" &&   sudo -u opam sh -c "opam depext -u re2" &&   sudo -u opam sh -c "opam install -y -j 2 -v re2"
+ ---> Running in 713936fe43d5
+[91mFrom git://github.com/ocaml/opam-repository
+[0m[91m * branch            master     -> FETCH_HEAD
+[0m[91m   c86ad1e..f792550  master     -> origin/master
+[0mUpdating c86ad1e..f792550
+Fast-forward
+ compilers/4.04.0/4.04.0+pr490/4.04.0+pr490.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr507/4.04.0+pr507.descr   |  1 -
+ .../4.04.0+pr512.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr512/4.04.0+pr512.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr513/4.04.0+pr513.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr513/4.04.0+pr513.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr514/4.04.0+pr514.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr514/4.04.0+pr514.descr   |  1 +
+ .../4.04.0+pr515.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr515/4.04.0+pr515.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr516/4.04.0+pr516.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr516/4.04.0+pr516.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr517/4.04.0+pr517.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr517/4.04.0+pr517.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr518/4.04.0+pr518.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr518/4.04.0+pr518.descr   |  1 +
+ packages/alt-ergo/alt-ergo.0.95.2/opam             | 18 ++++++----
+ packages/alt-ergo/alt-ergo.0.99.1/opam             | 22 +++++++++----
+ packages/alt-ergo/alt-ergo.1.01/opam               | 29 +++++++----------
+ packages/amqp-client/amqp-client.0.9.0/opam        |  2 +-
+ packages/camlpdf/camlpdf.2.1.1/opam                | 10 +++---
+ packages/camlzip/camlzip.1.04/opam                 |  3 ++
+ packages/camlzip/camlzip.1.05/opam                 |  3 ++
+ packages/clangml/clangml.0.5.1/opam                | 10 ++++--
+ packages/clangml/clangml.0.5.2/opam                |  9 +++--
+ packages/clangml/clangml.3.5.0/descr               |  1 +
+ .../clangml/clangml.3.5.0/files/clangml.install    |  3 ++
+ packages/clangml/clangml.3.5.0/opam                | 38 ++++++++++++++++++++++
+ packages/clangml/clangml.3.5.0/url                 |  2 ++
+ packages/clangml/clangml.3.6.0.1/opam              |  9 +++--
+ packages/clangml/clangml.3.6.0.2/opam              |  9 +++--
+ packages/clangml/clangml.3.6.0/opam                |  9 +++--
+ packages/containers/containers.0.12/opam           |  1 +
+ packages/core/core.109.31.00/opam                  |  2 +-
+ packages/cowabloga/cowabloga.0.1.0/opam            |  2 +-
+ packages/dockerfile/dockerfile.1.3.0/descr         | 18 ++++++++++
+ packages/dockerfile/dockerfile.1.3.0/opam          | 22 +++++++++++++
+ packages/dockerfile/dockerfile.1.3.0/url           |  2 ++
+ packages/gapi-ocaml/gapi-ocaml.0.2.10/descr        | 10 ++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.10/findlib      |  1 +
+ packages/gapi-ocaml/gapi-ocaml.0.2.10/opam         | 35 ++++++++++++++++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.10/url          |  2 ++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/descr         | 10 ++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/findlib       |  1 +
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/opam          | 35 ++++++++++++++++++++
+ packages/gapi-ocaml/gapi-ocaml.0.2.9/url           |  2 ++
+ .../lemonade-sqlite/lemonade-sqlite.0.1.0/descr    |  3 ++
+ .../lemonade-sqlite/lemonade-sqlite.0.1.0/opam     | 37 +++++++++++++++++++++
+ packages/lemonade-sqlite/lemonade-sqlite.0.1.0/url |  2 ++
+ packages/markup/markup.0.7.1/descr                 | 20 ++++++++++++
+ packages/markup/markup.0.7.1/opam                  | 27 +++++++++++++++
+ packages/markup/markup.0.7.1/url                   |  2 ++
+ packages/mirage-profile/mirage-profile.0.1/opam    |  5 +--
+ packages/mirage-profile/mirage-profile.0.3/opam    |  5 +--
+ packages/mirage-profile/mirage-profile.0.4/opam    |  5 +--
+ packages/mirage-profile/mirage-profile.0.5/opam    |  5 +--
+ packages/mirage-profile/mirage-profile.0.6.1/opam  |  3 +-
+ packages/mirage-profile/mirage-profile.0.6/opam    |  5 +--
+ packages/mirage-unix/mirage-unix.2.2.3/opam        |  3 +-
+ packages/mirage-unix/mirage-unix.2.3.1/opam        |  3 +-
+ packages/mirage-unix/mirage-unix.2.4.0/descr       |  1 +
+ packages/mirage-unix/mirage-unix.2.4.0/opam        | 23 +++++++++++++
+ packages/mirage-unix/mirage-unix.2.4.0/url         |  2 ++
+ packages/mirage-xen/mirage-xen.2.4.0/descr         |  3 ++
+ packages/mirage-xen/mirage-xen.2.4.0/opam          | 30 +++++++++++++++++
+ packages/mirage-xen/mirage-xen.2.4.0/url           |  2 ++
+ packages/mirage/mirage.2.7.1/descr                 | 12 +++++++
+ packages/mirage/mirage.2.7.1/opam                  | 32 ++++++++++++++++++
+ packages/mirage/mirage.2.7.1/url                   |  2 ++
+ packages/nodejs/nodejs.0.1/opam                    |  4 +--
+ packages/nodejs/nodejs.0.2/opam                    |  2 +-
+ packages/nodejs/nodejs.0.3/opam                    |  2 +-
+ packages/nodejs/nodejs.0.4/opam                    |  2 +-
+ packages/nodejs/nodejs.0.5/opam                    |  2 +-
+ packages/ocaml-protoc/ocaml-protoc.0.1.1/descr     |  4 +++
+ packages/ocaml-protoc/ocaml-protoc.0.1.1/opam      | 25 ++++++++++++++
+ packages/ocaml-protoc/ocaml-protoc.0.1.1/url       |  2 ++
+ .../ocplib-json-typed/ocplib-json-typed.0.2/descr  |  9 +++++
+ .../ocplib-json-typed/ocplib-json-typed.0.2/opam   | 15 +++++++++
+ .../ocplib-json-typed/ocplib-json-typed.0.2/url    |  2 ++
+ packages/opium/opium.0.14.0/opam                   |  1 +
+ packages/planets/planets.0.1.14/opam               |  7 ++--
+ .../ppx_jsobject_conv.0.0.1/descr                  |  6 ++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/opam | 25 ++++++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/url  |  3 ++
+ packages/prob-cache/prob-cache.1.0.0/opam          |  2 +-
+ packages/scrypt-kdf/scrypt-kdf.0.1.0/descr         |  3 ++
+ packages/scrypt-kdf/scrypt-kdf.0.1.0/opam          | 36 ++++++++++++++++++++
+ packages/scrypt-kdf/scrypt-kdf.0.1.0/url           |  2 ++
+ packages/tcpip/tcpip.2.4.0/opam                    |  3 +-
+ packages/tcpip/tcpip.2.4.1/opam                    |  3 +-
+ packages/tcpip/tcpip.2.4.2/opam                    |  3 +-
+ packages/tcpip/tcpip.2.4.3/opam                    |  3 +-
+ packages/tcpip/tcpip.2.5.0/opam                    |  3 +-
+ packages/tcpip/tcpip.2.5.1/opam                    |  3 +-
+ packages/tcpip/tcpip.2.6.0/opam                    |  3 +-
+ packages/tcpip/tcpip.2.6.1/opam                    |  3 +-
+ packages/valentine/valentine.1.0.0/descr           |  3 ++
+ .../valentine.1.0.0/files/_oasis_remove_.ml        |  7 ++++
+ .../valentine.1.0.0/files/valentine.install        |  6 ++++
+ packages/valentine/valentine.1.0.0/opam            | 27 +++++++++++++++
+ packages/valentine/valentine.1.0.0/url             |  2 ++
+ packages/vchan/vchan.0.9.2/descr                   |  4 ---
+ packages/vchan/vchan.0.9.2/findlib                 |  1 -
+ packages/vchan/vchan.0.9.2/opam                    | 24 --------------
+ packages/vchan/vchan.0.9.2/url                     |  2 --
+ packages/vchan/vchan.0.9.3/descr                   |  4 ---
+ packages/vchan/vchan.0.9.3/findlib                 |  1 -
+ packages/vchan/vchan.0.9.3/opam                    | 24 --------------
+ packages/vchan/vchan.0.9.3/url                     |  2 --
+ packages/vchan/vchan.0.9.5/opam                    | 13 ++++----
+ packages/vchan/vchan.0.9.6/opam                    | 16 +++++----
+ packages/vchan/vchan.0.9.7/opam                    | 17 ++++++----
+ packages/vchan/vchan.1.0.0/opam                    | 17 ++++++----
+ packages/vchan/vchan.2.0.0/opam                    | 16 +++++----
+ packages/vchan/vchan.2.0.1/opam                    | 14 ++++----
+ packages/vchan/vchan.2.0.2/opam                    | 15 +++++----
+ packages/vchan/vchan.2.0.3/opam                    |  3 +-
+ packages/vmnet/vmnet.1.0.0/opam                    |  4 +--
+ packages/vmnet/vmnet.1.0.1/opam                    |  4 +--
+ packages/vmnet/vmnet.1.0.2/opam                    |  4 +--
+ 121 files changed, 829 insertions(+), 199 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr490/4.04.0+pr490.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr507/4.04.0+pr507.descr
+ rename compilers/4.04.0/{4.04.0+pr507/4.04.0+pr507.comp => 4.04.0+pr512/4.04.0+pr512.comp} (81%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr512/4.04.0+pr512.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr513/4.04.0+pr513.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr513/4.04.0+pr513.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr514/4.04.0+pr514.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr514/4.04.0+pr514.descr
+ rename compilers/4.04.0/{4.04.0+pr490/4.04.0+pr490.comp => 4.04.0+pr515/4.04.0+pr515.comp} (79%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr515/4.04.0+pr515.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr516/4.04.0+pr516.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr516/4.04.0+pr516.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr517/4.04.0+pr517.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr517/4.04.0+pr517.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr518/4.04.0+pr518.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr518/4.04.0+pr518.descr
+ create mode 100644 packages/clangml/clangml.3.5.0/descr
+ create mode 100644 packages/clangml/clangml.3.5.0/files/clangml.install
+ create mode 100644 packages/clangml/clangml.3.5.0/opam
+ create mode 100644 packages/clangml/clangml.3.5.0/url
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/descr
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/opam
+ create mode 100644 packages/dockerfile/dockerfile.1.3.0/url
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.10/descr
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.10/findlib
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.10/opam
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.10/url
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/descr
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/findlib
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/opam
+ create mode 100644 packages/gapi-ocaml/gapi-ocaml.0.2.9/url
+ create mode 100644 packages/lemonade-sqlite/lemonade-sqlite.0.1.0/descr
+ create mode 100644 packages/lemonade-sqlite/lemonade-sqlite.0.1.0/opam
+ create mode 100644 packages/lemonade-sqlite/lemonade-sqlite.0.1.0/url
+ create mode 100644 packages/markup/markup.0.7.1/descr
+ create mode 100644 packages/markup/markup.0.7.1/opam
+ create mode 100644 packages/markup/markup.0.7.1/url
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.0/descr
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.0/opam
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.0/url
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.0/descr
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.0/opam
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.0/url
+ create mode 100644 packages/mirage/mirage.2.7.1/descr
+ create mode 100644 packages/mirage/mirage.2.7.1/opam
+ create mode 100644 packages/mirage/mirage.2.7.1/url
+ create mode 100644 packages/ocaml-protoc/ocaml-protoc.0.1.1/descr
+ create mode 100644 packages/ocaml-protoc/ocaml-protoc.0.1.1/opam
+ create mode 100644 packages/ocaml-protoc/ocaml-protoc.0.1.1/url
+ create mode 100644 packages/ocplib-json-typed/ocplib-json-typed.0.2/descr
+ create mode 100644 packages/ocplib-json-typed/ocplib-json-typed.0.2/opam
+ create mode 100644 packages/ocplib-json-typed/ocplib-json-typed.0.2/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.1/url
+ create mode 100644 packages/scrypt-kdf/scrypt-kdf.0.1.0/descr
+ create mode 100644 packages/scrypt-kdf/scrypt-kdf.0.1.0/opam
+ create mode 100644 packages/scrypt-kdf/scrypt-kdf.0.1.0/url
+ create mode 100644 packages/valentine/valentine.1.0.0/descr
+ create mode 100644 packages/valentine/valentine.1.0.0/files/_oasis_remove_.ml
+ create mode 100644 packages/valentine/valentine.1.0.0/files/valentine.install
+ create mode 100644 packages/valentine/valentine.1.0.0/opam
+ create mode 100644 packages/valentine/valentine.1.0.0/url
+ delete mode 100644 packages/vchan/vchan.0.9.2/descr
+ delete mode 100644 packages/vchan/vchan.0.9.2/findlib
+ delete mode 100644 packages/vchan/vchan.0.9.2/opam
+ delete mode 100644 packages/vchan/vchan.0.9.2/url
+ delete mode 100644 packages/vchan/vchan.0.9.3/descr
+ delete mode 100644 packages/vchan/vchan.0.9.3/findlib
+ delete mode 100644 packages/vchan/vchan.0.9.3/opam
+ delete mode 100644 packages/vchan/vchan.0.9.3/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/mirage/opam-repository
+ * branch            depexts-for-re -> FETCH_HEAD
+[0mUpdating f792550..a302470
+Fast-forward
+ packages/re2/re2.112.06.00/opam | 4 ++++
+ packages/re2/re2.112.35.00/opam | 4 ++++
+ packages/re2/re2.113.00.00/opam | 4 ++++
+ packages/re2/re2.113.24.00/opam | 4 ++++
+ 4 files changed, 16 insertions(+)
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux ubuntu
+# The following system packages are needed:
+#  - debianutils
+#  - m4
+#  - ncurses-dev
+#  - pkg-config
+# The following new OS packages need to be installed: ncurses-dev
+Not running as root, the following command will be run through "sudo":
+    apt-get update
+Hit http://archive.ubuntu.com wily InRelease
+Get:1 http://archive.ubuntu.com wily-updates InRelease [65.9 kB]
+Get:2 http://archive.ubuntu.com wily-security InRelease [65.9 kB]
+Get:3 http://archive.ubuntu.com wily/main Sources [1411 kB]
+Get:4 http://archive.ubuntu.com wily/restricted Sources [7171 B]
+Get:5 http://archive.ubuntu.com wily/universe Sources [8976 kB]
+Get:6 http://archive.ubuntu.com wily/main amd64 Packages [1833 kB]
+Get:7 http://archive.ubuntu.com wily/restricted amd64 Packages [23.1 kB]
+Get:8 http://archive.ubuntu.com wily/universe amd64 Packages [8673 kB]
+Get:9 http://archive.ubuntu.com wily-updates/main Sources [87.1 kB]
+Get:10 http://archive.ubuntu.com wily-updates/restricted Sources [3560 B]
+Get:11 http://archive.ubuntu.com wily-updates/universe Sources [23.3 kB]
+Get:12 http://archive.ubuntu.com wily-updates/main amd64 Packages [249 kB]
+Get:13 http://archive.ubuntu.com wily-updates/restricted amd64 Packages [20.4 kB]
+Get:14 http://archive.ubuntu.com wily-updates/universe amd64 Packages [109 kB]
+Get:15 http://archive.ubuntu.com wily-security/main Sources [49.2 kB]
+Get:16 http://archive.ubuntu.com wily-security/restricted Sources [2681 B]
+Get:17 http://archive.ubuntu.com wily-security/universe Sources [11.3 kB]
+Get:18 http://archive.ubuntu.com wily-security/main amd64 Packages [170 kB]
+Get:19 http://archive.ubuntu.com wily-security/restricted amd64 Packages [17.4 kB]
+Get:20 http://archive.ubuntu.com wily-security/universe amd64 Packages [60.0 kB]
+Fetched 21.9 MB in 28s (767 kB/s)
+[91mW: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/wily-updates/main/binary-amd64/Packages  Hash Sum mismatch
+
+W: Failed to fetch http://archive.ubuntu.com/ubuntu/dists/wily-updates/universe/binary-amd64/Packages  Hash Sum mismatch
+
+E: Some index files failed to download. They have been ignored, or old ones used instead.
+[0m[91mopam-depext: internal error, uncaught exception:
+             Failure("OS package update failed")
+             
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git depexts-for-re && opam update -u" &&   sudo -u opam sh -c "opam depext -u re2" &&   sudo -u opam sh -c "opam install -y -j 2 -v re2"' returned a non-zero code: 1
