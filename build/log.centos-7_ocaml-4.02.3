@@ -1,0 +1,752 @@
+Running this Dockerfile:
+FROM ocaml/opam:centos-7_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lablgtk-depext && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u lablgtk" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v lablgtk"Sending build context to Docker daemon 37.38 kB
+Step 1 : FROM ocaml/opam:centos-7_ocaml-4.02.3
+centos-7_ocaml-4.02.3: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+196355c4b639: Already exists
+a3ed95caeb02: Already exists
+a3ed95caeb02: Already exists
+a30418a1f9da: Already exists
+c253814c5a18: Already exists
+bb009c434309: Already exists
+Digest: sha256:4bfbf6a104bf66d4035776845fbb0222044cbf5222c72e65e11c85a4aad7c1cd
+Status: Image is up to date for ocaml/opam:centos-7_ocaml-4.02.3
+ ---> 82e69ee443f1
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lablgtk-depext && opam update -u" &&   sudo -u opam sh -c "opam depext -u lablgtk" &&   sudo -u opam sh -c "opam install -y -j 2 -v lablgtk"
+ ---> Running in 6c66ee9bec5f
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 8223d0d..8851f94
+Fast-forward
+ packages/async_ssl/async_ssl.113.24.00/opam        |  6 +---
+ packages/async_ssl/async_ssl.113.33.00/opam        |  6 +---
+ packages/conf-m4/conf-m4.1/opam                    |  1 +
+ packages/conf-ncurses/conf-ncurses.1/opam          |  1 +
+ packages/conf-openssl/conf-openssl.1/opam          |  1 +
+ packages/conf-pkg-config/conf-pkg-config.1.0/opam  |  1 +
+ packages/dbm/dbm.1.0/files/mkdir-stublibs.patch    | 17 ++++++++++
+ packages/dbm/dbm.1.0/opam                          |  1 +
+ packages/mirage/mirage.2.7.1/opam                  | 32 -------------------
+ packages/mirage/mirage.2.7.1/url                   |  2 --
+ .../mirage/{mirage.2.7.1 => mirage.2.7.2}/descr    |  0
+ packages/mirage/mirage.2.7.2/opam                  | 36 ++++++++++++++++++++++
+ packages/mirage/mirage.2.7.2/url                   |  2 ++
+ packages/re2/re2.112.06.00/opam                    |  2 +-
+ packages/re2/re2.112.35.00/opam                    |  2 +-
+ packages/re2/re2.113.00.00/opam                    |  2 +-
+ packages/re2/re2.113.24.00/opam                    |  2 +-
+ packages/re2/re2.113.33.00/opam                    |  4 +++
+ .../shared-memory-ring.1.3.0/descr                 |  3 ++
+ .../shared-memory-ring.1.3.0/findlib               |  1 +
+ .../shared-memory-ring.1.3.0/opam                  | 26 ++++++++++++++++
+ .../shared-memory-ring.1.3.0/url                   |  2 ++
+ packages/vmnet/vmnet.1.0.0/opam                    |  6 +++-
+ packages/vmnet/vmnet.1.0.1/opam                    |  6 +++-
+ packages/vmnet/vmnet.1.0.2/opam                    |  6 +++-
+ packages/vmnet/vmnet.1.1.0/descr                   | 30 ++++++++++++++++++
+ packages/vmnet/vmnet.1.1.0/opam                    | 28 +++++++++++++++++
+ packages/vmnet/vmnet.1.1.0/url                     |  2 ++
+ 28 files changed, 177 insertions(+), 51 deletions(-)
+ create mode 100644 packages/dbm/dbm.1.0/files/mkdir-stublibs.patch
+ delete mode 100644 packages/mirage/mirage.2.7.1/opam
+ delete mode 100644 packages/mirage/mirage.2.7.1/url
+ rename packages/mirage/{mirage.2.7.1 => mirage.2.7.2}/descr (100%)
+ create mode 100644 packages/mirage/mirage.2.7.2/opam
+ create mode 100644 packages/mirage/mirage.2.7.2/url
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/descr
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/findlib
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/opam
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/url
+ create mode 100644 packages/vmnet/vmnet.1.1.0/descr
+ create mode 100644 packages/vmnet/vmnet.1.1.0/opam
+ create mode 100644 packages/vmnet/vmnet.1.1.0/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/mirage/opam-repository
+ * branch            lablgtk-depext -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/lablgtk/lablgtk.2.16.0/opam | 4 ++++
+ packages/lablgtk/lablgtk.2.18.2/opam | 4 ++++
+ packages/lablgtk/lablgtk.2.18.3/opam | 4 ++++
+ 3 files changed, 12 insertions(+)
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux centos
+# The following system packages are needed:
+#  - gtk+-devel
+#  - gtk2-devel
+#  - m4
+#  - ncurses-devel
+#  - pkgconfig
+package gtk+-devel is not installed
+package gtk2-devel is not installed
+Name        : m4
+Version     : 1.4.16
+Release     : 10.el7
+Architecture: x86_64
+Install Date: Wed Mar 16 14:18:58 2016
+Group       : Applications/Text
+Size        : 525707
+License     : GPLv3+
+Signature   : RSA/SHA256, Wed Nov 25 15:16:04 2015, Key ID 24c6a8a7f4a80eb5
+Source RPM  : m4-1.4.16-10.el7.src.rpm
+Build Date  : Fri Nov 20 07:28:07 2015
+Build Host  : worker1.bsys.centos.org
+Relocations : (not relocatable)
+Packager    : CentOS BuildSystem <http://bugs.centos.org>
+Vendor      : CentOS
+URL         : http://www.gnu.org/software/m4/
+Summary     : The GNU macro processor
+Description :
+A GNU implementation of the traditional UNIX macro processor.  M4 is
+useful for writing text files which can be logically parsed, and is used
+by many programs as part of their build process.  M4 has built-in
+functions for including files, running shell commands, doing arithmetic,
+etc.  The autoconf program needs m4 for generating configure scripts, but
+not for running configure scripts.
+
+Install m4 if you need a macro processor.
+package ncurses-devel is not installed
+Name        : pkgconfig
+Epoch       : 1
+Version     : 0.27.1
+Release     : 4.el7
+Architecture: x86_64
+Install Date: Fri Mar  4 06:12:02 2016
+Group       : Development/Tools
+Size        : 105522
+License     : GPLv2+
+Signature   : RSA/SHA256, Fri Jul  4 04:28:33 2014, Key ID 24c6a8a7f4a80eb5
+Source RPM  : pkgconfig-0.27.1-4.el7.src.rpm
+Build Date  : Mon Jun  9 22:05:48 2014
+Build Host  : worker1.bsys.centos.org
+Relocations : (not relocatable)
+Packager    : CentOS BuildSystem <http://bugs.centos.org>
+Vendor      : CentOS
+URL         : http://pkgconfig.freedesktop.org
+Summary     : A tool for determining compilation options
+Description :
+The pkgconfig tool determines compilation options. For each required
+library, it reads the configuration file and outputs the necessary
+compiler and linker flags.
+# The following new OS packages need to be installed: gtk+-devel gtk2-devel ncurses-devel
+The following command needs to be run through "sudo":
+    yum -y update
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+ * base: mirrors.clouvider.net
+ * extras: centos.hyve.com
+ * updates: mirrors.clouvider.net
+Resolving Dependencies
+--> Running transaction check
+---> Package bind-license.noarch 32:9.9.4-29.el7_2.2 will be updated
+---> Package bind-license.noarch 32:9.9.4-29.el7_2.3 will be an update
+---> Package libssh2.x86_64 0:1.4.3-10.el7 will be updated
+---> Package libssh2.x86_64 0:1.4.3-10.el7_2.1 will be an update
+---> Package nss-util.x86_64 0:3.19.1-4.el7_1 will be updated
+---> Package nss-util.x86_64 0:3.19.1-9.el7_2 will be an update
+---> Package tzdata.noarch 0:2016a-1.el7 will be updated
+---> Package tzdata.noarch 0:2016b-1.el7 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package            Arch         Version                    Repository     Size
+================================================================================
+Updating:
+ bind-license       noarch       32:9.9.4-29.el7_2.3        updates        82 k
+ libssh2            x86_64       1.4.3-10.el7_2.1           updates       134 k
+ nss-util           x86_64       3.19.1-9.el7_2             updates        71 k
+ tzdata             noarch       2016b-1.el7                updates       433 k
+
+Transaction Summary
+================================================================================
+Upgrade  4 Packages
+
+Total download size: 720 k
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+--------------------------------------------------------------------------------
+Total                                              911 kB/s | 720 kB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : nss-util-3.19.1-9.el7_2.x86_64                               1/8 
+  Updating   : libssh2-1.4.3-10.el7_2.1.x86_64                              2/8 
+  Updating   : 32:bind-license-9.9.4-29.el7_2.3.noarch                      3/8 
+  Updating   : tzdata-2016b-1.el7.noarch                                    4/8 
+  Cleanup    : 32:bind-license-9.9.4-29.el7_2.2.noarch                      5/8 
+  Cleanup    : tzdata-2016a-1.el7.noarch                                    6/8 
+  Cleanup    : nss-util-3.19.1-4.el7_1.x86_64                               7/8 
+  Cleanup    : libssh2-1.4.3-10.el7.x86_64                                  8/8 
+  Verifying  : tzdata-2016b-1.el7.noarch                                    1/8 
+  Verifying  : 32:bind-license-9.9.4-29.el7_2.3.noarch                      2/8 
+  Verifying  : libssh2-1.4.3-10.el7_2.1.x86_64                              3/8 
+  Verifying  : nss-util-3.19.1-9.el7_2.x86_64                               4/8 
+  Verifying  : libssh2-1.4.3-10.el7.x86_64                                  5/8 
+  Verifying  : tzdata-2016a-1.el7.noarch                                    6/8 
+  Verifying  : 32:bind-license-9.9.4-29.el7_2.2.noarch                      7/8 
+  Verifying  : nss-util-3.19.1-4.el7_1.x86_64                               8/8 
+
+Updated:
+  bind-license.noarch 32:9.9.4-29.el7_2.3   libssh2.x86_64 0:1.4.3-10.el7_2.1  
+  nss-util.x86_64 0:3.19.1-9.el7_2          tzdata.noarch 0:2016b-1.el7        
+
+Complete!
+# OS package update successful
+The following command needs to be run through "sudo":
+    yum install -y gtk+-devel gtk2-devel ncurses-devel
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: mirrors.clouvider.net
+ * extras: centos.hyve.com
+ * updates: mirrors.clouvider.net
+No package gtk+-devel available.
+Resolving Dependencies
+--> Running transaction check
+---> Package gtk2-devel.x86_64 0:2.24.28-8.el7 will be installed
+--> Processing Dependency: gtk2 = 2.24.28-8.el7 for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: pango-devel >= 1.20.0-1 for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: glib2-devel >= 2.28.0-1 for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: cairo-devel >= 1.6.0-1 for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: atk-devel >= 1.29.4-2 for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: pkgconfig(pangoft2) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: pkgconfig(pangocairo) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: pkgconfig(pango) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: pkgconfig(gio-2.0) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: pkgconfig(gdk-pixbuf-2.0) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: pkgconfig(cairo) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: pkgconfig(atk) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libpng-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXrandr-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXinerama-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXi-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXfixes-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXext-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXcursor-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXcomposite-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libX11-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: gdk-pixbuf2-devel for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libpangoft2-1.0.so.0()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libpangocairo-1.0.so.0()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libpango-1.0.so.0()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libgtk-x11-2.0.so.0()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libgdk_pixbuf-2.0.so.0()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libgdk-x11-2.0.so.0()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libgailutil.so.18()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libfreetype.so.6()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libfontconfig.so.1()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libcairo.so.2()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libatk-1.0.so.0()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXrender.so.1()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXrandr.so.2()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXinerama.so.1()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXi.so.6()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXfixes.so.3()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXext.so.6()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXdamage.so.1()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXcursor.so.1()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+--> Processing Dependency: libXcomposite.so.1()(64bit) for package: gtk2-devel-2.24.28-8.el7.x86_64
+---> Package ncurses-devel.x86_64 0:5.9-13.20130511.el7 will be installed
+--> Running transaction check
+---> Package atk.x86_64 0:2.14.0-1.el7 will be installed
+---> Package atk-devel.x86_64 0:2.14.0-1.el7 will be installed
+---> Package cairo.x86_64 0:1.14.2-1.el7 will be installed
+--> Processing Dependency: libpng15.so.15(PNG15_0)(64bit) for package: cairo-1.14.2-1.el7.x86_64
+--> Processing Dependency: libpng15.so.15()(64bit) for package: cairo-1.14.2-1.el7.x86_64
+--> Processing Dependency: libpixman-1.so.0()(64bit) for package: cairo-1.14.2-1.el7.x86_64
+--> Processing Dependency: libGL.so.1()(64bit) for package: cairo-1.14.2-1.el7.x86_64
+--> Processing Dependency: libEGL.so.1()(64bit) for package: cairo-1.14.2-1.el7.x86_64
+---> Package cairo-devel.x86_64 0:1.14.2-1.el7 will be installed
+--> Processing Dependency: pkgconfig(xrender) >= 0.6 for package: cairo-devel-1.14.2-1.el7.x86_64
+--> Processing Dependency: pkgconfig(xcb-render) >= 1.6 for package: cairo-devel-1.14.2-1.el7.x86_64
+--> Processing Dependency: pkgconfig(xcb) >= 1.6 for package: cairo-devel-1.14.2-1.el7.x86_64
+--> Processing Dependency: pkgconfig(pixman-1) >= 0.30.0 for package: cairo-devel-1.14.2-1.el7.x86_64
+--> Processing Dependency: pkgconfig(freetype2) >= 9.7.3 for package: cairo-devel-1.14.2-1.el7.x86_64
+--> Processing Dependency: pkgconfig(fontconfig) >= 2.2.95 for package: cairo-devel-1.14.2-1.el7.x86_64
+--> Processing Dependency: pkgconfig(xcb-shm) for package: cairo-devel-1.14.2-1.el7.x86_64
+--> Processing Dependency: pkgconfig(gl) for package: cairo-devel-1.14.2-1.el7.x86_64
+--> Processing Dependency: pkgconfig(egl) for package: cairo-devel-1.14.2-1.el7.x86_64
+---> Package fontconfig.x86_64 0:2.10.95-7.el7 will be installed
+--> Processing Dependency: fontpackages-filesystem for package: fontconfig-2.10.95-7.el7.x86_64
+---> Package freetype.x86_64 0:2.4.11-11.el7 will be installed
+---> Package gdk-pixbuf2.x86_64 0:2.31.6-3.el7 will be installed
+--> Processing Dependency: libtiff.so.5(LIBTIFF_4.0)(64bit) for package: gdk-pixbuf2-2.31.6-3.el7.x86_64
+--> Processing Dependency: libjpeg.so.62(LIBJPEG_6.2)(64bit) for package: gdk-pixbuf2-2.31.6-3.el7.x86_64
+--> Processing Dependency: libtiff.so.5()(64bit) for package: gdk-pixbuf2-2.31.6-3.el7.x86_64
+--> Processing Dependency: libjpeg.so.62()(64bit) for package: gdk-pixbuf2-2.31.6-3.el7.x86_64
+--> Processing Dependency: libjasper.so.1()(64bit) for package: gdk-pixbuf2-2.31.6-3.el7.x86_64
+---> Package gdk-pixbuf2-devel.x86_64 0:2.31.6-3.el7 will be installed
+---> Package glib2-devel.x86_64 0:2.42.2-5.el7 will be installed
+---> Package gtk2.x86_64 0:2.24.28-8.el7 will be installed
+--> Processing Dependency: hicolor-icon-theme for package: gtk2-2.24.28-8.el7.x86_64
+--> Processing Dependency: libcups.so.2()(64bit) for package: gtk2-2.24.28-8.el7.x86_64
+---> Package libX11-devel.x86_64 0:1.6.3-2.el7 will be installed
+--> Processing Dependency: pkgconfig(xproto) for package: libX11-devel-1.6.3-2.el7.x86_64
+--> Processing Dependency: pkgconfig(kbproto) for package: libX11-devel-1.6.3-2.el7.x86_64
+---> Package libXcomposite.x86_64 0:0.4.4-4.1.el7 will be installed
+---> Package libXcomposite-devel.x86_64 0:0.4.4-4.1.el7 will be installed
+---> Package libXcursor.x86_64 0:1.1.14-2.1.el7 will be installed
+---> Package libXcursor-devel.x86_64 0:1.1.14-2.1.el7 will be installed
+---> Package libXdamage.x86_64 0:1.1.4-4.1.el7 will be installed
+---> Package libXext.x86_64 0:1.3.3-3.el7 will be installed
+---> Package libXext-devel.x86_64 0:1.3.3-3.el7 will be installed
+---> Package libXfixes.x86_64 0:5.0.1-2.1.el7 will be installed
+---> Package libXfixes-devel.x86_64 0:5.0.1-2.1.el7 will be installed
+---> Package libXi.x86_64 0:1.7.4-2.el7 will be installed
+---> Package libXi-devel.x86_64 0:1.7.4-2.el7 will be installed
+---> Package libXinerama.x86_64 0:1.1.3-2.1.el7 will be installed
+---> Package libXinerama-devel.x86_64 0:1.1.3-2.1.el7 will be installed
+---> Package libXrandr.x86_64 0:1.4.2-2.el7 will be installed
+---> Package libXrandr-devel.x86_64 0:1.4.2-2.el7 will be installed
+---> Package libXrender.x86_64 0:0.9.8-2.1.el7 will be installed
+---> Package libpng-devel.x86_64 2:1.5.13-7.el7_2 will be installed
+--> Processing Dependency: zlib-devel(x86-64) for package: 2:libpng-devel-1.5.13-7.el7_2.x86_64
+---> Package pango.x86_64 0:1.36.8-2.el7 will be installed
+--> Processing Dependency: libthai(x86-64) >= 0.1.9 for package: pango-1.36.8-2.el7.x86_64
+--> Processing Dependency: libthai.so.0(LIBTHAI_0.1)(64bit) for package: pango-1.36.8-2.el7.x86_64
+--> Processing Dependency: libthai.so.0()(64bit) for package: pango-1.36.8-2.el7.x86_64
+--> Processing Dependency: libharfbuzz.so.0()(64bit) for package: pango-1.36.8-2.el7.x86_64
+--> Processing Dependency: libXft.so.2()(64bit) for package: pango-1.36.8-2.el7.x86_64
+---> Package pango-devel.x86_64 0:1.36.8-2.el7 will be installed
+--> Processing Dependency: pkgconfig(xft) for package: pango-devel-1.36.8-2.el7.x86_64
+--> Processing Dependency: pkgconfig(harfbuzz) for package: pango-devel-1.36.8-2.el7.x86_64
+--> Running transaction check
+---> Package cups-libs.x86_64 1:1.6.3-22.el7 will be installed
+---> Package fontconfig-devel.x86_64 0:2.10.95-7.el7 will be installed
+--> Processing Dependency: pkgconfig(expat) for package: fontconfig-devel-2.10.95-7.el7.x86_64
+---> Package fontpackages-filesystem.noarch 0:1.44-8.el7 will be installed
+---> Package freetype-devel.x86_64 0:2.4.11-11.el7 will be installed
+---> Package harfbuzz.x86_64 0:0.9.36-1.el7 will be installed
+--> Processing Dependency: libgraphite2.so.3()(64bit) for package: harfbuzz-0.9.36-1.el7.x86_64
+---> Package harfbuzz-devel.x86_64 0:0.9.36-1.el7 will be installed
+--> Processing Dependency: harfbuzz-icu(x86-64) = 0.9.36-1.el7 for package: harfbuzz-devel-0.9.36-1.el7.x86_64
+--> Processing Dependency: pkgconfig(icu-uc) for package: harfbuzz-devel-0.9.36-1.el7.x86_64
+--> Processing Dependency: libharfbuzz-icu.so.0()(64bit) for package: harfbuzz-devel-0.9.36-1.el7.x86_64
+---> Package hicolor-icon-theme.noarch 0:0.12-7.el7 will be installed
+---> Package jasper-libs.x86_64 0:1.900.1-29.el7 will be installed
+---> Package libXft.x86_64 0:2.3.2-2.el7 will be installed
+---> Package libXft-devel.x86_64 0:2.3.2-2.el7 will be installed
+---> Package libXrender-devel.x86_64 0:0.9.8-2.1.el7 will be installed
+---> Package libjpeg-turbo.x86_64 0:1.2.90-5.el7 will be installed
+---> Package libpng.x86_64 2:1.5.13-7.el7_2 will be installed
+---> Package libthai.x86_64 0:0.1.14-9.el7 will be installed
+---> Package libtiff.x86_64 0:4.0.3-14.el7 will be installed
+--> Processing Dependency: libjbig.so.2.0()(64bit) for package: libtiff-4.0.3-14.el7.x86_64
+---> Package libxcb-devel.x86_64 0:1.11-4.el7 will be installed
+--> Processing Dependency: pkgconfig(xau) >= 0.99.2 for package: libxcb-devel-1.11-4.el7.x86_64
+---> Package mesa-libEGL.x86_64 0:10.6.5-3.20150824.el7 will be installed
+--> Processing Dependency: mesa-libgbm = 10.6.5-3.20150824.el7 for package: mesa-libEGL-10.6.5-3.20150824.el7.x86_64
+--> Processing Dependency: libgbm.so.1()(64bit) for package: mesa-libEGL-10.6.5-3.20150824.el7.x86_64
+--> Processing Dependency: libdrm.so.2()(64bit) for package: mesa-libEGL-10.6.5-3.20150824.el7.x86_64
+---> Package mesa-libEGL-devel.x86_64 0:10.6.5-3.20150824.el7 will be installed
+--> Processing Dependency: pkgconfig(xshmfence) >= 1.1 for package: mesa-libEGL-devel-10.6.5-3.20150824.el7.x86_64
+--> Processing Dependency: pkgconfig(libdrm) >= 2.4.38 for package: mesa-libEGL-devel-10.6.5-3.20150824.el7.x86_64
+--> Processing Dependency: pkgconfig(xxf86vm) for package: mesa-libEGL-devel-10.6.5-3.20150824.el7.x86_64
+--> Processing Dependency: pkgconfig(xdamage) for package: mesa-libEGL-devel-10.6.5-3.20150824.el7.x86_64
+---> Package mesa-libGL.x86_64 0:10.6.5-3.20150824.el7 will be installed
+--> Processing Dependency: mesa-libglapi = 10.6.5-3.20150824.el7 for package: mesa-libGL-10.6.5-3.20150824.el7.x86_64
+--> Processing Dependency: libxshmfence.so.1()(64bit) for package: mesa-libGL-10.6.5-3.20150824.el7.x86_64
+--> Processing Dependency: libglapi.so.0()(64bit) for package: mesa-libGL-10.6.5-3.20150824.el7.x86_64
+--> Processing Dependency: libXxf86vm.so.1()(64bit) for package: mesa-libGL-10.6.5-3.20150824.el7.x86_64
+---> Package mesa-libGL-devel.x86_64 0:10.6.5-3.20150824.el7 will be installed
+--> Processing Dependency: gl-manpages for package: mesa-libGL-devel-10.6.5-3.20150824.el7.x86_64
+---> Package pixman.x86_64 0:0.32.6-3.el7 will be installed
+---> Package pixman-devel.x86_64 0:0.32.6-3.el7 will be installed
+---> Package xorg-x11-proto-devel.noarch 0:7.7-12.el7 will be installed
+---> Package zlib-devel.x86_64 0:1.2.7-15.el7 will be installed
+--> Running transaction check
+---> Package expat-devel.x86_64 0:2.1.0-8.el7 will be installed
+---> Package gl-manpages.noarch 0:1.1-7.20130122.el7 will be installed
+---> Package graphite2.x86_64 0:1.2.2-5.el7 will be installed
+---> Package harfbuzz-icu.x86_64 0:0.9.36-1.el7 will be installed
+--> Processing Dependency: libicuuc.so.50()(64bit) for package: harfbuzz-icu-0.9.36-1.el7.x86_64
+--> Processing Dependency: libicudata.so.50()(64bit) for package: harfbuzz-icu-0.9.36-1.el7.x86_64
+---> Package jbigkit-libs.x86_64 0:2.0-11.el7 will be installed
+---> Package libXau-devel.x86_64 0:1.0.8-2.1.el7 will be installed
+---> Package libXdamage-devel.x86_64 0:1.1.4-4.1.el7 will be installed
+---> Package libXxf86vm.x86_64 0:1.1.3-2.1.el7 will be installed
+---> Package libXxf86vm-devel.x86_64 0:1.1.3-2.1.el7 will be installed
+---> Package libdrm.x86_64 0:2.4.60-3.el7 will be installed
+--> Processing Dependency: libpciaccess.so.0()(64bit) for package: libdrm-2.4.60-3.el7.x86_64
+---> Package libdrm-devel.x86_64 0:2.4.60-3.el7 will be installed
+---> Package libicu-devel.x86_64 0:50.1.2-15.el7 will be installed
+---> Package libxshmfence.x86_64 0:1.2-1.el7 will be installed
+---> Package libxshmfence-devel.x86_64 0:1.2-1.el7 will be installed
+---> Package mesa-libgbm.x86_64 0:10.6.5-3.20150824.el7 will be installed
+---> Package mesa-libglapi.x86_64 0:10.6.5-3.20150824.el7 will be installed
+--> Running transaction check
+---> Package libicu.x86_64 0:50.1.2-15.el7 will be installed
+---> Package libpciaccess.x86_64 0:0.13.4-2.el7 will be installed
+--> Processing Dependency: hwdata for package: libpciaccess-0.13.4-2.el7.x86_64
+--> Running transaction check
+---> Package hwdata.x86_64 0:0.252-8.1.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package                    Arch      Version                  Repository  Size
+================================================================================
+Installing:
+ gtk2-devel                 x86_64    2.24.28-8.el7            base       2.9 M
+ ncurses-devel              x86_64    5.9-13.20130511.el7      base       713 k
+Installing for dependencies:
+ atk                        x86_64    2.14.0-1.el7             base       251 k
+ atk-devel                  x86_64    2.14.0-1.el7             base       179 k
+ cairo                      x86_64    1.14.2-1.el7             base       711 k
+ cairo-devel                x86_64    1.14.2-1.el7             base       349 k
+ cups-libs                  x86_64    1:1.6.3-22.el7           base       355 k
+ expat-devel                x86_64    2.1.0-8.el7              base        56 k
+ fontconfig                 x86_64    2.10.95-7.el7            base       228 k
+ fontconfig-devel           x86_64    2.10.95-7.el7            base       128 k
+ fontpackages-filesystem    noarch    1.44-8.el7               base       9.9 k
+ freetype                   x86_64    2.4.11-11.el7            base       391 k
+ freetype-devel             x86_64    2.4.11-11.el7            base       356 k
+ gdk-pixbuf2                x86_64    2.31.6-3.el7             base       559 k
+ gdk-pixbuf2-devel          x86_64    2.31.6-3.el7             base       216 k
+ gl-manpages                noarch    1.1-7.20130122.el7       base       994 k
+ glib2-devel                x86_64    2.42.2-5.el7             base       448 k
+ graphite2                  x86_64    1.2.2-5.el7              base        81 k
+ gtk2                       x86_64    2.24.28-8.el7            base       3.4 M
+ harfbuzz                   x86_64    0.9.36-1.el7             base       156 k
+ harfbuzz-devel             x86_64    0.9.36-1.el7             base       104 k
+ harfbuzz-icu               x86_64    0.9.36-1.el7             base        11 k
+ hicolor-icon-theme         noarch    0.12-7.el7               base        42 k
+ hwdata                     x86_64    0.252-8.1.el7            base       2.1 M
+ jasper-libs                x86_64    1.900.1-29.el7           base       149 k
+ jbigkit-libs               x86_64    2.0-11.el7               base        46 k
+ libX11-devel               x86_64    1.6.3-2.el7              base       980 k
+ libXau-devel               x86_64    1.0.8-2.1.el7            base        14 k
+ libXcomposite              x86_64    0.4.4-4.1.el7            base        22 k
+ libXcomposite-devel        x86_64    0.4.4-4.1.el7            base        16 k
+ libXcursor                 x86_64    1.1.14-2.1.el7           base        30 k
+ libXcursor-devel           x86_64    1.1.14-2.1.el7           base        23 k
+ libXdamage                 x86_64    1.1.4-4.1.el7            base        20 k
+ libXdamage-devel           x86_64    1.1.4-4.1.el7            base       9.7 k
+ libXext                    x86_64    1.3.3-3.el7              base        39 k
+ libXext-devel              x86_64    1.3.3-3.el7              base        75 k
+ libXfixes                  x86_64    5.0.1-2.1.el7            base        18 k
+ libXfixes-devel            x86_64    5.0.1-2.1.el7            base        13 k
+ libXft                     x86_64    2.3.2-2.el7              base        58 k
+ libXft-devel               x86_64    2.3.2-2.el7              base        19 k
+ libXi                      x86_64    1.7.4-2.el7              base        40 k
+ libXi-devel                x86_64    1.7.4-2.el7              base       105 k
+ libXinerama                x86_64    1.1.3-2.1.el7            base        14 k
+ libXinerama-devel          x86_64    1.1.3-2.1.el7            base        13 k
+ libXrandr                  x86_64    1.4.2-2.el7              base        26 k
+ libXrandr-devel            x86_64    1.4.2-2.el7              base        21 k
+ libXrender                 x86_64    0.9.8-2.1.el7            base        25 k
+ libXrender-devel           x86_64    0.9.8-2.1.el7            base        16 k
+ libXxf86vm                 x86_64    1.1.3-2.1.el7            base        17 k
+ libXxf86vm-devel           x86_64    1.1.3-2.1.el7            base        18 k
+ libdrm                     x86_64    2.4.60-3.el7             base       125 k
+ libdrm-devel               x86_64    2.4.60-3.el7             base        92 k
+ libicu                     x86_64    50.1.2-15.el7            base       6.9 M
+ libicu-devel               x86_64    50.1.2-15.el7            base       702 k
+ libjpeg-turbo              x86_64    1.2.90-5.el7             base       134 k
+ libpciaccess               x86_64    0.13.4-2.el7             base        26 k
+ libpng                     x86_64    2:1.5.13-7.el7_2         updates    213 k
+ libpng-devel               x86_64    2:1.5.13-7.el7_2         updates    122 k
+ libthai                    x86_64    0.1.14-9.el7             base       187 k
+ libtiff                    x86_64    4.0.3-14.el7             base       167 k
+ libxcb-devel               x86_64    1.11-4.el7               base       1.1 M
+ libxshmfence               x86_64    1.2-1.el7                base       7.2 k
+ libxshmfence-devel         x86_64    1.2-1.el7                base       5.4 k
+ mesa-libEGL                x86_64    10.6.5-3.20150824.el7    base        74 k
+ mesa-libEGL-devel          x86_64    10.6.5-3.20150824.el7    base        27 k
+ mesa-libGL                 x86_64    10.6.5-3.20150824.el7    base       184 k
+ mesa-libGL-devel           x86_64    10.6.5-3.20150824.el7    base       147 k
+ mesa-libgbm                x86_64    10.6.5-3.20150824.el7    base        40 k
+ mesa-libglapi              x86_64    10.6.5-3.20150824.el7    base        39 k
+ pango                      x86_64    1.36.8-2.el7             base       287 k
+ pango-devel                x86_64    1.36.8-2.el7             base       319 k
+ pixman                     x86_64    0.32.6-3.el7             base       254 k
+ pixman-devel               x86_64    0.32.6-3.el7             base        20 k
+ xorg-x11-proto-devel       noarch    7.7-12.el7               base       281 k
+ zlib-devel                 x86_64    1.2.7-15.el7             base        50 k
+
+Transaction Summary
+================================================================================
+Install  2 Packages (+73 Dependent packages)
+
+Total download size: 28 M
+Installed size: 114 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              2.3 MB/s |  28 MB  00:12     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : xorg-x11-proto-devel-7.7-12.el7.noarch                      1/75 
+  Installing : freetype-2.4.11-11.el7.x86_64                               2/75 
+  Installing : libXext-1.3.3-3.el7.x86_64                                  3/75 
+  Installing : libXrender-0.9.8-2.1.el7.x86_64                             4/75 
+  Installing : libXfixes-5.0.1-2.1.el7.x86_64                              5/75 
+  Installing : glib2-devel-2.42.2-5.el7.x86_64                             6/75 
+  Installing : libXdamage-1.1.4-4.1.el7.x86_64                             7/75 
+  Installing : 2:libpng-1.5.13-7.el7_2.x86_64                              8/75 
+  Installing : libXcursor-1.1.14-2.1.el7.x86_64                            9/75 
+  Installing : libXrandr-1.4.2-2.el7.x86_64                               10/75 
+  Installing : libXinerama-1.1.3-2.1.el7.x86_64                           11/75 
+  Installing : libXi-1.7.4-2.el7.x86_64                                   12/75 
+  Installing : mesa-libglapi-10.6.5-3.20150824.el7.x86_64                 13/75 
+  Installing : libjpeg-turbo-1.2.90-5.el7.x86_64                          14/75 
+  Installing : graphite2-1.2.2-5.el7.x86_64                               15/75 
+  Installing : harfbuzz-0.9.36-1.el7.x86_64                               16/75 
+  Installing : atk-2.14.0-1.el7.x86_64                                    17/75 
+  Installing : libXcomposite-0.4.4-4.1.el7.x86_64                         18/75 
+  Installing : libXxf86vm-1.1.3-2.1.el7.x86_64                            19/75 
+  Installing : libicu-50.1.2-15.el7.x86_64                                20/75 
+  Installing : zlib-devel-1.2.7-15.el7.x86_64                             21/75 
+  Installing : freetype-devel-2.4.11-11.el7.x86_64                        22/75 
+  Installing : 2:libpng-devel-1.5.13-7.el7_2.x86_64                       23/75 
+  Installing : libxshmfence-1.2-1.el7.x86_64                              24/75 
+  Installing : libxshmfence-devel-1.2-1.el7.x86_64                        25/75 
+  Installing : pixman-0.32.6-3.el7.x86_64                                 26/75 
+  Installing : pixman-devel-0.32.6-3.el7.x86_64                           27/75 
+  Installing : libicu-devel-50.1.2-15.el7.x86_64                          28/75 
+  Installing : harfbuzz-icu-0.9.36-1.el7.x86_64                           29/75 
+  Installing : atk-devel-2.14.0-1.el7.x86_64                              30/75 
+  Installing : jasper-libs-1.900.1-29.el7.x86_64                          31/75 
+  Installing : libXau-devel-1.0.8-2.1.el7.x86_64                          32/75 
+  Installing : libxcb-devel-1.11-4.el7.x86_64                             33/75 
+  Installing : libX11-devel-1.6.3-2.el7.x86_64                            34/75 
+  Installing : libXext-devel-1.3.3-3.el7.x86_64                           35/75 
+  Installing : libXfixes-devel-5.0.1-2.1.el7.x86_64                       36/75 
+  Installing : libXrender-devel-0.9.8-2.1.el7.x86_64                      37/75 
+  Installing : libXdamage-devel-1.1.4-4.1.el7.x86_64                      38/75 
+  Installing : libXxf86vm-devel-1.1.3-2.1.el7.x86_64                      39/75 
+  Installing : libXcursor-devel-1.1.14-2.1.el7.x86_64                     40/75 
+  Installing : libXrandr-devel-1.4.2-2.el7.x86_64                         41/75 
+  Installing : libXi-devel-1.7.4-2.el7.x86_64                             42/75 
+  Installing : libXcomposite-devel-0.4.4-4.1.el7.x86_64                   43/75 
+  Installing : libXinerama-devel-1.1.3-2.1.el7.x86_64                     44/75 
+  Installing : libthai-0.1.14-9.el7.x86_64                                45/75 
+  Installing : hwdata-0.252-8.1.el7.x86_64                                46/75 
+  Installing : libpciaccess-0.13.4-2.el7.x86_64                           47/75 
+  Installing : libdrm-2.4.60-3.el7.x86_64                                 48/75 
+  Installing : libdrm-devel-2.4.60-3.el7.x86_64                           49/75 
+  Installing : mesa-libGL-10.6.5-3.20150824.el7.x86_64                    50/75 
+  Installing : mesa-libgbm-10.6.5-3.20150824.el7.x86_64                   51/75 
+  Installing : mesa-libEGL-10.6.5-3.20150824.el7.x86_64                   52/75 
+  Installing : mesa-libEGL-devel-10.6.5-3.20150824.el7.x86_64             53/75 
+  Installing : 1:cups-libs-1.6.3-22.el7.x86_64                            54/75 
+  Installing : gl-manpages-1.1-7.20130122.el7.noarch                      55/75 
+  Installing : mesa-libGL-devel-10.6.5-3.20150824.el7.x86_64              56/75 
+  Installing : jbigkit-libs-2.0-11.el7.x86_64                             57/75 
+  Installing : libtiff-4.0.3-14.el7.x86_64                                58/75 
+  Installing : gdk-pixbuf2-2.31.6-3.el7.x86_64                            59/75 
+  Installing : gdk-pixbuf2-devel-2.31.6-3.el7.x86_64                      60/75 
+  Installing : hicolor-icon-theme-0.12-7.el7.noarch                       61/75 
+  Installing : fontpackages-filesystem-1.44-8.el7.noarch                  62/75 
+  Installing : fontconfig-2.10.95-7.el7.x86_64                            63/75 
+  Installing : cairo-1.14.2-1.el7.x86_64                                  64/75 
+  Installing : libXft-2.3.2-2.el7.x86_64                                  65/75 
+  Installing : pango-1.36.8-2.el7.x86_64                                  66/75 
+  Installing : gtk2-2.24.28-8.el7.x86_64                                  67/75 
+  Installing : harfbuzz-devel-0.9.36-1.el7.x86_64                         68/75 
+  Installing : expat-devel-2.1.0-8.el7.x86_64                             69/75 
+  Installing : fontconfig-devel-2.10.95-7.el7.x86_64                      70/75 
+  Installing : cairo-devel-1.14.2-1.el7.x86_64                            71/75 
+  Installing : libXft-devel-2.3.2-2.el7.x86_64                            72/75 
+  Installing : pango-devel-1.36.8-2.el7.x86_64                            73/75 
+  Installing : gtk2-devel-2.24.28-8.el7.x86_64                            74/75 
+  Installing : ncurses-devel-5.9-13.20130511.el7.x86_64                   75/75 
+  Verifying  : libXext-1.3.3-3.el7.x86_64                                  1/75 
+  Verifying  : libXft-devel-2.3.2-2.el7.x86_64                             2/75 
+  Verifying  : libdrm-devel-2.4.60-3.el7.x86_64                            3/75 
+  Verifying  : freetype-devel-2.4.11-11.el7.x86_64                         4/75 
+  Verifying  : libxcb-devel-1.11-4.el7.x86_64                              5/75 
+  Verifying  : libXrender-devel-0.9.8-2.1.el7.x86_64                       6/75 
+  Verifying  : libXinerama-1.1.3-2.1.el7.x86_64                            7/75 
+  Verifying  : libicu-devel-50.1.2-15.el7.x86_64                           8/75 
+  Verifying  : freetype-2.4.11-11.el7.x86_64                               9/75 
+  Verifying  : pixman-0.32.6-3.el7.x86_64                                 10/75 
+  Verifying  : expat-devel-2.1.0-8.el7.x86_64                             11/75 
+  Verifying  : 2:libpng-1.5.13-7.el7_2.x86_64                             12/75 
+  Verifying  : libXxf86vm-1.1.3-2.1.el7.x86_64                            13/75 
+  Verifying  : libxshmfence-1.2-1.el7.x86_64                              14/75 
+  Verifying  : fontpackages-filesystem-1.44-8.el7.noarch                  15/75 
+  Verifying  : gdk-pixbuf2-2.31.6-3.el7.x86_64                            16/75 
+  Verifying  : libdrm-2.4.60-3.el7.x86_64                                 17/75 
+  Verifying  : hicolor-icon-theme-0.12-7.el7.noarch                       18/75 
+  Verifying  : jbigkit-libs-2.0-11.el7.x86_64                             19/75 
+  Verifying  : gtk2-devel-2.24.28-8.el7.x86_64                            20/75 
+  Verifying  : glib2-devel-2.42.2-5.el7.x86_64                            21/75 
+  Verifying  : mesa-libgbm-10.6.5-3.20150824.el7.x86_64                   22/75 
+  Verifying  : libxshmfence-devel-1.2-1.el7.x86_64                        23/75 
+  Verifying  : libpciaccess-0.13.4-2.el7.x86_64                           24/75 
+  Verifying  : mesa-libGL-10.6.5-3.20150824.el7.x86_64                    25/75 
+  Verifying  : libXcomposite-0.4.4-4.1.el7.x86_64                         26/75 
+  Verifying  : atk-2.14.0-1.el7.x86_64                                    27/75 
+  Verifying  : mesa-libGL-devel-10.6.5-3.20150824.el7.x86_64              28/75 
+  Verifying  : gl-manpages-1.1-7.20130122.el7.noarch                      29/75 
+  Verifying  : graphite2-1.2.2-5.el7.x86_64                               30/75 
+  Verifying  : libXft-2.3.2-2.el7.x86_64                                  31/75 
+  Verifying  : mesa-libEGL-devel-10.6.5-3.20150824.el7.x86_64             32/75 
+  Verifying  : libXrender-0.9.8-2.1.el7.x86_64                            33/75 
+  Verifying  : atk-devel-2.14.0-1.el7.x86_64                              34/75 
+  Verifying  : harfbuzz-0.9.36-1.el7.x86_64                               35/75 
+  Verifying  : harfbuzz-devel-0.9.36-1.el7.x86_64                         36/75 
+  Verifying  : 2:libpng-devel-1.5.13-7.el7_2.x86_64                       37/75 
+  Verifying  : libXcursor-devel-1.1.14-2.1.el7.x86_64                     38/75 
+  Verifying  : ncurses-devel-5.9-13.20130511.el7.x86_64                   39/75 
+  Verifying  : libXcursor-1.1.14-2.1.el7.x86_64                           40/75 
+  Verifying  : libXxf86vm-devel-1.1.3-2.1.el7.x86_64                      41/75 
+  Verifying  : 1:cups-libs-1.6.3-22.el7.x86_64                            42/75 
+  Verifying  : libXi-devel-1.7.4-2.el7.x86_64                             43/75 
+  Verifying  : zlib-devel-1.2.7-15.el7.x86_64                             44/75 
+  Verifying  : libjpeg-turbo-1.2.90-5.el7.x86_64                          45/75 
+  Verifying  : libXdamage-devel-1.1.4-4.1.el7.x86_64                      46/75 
+  Verifying  : pixman-devel-0.32.6-3.el7.x86_64                           47/75 
+  Verifying  : pango-1.36.8-2.el7.x86_64                                  48/75 
+  Verifying  : libXext-devel-1.3.3-3.el7.x86_64                           49/75 
+  Verifying  : jasper-libs-1.900.1-29.el7.x86_64                          50/75 
+  Verifying  : gdk-pixbuf2-devel-2.31.6-3.el7.x86_64                      51/75 
+  Verifying  : gtk2-2.24.28-8.el7.x86_64                                  52/75 
+  Verifying  : hwdata-0.252-8.1.el7.x86_64                                53/75 
+  Verifying  : harfbuzz-icu-0.9.36-1.el7.x86_64                           54/75 
+  Verifying  : libXinerama-devel-1.1.3-2.1.el7.x86_64                     55/75 
+  Verifying  : libXi-1.7.4-2.el7.x86_64                                   56/75 
+  Verifying  : mesa-libglapi-10.6.5-3.20150824.el7.x86_64                 57/75 
+  Verifying  : libXcomposite-devel-0.4.4-4.1.el7.x86_64                   58/75 
+  Verifying  : libXfixes-5.0.1-2.1.el7.x86_64                             59/75 
+  Verifying  : libXrandr-1.4.2-2.el7.x86_64                               60/75 
+  Verifying  : libicu-50.1.2-15.el7.x86_64                                61/75 
+  Verifying  : cairo-1.14.2-1.el7.x86_64                                  62/75 
+  Verifying  : fontconfig-2.10.95-7.el7.x86_64                            63/75 
+  Verifying  : libtiff-4.0.3-14.el7.x86_64                                64/75 
+  Verifying  : cairo-devel-1.14.2-1.el7.x86_64                            65/75 
+  Verifying  : libthai-0.1.14-9.el7.x86_64                                66/75 
+  Verifying  : libXdamage-1.1.4-4.1.el7.x86_64                            67/75 
+  Verifying  : mesa-libEGL-10.6.5-3.20150824.el7.x86_64                   68/75 
+  Verifying  : libXfixes-devel-5.0.1-2.1.el7.x86_64                       69/75 
+  Verifying  : fontconfig-devel-2.10.95-7.el7.x86_64                      70/75 
+  Verifying  : libXrandr-devel-1.4.2-2.el7.x86_64                         71/75 
+  Verifying  : libXau-devel-1.0.8-2.1.el7.x86_64                          72/75 
+  Verifying  : xorg-x11-proto-devel-7.7-12.el7.noarch                     73/75 
+  Verifying  : pango-devel-1.36.8-2.el7.x86_64                            74/75 
+  Verifying  : libX11-devel-1.6.3-2.el7.x86_64                            75/75 
+
+Installed:
+  gtk2-devel.x86_64 0:2.24.28-8.el7  ncurses-devel.x86_64 0:5.9-13.20130511.el7 
+
+Dependency Installed:
+  atk.x86_64 0:2.14.0-1.el7                                                     
+  atk-devel.x86_64 0:2.14.0-1.el7                                               
+  cairo.x86_64 0:1.14.2-1.el7                                                   
+  cairo-devel.x86_64 0:1.14.2-1.el7                                             
+  cups-libs.x86_64 1:1.6.3-22.el7                                               
+  expat-devel.x86_64 0:2.1.0-8.el7                                              
+  fontconfig.x86_64 0:2.10.95-7.el7                                             
+  fontconfig-devel.x86_64 0:2.10.95-7.el7                                       
+  fontpackages-filesystem.noarch 0:1.44-8.el7                                   
+  freetype.x86_64 0:2.4.11-11.el7                                               
+  freetype-devel.x86_64 0:2.4.11-11.el7                                         
+  gdk-pixbuf2.x86_64 0:2.31.6-3.el7                                             
+  gdk-pixbuf2-devel.x86_64 0:2.31.6-3.el7                                       
+  gl-manpages.noarch 0:1.1-7.20130122.el7                                       
+  glib2-devel.x86_64 0:2.42.2-5.el7                                             
+  graphite2.x86_64 0:1.2.2-5.el7                                                
+  gtk2.x86_64 0:2.24.28-8.el7                                                   
+  harfbuzz.x86_64 0:0.9.36-1.el7                                                
+  harfbuzz-devel.x86_64 0:0.9.36-1.el7                                          
+  harfbuzz-icu.x86_64 0:0.9.36-1.el7                                            
+  hicolor-icon-theme.noarch 0:0.12-7.el7                                        
+  hwdata.x86_64 0:0.252-8.1.el7                                                 
+  jasper-libs.x86_64 0:1.900.1-29.el7                                           
+  jbigkit-libs.x86_64 0:2.0-11.el7                                              
+  libX11-devel.x86_64 0:1.6.3-2.el7                                             
+  libXau-devel.x86_64 0:1.0.8-2.1.el7                                           
+  libXcomposite.x86_64 0:0.4.4-4.1.el7                                          
+  libXcomposite-devel.x86_64 0:0.4.4-4.1.el7                                    
+  libXcursor.x86_64 0:1.1.14-2.1.el7                                            
+  libXcursor-devel.x86_64 0:1.1.14-2.1.el7                                      
+  libXdamage.x86_64 0:1.1.4-4.1.el7                                             
+  libXdamage-devel.x86_64 0:1.1.4-4.1.el7                                       
+  libXext.x86_64 0:1.3.3-3.el7                                                  
+  libXext-devel.x86_64 0:1.3.3-3.el7                                            
+  libXfixes.x86_64 0:5.0.1-2.1.el7                                              
+  libXfixes-devel.x86_64 0:5.0.1-2.1.el7                                        
+  libXft.x86_64 0:2.3.2-2.el7                                                   
+  libXft-devel.x86_64 0:2.3.2-2.el7                                             
+  libXi.x86_64 0:1.7.4-2.el7                                                    
+  libXi-devel.x86_64 0:1.7.4-2.el7                                              
+  libXinerama.x86_64 0:1.1.3-2.1.el7                                            
+  libXinerama-devel.x86_64 0:1.1.3-2.1.el7                                      
+  libXrandr.x86_64 0:1.4.2-2.el7                                                
+  libXrandr-devel.x86_64 0:1.4.2-2.el7                                          
+  libXrender.x86_64 0:0.9.8-2.1.el7                                             
+  libXrender-devel.x86_64 0:0.9.8-2.1.el7                                       
+  libXxf86vm.x86_64 0:1.1.3-2.1.el7                                             
+  libXxf86vm-devel.x86_64 0:1.1.3-2.1.el7                                       
+  libdrm.x86_64 0:2.4.60-3.el7                                                  
+  libdrm-devel.x86_64 0:2.4.60-3.el7                                            
+  libicu.x86_64 0:50.1.2-15.el7                                                 
+  libicu-devel.x86_64 0:50.1.2-15.el7                                           
+  libjpeg-turbo.x86_64 0:1.2.90-5.el7                                           
+  libpciaccess.x86_64 0:0.13.4-2.el7                                            
+  libpng.x86_64 2:1.5.13-7.el7_2                                                
+  libpng-devel.x86_64 2:1.5.13-7.el7_2                                          
+  libthai.x86_64 0:0.1.14-9.el7                                                 
+  libtiff.x86_64 0:4.0.3-14.el7                                                 
+  libxcb-devel.x86_64 0:1.11-4.el7                                              
+  libxshmfence.x86_64 0:1.2-1.el7                                               
+  libxshmfence-devel.x86_64 0:1.2-1.el7                                         
+  mesa-libEGL.x86_64 0:10.6.5-3.20150824.el7                                    
+  mesa-libEGL-devel.x86_64 0:10.6.5-3.20150824.el7                              
+  mesa-libGL.x86_64 0:10.6.5-3.20150824.el7                                     
+  mesa-libGL-devel.x86_64 0:10.6.5-3.20150824.el7                               
+  mesa-libgbm.x86_64 0:10.6.5-3.20150824.el7                                    
+  mesa-libglapi.x86_64 0:10.6.5-3.20150824.el7                                  
+  pango.x86_64 0:1.36.8-2.el7                                                   
+  pango-devel.x86_64 0:1.36.8-2.el7                                             
+  pixman.x86_64 0:0.32.6-3.el7                                                  
+  pixman-devel.x86_64 0:0.32.6-3.el7                                            
+  xorg-x11-proto-devel.noarch 0:7.7-12.el7                                      
+  zlib-devel.x86_64 0:1.2.7-15.el7                                              
+
+Complete!
+The following command needs to be run through "sudo":
+    rpm -q gtk+-devel gtk2-devel ncurses-devel
+package gtk+-devel is not installed
+gtk2-devel-2.24.28-8.el7.x86_64
+ncurses-devel-5.9-13.20130511.el7.x86_64
+[91mOS package installation failed
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lablgtk-depext && opam update -u" &&   sudo -u opam sh -c "opam depext -u lablgtk" &&   sudo -u opam sh -c "opam install -y -j 2 -v lablgtk"' returned a non-zero code: 1

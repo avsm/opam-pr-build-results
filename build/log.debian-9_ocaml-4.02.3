@@ -1,0 +1,1848 @@
+Running this Dockerfile:
+FROM ocaml/opam:debian-9_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lablgtk-depext && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u lablgtk" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v lablgtk"Sending build context to Docker daemon 37.38 kB
+Step 1 : FROM ocaml/opam:debian-9_ocaml-4.02.3
+debian-9_ocaml-4.02.3: Pulling from ocaml/opam
+e6c9867e62e2: Already exists
+a3ed95caeb02: Already exists
+7249ccbce35d: Already exists
+f9df7cc5ff3f: Already exists
+eacd8f7545aa: Already exists
+Digest: sha256:0c36a96cbaa875be6f7c285bec84c5e39d5d4ac7426392d981f3ba592c1721d3
+Status: Image is up to date for ocaml/opam:debian-9_ocaml-4.02.3
+ ---> 63d3192ce454
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lablgtk-depext && opam update -u" &&   sudo -u opam sh -c "opam depext -u lablgtk" &&   sudo -u opam sh -c "opam install -y -j 2 -v lablgtk"
+ ---> Running in 613345b9e898
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0m[91m   8223d0d..8851f94  master     -> origin/master
+[0mUpdating 8223d0d..8851f94
+Fast-forward
+ packages/async_ssl/async_ssl.113.24.00/opam        |  6 +---
+ packages/async_ssl/async_ssl.113.33.00/opam        |  6 +---
+ packages/conf-m4/conf-m4.1/opam                    |  1 +
+ packages/conf-ncurses/conf-ncurses.1/opam          |  1 +
+ packages/conf-openssl/conf-openssl.1/opam          |  1 +
+ packages/conf-pkg-config/conf-pkg-config.1.0/opam  |  1 +
+ packages/dbm/dbm.1.0/files/mkdir-stublibs.patch    | 17 ++++++++++
+ packages/dbm/dbm.1.0/opam                          |  1 +
+ packages/mirage/mirage.2.7.1/opam                  | 32 -------------------
+ packages/mirage/mirage.2.7.1/url                   |  2 --
+ .../mirage/{mirage.2.7.1 => mirage.2.7.2}/descr    |  0
+ packages/mirage/mirage.2.7.2/opam                  | 36 ++++++++++++++++++++++
+ packages/mirage/mirage.2.7.2/url                   |  2 ++
+ packages/re2/re2.112.06.00/opam                    |  2 +-
+ packages/re2/re2.112.35.00/opam                    |  2 +-
+ packages/re2/re2.113.00.00/opam                    |  2 +-
+ packages/re2/re2.113.24.00/opam                    |  2 +-
+ packages/re2/re2.113.33.00/opam                    |  4 +++
+ .../shared-memory-ring.1.3.0/descr                 |  3 ++
+ .../shared-memory-ring.1.3.0/findlib               |  1 +
+ .../shared-memory-ring.1.3.0/opam                  | 26 ++++++++++++++++
+ .../shared-memory-ring.1.3.0/url                   |  2 ++
+ packages/vmnet/vmnet.1.0.0/opam                    |  6 +++-
+ packages/vmnet/vmnet.1.0.1/opam                    |  6 +++-
+ packages/vmnet/vmnet.1.0.2/opam                    |  6 +++-
+ packages/vmnet/vmnet.1.1.0/descr                   | 30 ++++++++++++++++++
+ packages/vmnet/vmnet.1.1.0/opam                    | 28 +++++++++++++++++
+ packages/vmnet/vmnet.1.1.0/url                     |  2 ++
+ 28 files changed, 177 insertions(+), 51 deletions(-)
+ create mode 100644 packages/dbm/dbm.1.0/files/mkdir-stublibs.patch
+ delete mode 100644 packages/mirage/mirage.2.7.1/opam
+ delete mode 100644 packages/mirage/mirage.2.7.1/url
+ rename packages/mirage/{mirage.2.7.1 => mirage.2.7.2}/descr (100%)
+ create mode 100644 packages/mirage/mirage.2.7.2/opam
+ create mode 100644 packages/mirage/mirage.2.7.2/url
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/descr
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/findlib
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/opam
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/url
+ create mode 100644 packages/vmnet/vmnet.1.1.0/descr
+ create mode 100644 packages/vmnet/vmnet.1.1.0/opam
+ create mode 100644 packages/vmnet/vmnet.1.1.0/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/mirage/opam-repository
+ * branch            lablgtk-depext -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/lablgtk/lablgtk.2.16.0/opam | 4 ++++
+ packages/lablgtk/lablgtk.2.18.2/opam | 4 ++++
+ packages/lablgtk/lablgtk.2.18.3/opam | 4 ++++
+ 3 files changed, 12 insertions(+)
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux debian
+# The following system packages are needed:
+#  - camlp4-extra
+#  - libexpat1-dev
+#  - libgtk2.0-dev
+#  - m4
+#  - ncurses-dev
+#  - pkg-config
+# The following new OS packages need to be installed: camlp4-extra libexpat1-dev libgtk2.0-dev ncurses-dev
+The following command needs to be run through "sudo":
+    apt-get update
+Get:1 http://security.debian.org stretch/updates InRelease [62.8 kB]
+Get:2 http://mirror.unitedcolo.de/debian stretch InRelease [215 kB]
+Hit:3 http://debian.lagis.at/debian stretch-updates InRelease
+Fetched 278 kB in 0s (340 kB/s)
+Reading package lists...
+# OS package update successful
+The following command needs to be run through "sudo":
+    apt-get install -qq -yy camlp4-extra libexpat1-dev libgtk2.0-dev ncurses-dev
+[91mdebconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+[0m[91mdebconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+[0m[91mdpkg-preconfigure: unable to re-open stdin: 
+[0mSelecting previously unselected package groff-base.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23789 files and directories currently installed.)
+Preparing to unpack .../groff-base_1.22.3-7_amd64.deb ...
+Unpacking groff-base (1.22.3-7) ...
+Selecting previously unselected package bsdmainutils.
+Preparing to unpack .../bsdmainutils_9.0.8_amd64.deb ...
+Unpacking bsdmainutils (9.0.8) ...
+Selecting previously unselected package libpipeline1:amd64.
+Preparing to unpack .../libpipeline1_1.4.1-2_amd64.deb ...
+Unpacking libpipeline1:amd64 (1.4.1-2) ...
+Selecting previously unselected package man-db.
+Preparing to unpack .../man-db_2.7.5-1_amd64.deb ...
+Unpacking man-db (2.7.5-1) ...
+Selecting previously unselected package python2.7-minimal.
+Preparing to unpack .../python2.7-minimal_2.7.11-4_amd64.deb ...
+Unpacking python2.7-minimal (2.7.11-4) ...
+Selecting previously unselected package python-minimal.
+Preparing to unpack .../python-minimal_2.7.11-1_amd64.deb ...
+Unpacking python-minimal (2.7.11-1) ...
+Selecting previously unselected package python2.7.
+Preparing to unpack .../python2.7_2.7.11-4_amd64.deb ...
+Unpacking python2.7 (2.7.11-4) ...
+Selecting previously unselected package libpython-stdlib:amd64.
+Preparing to unpack .../libpython-stdlib_2.7.11-1_amd64.deb ...
+Unpacking libpython-stdlib:amd64 (2.7.11-1) ...
+Processing triggers for mime-support (3.59) ...
+Processing triggers for libc-bin (2.22-3) ...
+Setting up python2.7-minimal (2.7.11-4) ...
+Linking and byte-compiling packages for runtime python2.7...
+Setting up python-minimal (2.7.11-1) ...
+Selecting previously unselected package python.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 24392 files and directories currently installed.)
+Preparing to unpack .../python_2.7.11-1_amd64.deb ...
+Unpacking python (2.7.11-1) ...
+Selecting previously unselected package libpng12-0:amd64.
+Preparing to unpack .../libpng12-0_1.2.54-4_amd64.deb ...
+Unpacking libpng12-0:amd64 (1.2.54-4) ...
+Selecting previously unselected package libfreetype6:amd64.
+Preparing to unpack .../libfreetype6_2.6.3-3_amd64.deb ...
+Unpacking libfreetype6:amd64 (2.6.3-3) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../fonts-dejavu-core_2.35-1_all.deb ...
+Unpacking fonts-dejavu-core (2.35-1) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../fontconfig-config_2.11.0-6.3_all.deb ...
+Unpacking fontconfig-config (2.11.0-6.3) ...
+Selecting previously unselected package libfontconfig1:amd64.
+Preparing to unpack .../libfontconfig1_2.11.0-6.3_amd64.deb ...
+Unpacking libfontconfig1:amd64 (2.11.0-6.3) ...
+Selecting previously unselected package fontconfig.
+Preparing to unpack .../fontconfig_2.11.0-6.3_amd64.deb ...
+Unpacking fontconfig (2.11.0-6.3) ...
+Selecting previously unselected package x11-common.
+Preparing to unpack .../x11-common_1%3a7.7+14_all.deb ...
+Unpacking x11-common (1:7.7+14) ...
+Selecting previously unselected package libice6:amd64.
+Preparing to unpack .../libice6_2%3a1.0.9-1+b1_amd64.deb ...
+Unpacking libice6:amd64 (2:1.0.9-1+b1) ...
+Selecting previously unselected package liblzo2-2:amd64.
+Preparing to unpack .../liblzo2-2_2.08-1.2_amd64.deb ...
+Unpacking liblzo2-2:amd64 (2.08-1.2) ...
+Selecting previously unselected package libpcrecpp0v5:amd64.
+Preparing to unpack .../libpcrecpp0v5_2%3a8.38-3_amd64.deb ...
+Unpacking libpcrecpp0v5:amd64 (2:8.38-3) ...
+Selecting previously unselected package libsm6:amd64.
+Preparing to unpack .../libsm6_2%3a1.2.2-1+b1_amd64.deb ...
+Unpacking libsm6:amd64 (2:1.2.2-1+b1) ...
+Selecting previously unselected package libunistring0:amd64.
+Preparing to unpack .../libunistring0_0.9.3-5.2+b1_amd64.deb ...
+Unpacking libunistring0:amd64 (0.9.3-5.2+b1) ...
+Selecting previously unselected package libxcomposite1:amd64.
+Preparing to unpack .../libxcomposite1_1%3a0.4.4-1_amd64.deb ...
+Unpacking libxcomposite1:amd64 (1:0.4.4-1) ...
+Selecting previously unselected package libxfixes3:amd64.
+Preparing to unpack .../libxfixes3_1%3a5.0.1-2+b2_amd64.deb ...
+Unpacking libxfixes3:amd64 (1:5.0.1-2+b2) ...
+Selecting previously unselected package libxrender1:amd64.
+Preparing to unpack .../libxrender1_1%3a0.9.9-2_amd64.deb ...
+Unpacking libxrender1:amd64 (1:0.9.9-2) ...
+Selecting previously unselected package libxcursor1:amd64.
+Preparing to unpack .../libxcursor1_1%3a1.1.14-1+b1_amd64.deb ...
+Unpacking libxcursor1:amd64 (1:1.1.14-1+b1) ...
+Selecting previously unselected package libxdamage1:amd64.
+Preparing to unpack .../libxdamage1_1%3a1.1.4-2+b1_amd64.deb ...
+Unpacking libxdamage1:amd64 (1:1.1.4-2+b1) ...
+Selecting previously unselected package libxft2:amd64.
+Preparing to unpack .../libxft2_2.3.2-1_amd64.deb ...
+Unpacking libxft2:amd64 (2.3.2-1) ...
+Selecting previously unselected package libxinerama1:amd64.
+Preparing to unpack .../libxinerama1_2%3a1.1.3-1+b1_amd64.deb ...
+Unpacking libxinerama1:amd64 (2:1.1.3-1+b1) ...
+Selecting previously unselected package libjbig0:amd64.
+Preparing to unpack .../libjbig0_2.1-3.1_amd64.deb ...
+Unpacking libjbig0:amd64 (2.1-3.1) ...
+Selecting previously unselected package gettext-base.
+Preparing to unpack .../gettext-base_0.19.7-2_amd64.deb ...
+Unpacking gettext-base (0.19.7-2) ...
+Selecting previously unselected package autotools-dev.
+Preparing to unpack .../autotools-dev_20150820.1_all.deb ...
+Unpacking autotools-dev (20150820.1) ...
+Selecting previously unselected package libcroco3:amd64.
+Preparing to unpack .../libcroco3_0.6.11-1_amd64.deb ...
+Unpacking libcroco3:amd64 (0.6.11-1) ...
+Selecting previously unselected package gettext.
+Preparing to unpack .../gettext_0.19.7-2_amd64.deb ...
+Unpacking gettext (0.19.7-2) ...
+Selecting previously unselected package intltool-debian.
+Preparing to unpack .../intltool-debian_0.35.0+20060710.4_all.deb ...
+Unpacking intltool-debian (0.35.0+20060710.4) ...
+Selecting previously unselected package po-debconf.
+Preparing to unpack .../po-debconf_1.0.19_all.deb ...
+Unpacking po-debconf (1.0.19) ...
+Selecting previously unselected package libarchive-zip-perl.
+Preparing to unpack .../libarchive-zip-perl_1.56-2_all.deb ...
+Unpacking libarchive-zip-perl (1.56-2) ...
+Selecting previously unselected package libfile-stripnondeterminism-perl.
+Preparing to unpack .../libfile-stripnondeterminism-perl_0.016-1_all.deb ...
+Unpacking libfile-stripnondeterminism-perl (0.016-1) ...
+Selecting previously unselected package libtimedate-perl.
+Preparing to unpack .../libtimedate-perl_2.3000-2_all.deb ...
+Unpacking libtimedate-perl (2.3000-2) ...
+Selecting previously unselected package dh-strip-nondeterminism.
+Preparing to unpack .../dh-strip-nondeterminism_0.016-1_all.deb ...
+Unpacking dh-strip-nondeterminism (0.016-1) ...
+Selecting previously unselected package debhelper.
+Preparing to unpack .../debhelper_9.20160313_all.deb ...
+Unpacking debhelper (9.20160313) ...
+Selecting previously unselected package libatk1.0-data.
+Preparing to unpack .../libatk1.0-data_2.18.0-1_all.deb ...
+Unpacking libatk1.0-data (2.18.0-1) ...
+Selecting previously unselected package libatk1.0-0:amd64.
+Preparing to unpack .../libatk1.0-0_2.18.0-1_amd64.deb ...
+Unpacking libatk1.0-0:amd64 (2.18.0-1) ...
+Selecting previously unselected package gir1.2-atk-1.0.
+Preparing to unpack .../gir1.2-atk-1.0_2.18.0-1_amd64.deb ...
+Unpacking gir1.2-atk-1.0 (2.18.0-1) ...
+Selecting previously unselected package libpixman-1-0:amd64.
+Preparing to unpack .../libpixman-1-0_0.33.6-1_amd64.deb ...
+Unpacking libpixman-1-0:amd64 (0.33.6-1) ...
+Selecting previously unselected package libxcb-render0:amd64.
+Preparing to unpack .../libxcb-render0_1.11.1-1_amd64.deb ...
+Unpacking libxcb-render0:amd64 (1.11.1-1) ...
+Selecting previously unselected package libxcb-shm0:amd64.
+Preparing to unpack .../libxcb-shm0_1.11.1-1_amd64.deb ...
+Unpacking libxcb-shm0:amd64 (1.11.1-1) ...
+Selecting previously unselected package libcairo2:amd64.
+Preparing to unpack .../libcairo2_1.14.6-1_amd64.deb ...
+Unpacking libcairo2:amd64 (1.14.6-1) ...
+Selecting previously unselected package libcairo-gobject2:amd64.
+Preparing to unpack .../libcairo-gobject2_1.14.6-1_amd64.deb ...
+Unpacking libcairo-gobject2:amd64 (1.14.6-1) ...
+Selecting previously unselected package gir1.2-freedesktop:amd64.
+Preparing to unpack .../gir1.2-freedesktop_1.46.0-4_amd64.deb ...
+Unpacking gir1.2-freedesktop:amd64 (1.46.0-4) ...
+Selecting previously unselected package libjpeg62-turbo:amd64.
+Preparing to unpack .../libjpeg62-turbo_1%3a1.4.2-2_amd64.deb ...
+Unpacking libjpeg62-turbo:amd64 (1:1.4.2-2) ...
+Selecting previously unselected package libtiff5:amd64.
+Preparing to unpack .../libtiff5_4.0.6-1_amd64.deb ...
+Unpacking libtiff5:amd64 (4.0.6-1) ...
+Selecting previously unselected package libgdk-pixbuf2.0-common.
+Preparing to unpack .../libgdk-pixbuf2.0-common_2.32.3-1.2_all.deb ...
+Unpacking libgdk-pixbuf2.0-common (2.32.3-1.2) ...
+Selecting previously unselected package libgdk-pixbuf2.0-0:amd64.
+Preparing to unpack .../libgdk-pixbuf2.0-0_2.32.3-1.2_amd64.deb ...
+Unpacking libgdk-pixbuf2.0-0:amd64 (2.32.3-1.2) ...
+Selecting previously unselected package gir1.2-gdkpixbuf-2.0:amd64.
+Preparing to unpack .../gir1.2-gdkpixbuf-2.0_2.32.3-1.2_amd64.deb ...
+Unpacking gir1.2-gdkpixbuf-2.0:amd64 (2.32.3-1.2) ...
+Selecting previously unselected package libgtk2.0-common.
+Preparing to unpack .../libgtk2.0-common_2.24.30-1_all.deb ...
+Unpacking libgtk2.0-common (2.24.30-1) ...
+Selecting previously unselected package libthai-data.
+Preparing to unpack .../libthai-data_0.1.24-2_all.deb ...
+Unpacking libthai-data (0.1.24-2) ...
+Selecting previously unselected package libdatrie1:amd64.
+Preparing to unpack .../libdatrie1_0.2.10-2_amd64.deb ...
+Unpacking libdatrie1:amd64 (0.2.10-2) ...
+Selecting previously unselected package libthai0:amd64.
+Preparing to unpack .../libthai0_0.1.24-2_amd64.deb ...
+Unpacking libthai0:amd64 (0.1.24-2) ...
+Selecting previously unselected package libpango-1.0-0:amd64.
+Preparing to unpack .../libpango-1.0-0_1.38.1-1_amd64.deb ...
+Unpacking libpango-1.0-0:amd64 (1.38.1-1) ...
+Selecting previously unselected package libgraphite2-3:amd64.
+Preparing to unpack .../libgraphite2-3_1.3.6-1_amd64.deb ...
+Unpacking libgraphite2-3:amd64 (1.3.6-1) ...
+Selecting previously unselected package libharfbuzz0b:amd64.
+Preparing to unpack .../libharfbuzz0b_1.0.1-1+b1_amd64.deb ...
+Unpacking libharfbuzz0b:amd64 (1.0.1-1+b1) ...
+Selecting previously unselected package libpangoft2-1.0-0:amd64.
+Preparing to unpack .../libpangoft2-1.0-0_1.38.1-1_amd64.deb ...
+Unpacking libpangoft2-1.0-0:amd64 (1.38.1-1) ...
+Selecting previously unselected package libpangocairo-1.0-0:amd64.
+Preparing to unpack .../libpangocairo-1.0-0_1.38.1-1_amd64.deb ...
+Unpacking libpangocairo-1.0-0:amd64 (1.38.1-1) ...
+Selecting previously unselected package libpangoxft-1.0-0:amd64.
+Preparing to unpack .../libpangoxft-1.0-0_1.38.1-1_amd64.deb ...
+Unpacking libpangoxft-1.0-0:amd64 (1.38.1-1) ...
+Selecting previously unselected package gir1.2-pango-1.0:amd64.
+Preparing to unpack .../gir1.2-pango-1.0_1.38.1-1_amd64.deb ...
+Unpacking gir1.2-pango-1.0:amd64 (1.38.1-1) ...
+Selecting previously unselected package libavahi-common-data:amd64.
+Preparing to unpack .../libavahi-common-data_0.6.32~rc+dfsg-1_amd64.deb ...
+Unpacking libavahi-common-data:amd64 (0.6.32~rc+dfsg-1) ...
+Selecting previously unselected package libavahi-common3:amd64.
+Preparing to unpack .../libavahi-common3_0.6.32~rc+dfsg-1_amd64.deb ...
+Unpacking libavahi-common3:amd64 (0.6.32~rc+dfsg-1) ...
+Selecting previously unselected package libavahi-client3:amd64.
+Preparing to unpack .../libavahi-client3_0.6.32~rc+dfsg-1_amd64.deb ...
+Unpacking libavahi-client3:amd64 (0.6.32~rc+dfsg-1) ...
+Selecting previously unselected package libcups2:amd64.
+Preparing to unpack .../libcups2_2.1.3-3_amd64.deb ...
+Unpacking libcups2:amd64 (2.1.3-3) ...
+Selecting previously unselected package libxi6:amd64.
+Preparing to unpack .../libxi6_2%3a1.7.6-1_amd64.deb ...
+Unpacking libxi6:amd64 (2:1.7.6-1) ...
+Selecting previously unselected package libxrandr2:amd64.
+Preparing to unpack .../libxrandr2_2%3a1.5.0-1_amd64.deb ...
+Unpacking libxrandr2:amd64 (2:1.5.0-1) ...
+Selecting previously unselected package libgtk2.0-0:amd64.
+Preparing to unpack .../libgtk2.0-0_2.24.30-1_amd64.deb ...
+Unpacking libgtk2.0-0:amd64 (2.24.30-1) ...
+Selecting previously unselected package gir1.2-gtk-2.0.
+Preparing to unpack .../gir1.2-gtk-2.0_2.24.30-1_amd64.deb ...
+Unpacking gir1.2-gtk-2.0 (2.24.30-1) ...
+Selecting previously unselected package hicolor-icon-theme.
+Preparing to unpack .../hicolor-icon-theme_0.13-1_all.deb ...
+Unpacking hicolor-icon-theme (0.13-1) ...
+Selecting previously unselected package libelf1:amd64.
+Preparing to unpack .../libelf1_0.163-5.1_amd64.deb ...
+Unpacking libelf1:amd64 (0.163-5.1) ...
+Selecting previously unselected package libglib2.0-bin.
+Preparing to unpack .../libglib2.0-bin_2.46.2-3_amd64.deb ...
+Unpacking libglib2.0-bin (2.46.2-3) ...
+Selecting previously unselected package libpcre16-3:amd64.
+Preparing to unpack .../libpcre16-3_2%3a8.38-3_amd64.deb ...
+Unpacking libpcre16-3:amd64 (2:8.38-3) ...
+Selecting previously unselected package libpcre32-3:amd64.
+Preparing to unpack .../libpcre32-3_2%3a8.38-3_amd64.deb ...
+Unpacking libpcre32-3:amd64 (2:8.38-3) ...
+Selecting previously unselected package libpcre3-dev:amd64.
+Preparing to unpack .../libpcre3-dev_2%3a8.38-3_amd64.deb ...
+Unpacking libpcre3-dev:amd64 (2:8.38-3) ...
+Selecting previously unselected package zlib1g-dev:amd64.
+Preparing to unpack .../zlib1g-dev_1%3a1.2.8.dfsg-2+b1_amd64.deb ...
+Unpacking zlib1g-dev:amd64 (1:1.2.8.dfsg-2+b1) ...
+Selecting previously unselected package libglib2.0-dev.
+Preparing to unpack .../libglib2.0-dev_2.46.2-3_amd64.deb ...
+Unpacking libglib2.0-dev (2.46.2-3) ...
+Selecting previously unselected package libatk1.0-dev.
+Preparing to unpack .../libatk1.0-dev_2.18.0-1_amd64.deb ...
+Unpacking libatk1.0-dev (2.18.0-1) ...
+Selecting previously unselected package libcairo-script-interpreter2:amd64.
+Preparing to unpack .../libcairo-script-interpreter2_1.14.6-1_amd64.deb ...
+Unpacking libcairo-script-interpreter2:amd64 (1.14.6-1) ...
+Selecting previously unselected package libexpat1-dev:amd64.
+Preparing to unpack .../libexpat1-dev_2.1.0-7_amd64.deb ...
+Unpacking libexpat1-dev:amd64 (2.1.0-7) ...
+Selecting previously unselected package libpng12-dev:amd64.
+Preparing to unpack .../libpng12-dev_1.2.54-4_amd64.deb ...
+Unpacking libpng12-dev:amd64 (1.2.54-4) ...
+Selecting previously unselected package libfreetype6-dev.
+Preparing to unpack .../libfreetype6-dev_2.6.3-3_amd64.deb ...
+Unpacking libfreetype6-dev (2.6.3-3) ...
+Selecting previously unselected package libfontconfig1-dev:amd64.
+Preparing to unpack .../libfontconfig1-dev_2.11.0-6.3_amd64.deb ...
+Unpacking libfontconfig1-dev:amd64 (2.11.0-6.3) ...
+Selecting previously unselected package x11proto-render-dev.
+Preparing to unpack .../x11proto-render-dev_2%3a0.11.1-2_all.deb ...
+Unpacking x11proto-render-dev (2:0.11.1-2) ...
+Selecting previously unselected package libxrender-dev:amd64.
+Preparing to unpack .../libxrender-dev_1%3a0.9.9-2_amd64.deb ...
+Unpacking libxrender-dev:amd64 (1:0.9.9-2) ...
+Selecting previously unselected package x11proto-xext-dev.
+Preparing to unpack .../x11proto-xext-dev_7.3.0-1_all.deb ...
+Unpacking x11proto-xext-dev (7.3.0-1) ...
+Selecting previously unselected package libxext-dev:amd64.
+Preparing to unpack .../libxext-dev_2%3a1.3.3-1_amd64.deb ...
+Unpacking libxext-dev:amd64 (2:1.3.3-1) ...
+Selecting previously unselected package libice-dev:amd64.
+Preparing to unpack .../libice-dev_2%3a1.0.9-1+b1_amd64.deb ...
+Unpacking libice-dev:amd64 (2:1.0.9-1+b1) ...
+Selecting previously unselected package libsm-dev:amd64.
+Preparing to unpack .../libsm-dev_2%3a1.2.2-1+b1_amd64.deb ...
+Unpacking libsm-dev:amd64 (2:1.2.2-1+b1) ...
+Selecting previously unselected package libpixman-1-dev.
+Preparing to unpack .../libpixman-1-dev_0.33.6-1_amd64.deb ...
+Unpacking libpixman-1-dev (0.33.6-1) ...
+Selecting previously unselected package libxcb-render0-dev:amd64.
+Preparing to unpack .../libxcb-render0-dev_1.11.1-1_amd64.deb ...
+Unpacking libxcb-render0-dev:amd64 (1.11.1-1) ...
+Selecting previously unselected package libxcb-shm0-dev:amd64.
+Preparing to unpack .../libxcb-shm0-dev_1.11.1-1_amd64.deb ...
+Unpacking libxcb-shm0-dev:amd64 (1.11.1-1) ...
+Selecting previously unselected package libcairo2-dev.
+Preparing to unpack .../libcairo2-dev_1.14.6-1_amd64.deb ...
+Unpacking libcairo2-dev (1.14.6-1) ...
+Selecting previously unselected package libgdk-pixbuf2.0-dev.
+Preparing to unpack .../libgdk-pixbuf2.0-dev_2.32.3-1.2_amd64.deb ...
+Unpacking libgdk-pixbuf2.0-dev (2.32.3-1.2) ...
+Selecting previously unselected package libgtk2.0-bin.
+Preparing to unpack .../libgtk2.0-bin_2.24.30-1_amd64.deb ...
+Unpacking libgtk2.0-bin (2.24.30-1) ...
+Selecting previously unselected package libharfbuzz-icu0:amd64.
+Preparing to unpack .../libharfbuzz-icu0_1.0.1-1+b1_amd64.deb ...
+Unpacking libharfbuzz-icu0:amd64 (1.0.1-1+b1) ...
+Selecting previously unselected package libharfbuzz-gobject0:amd64.
+Preparing to unpack .../libharfbuzz-gobject0_1.0.1-1+b1_amd64.deb ...
+Unpacking libharfbuzz-gobject0:amd64 (1.0.1-1+b1) ...
+Selecting previously unselected package libharfbuzz-dev.
+Preparing to unpack .../libharfbuzz-dev_1.0.1-1+b1_amd64.deb ...
+Unpacking libharfbuzz-dev (1.0.1-1+b1) ...
+Selecting previously unselected package libxft-dev.
+Preparing to unpack .../libxft-dev_2.3.2-1_amd64.deb ...
+Unpacking libxft-dev (2.3.2-1) ...
+Selecting previously unselected package libpango1.0-dev.
+Preparing to unpack .../libpango1.0-dev_1.38.1-1_amd64.deb ...
+Unpacking libpango1.0-dev (1.38.1-1) ...
+Selecting previously unselected package x11proto-xinerama-dev.
+Preparing to unpack .../x11proto-xinerama-dev_1.2.1-2_all.deb ...
+Unpacking x11proto-xinerama-dev (1.2.1-2) ...
+Selecting previously unselected package libxinerama-dev:amd64.
+Preparing to unpack .../libxinerama-dev_2%3a1.1.3-1+b1_amd64.deb ...
+Unpacking libxinerama-dev:amd64 (2:1.1.3-1+b1) ...
+Selecting previously unselected package x11proto-fixes-dev.
+Preparing to unpack .../x11proto-fixes-dev_1%3a5.0-2_all.deb ...
+Unpacking x11proto-fixes-dev (1:5.0-2) ...
+Selecting previously unselected package libxfixes-dev:amd64.
+Preparing to unpack .../libxfixes-dev_1%3a5.0.1-2+b2_amd64.deb ...
+Unpacking libxfixes-dev:amd64 (1:5.0.1-2+b2) ...
+Selecting previously unselected package libxi-dev.
+Preparing to unpack .../libxi-dev_2%3a1.7.6-1_amd64.deb ...
+Unpacking libxi-dev (2:1.7.6-1) ...
+Selecting previously unselected package x11proto-randr-dev.
+Preparing to unpack .../x11proto-randr-dev_1.5.0-1_all.deb ...
+Unpacking x11proto-randr-dev (1.5.0-1) ...
+Selecting previously unselected package libxrandr-dev:amd64.
+Preparing to unpack .../libxrandr-dev_2%3a1.5.0-1_amd64.deb ...
+Unpacking libxrandr-dev:amd64 (2:1.5.0-1) ...
+Selecting previously unselected package libxcursor-dev:amd64.
+Preparing to unpack .../libxcursor-dev_1%3a1.1.14-1+b1_amd64.deb ...
+Unpacking libxcursor-dev:amd64 (1:1.1.14-1+b1) ...
+Selecting previously unselected package x11proto-composite-dev.
+Preparing to unpack .../x11proto-composite-dev_1%3a0.4.2-2_all.deb ...
+Unpacking x11proto-composite-dev (1:0.4.2-2) ...
+Selecting previously unselected package libxcomposite-dev.
+Preparing to unpack .../libxcomposite-dev_1%3a0.4.4-1_amd64.deb ...
+Unpacking libxcomposite-dev (1:0.4.4-1) ...
+Selecting previously unselected package x11proto-damage-dev.
+Preparing to unpack .../x11proto-damage-dev_1%3a1.2.1-2_all.deb ...
+Unpacking x11proto-damage-dev (1:1.2.1-2) ...
+Selecting previously unselected package libxdamage-dev:amd64.
+Preparing to unpack .../libxdamage-dev_1%3a1.1.4-2+b1_amd64.deb ...
+Unpacking libxdamage-dev:amd64 (1:1.1.4-2+b1) ...
+Selecting previously unselected package libxml2-utils.
+Preparing to unpack .../libxml2-utils_2.9.3+dfsg1-1_amd64.deb ...
+Unpacking libxml2-utils (2.9.3+dfsg1-1) ...
+Selecting previously unselected package libgtk2.0-dev.
+Preparing to unpack .../libgtk2.0-dev_2.24.30-1_amd64.deb ...
+Unpacking libgtk2.0-dev (2.24.30-1) ...
+Selecting previously unselected package libsys-hostname-long-perl.
+Preparing to unpack .../libsys-hostname-long-perl_1.5-1_all.deb ...
+Unpacking libsys-hostname-long-perl (1.5-1) ...
+Selecting previously unselected package libmail-sendmail-perl.
+Preparing to unpack .../libmail-sendmail-perl_0.79.16-1_all.deb ...
+Unpacking libmail-sendmail-perl (0.79.16-1) ...
+Processing triggers for libc-bin (2.22-3) ...
+Processing triggers for systemd (229-2) ...
+Processing triggers for libglib2.0-0:amd64 (2.46.2-3) ...
+No schema files found: doing nothing.
+Setting up groff-base (1.22.3-7) ...
+Setting up bsdmainutils (9.0.8) ...
+update-alternatives: using /usr/bin/bsd-write to provide /usr/bin/write (write) in auto mode
+update-alternatives: using /usr/bin/bsd-from to provide /usr/bin/from (from) in auto mode
+Setting up libpipeline1:amd64 (1.4.1-2) ...
+Setting up man-db (2.7.5-1) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+Building database of manual pages ...
+Setting up python2.7 (2.7.11-4) ...
+Setting up libpython-stdlib:amd64 (2.7.11-1) ...
+Setting up python (2.7.11-1) ...
+Setting up libpng12-0:amd64 (1.2.54-4) ...
+Setting up libfreetype6:amd64 (2.6.3-3) ...
+Setting up fonts-dejavu-core (2.35-1) ...
+Setting up fontconfig-config (2.11.0-6.3) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+Setting up libfontconfig1:amd64 (2.11.0-6.3) ...
+Setting up fontconfig (2.11.0-6.3) ...
+Regenerating fonts cache... done.
+Setting up x11-common (1:7.7+14) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+debconf: falling back to frontend: Readline
+update-rc.d: warning: start and stop actions are no longer supported; falling back to defaults
+invoke-rc.d: policy-rc.d denied execution of start.
+Setting up libice6:amd64 (2:1.0.9-1+b1) ...
+Setting up liblzo2-2:amd64 (2.08-1.2) ...
+Setting up libpcrecpp0v5:amd64 (2:8.38-3) ...
+Setting up libsm6:amd64 (2:1.2.2-1+b1) ...
+Setting up libunistring0:amd64 (0.9.3-5.2+b1) ...
+Setting up libxcomposite1:amd64 (1:0.4.4-1) ...
+Setting up libxfixes3:amd64 (1:5.0.1-2+b2) ...
+Setting up libxrender1:amd64 (1:0.9.9-2) ...
+Setting up libxcursor1:amd64 (1:1.1.14-1+b1) ...
+Setting up libxdamage1:amd64 (1:1.1.4-2+b1) ...
+Setting up libxft2:amd64 (2.3.2-1) ...
+Setting up libxinerama1:amd64 (2:1.1.3-1+b1) ...
+Setting up libjbig0:amd64 (2.1-3.1) ...
+Setting up gettext-base (0.19.7-2) ...
+Setting up autotools-dev (20150820.1) ...
+Setting up libcroco3:amd64 (0.6.11-1) ...
+Setting up gettext (0.19.7-2) ...
+Setting up intltool-debian (0.35.0+20060710.4) ...
+Setting up po-debconf (1.0.19) ...
+Setting up libarchive-zip-perl (1.56-2) ...
+Setting up libfile-stripnondeterminism-perl (0.016-1) ...
+Setting up libtimedate-perl (2.3000-2) ...
+Setting up libatk1.0-data (2.18.0-1) ...
+Setting up libatk1.0-0:amd64 (2.18.0-1) ...
+Setting up gir1.2-atk-1.0 (2.18.0-1) ...
+Setting up libpixman-1-0:amd64 (0.33.6-1) ...
+Setting up libxcb-render0:amd64 (1.11.1-1) ...
+Setting up libxcb-shm0:amd64 (1.11.1-1) ...
+Setting up libcairo2:amd64 (1.14.6-1) ...
+Setting up libcairo-gobject2:amd64 (1.14.6-1) ...
+Setting up gir1.2-freedesktop:amd64 (1.46.0-4) ...
+Setting up libjpeg62-turbo:amd64 (1:1.4.2-2) ...
+Setting up libtiff5:amd64 (4.0.6-1) ...
+Setting up libgdk-pixbuf2.0-common (2.32.3-1.2) ...
+Setting up libgdk-pixbuf2.0-0:amd64 (2.32.3-1.2) ...
+Setting up gir1.2-gdkpixbuf-2.0:amd64 (2.32.3-1.2) ...
+Setting up libgtk2.0-common (2.24.30-1) ...
+Setting up libthai-data (0.1.24-2) ...
+Setting up libdatrie1:amd64 (0.2.10-2) ...
+Setting up libthai0:amd64 (0.1.24-2) ...
+Setting up libpango-1.0-0:amd64 (1.38.1-1) ...
+Setting up libgraphite2-3:amd64 (1.3.6-1) ...
+Setting up libharfbuzz0b:amd64 (1.0.1-1+b1) ...
+Setting up libpangoft2-1.0-0:amd64 (1.38.1-1) ...
+Setting up libpangocairo-1.0-0:amd64 (1.38.1-1) ...
+Setting up libpangoxft-1.0-0:amd64 (1.38.1-1) ...
+Setting up gir1.2-pango-1.0:amd64 (1.38.1-1) ...
+Setting up libavahi-common-data:amd64 (0.6.32~rc+dfsg-1) ...
+Setting up libavahi-common3:amd64 (0.6.32~rc+dfsg-1) ...
+Setting up libavahi-client3:amd64 (0.6.32~rc+dfsg-1) ...
+Setting up libcups2:amd64 (2.1.3-3) ...
+Setting up libxi6:amd64 (2:1.7.6-1) ...
+Setting up libxrandr2:amd64 (2:1.5.0-1) ...
+Setting up libgtk2.0-0:amd64 (2.24.30-1) ...
+Setting up gir1.2-gtk-2.0 (2.24.30-1) ...
+Setting up hicolor-icon-theme (0.13-1) ...
+Setting up libelf1:amd64 (0.163-5.1) ...
+Setting up libglib2.0-bin (2.46.2-3) ...
+Setting up libpcre16-3:amd64 (2:8.38-3) ...
+Setting up libpcre32-3:amd64 (2:8.38-3) ...
+Setting up libpcre3-dev:amd64 (2:8.38-3) ...
+Setting up zlib1g-dev:amd64 (1:1.2.8.dfsg-2+b1) ...
+Setting up libglib2.0-dev (2.46.2-3) ...
+Setting up libatk1.0-dev (2.18.0-1) ...
+Setting up libcairo-script-interpreter2:amd64 (1.14.6-1) ...
+Setting up libexpat1-dev:amd64 (2.1.0-7) ...
+Setting up libpng12-dev:amd64 (1.2.54-4) ...
+Setting up libfreetype6-dev (2.6.3-3) ...
+Setting up libfontconfig1-dev:amd64 (2.11.0-6.3) ...
+Setting up x11proto-render-dev (2:0.11.1-2) ...
+Setting up libxrender-dev:amd64 (1:0.9.9-2) ...
+Setting up x11proto-xext-dev (7.3.0-1) ...
+Setting up libxext-dev:amd64 (2:1.3.3-1) ...
+Setting up libice-dev:amd64 (2:1.0.9-1+b1) ...
+Setting up libsm-dev:amd64 (2:1.2.2-1+b1) ...
+Setting up libpixman-1-dev (0.33.6-1) ...
+Setting up libxcb-render0-dev:amd64 (1.11.1-1) ...
+Setting up libxcb-shm0-dev:amd64 (1.11.1-1) ...
+Setting up libcairo2-dev (1.14.6-1) ...
+Setting up libgdk-pixbuf2.0-dev (2.32.3-1.2) ...
+Setting up libgtk2.0-bin (2.24.30-1) ...
+Setting up libharfbuzz-icu0:amd64 (1.0.1-1+b1) ...
+Setting up libharfbuzz-gobject0:amd64 (1.0.1-1+b1) ...
+Setting up libharfbuzz-dev (1.0.1-1+b1) ...
+Setting up libxft-dev (2.3.2-1) ...
+Setting up libpango1.0-dev (1.38.1-1) ...
+Setting up x11proto-xinerama-dev (1.2.1-2) ...
+Setting up libxinerama-dev:amd64 (2:1.1.3-1+b1) ...
+Setting up x11proto-fixes-dev (1:5.0-2) ...
+Setting up libxfixes-dev:amd64 (1:5.0.1-2+b2) ...
+Setting up libxi-dev (2:1.7.6-1) ...
+Setting up x11proto-randr-dev (1.5.0-1) ...
+Setting up libxrandr-dev:amd64 (2:1.5.0-1) ...
+Setting up libxcursor-dev:amd64 (1:1.1.14-1+b1) ...
+Setting up x11proto-composite-dev (1:0.4.2-2) ...
+Setting up libxcomposite-dev (1:0.4.4-1) ...
+Setting up x11proto-damage-dev (1:1.2.1-2) ...
+Setting up libxdamage-dev:amd64 (1:1.1.4-2+b1) ...
+Setting up libxml2-utils (2.9.3+dfsg1-1) ...
+Setting up libgtk2.0-dev (2.24.30-1) ...
+Setting up libsys-hostname-long-perl (1.5-1) ...
+Setting up libmail-sendmail-perl (0.79.16-1) ...
+Setting up dh-strip-nondeterminism (0.016-1) ...
+Setting up debhelper (9.20160313) ...
+Processing triggers for libc-bin (2.22-3) ...
+Processing triggers for systemd (229-2) ...
+# OS packages installation successful
+The following actions will be performed:
+  - install camlp4          4.02+system                         [required by lablgtk]
+  - install conf-pkg-config 1.0                                 [required by conf-ncurses]
+  - install conf-m4         1                                   [required by ocamlfind]
+  - install conf-ncurses    1                                   [required by ocamlfind]
+  - install ocamlfind       1.6.2                               [required by lablgtk]
+  - install lablgtk         2.18.3     
+===== 6 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[camlp4: http] Command started
+[lablgtk: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
+[lablgtk: http] Command started
+[lablgtk.2.18.3] https://forge.ocamlcore.org/frs/download.php/1479/lablgtk-2.18.3.tar.gz downloaded
+[camlp4: http] Command started
+[camlp4.4.02+system] https://github.com/ocaml/camlp4/archive/system.0.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[camlp4: sh] Command started
+[conf-m4: sh echo | m4] Command started
++ sh "-exc" "echo | m4" (CWD=/home/opam/.opam/system/build/conf-m4.1)
+- 
+- + echo
+- + m4
+-> installed conf-m4.1
+[conf-pkg-config: pkg-config] Command started
++ pkg-config "--help" (CWD=/home/opam/.opam/system/build/conf-pkg-config.1.0)
+- Usage:
+-   pkg-config [OPTION...]
+- 
+- Help Options:
+-   -h, --help                              Show help options
+- 
+- Application Options:
+-   --version                               output version of pkg-config
+-   --modversion                            output version for package
+-   --atleast-pkgconfig-version=VERSION     require given version of pkg-config
+-   --libs                                  output all linker flags
+-   --static                                output linker flags for static linking
+-   --short-errors                          print short errors
+-   --libs-only-l                           output -l flags
+-   --libs-only-other                       output other libs (e.g. -pthread)
+-   --libs-only-L                           output -L flags
+-   --cflags                                output all pre-processor and compiler flags
+-   --cflags-only-I                         output -I flags
+-   --cflags-only-other                     output cflags not covered by the cflags-only-I option
+-   --variable=NAME                         get the value of variable named NAME
+-   --define-variable=NAME=VALUE            set variable NAME to VALUE
+-   --exists                                return 0 if the module(s) exist
+-   --print-variables                       output list of variables defined by the module
+-   --uninstalled                           return 0 if the uninstalled version of one or more module(s) or their dependencies will be used
+-   --atleast-version=VERSION               return 0 if the module is at least version VERSION
+-   --exact-version=VERSION                 return 0 if the module is at exactly version VERSION
+-   --max-version=VERSION                   return 0 if the module is at no newer than version VERSION
+-   --list-all                              list all known packages
+-   --debug                                 show verbose debug information
+-   --print-errors                          show verbose information about missing or conflicting packages (default unless --exists or --atleast/exact/max-version given on the command line)
+-   --silence-errors                        be silent about errors (default when --exists or --atleast/exact/max-version given on the command line)
+-   --errors-to-stdout                      print errors from --print-errors to stdout not stderr
+-   --print-provides                        print which packages the package provides
+-   --print-requires                        print which packages the package requires
+-   --print-requires-private                print which packages the package requires for static linking
+-   --validate                              validate a package's .pc file
+-   --define-prefix                         try to override the value of prefix for each .pc file found with a guesstimated value based on the location of the .pc file
+-   --dont-define-prefix                    don't try to override the value of prefix for each .pc file found with a guesstimated value based on the location of the .pc file
+-   --prefix-variable=PREFIX                set the name of the variable that pkg-config automatically sets
+- 
+-> installed conf-pkg-config.1.0
+[conf-ncurses: pkg-config ncurses] Command started
++ pkg-config "ncurses" (CWD=/home/opam/.opam/system/build/conf-ncurses.1)
+-> installed conf-ncurses.1
+[ocamlfind: ./configure] Command started
++ sh "./make.sh" (CWD=/home/opam/.opam/system/build/camlp4.4.02+system)
+-> installed camlp4.4.02+system
++ ./configure "-bindir" "/home/opam/.opam/system/bin" "-sitelib" "/home/opam/.opam/system/lib" "-mandir" "/home/opam/.opam/system/man" "-config" "/home/opam/.opam/system/lib/findlib.conf" "-no-topfind" (CWD=/home/opam/.opam/system/build/ocamlfind.1.6.2)
+- Welcome to findlib version 1.6.2
+- Configuring core...
+- Checking for #remove_directory...
+- Testing threading model...
+- systhread_supported: true
+- Testing DLLs...
+- Testing whether ppxopt can be supported...
+- Configuring libraries...
+- native dynlink: found
+- labltk: not present
+- ocamlbuild: found
+- camlp4: using camlp4, style 310
+- compiler-libs: found
+- dbm: not present (normal since OCaml-4.00)
+- bytes: found, installing fake library
+- Configuration for dynlink written to site-lib-src/dynlink/META
+- Configuration for graphics written to site-lib-src/graphics/META
+- Configuration for num written to site-lib-src/num/META
+- Configuration for num-top written to site-lib-src/num-top/META
+- Configuration for str written to site-lib-src/str/META
+- Configuration for threads written to site-lib-src/threads/META
+- Configuration for unix written to site-lib-src/unix/META
+- Configuration for stdlib written to site-lib-src/stdlib/META
+- Configuration for bigarray written to site-lib-src/bigarray/META
+- Configuration for ocamldoc written to site-lib-src/ocamldoc/META
+- Configuration for camlp4 written to site-lib-src/camlp4/META
+- Configuration for ocamlbuild written to site-lib-src/ocamlbuild/META
+- Configuration for compiler-libs written to site-lib-src/compiler-libs/META
+- Configuration for bytes written to site-lib-src/bytes/META
+- Detecting compiler arguments: (extractor built) 
+- ok
+- 
+- About the OCAML core installation:
+-     Standard library:      /usr/lib/ocaml
+-     Binaries:              /usr/bin
+-     Manual pages:          /usr/local/man
+-     Multi-threading type:  posix
+- The directory of site-specific packages will be
+-     site-lib:              /home/opam/.opam/system/lib
+- The configuration file is written to:
+-     findlib config file:   /home/opam/.opam/system/lib/findlib.conf
+- Software will be installed:
+-     Libraries:             in <site-lib>/findlib
+-     Binaries:              /home/opam/.opam/system/bin
+-     Manual pages:          /home/opam/.opam/system/man
+-     topfind script:        omitted
+- Topfind ppxopt support:    yes
+- Toolbox:                   no
+- Link custom runtime:       yes
+- Need bytes compatibility:  no
+- 
+- Configuration has been written to Makefile.config
+- 
+- You can now do 'make all', and optionally 'make opt', to build ocamlfind.
+[ocamlfind: make all] Command started
++ make "all" (CWD=/home/opam/.opam/system/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make all ) || exit; done
+- make[1]: Entering directory '/home/opam/.opam/system/build/ocamlfind.1.6.2/src/findlib'
+- ocamllex fl_meta.mll
+- 22 states, 392 transitions, table size 1700 bytes
+- ocamldep *.ml *.mli >depend
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib_config.mlp | \
+- 	../../tools/patch '@CONFIGFILE@' '/home/opam/.opam/system/lib/findlib.conf' | \
+- 	../../tools/patch '@STDLIB@' '/usr/lib/ocaml' | \
+- 	sed -e 's;@AUTOLINK@;true;g' \
+- 	    -e 's;@SYSTEM@;linux;g' \
+- 	     >findlib_config.ml
+- ocamlc -I +compiler-libs -g -c findlib_config.ml
+- ocamlc -I +compiler-libs -g -c fl_split.ml
+- ocamlc -I +compiler-libs -g -c fl_metatoken.ml
+- ocamlc -I +compiler-libs -g -c fl_meta.ml
+- ocamlc -I +compiler-libs -c fl_metascanner.mli
+- ocamlc -I +compiler-libs -g -c fl_metascanner.ml
+- ocamlc -I +compiler-libs -c fl_topo.mli
+- ocamlc -I +compiler-libs -g -c fl_topo.ml
+- ocamlc -I +compiler-libs -c fl_package_base.mli
+- ocamlc -I +compiler-libs -g -c fl_package_base.ml
+- ocamlc -I +compiler-libs -c findlib.mli
+- Makefile:175: depend: No such file or directory
+- ocamlc -I +compiler-libs -g -c findlib.ml
+- ocamlc -I +compiler-libs -g -c fl_args.ml
+- ocamlc -I +compiler-libs -g -c fl_lint.ml
+- ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
+- ocamlc -I +compiler-libs -g -c ocaml_args.ml
+- ocamlc -I +compiler-libs -g -c frontend.ml
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
+-            ocaml_args.cmo frontend.cmo
+- if [ "true" = "true" ]; then                 \
+- 	cp topfind.ml.in topfind.ml;                             \
+- else                                                             \
+- 	sed -e '/PPXOPT_BEGIN/,/PPXOPT_END/ d' topfind.ml.in     \
+- 		> topfind.ml ;                                   \
+- fi
+- ocamlc -I +compiler-libs -c topfind.mli
+- ocamlc -I +compiler-libs -g -c topfind.ml
+- ocamlc -I +compiler-libs -a -o findlib_top.cma topfind.cmo
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat topfind_rd1.p | \
+- 	../../tools/patch '@SITELIB@' '/home/opam/.opam/system/lib' \
+-     	    >topfind
+- ocamlc -I +compiler-libs -c num_top_printers.mli
+- ocamlc -I +compiler-libs -g -c num_top_printers.ml
+- ocamlc -I +compiler-libs -c num_top.mli
+- ocamlc -I +compiler-libs -g -c num_top.ml
+- ocamlc -I +compiler-libs -a -o num_top.cma num_top_printers.cmo num_top.cmo
+- ocamlc -I +compiler-libs -c fl_dynload.mli
+- ocamlc -I +compiler-libs -g -c fl_dynload.ml
+- ocamlc -I +compiler-libs -a -o findlib_dynload.cma fl_dynload.cmo
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ocamlfind.1.6.2/src/findlib'
+- make all-config
+- make[1]: Entering directory '/home/opam/.opam/system/build/ocamlfind.1.6.2'
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib.conf.in | \
+- 	tools/patch '@SITELIB@' '/home/opam/.opam/system/lib' >findlib.conf
+- if ocamlc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlc="ocamlc.opt"' >>findlib.conf; \
+- fi
+- if ocamlopt.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlopt="ocamlopt.opt"' >>findlib.conf; \
+- fi
+- if ocamldep.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldep="ocamldep.opt"' >>findlib.conf; \
+- fi
+- if ocamldoc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldoc="ocamldoc.opt"' >>findlib.conf; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ocamlfind.1.6.2'
+[ocamlfind: make opt] Command started
++ make "opt" (CWD=/home/opam/.opam/system/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make opt ) || exit; done
+- make[1]: Entering directory '/home/opam/.opam/system/build/ocamlfind.1.6.2/src/findlib'
+- ocamldep *.ml *.mli >depend
+- ocamlopt -I +compiler-libs -c findlib_config.ml
+- ocamlopt -I +compiler-libs -c fl_split.ml
+- ocamlopt -I +compiler-libs -c fl_metatoken.ml
+- ocamlopt -I +compiler-libs -c fl_meta.ml
+- ocamlopt -I +compiler-libs -c fl_metascanner.ml
+- ocamlopt -I +compiler-libs -c fl_topo.ml
+- ocamlopt -I +compiler-libs -c fl_package_base.ml
+- ocamlopt -I +compiler-libs -c findlib.ml
+- ocamlopt -I +compiler-libs -c fl_args.ml
+- ocamlopt -I +compiler-libs -c fl_lint.ml
+- ocamlopt -I +compiler-libs -a -o findlib.cmxa findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib.cmxs findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx; \
+- fi
+- ocamlopt -I +compiler-libs -c ocaml_args.ml
+- ocamlopt -I +compiler-libs -c frontend.ml
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- ocamlopt -I +compiler-libs -o ocamlfind_opt findlib.cmxa unix.cmxa \
+- 	   ocaml_args.cmx frontend.cmx
+- ocamlopt -I +compiler-libs -c fl_dynload.ml
+- ocamlopt -I +compiler-libs -a -o findlib_dynload.cmxa fl_dynload.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib_dynload.cmxs fl_dynload.cmx; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ocamlfind.1.6.2/src/findlib'
+[ocamlfind: make install] Command started
++ make "install" (CWD=/home/opam/.opam/system/build/ocamlfind.1.6.2)
+- mkdir -p "/home/opam/.opam/system/bin"
+- mkdir -p "/home/opam/.opam/system/man"
+- make install-config
+- make[1]: Entering directory '/home/opam/.opam/system/build/ocamlfind.1.6.2'
+- mkdir -p "`dirname \"/home/opam/.opam/system/lib/findlib.conf\"`"
+- test -f "/home/opam/.opam/system/lib/findlib.conf" || cp findlib.conf "/home/opam/.opam/system/lib/findlib.conf"
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ocamlfind.1.6.2'
+- for p in findlib; do ( cd src/$p; make install ); done
+- make[1]: Entering directory '/home/opam/.opam/system/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/system/lib/findlib"
+- mkdir -p "/home/opam/.opam/system/bin"
+- test 0 -eq 0 || cp topfind "/usr/lib/ocaml"
+- files=`../../tools/collect_files ../../Makefile.config findlib.cmi findlib.mli findlib.cma topfind.cmi topfind.mli fl_package_base.mli fl_package_base.cmi fl_metascanner.mli fl_metascanner.cmi fl_metatoken.cmi findlib_top.cma findlib.cmxa findlib.a findlib.cmxs findlib_dynload.cma findlib_dynload.cmxa findlib_dynload.a findlib_dynload.cmxs fl_dynload.mli fl_dynload.cmi META` && \
+- cp $files "/home/opam/.opam/system/lib/findlib"
+- f="ocamlfind"; { test -f ocamlfind_opt && f="ocamlfind_opt"; }; \
+- cp $f "/home/opam/.opam/system/bin/ocamlfind"
+- # the following "if" block is only needed for 4.00beta2
+- if [ 1 -eq 0 -a -f "/usr/lib/ocaml/compiler-libs/topdirs.cmi" ]; then \
+-     cd "/usr/lib/ocaml/compiler-libs/"; \
+-     cp topdirs.cmi toploop.cmi "/home/opam/.opam/system/lib/findlib/"; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ocamlfind.1.6.2/src/findlib'
+- make install-meta
+- make[1]: Entering directory '/home/opam/.opam/system/build/ocamlfind.1.6.2'
+- for x in `ls site-lib-src`; do if [ -f "site-lib-src/$x/META" ]; then mkdir -p "/home/opam/.opam/system/lib/$x"; cp site-lib-src/$x/META "/home/opam/.opam/system/lib/$x"; fi; done
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ocamlfind.1.6.2'
+- cd src/findlib; make install-num-top
+- make[1]: Entering directory '/home/opam/.opam/system/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/system/lib/num-top"
+- cp num_top.cma num_top.cmi num_top_printers.cmi \
+- 	"/home/opam/.opam/system/lib/num-top"
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ocamlfind.1.6.2/src/findlib'
+- if [ 1 -eq 1 ]; then \
+- 	cp tools/safe_camlp4 "/home/opam/.opam/system/bin"; \
+- fi
+- make install-doc
+- make[1]: Entering directory '/home/opam/.opam/system/build/ocamlfind.1.6.2'
+- mkdir -p "/home/opam/.opam/system/man/man1" "/home/opam/.opam/system/man/man3 /home/opam/.opam/system/man/man5"
+- cp doc/ref-man/ocamlfind.1 "/home/opam/.opam/system/man/man1"
+- cp doc/ref-man/META.5 doc/ref-man/site-lib.5 doc/ref-man/findlib.conf.5 "/home/opam/.opam/system/man/man5"
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ocamlfind.1.6.2'
+-> installed ocamlfind.1.6.2
+[lablgtk: ./configure] Command started
++ ./configure "--prefix" "/home/opam/.opam/system" "LABLGLDIR=/home/opam/.opam/system/lib/lablgl" (CWD=/home/opam/.opam/system/build/lablgtk.2.18.3)
+- checking for ocamlc... ocamlc
+- ocaml version is 4.02.3
+- ocaml library path is /usr/lib/ocaml
+- Default install dirs are : /usr/lib/ocaml/lablgtk2 and /usr/lib/ocaml/stublibs
+- Compile with ocamlc -I +lablgtk2
+- checking for ocamlopt... ocamlopt
+- checking ocamlopt version... ok
+- checking for ocamlc.opt... ocamlc.opt
+- checking ocamlc.opt version... ok
+- checking for ocamlopt.opt... ocamlopt.opt
+- checking ocamlc.opt version... ok
+- checking for ocamlrun... ocamlrun
+- checking for ocamldep... ocamldep
+- checking for ocamldoc... ocamldoc
+- checking for ocamllex... ocamllex
+- checking for ocamlyacc... ocamlyacc
+- checking for ocamlmktop... ocamlmktop
+- checking for ocamlmklib... ocamlmklib
+- checking for camlp4o... camlp4o
+- checking for ocamlfind... ocamlfind
+- ocamlfind library path is /home/opam/.opam/system/lib
+- ocamlfind ldconf path is /usr/lib/ocaml/ld.conf
+- checking for ocaml threads... use system threads
+- checking for ocaml dll support... yes
+- checking for ranlib... ranlib
+- OCaml uses gcc to compile C files
+- checking for gcc... gcc
+- checking whether the C compiler works... yes
+- checking for C compiler default output file name... a.out
+- checking for suffix of executables... 
+- checking whether we are cross compiling... no
+- checking for suffix of object files... o
+- checking whether we are using the GNU C compiler... yes
+- checking whether gcc accepts -g... 
+- yes
+- checking for gcc option to accept ISO C89... none needed
+- checking platform... Unix
+- checking native dynlink... checking for pkg-config... /usr/bin/pkg-config
+- checking for GTK+ - version >= 2.0.0... 
+- yes (version 2.24.30)
+- checking pkg-config is at least version 0.9.0... yes
+- checking for GTKGL... no
+- checking for GLADE... no
+- checking for RSVG... no
+- checking for GNOMECANVAS... no
+- checking for GNOMEUI... no
+- checking for PANEL... no
+- checking for GTKSPELL... no
+- checking for GTKSOURCEVIEW... no
+- checking for GTKSOURCEVIEW2... no
+- checking for GTKQUARTZ... no
+- checking for GTKALL... yes
+- configure: creating ./config.status
+- config.status: creating config.make
+- 
+- LablGTK configuration:
+- 	threads  	system
+- 	native dynlink 	yes
+- 	GtkGLArea 	not found
+- 	libglade 	not found
+- 	librsvg  	not found
+- 	libgnomecanvas 	not found
+- 	libgnomeui 	not found
+- 	libpanelapplet 	not found
+- 	gtkspell 	not found
+- 	gtksourceview 1 	not found
+- 	gtksourceview 2 	not found
+- 	quartz    	not found
+- 
+- 	debug   	no
+- 	C compiler	gcc
+[lablgtk: make world] Command started
++ make "world" (CWD=/home/opam/.opam/system/build/lablgtk.2.18.3)
+- make -C src world
+- make[1]: Entering directory '/home/opam/.opam/system/build/lablgtk.2.18.3/src'
+- ocamlc.opt -c -pp "camlp4o -impl" -impl varcc.ml4
+- ocamlc.opt   -o varcc varcc.cmo
+- rm -f *_tags.h *_tags.c
+- ./varcc gdkpixbuf_tags.var
+- ./varcc gdk_tags.var
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gdkpixbuf.c
+- ./varcc pango_tags.var
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gdk.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gdkpixbuf.c'
+- ml_gdkpixbuf.c: In function 'ml_GdkPixbuf_serialize':
+- ml_gdkpixbuf.c:67:3: warning: 'gdk_pixdata_from_pixbuf' is deprecated [-Wdeprecated-declarations]
+-    pixels = gdk_pixdata_from_pixbuf (&pixdata, pb, pixbuf_marshal_use_rle);
+-    ^
+- In file included from ml_gdkpixbuf.c:28:0:
+- /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixdata.h:115:10: note: declared here
+-  gpointer gdk_pixdata_from_pixbuf (GdkPixdata  *pixdata,
+-           ^
+- ml_gdkpixbuf.c:68:3: warning: 'gdk_pixdata_serialize' is deprecated [-Wdeprecated-declarations]
+-    stream = gdk_pixdata_serialize (&pixdata, &len);
+-    ^
+- In file included from ml_gdkpixbuf.c:28:0:
+- /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixdata.h:107:10: note: declared here
+-  guint8*  gdk_pixdata_serialize (const GdkPixdata *pixdata,
+-           ^
+- ml_gdkpixbuf.c: In function 'ml_GdkPixbuf_deserialize':
+- ml_gdkpixbuf.c:88:3: warning: 'gdk_pixdata_deserialize' is deprecated [-Wdeprecated-declarations]
+-    gdk_pixdata_deserialize (&pixdata, len, stream, &error);
+-    ^
+- In file included from ml_gdkpixbuf.c:28:0:
+- /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixdata.h:110:10: note: declared here
+-  gboolean gdk_pixdata_deserialize (GdkPixdata  *pixdata,
+-           ^
+- ml_gdkpixbuf.c:90:3: warning: 'gdk_pixbuf_from_pixdata' is deprecated [-Wdeprecated-declarations]
+-    pb = gdk_pixbuf_from_pixdata (&pixdata, TRUE, &error);
+-    ^
+- In file included from ml_gdkpixbuf.c:28:0:
+- /usr/include/gdk-pixbuf-2.0/gdk-pixbuf/gdk-pixdata.h:119:12: note: declared here
+-  GdkPixbuf* gdk_pixbuf_from_pixdata (const GdkPixdata *pixdata,
+-             ^
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gdk.c'
+- ./varcc glib_tags.var
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_glib.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_glib.c'
+- ml_glib.c: In function 'ml_g_io_channel_read':
+- ml_glib.c:369:3: warning: 'g_io_channel_read' is deprecated: Use 'g_io_channel_read_chars' instead [-Wdeprecated-declarations]
+-    switch (g_io_channel_read(GIOChannel_val(io), 
+-    ^
+- In file included from /usr/include/glib-2.0/glib.h:54:0,
+-                  from ml_glib.c:33:
+- /usr/include/glib-2.0/glib/giochannel.h:166:13: note: declared here
+-  GIOError    g_io_channel_read   (GIOChannel    *channel,
+-              ^
+- ./varcc gobject_tags.var
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gobject.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gpointer.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gvaluecaml.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gobject.c'
+- ml_gobject.c: In function 'ml_g_type_init':
+- ml_gobject.c:103:1: warning: 'g_type_init' is deprecated [-Wdeprecated-declarations]
+-  ML_0 (g_type_init, Unit)
+-  ^
+- In file included from /usr/include/glib-2.0/gobject/gobject.h:24:0,
+-                  from /usr/include/glib-2.0/gobject/gbinding.h:29,
+-                  from /usr/include/glib-2.0/glib-object.h:23,
+-                  from ml_gobject.c:26:
+- /usr/include/glib-2.0/gobject/gtype.h:681:23: note: declared here
+-  void                  g_type_init                    (void);
+-                        ^
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gpointer.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gvaluecaml.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose wrappers.c
+- ./varcc gtk_tags.var
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtk.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_pango.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'wrappers.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtk.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_pango.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkaction.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkbin.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkbroken.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkbutton.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkaction.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkbin.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkbroken.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkbutton.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkassistant.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkedit.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkfile.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkassistant.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkedit.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkfile.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtklist.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkmenu.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtklist.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkmenu.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkmisc.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkpack.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkmisc.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkpack.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkrange.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtkstock.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtktext.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkrange.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtkstock.c'
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtktext.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O' -verbose ml_gtktree.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib/x86_64-linux-gnu/gtk-2.0/include -I/usr/include/gio-unix-2.0/ -I/usr/include/cairo -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libpng12 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng12 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/freetype2 -imacros ml_domain.h -O  -I'/usr/lib/ocaml' 'ml_gtktree.c'
+- ocamlc.opt   -w s -c  gaux.ml
+- ocamlc.opt   -w s -c gpointer.mli
+- ocamlc.opt   -w s -c  gpointer.ml
+- ocamlc.opt   -w s -c gutf8.mli
+- ocamlc.opt   -w s -c  gutf8.ml
+- ocamlc.opt   -w s -c glib.mli
+- ocamlc.opt   -w s -c  glib.ml
+- ocamlc.opt   -w s -c gobject.mli
+- ocamlc.opt   -w s -c  gobject.ml
+- ocamlc.opt   -w s -c  gdkEnums.ml
+- ocamlc.opt   -w s -c  pangoEnums.ml
+- ocamlc.opt   -w s -c  gtkEnums.ml
+- ocamlc.opt   -w s -c  pango.ml
+- ocamlc.opt   -w s -c gdk.mli
+- ocamlc.opt   -w s -c  gdk.ml
+- ocamlc.opt   -w s -c  gdkEvent.ml
+- ocamlc.opt   -w s -c  gdkKeysyms.ml
+- ocamlc.opt   -w s -c gdkPixbuf.mli
+- ocamlc.opt   -w s -c  gdkPixbuf.ml
+- ocamlc.opt   -w s -c  gtk.ml
+- camlp4o pa_macro.cmo -D HAS_PRINTEXC_BACKTRACE -impl gtkSignal.ml4 -o gtkSignal.ml
+- ocamlc.opt   -w s -c gtkSignal.mli
+- ocamlc.opt   -w s -c  gtkSignal.ml
+- ocamlc.opt   -w s -c  gtkStock.ml
+- ocamlc.opt   -w s -c  gtkObject.ml
+- ocamlc.opt -c -pp "camlp4o -impl" -impl propcc.ml4
+- File "gpointer.ml", line 144, characters 10-23:
+- Warning 3: deprecated: StdLabels.String.create
+- Use BytesLabels.create instead.
+- File "gutf8.ml", line 57, characters 4-21:
+- Warning 3: deprecated: String.unsafe_set
+- File "gutf8.ml", line 59, characters 4-21:
+- Warning 3: deprecated: String.unsafe_set
+- File "gutf8.ml", line 62, characters 6-23:
+- Warning 3: deprecated: String.unsafe_set
+- File "gutf8.ml", line 69, characters 10-23:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gutf8.ml", line 75, characters 10-23:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gutf8.ml", line 145, characters 11-23:
+- Warning 3: deprecated: Array.create
+- Use Array.make instead.
+- ocamlc.opt   -o propcc propcc.cmo
+- ./propcc gtkBase.props
+- ocamlc.opt   -w s -c  gtkBaseProps.ml
+- ./propcc gtkBin.props
+- ocamlc.opt   -w s -c  gtkBinProps.ml
+- ./propcc gtkButton.props
+- ocamlc.opt   -w s -c  gtkButtonProps.ml
+- ./propcc gtkEdit.props
+- ocamlc.opt   -w s -c  gtkEditProps.ml
+- ./propcc gtkList.props
+- ocamlc.opt   -w s -c  gtkListProps.ml
+- ./propcc gtkMenu.props
+- ocamlc.opt   -w s -c  gtkMenuProps.ml
+- ./propcc gtkMisc.props
+- ocamlc.opt   -w s -c  gtkMiscProps.ml
+- ./propcc gtkPack.props
+- ocamlc.opt   -w s -c  gtkPackProps.ml
+- ./propcc gtkRange.props
+- ocamlc.opt   -w s -c  gtkRangeProps.ml
+- ./propcc gtkText.props
+- ocamlc.opt   -w s -c  gtkTextProps.ml
+- ./propcc gtkTree.props
+- Warning: no conversion for type PangoAttrList in class GtkLabel
+- Warning: no conversion for type GdkPixbufAnimation in class GtkImage
+- Warning: no conversion for type PangoTabArray in class GtkTextView
+- Warning: no conversion for type PangoTabArray in class GtkTextTag
+- ocamlc.opt   -w s -c  gtkTreeProps.ml
+- ./propcc gtkFile.props
+- ocamlc.opt   -w s -c  gtkFileProps.ml
+- ./propcc gtkAction.props
+- ocamlc.opt   -w s -c  gtkActionProps.ml
+- ./propcc gtkBroken.props
+- ocamlc.opt   -w s -c  gtkBrokenProps.ml
+- ./propcc gtkAssistant.props
+- ocamlc.opt   -w s -c  gtkAssistantProps.ml
+- ocamlc.opt   -w s -c  gtkData.ml
+- ocamlc.opt   -w s -c  gtkBase.ml
+- ocamlc.opt   -w s -c  gtkPack.ml
+- ocamlc.opt   -w s -c  gtkButton.ml
+- ocamlc.opt   -w s -c  gtkAssistant.ml
+- ocamlc.opt   -w s -c  gtkMenu.ml
+- ocamlc.opt   -w s -c  gtkMisc.ml
+- ocamlc.opt   -w s -c  gtkWindow.ml
+- ocamlc.opt   -w s -c  gtkList.ml
+- ocamlc.opt   -w s -c  gtkBin.ml
+- ocamlc.opt   -w s -c  gtkEdit.ml
+- ocamlc.opt   -w s -c  gtkRange.ml
+- ocamlc.opt   -w s -c  gtkText.ml
+- ocamlc.opt   -w s -c  gtkTree.ml
+- ocamlc.opt   -w s -c  gtkFile.ml
+- ocamlc.opt   -w s -c  gtkMain.ml
+- ocamlc.opt   -w s -c  gtkBroken.ml
+- ocamlc.opt   -w s -c  gPango.ml
+- ocamlc.opt   -w s -c gDraw.mli
+- ocamlc.opt   -w s -c  gDraw.ml
+- ocamlc.opt   -w s -c gObj.mli
+- ocamlc.opt   -w s -c  gObj.ml
+- ocamlc.opt   -w s -c  ogtkBaseProps.ml
+- ocamlc.opt   -w s -c gData.mli
+- ocamlc.opt   -w s -c  gData.ml
+- ocamlc.opt   -w s -c  ogtkBinProps.ml
+- ocamlc.opt   -w s -c  ogtkButtonProps.ml
+- ocamlc.opt   -w s -c  ogtkEditProps.ml
+- Warning: no conversion for type PangoAttrList in class GtkCellRendererText
+- File "gtkList.ml", line 188, characters 14-26:
+- Warning 3: deprecated: StdLabels.Array.create
+- Use ArrayLabels.make instead.
+- ocamlc.opt   -w s -c  ogtkListProps.ml
+- ocamlc.opt   -w s -c  ogtkMenuProps.ml
+- ocamlc.opt   -w s -c  ogtkMiscProps.ml
+- ocamlc.opt   -w s -c  ogtkPackProps.ml
+- ocamlc.opt   -w s -c  ogtkRangeProps.ml
+- ocamlc.opt   -w s -c  ogtkTextProps.ml
+- ocamlc.opt   -w s -c  ogtkTreeProps.ml
+- ocamlc.opt   -w s -c  ogtkFileProps.ml
+- ocamlc.opt   -w s -c  ogtkActionProps.ml
+- ocamlc.opt   -w s -c  ogtkBrokenProps.ml
+- ocamlc.opt   -w s -c  ogtkAssistantProps.ml
+- ocamlc.opt   -w s -c gMain.mli
+- ocamlc.opt   -w s -c  gMain.ml
+- ocamlc.opt   -w s -c gContainer.mli
+- ocamlc.opt   -w s -c  gContainer.ml
+- ocamlc.opt   -w s -c gPack.mli
+- ocamlc.opt   -w s -c  gPack.ml
+- ocamlc.opt   -w s -c gButton.mli
+- ocamlc.opt   -w s -c  gButton.ml
+- ocamlc.opt   -w s -c gText.mli
+- ocamlc.opt   -w s -c  gText.ml
+- ocamlc.opt   -w s -c gMenu.mli
+- ocamlc.opt   -w s -c  gMenu.ml
+- ocamlc.opt   -w s -c gMisc.mli
+- ocamlc.opt   -w s -c  gMisc.ml
+- ocamlc.opt   -w s -c gTree.mli
+- ocamlc.opt   -w s -c  gTree.ml
+- ocamlc.opt   -w s -c gList.mli
+- ocamlc.opt   -w s -c  gList.ml
+- ocamlc.opt   -w s -c gFile.mli
+- ocamlc.opt   -w s -c  gFile.ml
+- ocamlc.opt   -w s -c gWindow.mli
+- ocamlc.opt   -w s -c  gWindow.ml
+- ocamlc.opt   -w s -c gAssistant.mli
+- ocamlc.opt   -w s -c  gAssistant.ml
+- ocamlc.opt   -w s -c gBin.mli
+- ocamlc.opt   -w s -c  gBin.ml
+- ocamlc.opt   -w s -c gEdit.mli
+- ocamlc.opt   -w s -c  gEdit.ml
+- ocamlc.opt   -w s -c gRange.mli
+- ocamlc.opt   -w s -c  gRange.ml
+- ocamlc.opt   -w s -c gAction.mli
+- ocamlc.opt   -w s -c  gAction.ml
+- ocamlc.opt   -w s -c gBroken.mli
+- ocamlc.opt   -w s -c  gBroken.ml
+- ocamlc.opt   -w s -c gUtil.mli
+- ocamlc.opt   -w s -c  gUtil.ml
+- ocamlc.opt   -w s -c gToolbox.mli
+- ocamlc.opt   -w s -c  gToolbox.ml
+- ocamlmklib -verbose -ocamlc "ocamlc.opt" -ocamlopt "ocamlopt.opt" -o lablgtk -oc lablgtk2 ml_gdkpixbuf.o ml_gdk.o ml_glib.o ml_gobject.o ml_gpointer.o ml_gvaluecaml.o wrappers.o ml_gtk.o ml_pango.o ml_gtkaction.o ml_gtkbin.o ml_gtkbroken.o ml_gtkbutton.o ml_gtkassistant.o ml_gtkedit.o ml_gtkfile.o ml_gtklist.o ml_gtkmenu.o ml_gtkmisc.o ml_gtkpack.o ml_gtkrange.o ml_gtkstock.o ml_gtktext.o ml_gtktree.o gaux.cmo gpointer.cmo gutf8.cmo glib.cmo gobject.cmo gdkEnums.cmo pangoEnums.cmo gtkEnums.cmo pango.cmo gdk.cmo gdkEvent.cmo gdkKeysyms.cmo gdkPixbuf.cmo gtk.cmo gtkSignal.cmo gtkStock.cmo gtkObject.cmo gtkBaseProps.cmo gtkBinProps.cmo gtkButtonProps.cmo gtkEditProps.cmo gtkListProps.cmo gtkMenuProps.cmo gtkMiscProps.cmo gtkPackProps.cmo gtkRangeProps.cmo gtkTextProps.cmo gtkTreeProps.cmo gtkFileProps.cmo gtkActionProps.cmo gtkBrokenProps.cmo gtkAssistantProps.cmo gtkData.cmo gtkBase.cmo gtkPack.cmo gtkButton.cmo gtkAssistant.cmo gtkMenu.cmo gtkMisc.cmo gtkWindow.cmo gtkList.cmo gtkBin.cmo gtkEdit.cmo gtkRange.cmo gtkText.cmo gtkTree.cmo gtkFile.cmo gtkMain.cmo gtkBroken.cmo gPango.cmo gDraw.cmo gObj.cmo ogtkBaseProps.cmo gData.cmo ogtkBinProps.cmo ogtkButtonProps.cmo ogtkEditProps.cmo ogtkListProps.cmo ogtkMenuProps.cmo ogtkMiscProps.cmo ogtkPackProps.cmo ogtkRangeProps.cmo ogtkTextProps.cmo ogtkTreeProps.cmo ogtkFileProps.cmo ogtkActionProps.cmo ogtkBrokenProps.cmo ogtkAssistantProps.cmo gMain.cmo gContainer.cmo gPack.cmo gButton.cmo gText.cmo gMenu.cmo gMisc.cmo gTree.cmo gList.cmo gFile.cmo gWindow.cmo gAssistant.cmo gBin.cmo gEdit.cmo gRange.cmo gAction.cmo gBroken.cmo gUtil.cmo gToolbox.cmo -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype
+- + gcc -shared  -o ./dlllablgtk2.so ml_gdkpixbuf.o ml_gdk.o ml_glib.o ml_gobject.o ml_gpointer.o ml_gvaluecaml.o wrappers.o ml_gtk.o ml_pango.o ml_gtkaction.o ml_gtkbin.o ml_gtkbroken.o ml_gtkbutton.o ml_gtkassistant.o ml_gtkedit.o ml_gtkfile.o ml_gtklist.o ml_gtkmenu.o ml_gtkmisc.o ml_gtkpack.o ml_gtkrange.o ml_gtkstock.o ml_gtktext.o ml_gtktree.o    -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype
+- + ar rc ./liblablgtk2.a  ml_gdkpixbuf.o ml_gdk.o ml_glib.o ml_gobject.o ml_gpointer.o ml_gvaluecaml.o wrappers.o ml_gtk.o ml_pango.o ml_gtkaction.o ml_gtkbin.o ml_gtkbroken.o ml_gtkbutton.o ml_gtkassistant.o ml_gtkedit.o ml_gtkfile.o ml_gtklist.o ml_gtkmenu.o ml_gtkmisc.o ml_gtkpack.o ml_gtkrange.o ml_gtkstock.o ml_gtktext.o ml_gtktree.o; ranlib ./liblablgtk2.a
+- + ocamlc.opt -a    -o lablgtk.cma  gaux.cmo gpointer.cmo gutf8.cmo glib.cmo gobject.cmo gdkEnums.cmo pangoEnums.cmo gtkEnums.cmo pango.cmo gdk.cmo gdkEvent.cmo gdkKeysyms.cmo gdkPixbuf.cmo gtk.cmo gtkSignal.cmo gtkStock.cmo gtkObject.cmo gtkBaseProps.cmo gtkBinProps.cmo gtkButtonProps.cmo gtkEditProps.cmo gtkListProps.cmo gtkMenuProps.cmo gtkMiscProps.cmo gtkPackProps.cmo gtkRangeProps.cmo gtkTextProps.cmo gtkTreeProps.cmo gtkFileProps.cmo gtkActionProps.cmo gtkBrokenProps.cmo gtkAssistantProps.cmo gtkData.cmo gtkBase.cmo gtkPack.cmo gtkButton.cmo gtkAssistant.cmo gtkMenu.cmo gtkMisc.cmo gtkWindow.cmo gtkList.cmo gtkBin.cmo gtkEdit.cmo gtkRange.cmo gtkText.cmo gtkTree.cmo gtkFile.cmo gtkMain.cmo gtkBroken.cmo gPango.cmo gDraw.cmo gObj.cmo ogtkBaseProps.cmo gData.cmo ogtkBinProps.cmo ogtkButtonProps.cmo ogtkEditProps.cmo ogtkListProps.cmo ogtkMenuProps.cmo ogtkMiscProps.cmo ogtkPackProps.cmo ogtkRangeProps.cmo ogtkTextProps.cmo ogtkTreeProps.cmo ogtkFileProps.cmo ogtkActionProps.cmo ogtkBrokenProps.cmo ogtkAssistantProps.cmo gMain.cmo gContainer.cmo gPack.cmo gButton.cmo gText.cmo gMenu.cmo gMisc.cmo gTree.cmo gList.cmo gFile.cmo gWindow.cmo gAssistant.cmo gBin.cmo gEdit.cmo gRange.cmo gAction.cmo gBroken.cmo gUtil.cmo gToolbox.cmo -dllib -llablgtk2 -cclib -llablgtk2   -cclib -lgtk-x11-2.0 -cclib -lgdk-x11-2.0 -cclib -lpangocairo-1.0 -cclib -latk-1.0 -cclib -lcairo -cclib -lgdk_pixbuf-2.0 -cclib -lgio-2.0 -cclib -lpangoft2-1.0 -cclib -lpango-1.0 -cclib -lgobject-2.0 -cclib -lglib-2.0 -cclib -lfontconfig -cclib -lfreetype 
+- ocamlc.opt   -w s -c -thread gtkThread.mli
+- ocamlc.opt   -w s -c -thread gtkThread.ml
+- ocamlmktop  -thread  -o lablgtktop unix.cma threads.cma  \
+-    -I . lablgtk.cma gtkThread.cmo
+- sed -e "s|@INSTALLDIR@|/usr/lib/ocaml/lablgtk2|g" \
+-     -e "s|@LABLGLDIR@|/home/opam/.opam/system/lib/lablgl|g" \
+-     -e "s|@MLLIBS@| lablgtk.cma|g" \
+-     -e "s|@INITOBJS@|gtkInit.cmo|g" \
+-     -e "s|@THOBJS@|gtkThread.cmo|g" \
+-     -e "s|@THINITOBJS@|gtkThInit.cmo|g" \
+-     -e "s|@USEDLL@|yes|g" \
+-     -e "s|@THREADS_LIB@|system|g" \
+-     < lablgtk2.in > lablgtk2
+- chmod 755 lablgtk2
+- ocamlc.opt -o gdk_pixbuf_mlsource -I . lablgtk.cma gdk_pixbuf_mlsource.ml
+- ocamlc.opt   -w s -c  gtkThInit.ml
+- sed -e "s|@LABLGTK_MLS@|gaux gpointer gutf8 glib gobject gdkEnums pangoEnums gtkEnums pango gdk gdkEvent gdkKeysyms gdkPixbuf gtk gtkSignal gtkStock gtkObject gtkBaseProps gtkBinProps gtkButtonProps gtkEditProps gtkListProps gtkMenuProps gtkMiscProps gtkPackProps gtkRangeProps gtkTextProps gtkTreeProps gtkFileProps gtkActionProps gtkBrokenProps gtkAssistantProps gtkData gtkBase gtkPack gtkButton gtkAssistant gtkMenu gtkMisc gtkWindow gtkList gtkBin gtkEdit gtkRange gtkText gtkTree gtkFile gtkMain gtkBroken gPango gDraw gObj ogtkBaseProps gData ogtkBaseProps ogtkBinProps ogtkButtonProps ogtkEditProps ogtkListProps ogtkMenuProps ogtkMiscProps ogtkPackProps ogtkRangeProps ogtkTextProps ogtkTreeProps ogtkFileProps ogtkActionProps ogtkBrokenProps ogtkAssistantProps gMain gContainer gPack gButton gText gMenu gMisc gTree gList gFile gWindow gAssistant gBin gEdit gRange gAction gBroken gUtil gToolbox|" \
+-     -e "s|@EXTRA_MLS@|gtkInit gtkThread gtkThInit|" \
+-     -e "s|@PROP_MLS@|gtkBaseProps gtkBinProps gtkButtonProps gtkEditProps gtkListProps gtkMenuProps gtkMiscProps gtkPackProps gtkRangeProps gtkTextProps gtkTreeProps gtkFileProps gtkActionProps gtkBrokenProps gtkAssistantProps ogtkBaseProps ogtkBinProps ogtkButtonProps ogtkEditProps ogtkListProps ogtkMenuProps ogtkMiscProps ogtkPackProps ogtkRangeProps ogtkTextProps ogtkTreeProps ogtkFileProps ogtkActionProps ogtkBrokenProps ogtkAssistantProps|" \
+-     -e "s|@GTKLIBS@|-lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype|" \
+-     -e "s|@GLADE_MLS@||" \
+-     -e "s|@GLADE_LIBS@||" \
+-     -e "s|@RSVG_MLS@||" \
+-     -e "s|@RSVG_LIBS@||" \
+-     -e "s|@CANVAS_MLS@||" \
+-     -e "s|@CANVAS_LIBS@||" \
+-     -e "s|@SOURCEVIEW2_MLS@||" \
+-     -e "s|@SOURCEVIEW2_LIBS@||" \
+-     -e "s|@TOOLCHAIN@|unix|" \
+-     < build.ml.in > build.ml
+- ocamlc.opt   -w s -c  gtkInit.ml
+- ocamlopt.opt  -w s -c gaux.ml
+- ocamlopt.opt  -w s -c gpointer.ml
+- ocamlopt.opt  -w s -c gutf8.ml
+- ocamlopt.opt  -w s -c glib.ml
+- ocamlopt.opt  -w s -c gobject.ml
+- ocamlopt.opt  -w s -c gdkEnums.ml
+- ocamlopt.opt  -w s -c pangoEnums.ml
+- ocamlopt.opt  -w s -c gtkEnums.ml
+- ocamlopt.opt  -w s -c pango.ml
+- ocamlopt.opt  -w s -c gdk.ml
+- ocamlopt.opt  -w s -c gdkEvent.ml
+- File "gpointer.ml", line 144, characters 10-23:
+- Warning 3: deprecated: StdLabels.String.create
+- Use BytesLabels.create instead.
+- File "gutf8.ml", line 57, characters 4-21:
+- Warning 3: deprecated: String.unsafe_set
+- File "gutf8.ml", line 59, characters 4-21:
+- Warning 3: deprecated: String.unsafe_set
+- File "gutf8.ml", line 62, characters 6-23:
+- Warning 3: deprecated: String.unsafe_set
+- File "gutf8.ml", line 69, characters 10-23:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gutf8.ml", line 75, characters 10-23:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gutf8.ml", line 145, characters 11-23:
+- Warning 3: deprecated: Array.create
+- Use Array.make instead.
+- ocamlopt.opt  -w s -c gdkKeysyms.ml
+- ocamlopt.opt  -w s -c gdkPixbuf.ml
+- ocamlopt.opt  -w s -c gtk.ml
+- ocamlopt.opt  -w s -c gtkSignal.ml
+- ocamlopt.opt  -w s -c gtkStock.ml
+- ocamlopt.opt  -w s -c gtkObject.ml
+- ocamlopt.opt  -w s -c gtkBaseProps.ml
+- ocamlopt.opt  -w s -c gtkBinProps.ml
+- ocamlopt.opt  -w s -c gtkButtonProps.ml
+- ocamlopt.opt  -w s -c gtkEditProps.ml
+- ocamlopt.opt  -w s -c gtkListProps.ml
+- ocamlopt.opt  -w s -c gtkMenuProps.ml
+- ocamlopt.opt  -w s -c gtkMiscProps.ml
+- ocamlopt.opt  -w s -c gtkPackProps.ml
+- ocamlopt.opt  -w s -c gtkRangeProps.ml
+- ocamlopt.opt  -w s -c gtkTextProps.ml
+- ocamlopt.opt  -w s -c gtkTreeProps.ml
+- ocamlopt.opt  -w s -c gtkFileProps.ml
+- ocamlopt.opt  -w s -c gtkActionProps.ml
+- ocamlopt.opt  -w s -c gtkBrokenProps.ml
+- ocamlopt.opt  -w s -c gtkAssistantProps.ml
+- ocamlopt.opt  -w s -c gtkData.ml
+- ocamlopt.opt  -w s -c gtkBase.ml
+- ocamlopt.opt  -w s -c gtkPack.ml
+- ocamlopt.opt  -w s -c gtkButton.ml
+- ocamlopt.opt  -w s -c gtkAssistant.ml
+- ocamlopt.opt  -w s -c gtkMenu.ml
+- ocamlopt.opt  -w s -c gtkMisc.ml
+- ocamlopt.opt  -w s -c gtkWindow.ml
+- ocamlopt.opt  -w s -c gtkList.ml
+- ocamlopt.opt  -w s -c gtkBin.ml
+- ocamlopt.opt  -w s -c gtkEdit.ml
+- ocamlopt.opt  -w s -c gtkRange.ml
+- ocamlopt.opt  -w s -c gtkText.ml
+- ocamlopt.opt  -w s -c gtkTree.ml
+- ocamlopt.opt  -w s -c gtkFile.ml
+- ocamlopt.opt  -w s -c gtkMain.ml
+- ocamlopt.opt  -w s -c gtkBroken.ml
+- ocamlopt.opt  -w s -c gPango.ml
+- ocamlopt.opt  -w s -c gDraw.ml
+- ocamlopt.opt  -w s -c gObj.ml
+- ocamlopt.opt  -w s -c ogtkBaseProps.ml
+- File "gtkList.ml", line 188, characters 14-26:
+- Warning 3: deprecated: StdLabels.Array.create
+- Use ArrayLabels.make instead.
+- ocamlopt.opt  -w s -c gData.ml
+- ocamlopt.opt  -w s -c ogtkBinProps.ml
+- ocamlopt.opt  -w s -c ogtkButtonProps.ml
+- ocamlopt.opt  -w s -c ogtkEditProps.ml
+- ocamlopt.opt  -w s -c ogtkListProps.ml
+- ocamlopt.opt  -w s -c ogtkMenuProps.ml
+- ocamlopt.opt  -w s -c ogtkMiscProps.ml
+- ocamlopt.opt  -w s -c ogtkPackProps.ml
+- ocamlopt.opt  -w s -c ogtkRangeProps.ml
+- ocamlopt.opt  -w s -c ogtkTextProps.ml
+- ocamlopt.opt  -w s -c ogtkTreeProps.ml
+- ocamlopt.opt  -w s -c ogtkFileProps.ml
+- ocamlopt.opt  -w s -c ogtkActionProps.ml
+- ocamlopt.opt  -w s -c ogtkBrokenProps.ml
+- ocamlopt.opt  -w s -c ogtkAssistantProps.ml
+- ocamlopt.opt  -w s -c gMain.ml
+- ocamlopt.opt  -w s -c gContainer.ml
+- ocamlopt.opt  -w s -c gPack.ml
+- ocamlopt.opt  -w s -c gButton.ml
+- ocamlopt.opt  -w s -c gText.ml
+- ocamlopt.opt  -w s -c gMenu.ml
+- ocamlopt.opt  -w s -c gMisc.ml
+- ocamlopt.opt  -w s -c gTree.ml
+- ocamlopt.opt  -w s -c gList.ml
+- ocamlopt.opt  -w s -c gFile.ml
+- ocamlopt.opt  -w s -c gWindow.ml
+- ocamlopt.opt  -w s -c gAssistant.ml
+- ocamlopt.opt  -w s -c gBin.ml
+- ocamlopt.opt  -w s -c gEdit.ml
+- ocamlopt.opt  -w s -c gRange.ml
+- ocamlopt.opt  -w s -c gAction.ml
+- ocamlopt.opt  -w s -c gBroken.ml
+- ocamlopt.opt  -w s -c gUtil.ml
+- ocamlopt.opt  -w s -c gToolbox.ml
+- ocamlmklib -verbose -ocamlc "ocamlc.opt" -ocamlopt "ocamlopt.opt" -o lablgtk -oc lablgtk2 ml_gdkpixbuf.o ml_gdk.o ml_glib.o ml_gobject.o ml_gpointer.o ml_gvaluecaml.o wrappers.o ml_gtk.o ml_pango.o ml_gtkaction.o ml_gtkbin.o ml_gtkbroken.o ml_gtkbutton.o ml_gtkassistant.o ml_gtkedit.o ml_gtkfile.o ml_gtklist.o ml_gtkmenu.o ml_gtkmisc.o ml_gtkpack.o ml_gtkrange.o ml_gtkstock.o ml_gtktext.o ml_gtktree.o gaux.cmx gpointer.cmx gutf8.cmx glib.cmx gobject.cmx gdkEnums.cmx pangoEnums.cmx gtkEnums.cmx pango.cmx gdk.cmx gdkEvent.cmx gdkKeysyms.cmx gdkPixbuf.cmx gtk.cmx gtkSignal.cmx gtkStock.cmx gtkObject.cmx gtkBaseProps.cmx gtkBinProps.cmx gtkButtonProps.cmx gtkEditProps.cmx gtkListProps.cmx gtkMenuProps.cmx gtkMiscProps.cmx gtkPackProps.cmx gtkRangeProps.cmx gtkTextProps.cmx gtkTreeProps.cmx gtkFileProps.cmx gtkActionProps.cmx gtkBrokenProps.cmx gtkAssistantProps.cmx gtkData.cmx gtkBase.cmx gtkPack.cmx gtkButton.cmx gtkAssistant.cmx gtkMenu.cmx gtkMisc.cmx gtkWindow.cmx gtkList.cmx gtkBin.cmx gtkEdit.cmx gtkRange.cmx gtkText.cmx gtkTree.cmx gtkFile.cmx gtkMain.cmx gtkBroken.cmx gPango.cmx gDraw.cmx gObj.cmx ogtkBaseProps.cmx gData.cmx ogtkBinProps.cmx ogtkButtonProps.cmx ogtkEditProps.cmx ogtkListProps.cmx ogtkMenuProps.cmx ogtkMiscProps.cmx ogtkPackProps.cmx ogtkRangeProps.cmx ogtkTextProps.cmx ogtkTreeProps.cmx ogtkFileProps.cmx ogtkActionProps.cmx ogtkBrokenProps.cmx ogtkAssistantProps.cmx gMain.cmx gContainer.cmx gPack.cmx gButton.cmx gText.cmx gMenu.cmx gMisc.cmx gTree.cmx gList.cmx gFile.cmx gWindow.cmx gAssistant.cmx gBin.cmx gEdit.cmx gRange.cmx gAction.cmx gBroken.cmx gUtil.cmx gToolbox.cmx -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype
+- + gcc -shared  -o ./dlllablgtk2.so ml_gdkpixbuf.o ml_gdk.o ml_glib.o ml_gobject.o ml_gpointer.o ml_gvaluecaml.o wrappers.o ml_gtk.o ml_pango.o ml_gtkaction.o ml_gtkbin.o ml_gtkbroken.o ml_gtkbutton.o ml_gtkassistant.o ml_gtkedit.o ml_gtkfile.o ml_gtklist.o ml_gtkmenu.o ml_gtkmisc.o ml_gtkpack.o ml_gtkrange.o ml_gtkstock.o ml_gtktext.o ml_gtktree.o    -lgtk-x11-2.0 -lgdk-x11-2.0 -lpangocairo-1.0 -latk-1.0 -lcairo -lgdk_pixbuf-2.0 -lgio-2.0 -lpangoft2-1.0 -lpango-1.0 -lgobject-2.0 -lglib-2.0 -lfontconfig -lfreetype
+- + ar rc ./liblablgtk2.a  ml_gdkpixbuf.o ml_gdk.o ml_glib.o ml_gobject.o ml_gpointer.o ml_gvaluecaml.o wrappers.o ml_gtk.o ml_pango.o ml_gtkaction.o ml_gtkbin.o ml_gtkbroken.o ml_gtkbutton.o ml_gtkassistant.o ml_gtkedit.o ml_gtkfile.o ml_gtklist.o ml_gtkmenu.o ml_gtkmisc.o ml_gtkpack.o ml_gtkrange.o ml_gtkstock.o ml_gtktext.o ml_gtktree.o; ranlib ./liblablgtk2.a
+- + ocamlopt.opt -a   -o lablgtk.cmxa  gaux.cmx gpointer.cmx gutf8.cmx glib.cmx gobject.cmx gdkEnums.cmx pangoEnums.cmx gtkEnums.cmx pango.cmx gdk.cmx gdkEvent.cmx gdkKeysyms.cmx gdkPixbuf.cmx gtk.cmx gtkSignal.cmx gtkStock.cmx gtkObject.cmx gtkBaseProps.cmx gtkBinProps.cmx gtkButtonProps.cmx gtkEditProps.cmx gtkListProps.cmx gtkMenuProps.cmx gtkMiscProps.cmx gtkPackProps.cmx gtkRangeProps.cmx gtkTextProps.cmx gtkTreeProps.cmx gtkFileProps.cmx gtkActionProps.cmx gtkBrokenProps.cmx gtkAssistantProps.cmx gtkData.cmx gtkBase.cmx gtkPack.cmx gtkButton.cmx gtkAssistant.cmx gtkMenu.cmx gtkMisc.cmx gtkWindow.cmx gtkList.cmx gtkBin.cmx gtkEdit.cmx gtkRange.cmx gtkText.cmx gtkTree.cmx gtkFile.cmx gtkMain.cmx gtkBroken.cmx gPango.cmx gDraw.cmx gObj.cmx ogtkBaseProps.cmx gData.cmx ogtkBinProps.cmx ogtkButtonProps.cmx ogtkEditProps.cmx ogtkListProps.cmx ogtkMenuProps.cmx ogtkMiscProps.cmx ogtkPackProps.cmx ogtkRangeProps.cmx ogtkTextProps.cmx ogtkTreeProps.cmx ogtkFileProps.cmx ogtkActionProps.cmx ogtkBrokenProps.cmx ogtkAssistantProps.cmx gMain.cmx gContainer.cmx gPack.cmx gButton.cmx gText.cmx gMenu.cmx gMisc.cmx gTree.cmx gList.cmx gFile.cmx gWindow.cmx gAssistant.cmx gBin.cmx gEdit.cmx gRange.cmx gAction.cmx gBroken.cmx gUtil.cmx gToolbox.cmx -cclib -llablgtk2   -cclib -lgtk-x11-2.0 -cclib -lgdk-x11-2.0 -cclib -lpangocairo-1.0 -cclib -latk-1.0 -cclib -lcairo -cclib -lgdk_pixbuf-2.0 -cclib -lgio-2.0 -cclib -lpangoft2-1.0 -cclib -lpango-1.0 -cclib -lgobject-2.0 -cclib -lglib-2.0 -cclib -lfontconfig -cclib -lfreetype 
+- ocamlopt.opt  -w s -c gtkInit.ml
+- ocamlopt.opt  -w s -c -thread gtkThread.ml
+- ocamlopt.opt -verbose -o lablgtk.cmxs -shared -linkall -I . \
+-         -ccopt '' lablgtk.cmxa
+- + as -o 'lablgtk.cmxs.startup.o' '/tmp/camlstartupab2c00.s'
+- + gcc -shared -o 'lablgtk.cmxs'   '-L.' '-L/usr/lib/ocaml'  'lablgtk.cmxs.startup.o' 'lablgtk.a' '-llablgtk2' '-lgtk-x11-2.0' '-lgdk-x11-2.0' '-lpangocairo-1.0' '-latk-1.0' '-lcairo' '-lgdk_pixbuf-2.0' '-lgio-2.0' '-lpangoft2-1.0' '-lpango-1.0' '-lgobject-2.0' '-lglib-2.0' '-lfontconfig' '-lfreetype' 
+- make[1]: Leaving directory '/home/opam/.opam/system/build/lablgtk.2.18.3/src'
+[lablgtk: make install] Command started
++ make "install" (CWD=/home/opam/.opam/system/build/lablgtk.2.18.3)
+- make -C src install
+- make[1]: Entering directory '/home/opam/.opam/system/build/lablgtk.2.18.3/src'
+- mkdir -p "/home/opam/.opam/system/bin"
+- mkdir -p "/home/opam/.opam/system/lib"
+- ocamlfind install -destdir "/home/opam/.opam/system/lib" \
+-   -ldconf "/usr/lib/ocaml/ld.conf" \
+-     lablgtk2 ../META \
+-     build.ml \
+-     liblablgtk2.a \
+-     gaux.cmi gpointer.cmi gutf8.cmi glib.cmi gobject.cmi gdkEnums.cmi pangoEnums.cmi gtkEnums.cmi pango.cmi gdk.cmi gdkEvent.cmi gdkKeysyms.cmi gdkPixbuf.cmi gtk.cmi gtkSignal.cmi gtkStock.cmi gtkObject.cmi gtkBaseProps.cmi gtkBinProps.cmi gtkButtonProps.cmi gtkEditProps.cmi gtkListProps.cmi gtkMenuProps.cmi gtkMiscProps.cmi gtkPackProps.cmi gtkRangeProps.cmi gtkTextProps.cmi gtkTreeProps.cmi gtkFileProps.cmi gtkActionProps.cmi gtkBrokenProps.cmi gtkAssistantProps.cmi gtkData.cmi gtkBase.cmi gtkPack.cmi gtkButton.cmi gtkAssistant.cmi gtkMenu.cmi gtkMisc.cmi gtkWindow.cmi gtkList.cmi gtkBin.cmi gtkEdit.cmi gtkRange.cmi gtkText.cmi gtkTree.cmi gtkFile.cmi gtkMain.cmi gtkBroken.cmi gPango.cmi gDraw.cmi gObj.cmi ogtkBaseProps.cmi gData.cmi ogtkBaseProps.cmi ogtkBinProps.cmi ogtkButtonProps.cmi ogtkEditProps.cmi ogtkListProps.cmi ogtkMenuProps.cmi ogtkMiscProps.cmi ogtkPackProps.cmi ogtkRangeProps.cmi ogtkTextProps.cmi ogtkTreeProps.cmi ogtkFileProps.cmi ogtkActionProps.cmi ogtkBrokenProps.cmi ogtkAssistantProps.cmi gMain.cmi gContainer.cmi gPack.cmi gButton.cmi gText.cmi gMenu.cmi gMisc.cmi gTree.cmi gList.cmi gFile.cmi gWindow.cmi gAssistant.cmi gBin.cmi gEdit.cmi gRange.cmi gAction.cmi gBroken.cmi gUtil.cmi gToolbox.cmi gtkInit.cmi  \
+-     *.mli \
+-     gaux.ml gpointer.ml gutf8.ml glib.ml gobject.ml gdkEnums.ml pangoEnums.ml gtkEnums.ml pango.ml gdk.ml gdkEvent.ml gdkKeysyms.ml gdkPixbuf.ml gtk.ml gtkSignal.ml gtkStock.ml gtkObject.ml gtkBaseProps.ml gtkBinProps.ml gtkButtonProps.ml gtkEditProps.ml gtkListProps.ml gtkMenuProps.ml gtkMiscProps.ml gtkPackProps.ml gtkRangeProps.ml gtkTextProps.ml gtkTreeProps.ml gtkFileProps.ml gtkActionProps.ml gtkBrokenProps.ml gtkAssistantProps.ml gtkData.ml gtkBase.ml gtkPack.ml gtkButton.ml gtkAssistant.ml gtkMenu.ml gtkMisc.ml gtkWindow.ml gtkList.ml gtkBin.ml gtkEdit.ml gtkRange.ml gtkText.ml gtkTree.ml gtkFile.ml gtkMain.ml gtkBroken.ml gPango.ml gDraw.ml gObj.ml ogtkBaseProps.ml gData.ml ogtkBaseProps.ml ogtkBinProps.ml ogtkButtonProps.ml ogtkEditProps.ml ogtkListProps.ml ogtkMenuProps.ml ogtkMiscProps.ml ogtkPackProps.ml ogtkRangeProps.ml ogtkTextProps.ml ogtkTreeProps.ml ogtkFileProps.ml ogtkActionProps.ml ogtkBrokenProps.ml ogtkAssistantProps.ml gMain.ml gContainer.ml gPack.ml gButton.ml gText.ml gMenu.ml gMisc.ml gTree.ml gList.ml gFile.ml gWindow.ml gAssistant.ml gBin.ml gEdit.ml gRange.ml gAction.ml gBroken.ml gUtil.ml gToolbox.ml gtkInit.ml gtkThread.ml gtkThInit.ml  \
+-      lablgtk.cma gtkInit.cmo \
+-     varcc propcc \
+-     `if test system != no; \
+-       then echo gtkThread.cmo gtkThInit.cmo gtkThread.cmi gtkThInit.cmi ; \
+-     fi` \
+-     `if test system = vm || test yes != yes; \
+-       then echo lablgtktop ; \
+-     fi` \
+-     *.h \
+-     `if test -f lablgtk.cmxa; \
+-       then \
+-         echo lablgtk.cmxa lablgtk.a \
+-             ; \
+-           if test "yes" = "yes" ; \
+-             then echo lablgtk.cmxs  ; \
+-           fi; \
+-         echo  gaux.cmx gpointer.cmx gutf8.cmx glib.cmx gobject.cmx gdkEnums.cmx pangoEnums.cmx gtkEnums.cmx pango.cmx gdk.cmx gdkEvent.cmx gdkKeysyms.cmx gdkPixbuf.cmx gtk.cmx gtkSignal.cmx gtkStock.cmx gtkObject.cmx gtkBaseProps.cmx gtkBinProps.cmx gtkButtonProps.cmx gtkEditProps.cmx gtkListProps.cmx gtkMenuProps.cmx gtkMiscProps.cmx gtkPackProps.cmx gtkRangeProps.cmx gtkTextProps.cmx gtkTreeProps.cmx gtkFileProps.cmx gtkActionProps.cmx gtkBrokenProps.cmx gtkAssistantProps.cmx gtkData.cmx gtkBase.cmx gtkPack.cmx gtkButton.cmx gtkAssistant.cmx gtkMenu.cmx gtkMisc.cmx gtkWindow.cmx gtkList.cmx gtkBin.cmx gtkEdit.cmx gtkRange.cmx gtkText.cmx gtkTree.cmx gtkFile.cmx gtkMain.cmx gtkBroken.cmx gPango.cmx gDraw.cmx gObj.cmx ogtkBaseProps.cmx gData.cmx ogtkBaseProps.cmx ogtkBinProps.cmx ogtkButtonProps.cmx ogtkEditProps.cmx ogtkListProps.cmx ogtkMenuProps.cmx ogtkMiscProps.cmx ogtkPackProps.cmx ogtkRangeProps.cmx ogtkTextProps.cmx ogtkTreeProps.cmx ogtkFileProps.cmx ogtkActionProps.cmx ogtkBrokenProps.cmx ogtkAssistantProps.cmx gMain.cmx gContainer.cmx gPack.cmx gButton.cmx gText.cmx gMenu.cmx gMisc.cmx gTree.cmx gList.cmx gFile.cmx gWindow.cmx gAssistant.cmx gBin.cmx gEdit.cmx gRange.cmx gAction.cmx gBroken.cmx gUtil.cmx gToolbox.cmx gtkInit.cmx  ; \
+-         echo gtkInit.o ; \
+-         if test -f gtkThread.cmx; then \
+-           echo gtkThread.cmx gtkThread.o ; \
+-         fi ; \
+-     fi` \
+-     `if test -f dlllablgtk2.so; \
+-       then \
+-         echo "-dll dlllablgtk2.so -nodll" ; \
+-     fi` \
+-     `if test -f dlllablgtk2.a; \
+-       then \
+-         echo dlllablgtk2.a ; \
+-     fi`
+- rm -f lablgtk2
+- make lablgtk2 LABLGTKDIR="/home/opam/.opam/system/lib/lablgtk2"
+- make[2]: Entering directory '/home/opam/.opam/system/build/lablgtk.2.18.3/src'
+- sed -e "s|@INSTALLDIR@|/home/opam/.opam/system/lib/lablgtk2|g" \
+-     -e "s|@LABLGLDIR@|/home/opam/.opam/system/lib/lablgl|g" \
+-     -e "s|@MLLIBS@| lablgtk.cma|g" \
+-     -e "s|@INITOBJS@|gtkInit.cmo|g" \
+-     -e "s|@THOBJS@|gtkThread.cmo|g" \
+-     -e "s|@THINITOBJS@|gtkThInit.cmo|g" \
+-     -e "s|@USEDLL@|yes|g" \
+-     -e "s|@THREADS_LIB@|system|g" \
+-     < lablgtk2.in > lablgtk2
+- chmod 755 lablgtk2
+- make[2]: Leaving directory '/home/opam/.opam/system/build/lablgtk.2.18.3/src'
+- cp lablgtk2 "/home/opam/.opam/system/bin"
+- if test -f lablgladecc; then \
+-   cp lablgladecc "/home/opam/.opam/system/bin/lablgladecc2"; \
+- fi
+- cp gdk_pixbuf_mlsource "/home/opam/.opam/system/bin"
+- ranlib "/home/opam/.opam/system/lib/lablgtk2"/liblablgtk2.a
+- Execute ranlib in /home/opam/.opam/system/lib/lablgtk2
+- make[1]: Leaving directory '/home/opam/.opam/system/build/lablgtk.2.18.3/src'
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkThread.o
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkThread.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkInit.o
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkInit.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gToolbox.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gUtil.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gBroken.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gAction.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gRange.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gEdit.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gBin.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gAssistant.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gWindow.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gFile.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gList.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gTree.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMisc.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMenu.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gText.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gButton.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gPack.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gContainer.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMain.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkAssistantProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBrokenProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkActionProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkFileProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkTreeProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkTextProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkRangeProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkPackProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkMiscProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkMenuProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkListProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkEditProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkButtonProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBinProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBaseProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gData.cmx
+- ocamlfind: [WARNING] Overwriting file /home/opam/.opam/system/lib/lablgtk2/ogtkBaseProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBaseProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gObj.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gDraw.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gPango.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBroken.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMain.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkFile.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkTree.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkText.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkRange.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkEdit.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBin.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkList.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkWindow.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMisc.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMenu.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkAssistant.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkButton.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkPack.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBase.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkData.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkAssistantProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBrokenProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkActionProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkFileProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkTreeProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkTextProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkRangeProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkPackProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMiscProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMenuProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkListProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkEditProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkButtonProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBinProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBaseProps.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkObject.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkStock.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkSignal.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtk.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkPixbuf.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkKeysyms.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkEvent.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdk.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/pango.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkEnums.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/pangoEnums.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkEnums.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gobject.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/glib.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gutf8.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gpointer.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/gaux.cmx
+- Installed /home/opam/.opam/system/lib/lablgtk2/lablgtk.cmxs
+- Installed /home/opam/.opam/system/lib/lablgtk2/lablgtk.a
+- Installed /home/opam/.opam/system/lib/lablgtk2/lablgtk.cmxa
+- Installed /home/opam/.opam/system/lib/lablgtk2/wrappers.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/win32.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/pango_tags.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_pango.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_gvaluecaml.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_gtktree.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_gtktext.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_gtk.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_gpointer.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_gobject.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_glib.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_gdkpixbuf.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_gdk.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/ml_domain.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtk_tags.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/gobject_tags.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/glib_tags.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkprivate-win32.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkpixbuf_tags.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdk_tags.h
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkThInit.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkThread.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkThInit.cmo
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkThread.cmo
+- Installed /home/opam/.opam/system/lib/lablgtk2/propcc
+- Installed /home/opam/.opam/system/lib/lablgtk2/varcc
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkInit.cmo
+- Installed /home/opam/.opam/system/lib/lablgtk2/lablgtk.cma
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkThInit.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkThread.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkInit.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gToolbox.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gUtil.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gBroken.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gAction.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gRange.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gEdit.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gBin.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gAssistant.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gWindow.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gFile.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gList.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gTree.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMisc.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMenu.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gText.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gButton.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gPack.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gContainer.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMain.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkAssistantProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBrokenProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkActionProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkFileProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkTreeProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkTextProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkRangeProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkPackProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkMiscProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkMenuProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkListProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkEditProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkButtonProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBinProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBaseProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gData.ml
+- ocamlfind: [WARNING] Overwriting file /home/opam/.opam/system/lib/lablgtk2/ogtkBaseProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBaseProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gObj.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gDraw.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gPango.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBroken.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMain.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkFile.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkTree.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkText.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkRange.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkEdit.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBin.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkList.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkWindow.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMisc.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMenu.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkAssistant.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkButton.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkPack.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBase.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkData.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkAssistantProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBrokenProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkActionProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkFileProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkTreeProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkTextProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkRangeProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkPackProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMiscProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMenuProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkListProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkEditProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkButtonProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBinProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBaseProps.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkObject.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkStock.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkSignal.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtk.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkPixbuf.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkKeysyms.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkEvent.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdk.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/pango.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkEnums.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/pangoEnums.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkEnums.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gobject.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/glib.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gutf8.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gpointer.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/gaux.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/xml_lexer.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/rsvg.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/panel.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gutf8.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkThread.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkSpell.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkSourceView_types.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkSourceView2_types.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkSignal.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gpointer.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gobject.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gnoDruid.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gnoCanvas.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/glib.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/glade.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/glGtk.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkPixbuf.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdk.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gWindow.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gUtil.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gTree.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gToolbox.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gText.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gSourceView2.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gSourceView.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gRange.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gPack.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gObj.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMisc.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMenu.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMain.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gList.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gFile.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gEdit.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gDraw.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gData.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gContainer.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gButton.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gBroken.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gBin.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gAssistant.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gAction.mli
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkInit.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gToolbox.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gUtil.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gBroken.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gAction.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gRange.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gEdit.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gBin.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gAssistant.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gWindow.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gFile.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gList.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gTree.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMisc.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMenu.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gText.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gButton.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gPack.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gContainer.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gMain.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkAssistantProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBrokenProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkActionProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkFileProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkTreeProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkTextProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkRangeProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkPackProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkMiscProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkMenuProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkListProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkEditProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkButtonProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBinProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBaseProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gData.cmi
+- ocamlfind: [WARNING] Overwriting file /home/opam/.opam/system/lib/lablgtk2/ogtkBaseProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/ogtkBaseProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gObj.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gDraw.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gPango.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBroken.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMain.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkFile.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkTree.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkText.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkRange.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkEdit.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBin.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkList.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkWindow.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMisc.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMenu.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkAssistant.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkButton.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkPack.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBase.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkData.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkAssistantProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBrokenProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkActionProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkFileProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkTreeProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkTextProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkRangeProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkPackProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMiscProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkMenuProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkListProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkEditProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkButtonProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBinProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkBaseProps.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkObject.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkStock.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkSignal.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtk.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkPixbuf.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkKeysyms.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkEvent.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdk.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/pango.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gtkEnums.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/pangoEnums.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gdkEnums.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gobject.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/glib.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gutf8.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gpointer.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/gaux.cmi
+- Installed /home/opam/.opam/system/lib/lablgtk2/liblablgtk2.a
+- Installed /home/opam/.opam/system/lib/lablgtk2/build.ml
+- Installed /home/opam/.opam/system/lib/lablgtk2/META
+- Installed /home/opam/.opam/system/lib/stublibs/dlllablgtk2.so
+- Installed /home/opam/.opam/system/lib/stublibs/dlllablgtk2.so.owner
+- ocamlfind: [WARNING] You have installed DLLs but the directory /home/opam/.opam/system/lib/stublibs is not mentioned in ld.conf
+-> installed lablgtk.2.18.3
+Done.
+ ---> a7c88ec23449
+Removing intermediate container 613345b9e898
+Successfully built a7c88ec23449
