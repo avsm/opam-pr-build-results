@@ -3,11 +3,11 @@ FROM ocaml/opam:centos-6_ocaml-4.02.3
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/samoht/opam-repository.git opam-publish/mirage.2.7.2 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u mirage mirage-xen mirage-unix" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v mirage mirage-xen mirage-unix"Sending build context to Docker daemon 37.89 kB
+  sudo -u opam sh -c "opam install -y -j 2 -v mirage mirage-xen mirage-unix"Sending build context to Docker daemon 37.38 kB
 Step 1 : FROM ocaml/opam:centos-6_ocaml-4.02.3
  ---> 99e66b189eab
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/samoht/opam-repository.git opam-publish/mirage.2.7.2 && opam update -u" &&   sudo -u opam sh -c "opam depext -u mirage mirage-xen mirage-unix" &&   sudo -u opam sh -c "opam install -y -j 2 -v mirage mirage-xen mirage-unix"
- ---> Running in 00aabd128614
+ ---> Running in 851f8038f080
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
 [0mUpdating 53236a1..753ff0e
