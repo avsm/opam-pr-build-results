@@ -7,10 +7,10 @@ RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master 
 Step 1 : FROM ocaml/opam:alpine-3.3_ocaml-4.02.3
  ---> c57c7edf0a6d
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git re2-depext && opam update -u" &&   sudo -u opam sh -c "opam depext -u async_ssl" &&   sudo -u opam sh -c "opam install -y -j 2 -v async_ssl"
- ---> Running in 3e5c8bcde31e
+ ---> Running in 46635c3a3ce9
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   c86ad1e..8223d0d  master     -> origin/master
+   c86ad1e..8223d0d  master     -> origin/master
 [0mUpdating c86ad1e..8223d0d
 Fast-forward
  compilers/4.04.0/4.04.0+pr490/4.04.0+pr490.descr   |  1 -
@@ -673,11 +673,11 @@ The following actions will be performed:
 [async: http] Command started
 [async.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async-113.33.00.tar.gz downloaded
 [async_rpc_kernel: http] Command started
-[async_kernel: http] Command started
-[async_kernel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_kernel-113.33.00.tar.gz downloaded
-[async_ssl: http] Command started
 [async_extra: http] Command started
 [async_extra.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_extra-113.33.00.tar.gz downloaded
+[async_ssl: http] Command started
+[async_kernel: http] Command started
+[async_kernel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_kernel-113.33.00.tar.gz downloaded
 [async_unix: http] Command started
 [async_rpc_kernel: http] Command started
 [async_rpc_kernel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_rpc_kernel-113.33.00.tar.gz downloaded
@@ -694,20 +694,20 @@ The following actions will be performed:
 [cppo: http] Command started
 [cppo.1.3.1] https://github.com/mjambon/cppo/archive/v1.3.1.tar.gz downloaded
 [ctypes: http] Command started
-[core_kernel: http] Command started
-[core: http] Command started
-[core_kernel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/core_kernel-113.33.00.tar.gz downloaded
-[fieldslib: http] Command started
-[core.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/core-113.33.00.tar.gz downloaded
-[ocamlfind: http] Command started
-[ocamlfind: http] Command started
-[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
-[ppx_assert: http] Command started
 [ctypes: http] Command started
 [ctypes.0.4.2] https://github.com/ocamllabs/ocaml-ctypes/archive/0.4.2.tar.gz downloaded
-[ppx_bench: http] Command started
+[fieldslib: http] Command started
 [fieldslib: http] Command started
 [fieldslib.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/fieldslib-113.24.00.tar.gz downloaded
+[ocamlfind: http] Command started
+[core_kernel: http] Command started
+[core_kernel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/core_kernel-113.33.00.tar.gz downloaded
+[ppx_assert: http] Command started
+[core: http] Command started
+[core.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/core-113.33.00.tar.gz downloaded
+[ppx_bench: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
 [ppx_bin_prot: http] Command started
 [ppx_assert: http] Command started
 [ppx_assert.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_assert-113.33.00.tar.gz downloaded
@@ -721,29 +721,29 @@ The following actions will be performed:
 [ppx_compare: http] Command started
 [ppx_compare.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_compare-113.33.00.tar.gz downloaded
 [ppx_deriving: http] Command started
-[ppx_custom_printf: http] Command started
-[ppx_custom_printf.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_custom_printf-113.33.00.tar.gz downloaded
-[ppx_driver: http] Command started
 [ppx_core: http] Command started
 [ppx_core.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_core-113.33.00.tar.gz downloaded
+[ppx_driver: http] Command started
+[ppx_custom_printf: http] Command started
+[ppx_custom_printf.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_custom_printf-113.33.00.tar.gz downloaded
 [ppx_enumerate: http] Command started
-[ppx_deriving: http] Command started
-[ppx_deriving.3.3] https://github.com/whitequark/ppx_deriving/archive/v3.3.tar.gz downloaded
-[ppx_expect: http] Command started
 [ppx_driver: http] Command started
 [ppx_driver.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_driver-113.33.00.tar.gz downloaded
-[ppx_fail: http] Command started
+[ppx_expect: http] Command started
 [ppx_enumerate: http] Command started
 [ppx_enumerate.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_enumerate-113.33.00.tar.gz downloaded
+[ppx_fail: http] Command started
+[ppx_deriving: http] Command started
+[ppx_deriving.3.3] https://github.com/whitequark/ppx_deriving/archive/v3.3.tar.gz downloaded
 [ppx_fields_conv: http] Command started
 [ppx_fail: http] Command started
 [ppx_fail.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_fail-113.33.00.tar.gz downloaded
 [ppx_here: http] Command started
-[ppx_fields_conv: http] Command started
-[ppx_fields_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_fields_conv-113.33.00.tar.gz downloaded
-[ppx_inline_test: http] Command started
 [ppx_expect: http] Command started
 [ppx_expect.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_expect-113.33.00.tar.gz downloaded
+[ppx_inline_test: http] Command started
+[ppx_fields_conv: http] Command started
+[ppx_fields_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_fields_conv-113.33.00.tar.gz downloaded
 [ppx_jane: http] Command started
 [ppx_here: http] Command started
 [ppx_here.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_here-113.33.00.tar.gz downloaded
@@ -757,17 +757,17 @@ The following actions will be performed:
 [ppx_let: http] Command started
 [ppx_let.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_let-113.33.00.tar.gz downloaded
 [ppx_sexp_conv: http] Command started
-[ppx_pipebang: http] Command started
-[ppx_pipebang.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_pipebang-113.33.00.tar.gz downloaded
-[ppx_sexp_message: http] Command started
 [ppx_optcomp: http] Command started
 [ppx_optcomp.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_optcomp-113.33.00.tar.gz downloaded
-[ppx_sexp_value: http] Command started
-[ppx_sexp_conv: http] Command started
-[ppx_sexp_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_conv-113.33.00.tar.gz downloaded
-[ppx_tools: http] Command started
 [ppx_sexp_message: http] Command started
+[ppx_pipebang: http] Command started
+[ppx_pipebang.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_pipebang-113.33.00.tar.gz downloaded
+[ppx_sexp_value: http] Command started
+[ppx_sexp_message: http] Command started
+[ppx_sexp_conv: http] Command started
 [ppx_sexp_message.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_message-113.33.00.tar.gz downloaded
+[ppx_tools: http] Command started
+[ppx_sexp_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_conv-113.33.00.tar.gz downloaded
 [ppx_type_conv: http] Command started
 [ppx_sexp_value: http] Command started
 [ppx_sexp_value.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_value-113.33.00.tar.gz downloaded
@@ -792,10 +792,10 @@ The following actions will be performed:
 [variantslib: http] Command started
 [sexplib: http] Command started
 [sexplib.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/sexplib-113.33.00.tar.gz downloaded
-[variantslib: http] Command started
 [typerep: http] Command started
-[variantslib.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/variantslib-113.24.00.tar.gz downloaded
 [typerep.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/typerep-113.24.00.tar.gz downloaded
+[variantslib: http] Command started
+[variantslib.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/variantslib-113.24.00.tar.gz downloaded
 
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [conf-m4: sh echo | m4] Command started
@@ -957,18 +957,18 @@ The following actions will be performed:
 - ocamlc -I +compiler-libs -c fl_package_base.mli
 - ocamlc -I +compiler-libs -g -c fl_package_base.ml
 - ocamlc -I +compiler-libs -c findlib.mli
-- Makefile:175: depend: No such file or directory
 - ocamlc -I +compiler-libs -g -c findlib.ml
+- Makefile:175: depend: No such file or directory
 - ocamlc -I +compiler-libs -g -c fl_args.ml
 - ocamlc -I +compiler-libs -g -c fl_lint.ml
 - ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
 - ocamlc -I +compiler-libs -g -c ocaml_args.ml
 - ocamlc -I +compiler-libs -g -c frontend.ml
+- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
+-            ocaml_args.cmo frontend.cmo
 - File "frontend.ml", line 1787, characters 16-29:
 - Warning 3: deprecated: String.create
 - Use Bytes.create instead.
-- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
--            ocaml_args.cmo frontend.cmo
 - if [ "true" = "true" ]; then                 \
 - 	cp topfind.ml.in topfind.ml;                             \
 - else                                                             \
@@ -3021,67 +3021,6 @@ The following actions will be performed:
 - make[1]: Leaving directory '/home/opam/.opam/system/build/ppx_optcomp.113.33.00'
 -> installed ppx_optcomp.113.33.00
 [ppx_driver: ./configure] Command started
-+ ./configure "--prefix" "/home/opam/.opam/system" (CWD=/home/opam/.opam/system/build/ppx_driver.113.33.00)
-- 
-- Configuration: 
-- ocamlfind: ........................................... /home/opam/.opam/system/bin/ocamlfind
-- ocamlc: .............................................. /usr/bin/ocamlc.opt
-- ocamlopt: ............................................ /usr/bin/ocamlopt.opt
-- ocamlbuild: .......................................... /usr/bin/ocamlbuild
-- Package name: ........................................ ppx_driver
-- Package version: ..................................... 113.33.00
-- os_type: ............................................. Unix
-- system: .............................................. linux
-- architecture: ........................................ amd64
-- ccomp_type: .......................................... cc
-- ocaml_version: ....................................... 4.02.3
-- standard_library_default: ............................ /usr/lib/ocaml
-- standard_library: .................................... /usr/lib/ocaml
-- standard_runtime: .................................... /usr/bin/ocamlrun
-- bytecomp_c_compiler: ................................. gcc -fPIC -Os -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC
-- native_c_compiler: ................................... gcc -fPIC -Os -O -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
-- model: ............................................... default
-- ext_obj: ............................................. .o
-- ext_asm: ............................................. .s
-- ext_lib: ............................................. .a
-- ext_dll: ............................................. .so
-- default_executable_name: ............................. a.out
-- systhread_supported: ................................. true
-- Install architecture-independent files dir: .......... /home/opam/.opam/system
-- Install architecture-dependent files in dir: ......... $prefix
-- User executables: .................................... $exec_prefix/bin
-- System admin executables: ............................ $exec_prefix/sbin
-- Program executables: ................................. $exec_prefix/libexec
-- Read-only single-machine data: ....................... $prefix/etc
-- Modifiable architecture-independent data: ............ $prefix/com
-- Modifiable single-machine data: ...................... $prefix/var
-- Object code libraries: ............................... $exec_prefix/lib
-- Read-only arch-independent data root: ................ $prefix/share
-- Read-only architecture-independent data: ............. $datarootdir
-- Info documentation: .................................. $datarootdir/info
-- Locale-dependent data: ............................... $datarootdir/locale
-- Man documentation: ................................... $datarootdir/man
-- Documentation root: .................................. $datarootdir/doc/$pkg_name
-- HTML documentation: .................................. $docdir
-- DVI documentation: ................................... $docdir
-- PDF documentation: ................................... $docdir
-- PS documentation: .................................... $docdir
-- findlib_version: ..................................... 1.6.2
-- is_native: ........................................... true
-- suffix_program: ...................................... 
-- Remove a file.: ...................................... rm -f
-- Remove a directory.: ................................. rm -rf
-- Turn ocaml debug flag on: ............................ true
-- Turn ocaml profile flag on: .......................... false
-- Compiler support generation of .cmxs.: ............... true
-- OCamlbuild additional flags: ......................... 
-- Create documentations: ............................... true
-- Compile tests executable and library and run them: ... false
-- pkg_ppx_core: ........................................ /home/opam/.opam/system/lib/ppx_core
-- pkg_ppx_optcomp: ..................................... /home/opam/.opam/system/lib/ppx_optcomp
-- pkg_ocamlbuild: ...................................... /usr/lib/ocaml/ocamlbuild
-- 
-[ppx_driver: make] Command started
 + make  (CWD=/home/opam/.opam/system/build/typerep.113.24.00)
 - ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
 - for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
@@ -3206,6 +3145,67 @@ The following actions will be performed:
 - W: Cannot find source file matching module 'typerep_lib' in library typerep_lib
 -> installed typerep.113.24.00
 [variantslib: ./configure] Command started
++ ./configure "--prefix" "/home/opam/.opam/system" (CWD=/home/opam/.opam/system/build/ppx_driver.113.33.00)
+- 
+- Configuration: 
+- ocamlfind: ........................................... /home/opam/.opam/system/bin/ocamlfind
+- ocamlc: .............................................. /usr/bin/ocamlc.opt
+- ocamlopt: ............................................ /usr/bin/ocamlopt.opt
+- ocamlbuild: .......................................... /usr/bin/ocamlbuild
+- Package name: ........................................ ppx_driver
+- Package version: ..................................... 113.33.00
+- os_type: ............................................. Unix
+- system: .............................................. linux
+- architecture: ........................................ amd64
+- ccomp_type: .......................................... cc
+- ocaml_version: ....................................... 4.02.3
+- standard_library_default: ............................ /usr/lib/ocaml
+- standard_library: .................................... /usr/lib/ocaml
+- standard_runtime: .................................... /usr/bin/ocamlrun
+- bytecomp_c_compiler: ................................. gcc -fPIC -Os -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC
+- native_c_compiler: ................................... gcc -fPIC -Os -O -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
+- model: ............................................... default
+- ext_obj: ............................................. .o
+- ext_asm: ............................................. .s
+- ext_lib: ............................................. .a
+- ext_dll: ............................................. .so
+- default_executable_name: ............................. a.out
+- systhread_supported: ................................. true
+- Install architecture-independent files dir: .......... /home/opam/.opam/system
+- Install architecture-dependent files in dir: ......... $prefix
+- User executables: .................................... $exec_prefix/bin
+- System admin executables: ............................ $exec_prefix/sbin
+- Program executables: ................................. $exec_prefix/libexec
+- Read-only single-machine data: ....................... $prefix/etc
+- Modifiable architecture-independent data: ............ $prefix/com
+- Modifiable single-machine data: ...................... $prefix/var
+- Object code libraries: ............................... $exec_prefix/lib
+- Read-only arch-independent data root: ................ $prefix/share
+- Read-only architecture-independent data: ............. $datarootdir
+- Info documentation: .................................. $datarootdir/info
+- Locale-dependent data: ............................... $datarootdir/locale
+- Man documentation: ................................... $datarootdir/man
+- Documentation root: .................................. $datarootdir/doc/$pkg_name
+- HTML documentation: .................................. $docdir
+- DVI documentation: ................................... $docdir
+- PDF documentation: ................................... $docdir
+- PS documentation: .................................... $docdir
+- findlib_version: ..................................... 1.6.2
+- is_native: ........................................... true
+- suffix_program: ...................................... 
+- Remove a file.: ...................................... rm -f
+- Remove a directory.: ................................. rm -rf
+- Turn ocaml debug flag on: ............................ true
+- Turn ocaml profile flag on: .......................... false
+- Compiler support generation of .cmxs.: ............... true
+- OCamlbuild additional flags: ......................... 
+- Create documentations: ............................... true
+- Compile tests executable and library and run them: ... false
+- pkg_ppx_core: ........................................ /home/opam/.opam/system/lib/ppx_core
+- pkg_ppx_optcomp: ..................................... /home/opam/.opam/system/lib/ppx_optcomp
+- pkg_ocamlbuild: ...................................... /usr/lib/ocaml/ocamlbuild
+- 
+[ppx_driver: make] Command started
 + ./configure "--prefix" "/home/opam/.opam/system" (CWD=/home/opam/.opam/system/build/variantslib.113.24.00)
 - 
 - Configuration: 
@@ -3264,84 +3264,6 @@ The following actions will be performed:
 - Compile tests executable and library and run them: ... false
 - 
 [variantslib: make] Command started
-+ make  (CWD=/home/opam/.opam/system/build/variantslib.113.24.00)
-- ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
-- for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
-- ./setup.exe -configure 
-- 
-- Configuration: 
-- ocamlfind: ........................................... /home/opam/.opam/system/bin/ocamlfind
-- ocamlc: .............................................. /usr/bin/ocamlc.opt
-- ocamlopt: ............................................ /usr/bin/ocamlopt.opt
-- ocamlbuild: .......................................... /usr/bin/ocamlbuild
-- Package name: ........................................ variantslib
-- Package version: ..................................... 113.24.00
-- os_type: ............................................. Unix
-- system: .............................................. linux
-- architecture: ........................................ amd64
-- ccomp_type: .......................................... cc
-- ocaml_version: ....................................... 4.02.3
-- standard_library_default: ............................ /usr/lib/ocaml
-- standard_library: .................................... /usr/lib/ocaml
-- standard_runtime: .................................... /usr/bin/ocamlrun
-- bytecomp_c_compiler: ................................. gcc -fPIC -Os -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC
-- native_c_compiler: ................................... gcc -fPIC -Os -O -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
-- model: ............................................... default
-- ext_obj: ............................................. .o
-- ext_asm: ............................................. .s
-- ext_lib: ............................................. .a
-- ext_dll: ............................................. .so
-- default_executable_name: ............................. a.out
-- systhread_supported: ................................. true
-- Install architecture-independent files dir: .......... /usr/local
-- Install architecture-dependent files in dir: ......... $prefix
-- User executables: .................................... $exec_prefix/bin
-- System admin executables: ............................ $exec_prefix/sbin
-- Program executables: ................................. $exec_prefix/libexec
-- Read-only single-machine data: ....................... $prefix/etc
-- Modifiable architecture-independent data: ............ $prefix/com
-- Modifiable single-machine data: ...................... $prefix/var
-- Object code libraries: ............................... $exec_prefix/lib
-- Read-only arch-independent data root: ................ $prefix/share
-- Read-only architecture-independent data: ............. $datarootdir
-- Info documentation: .................................. $datarootdir/info
-- Locale-dependent data: ............................... $datarootdir/locale
-- Man documentation: ................................... $datarootdir/man
-- Documentation root: .................................. $datarootdir/doc/$pkg_name
-- HTML documentation: .................................. $docdir
-- DVI documentation: ................................... $docdir
-- PDF documentation: ................................... $docdir
-- PS documentation: .................................... $docdir
-- findlib_version: ..................................... 1.6.2
-- is_native: ........................................... true
-- suffix_program: ...................................... 
-- Remove a file.: ...................................... rm -f
-- Remove a directory.: ................................. rm -rf
-- Turn ocaml debug flag on: ............................ true
-- Turn ocaml profile flag on: .......................... false
-- Compiler support generation of .cmxs.: ............... true
-- OCamlbuild additional flags: ......................... 
-- Create documentations: ............................... true
-- Compile tests executable and library and run them: ... false
-- 
-- ./setup.exe -build 
-- ocamlfind ocamlopt unix.cmxa -I /usr/lib/ocaml/ocamlbuild /usr/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa -linkpkg myocamlbuild.ml /usr/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
-- /home/opam/.opam/system/bin/ocamlfind ocamldep -predicates ppx_driver -modules src/variant.mli > src/variant.mli.depends
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -predicates ppx_driver -w -40 -I src -o src/variant.cmi src/variant.mli
-- /home/opam/.opam/system/bin/ocamlfind ocamldep -predicates ppx_driver -modules src/variant.ml > src/variant.ml.depends
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -predicates ppx_driver -w -40 -I src -o src/variant.cmo src/variant.ml
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -pack -g -annot -bin-annot src/variant.cmo -o src/variantslib.cmo
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -a -thread src/variantslib.cmo -o src/variantslib.cma
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -for-pack Variantslib -predicates ppx_driver -w -40 -I src -o src/variant.cmx src/variant.ml
-- touch src/variantslib.mli  ; if  /home/opam/.opam/system/bin/ocamlfind ocamlopt -pack -g -annot -bin-annot -I src src/variant.cmx -o src/variantslib.cmx  ; then  rm -f src/variantslib.mli  ; else  rm -f src/variantslib.mli  ; exit 1; fi
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -a -thread src/variantslib.cmx -o src/variantslib.cmxa
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -shared -linkall -I src src/variantslib.cmxa -o src/variantslib.cmxs
-- make variantslib.install
-- make[1]: Entering directory '/home/opam/.opam/system/build/variantslib.113.24.00'
-- ocaml -I js-utils js-utils/gen_install.ml
-- make[1]: Leaving directory '/home/opam/.opam/system/build/variantslib.113.24.00'
-- W: Cannot find source file matching module 'variantslib' in library variantslib
--> installed variantslib.113.24.00
 + make  (CWD=/home/opam/.opam/system/build/ppx_driver.113.33.00)
 - ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
 - for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
@@ -3461,6 +3383,84 @@ The following actions will be performed:
 - make[1]: Leaving directory '/home/opam/.opam/system/build/ppx_driver.113.33.00'
 -> installed ppx_driver.113.33.00
 [ppx_here: ./configure] Command started
++ make  (CWD=/home/opam/.opam/system/build/variantslib.113.24.00)
+- ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
+- for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
+- ./setup.exe -configure 
+- 
+- Configuration: 
+- ocamlfind: ........................................... /home/opam/.opam/system/bin/ocamlfind
+- ocamlc: .............................................. /usr/bin/ocamlc.opt
+- ocamlopt: ............................................ /usr/bin/ocamlopt.opt
+- ocamlbuild: .......................................... /usr/bin/ocamlbuild
+- Package name: ........................................ variantslib
+- Package version: ..................................... 113.24.00
+- os_type: ............................................. Unix
+- system: .............................................. linux
+- architecture: ........................................ amd64
+- ccomp_type: .......................................... cc
+- ocaml_version: ....................................... 4.02.3
+- standard_library_default: ............................ /usr/lib/ocaml
+- standard_library: .................................... /usr/lib/ocaml
+- standard_runtime: .................................... /usr/bin/ocamlrun
+- bytecomp_c_compiler: ................................. gcc -fPIC -Os -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC
+- native_c_compiler: ................................... gcc -fPIC -Os -O -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
+- model: ............................................... default
+- ext_obj: ............................................. .o
+- ext_asm: ............................................. .s
+- ext_lib: ............................................. .a
+- ext_dll: ............................................. .so
+- default_executable_name: ............................. a.out
+- systhread_supported: ................................. true
+- Install architecture-independent files dir: .......... /usr/local
+- Install architecture-dependent files in dir: ......... $prefix
+- User executables: .................................... $exec_prefix/bin
+- System admin executables: ............................ $exec_prefix/sbin
+- Program executables: ................................. $exec_prefix/libexec
+- Read-only single-machine data: ....................... $prefix/etc
+- Modifiable architecture-independent data: ............ $prefix/com
+- Modifiable single-machine data: ...................... $prefix/var
+- Object code libraries: ............................... $exec_prefix/lib
+- Read-only arch-independent data root: ................ $prefix/share
+- Read-only architecture-independent data: ............. $datarootdir
+- Info documentation: .................................. $datarootdir/info
+- Locale-dependent data: ............................... $datarootdir/locale
+- Man documentation: ................................... $datarootdir/man
+- Documentation root: .................................. $datarootdir/doc/$pkg_name
+- HTML documentation: .................................. $docdir
+- DVI documentation: ................................... $docdir
+- PDF documentation: ................................... $docdir
+- PS documentation: .................................... $docdir
+- findlib_version: ..................................... 1.6.2
+- is_native: ........................................... true
+- suffix_program: ...................................... 
+- Remove a file.: ...................................... rm -f
+- Remove a directory.: ................................. rm -rf
+- Turn ocaml debug flag on: ............................ true
+- Turn ocaml profile flag on: .......................... false
+- Compiler support generation of .cmxs.: ............... true
+- OCamlbuild additional flags: ......................... 
+- Create documentations: ............................... true
+- Compile tests executable and library and run them: ... false
+- 
+- ./setup.exe -build 
+- ocamlfind ocamlopt unix.cmxa -I /usr/lib/ocaml/ocamlbuild /usr/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa -linkpkg myocamlbuild.ml /usr/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
+- /home/opam/.opam/system/bin/ocamlfind ocamldep -predicates ppx_driver -modules src/variant.mli > src/variant.mli.depends
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -predicates ppx_driver -w -40 -I src -o src/variant.cmi src/variant.mli
+- /home/opam/.opam/system/bin/ocamlfind ocamldep -predicates ppx_driver -modules src/variant.ml > src/variant.ml.depends
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -predicates ppx_driver -w -40 -I src -o src/variant.cmo src/variant.ml
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -pack -g -annot -bin-annot src/variant.cmo -o src/variantslib.cmo
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -a -thread src/variantslib.cmo -o src/variantslib.cma
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -for-pack Variantslib -predicates ppx_driver -w -40 -I src -o src/variant.cmx src/variant.ml
+- touch src/variantslib.mli  ; if  /home/opam/.opam/system/bin/ocamlfind ocamlopt -pack -g -annot -bin-annot -I src src/variant.cmx -o src/variantslib.cmx  ; then  rm -f src/variantslib.mli  ; else  rm -f src/variantslib.mli  ; exit 1; fi
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -a -thread src/variantslib.cmx -o src/variantslib.cmxa
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -shared -linkall -I src src/variantslib.cmxa -o src/variantslib.cmxs
+- make variantslib.install
+- make[1]: Entering directory '/home/opam/.opam/system/build/variantslib.113.24.00'
+- ocaml -I js-utils js-utils/gen_install.ml
+- make[1]: Leaving directory '/home/opam/.opam/system/build/variantslib.113.24.00'
+- W: Cannot find source file matching module 'variantslib' in library variantslib
+-> installed variantslib.113.24.00
 [ppx_inline_test: ./configure] Command started
 + ./configure "--prefix" "/home/opam/.opam/system" (CWD=/home/opam/.opam/system/build/ppx_here.113.33.00)
 - 
@@ -4109,100 +4109,6 @@ The following actions will be performed:
 - pkg_ppx_driver: ...................................... /home/opam/.opam/system/lib/ppx_driver
 - 
 [ppx_let: make] Command started
-+ make  (CWD=/home/opam/.opam/system/build/ppx_let.113.33.00)
-- ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
-- for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
-- ./setup.exe -configure 
-- 
-- Configuration: 
-- ocamlfind: ........................................... /home/opam/.opam/system/bin/ocamlfind
-- ocamlc: .............................................. /usr/bin/ocamlc.opt
-- ocamlopt: ............................................ /usr/bin/ocamlopt.opt
-- ocamlbuild: .......................................... /usr/bin/ocamlbuild
-- Package name: ........................................ ppx_let
-- Package version: ..................................... 113.33.00
-- os_type: ............................................. Unix
-- system: .............................................. linux
-- architecture: ........................................ amd64
-- ccomp_type: .......................................... cc
-- ocaml_version: ....................................... 4.02.3
-- standard_library_default: ............................ /usr/lib/ocaml
-- standard_library: .................................... /usr/lib/ocaml
-- standard_runtime: .................................... /usr/bin/ocamlrun
-- bytecomp_c_compiler: ................................. gcc -fPIC -Os -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC
-- native_c_compiler: ................................... gcc -fPIC -Os -O -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
-- model: ............................................... default
-- ext_obj: ............................................. .o
-- ext_asm: ............................................. .s
-- ext_lib: ............................................. .a
-- ext_dll: ............................................. .so
-- default_executable_name: ............................. a.out
-- systhread_supported: ................................. true
-- Install architecture-independent files dir: .......... /usr/local
-- Install architecture-dependent files in dir: ......... $prefix
-- User executables: .................................... $exec_prefix/bin
-- System admin executables: ............................ $exec_prefix/sbin
-- Program executables: ................................. $exec_prefix/libexec
-- Read-only single-machine data: ....................... $prefix/etc
-- Modifiable architecture-independent data: ............ $prefix/com
-- Modifiable single-machine data: ...................... $prefix/var
-- Object code libraries: ............................... $exec_prefix/lib
-- Read-only arch-independent data root: ................ $prefix/share
-- Read-only architecture-independent data: ............. $datarootdir
-- Info documentation: .................................. $datarootdir/info
-- Locale-dependent data: ............................... $datarootdir/locale
-- Man documentation: ................................... $datarootdir/man
-- Documentation root: .................................. $datarootdir/doc/$pkg_name
-- HTML documentation: .................................. $docdir
-- DVI documentation: ................................... $docdir
-- PDF documentation: ................................... $docdir
-- PS documentation: .................................... $docdir
-- findlib_version: ..................................... 1.6.2
-- is_native: ........................................... true
-- suffix_program: ...................................... 
-- Remove a file.: ...................................... rm -f
-- Remove a directory.: ................................. rm -rf
-- Turn ocaml debug flag on: ............................ true
-- Turn ocaml profile flag on: .......................... false
-- Compiler support generation of .cmxs.: ............... true
-- OCamlbuild additional flags: ......................... 
-- Create documentations: ............................... true
-- Compile tests executable and library and run them: ... false
-- pkg_ppx_core: ........................................ /home/opam/.opam/system/lib/ppx_core
-- pkg_ppx_driver: ...................................... /home/opam/.opam/system/lib/ppx_driver
-- 
-- ./setup.exe -build 
-- ocamlfind ocamlopt unix.cmxa -I /usr/lib/ocaml/ocamlbuild /usr/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa -linkpkg myocamlbuild.ml /usr/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
-- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_driver -package ppx_core -predicates ppx_driver -modules src/ppx_let.mli > src/ppx_let.mli.depends
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmi src/ppx_let.mli
-- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmi src/ppx_let.mli
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
-- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_driver -package ppx_core -predicates ppx_driver -modules src/ppx_let.ml > src/ppx_let.ml.depends
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmo src/ppx_let.ml
-- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmo src/ppx_let.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -a -linkall -thread src/ppx_let.cmo -o src/ppx_let.cma
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmx src/ppx_let.ml
-- + /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmx src/ppx_let.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -a -linkall -thread src/ppx_let.cmx -o src/ppx_let.cmxa
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -shared -linkall -I src src/ppx_let.cmxa -o src/ppx_let.cmxs
-- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_driver -package ppx_core -predicates ppx_driver -modules as_ppx/ppx.ml > as_ppx/ppx.ml.depends
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -I src -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I as_ppx -I src -o as_ppx/ppx.cmo as_ppx/ppx.ml
-- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -I src -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I as_ppx -I src -o as_ppx/ppx.cmo as_ppx/ppx.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -I src -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I as_ppx -I src -o as_ppx/ppx.cmx as_ppx/ppx.ml
-- + /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -I src -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I as_ppx -I src -o as_ppx/ppx.cmx as_ppx/ppx.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -linkpkg -g -thread -linkpkg -package ppx_driver -package ppx_core -predicates ppx_driver src/ppx_let.cmxa as_ppx/ppx.cmx -o as_ppx/ppx.native
-- + /home/opam/.opam/system/bin/ocamlfind ocamlopt -linkpkg -g -thread -linkpkg -package ppx_driver -package ppx_core -predicates ppx_driver src/ppx_let.cmxa as_ppx/ppx.cmx -o as_ppx/ppx.native
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
-- make ppx_let.install
-- make[1]: Entering directory '/home/opam/.opam/system/build/ppx_let.113.33.00'
-- ocaml -I js-utils js-utils/gen_install.ml
-- make[1]: Leaving directory '/home/opam/.opam/system/build/ppx_let.113.33.00'
--> installed ppx_let.113.33.00
-[ppx_pipebang: ./configure] Command started
 + make  (CWD=/home/opam/.opam/system/build/ppx_bench.113.33.00)
 - ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
 - for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
@@ -4309,7 +4215,7 @@ The following actions will be performed:
 - make[1]: Leaving directory '/home/opam/.opam/system/build/ppx_bench.113.33.00'
 - W: Cannot find source file matching module 'ppx_bench_lib' in library ppx_bench_lib
 -> installed ppx_bench.113.33.00
-[ppx_type_conv: ./configure] Command started
+[ppx_pipebang: ./configure] Command started
 + ./configure "--prefix" "/home/opam/.opam/system" (CWD=/home/opam/.opam/system/build/ppx_pipebang.113.33.00)
 - 
 - Configuration: 
@@ -4371,6 +4277,100 @@ The following actions will be performed:
 - pkg_ppx_tools_metaquot: .............................. /home/opam/.opam/system/lib/ppx_tools
 - 
 [ppx_pipebang: make] Command started
++ make  (CWD=/home/opam/.opam/system/build/ppx_let.113.33.00)
+- ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
+- for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
+- ./setup.exe -configure 
+- 
+- Configuration: 
+- ocamlfind: ........................................... /home/opam/.opam/system/bin/ocamlfind
+- ocamlc: .............................................. /usr/bin/ocamlc.opt
+- ocamlopt: ............................................ /usr/bin/ocamlopt.opt
+- ocamlbuild: .......................................... /usr/bin/ocamlbuild
+- Package name: ........................................ ppx_let
+- Package version: ..................................... 113.33.00
+- os_type: ............................................. Unix
+- system: .............................................. linux
+- architecture: ........................................ amd64
+- ccomp_type: .......................................... cc
+- ocaml_version: ....................................... 4.02.3
+- standard_library_default: ............................ /usr/lib/ocaml
+- standard_library: .................................... /usr/lib/ocaml
+- standard_runtime: .................................... /usr/bin/ocamlrun
+- bytecomp_c_compiler: ................................. gcc -fPIC -Os -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC
+- native_c_compiler: ................................... gcc -fPIC -Os -O -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
+- model: ............................................... default
+- ext_obj: ............................................. .o
+- ext_asm: ............................................. .s
+- ext_lib: ............................................. .a
+- ext_dll: ............................................. .so
+- default_executable_name: ............................. a.out
+- systhread_supported: ................................. true
+- Install architecture-independent files dir: .......... /usr/local
+- Install architecture-dependent files in dir: ......... $prefix
+- User executables: .................................... $exec_prefix/bin
+- System admin executables: ............................ $exec_prefix/sbin
+- Program executables: ................................. $exec_prefix/libexec
+- Read-only single-machine data: ....................... $prefix/etc
+- Modifiable architecture-independent data: ............ $prefix/com
+- Modifiable single-machine data: ...................... $prefix/var
+- Object code libraries: ............................... $exec_prefix/lib
+- Read-only arch-independent data root: ................ $prefix/share
+- Read-only architecture-independent data: ............. $datarootdir
+- Info documentation: .................................. $datarootdir/info
+- Locale-dependent data: ............................... $datarootdir/locale
+- Man documentation: ................................... $datarootdir/man
+- Documentation root: .................................. $datarootdir/doc/$pkg_name
+- HTML documentation: .................................. $docdir
+- DVI documentation: ................................... $docdir
+- PDF documentation: ................................... $docdir
+- PS documentation: .................................... $docdir
+- findlib_version: ..................................... 1.6.2
+- is_native: ........................................... true
+- suffix_program: ...................................... 
+- Remove a file.: ...................................... rm -f
+- Remove a directory.: ................................. rm -rf
+- Turn ocaml debug flag on: ............................ true
+- Turn ocaml profile flag on: .......................... false
+- Compiler support generation of .cmxs.: ............... true
+- OCamlbuild additional flags: ......................... 
+- Create documentations: ............................... true
+- Compile tests executable and library and run them: ... false
+- pkg_ppx_core: ........................................ /home/opam/.opam/system/lib/ppx_core
+- pkg_ppx_driver: ...................................... /home/opam/.opam/system/lib/ppx_driver
+- 
+- ./setup.exe -build 
+- ocamlfind ocamlopt unix.cmxa -I /usr/lib/ocaml/ocamlbuild /usr/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa -linkpkg myocamlbuild.ml /usr/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
+- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_driver -package ppx_core -predicates ppx_driver -modules src/ppx_let.mli > src/ppx_let.mli.depends
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmi src/ppx_let.mli
+- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmi src/ppx_let.mli
+- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
+- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_driver -package ppx_core -predicates ppx_driver -modules src/ppx_let.ml > src/ppx_let.ml.depends
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmo src/ppx_let.ml
+- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmo src/ppx_let.ml
+- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -a -linkall -thread src/ppx_let.cmo -o src/ppx_let.cma
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmx src/ppx_let.ml
+- + /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_let.cmx src/ppx_let.ml
+- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -a -linkall -thread src/ppx_let.cmx -o src/ppx_let.cmxa
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -shared -linkall -I src src/ppx_let.cmxa -o src/ppx_let.cmxs
+- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_driver -package ppx_core -predicates ppx_driver -modules as_ppx/ppx.ml > as_ppx/ppx.ml.depends
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -I src -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I as_ppx -I src -o as_ppx/ppx.cmo as_ppx/ppx.ml
+- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -I src -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I as_ppx -I src -o as_ppx/ppx.cmo as_ppx/ppx.ml
+- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -I src -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I as_ppx -I src -o as_ppx/ppx.cmx as_ppx/ppx.ml
+- + /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -I src -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I as_ppx -I src -o as_ppx/ppx.cmx as_ppx/ppx.ml
+- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -linkpkg -g -thread -linkpkg -package ppx_driver -package ppx_core -predicates ppx_driver src/ppx_let.cmxa as_ppx/ppx.cmx -o as_ppx/ppx.native
+- + /home/opam/.opam/system/bin/ocamlfind ocamlopt -linkpkg -g -thread -linkpkg -package ppx_driver -package ppx_core -predicates ppx_driver src/ppx_let.cmxa as_ppx/ppx.cmx -o as_ppx/ppx.native
+- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
+- make ppx_let.install
+- make[1]: Entering directory '/home/opam/.opam/system/build/ppx_let.113.33.00'
+- ocaml -I js-utils js-utils/gen_install.ml
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ppx_let.113.33.00'
+-> installed ppx_let.113.33.00
+[ppx_type_conv: ./configure] Command started
 + ./configure "--prefix" "/home/opam/.opam/system" (CWD=/home/opam/.opam/system/build/ppx_type_conv.113.33.00)
 - 
 - Configuration: 
@@ -4601,6 +4601,7 @@ The following actions will be performed:
 - /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_tools.metaquot -package ppx_driver -package ppx_core -predicates ppx_driver -modules src/std.ml > src/std.ml.depends
 - /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_tools.metaquot -package ppx_driver -package ppx_core -predicates ppx_driver -modules src/type_conv.mli > src/type_conv.mli.depends
 - /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_tools.metaquot -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/type_conv.cmi src/type_conv.mli
+- W: Cannot find source file matching module 'ppx_type_conv' in library ppx_type_conv
 - + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_tools.metaquot -package ppx_driver -package ppx_core -predicates ppx_driver -w -40 -I src -o src/type_conv.cmi src/type_conv.mli
 - findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
 - /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_tools.metaquot -package ppx_driver -package ppx_core -predicates ppx_driver -modules src/type_conv.ml > src/type_conv.ml.depends
@@ -4622,7 +4623,6 @@ The following actions will be performed:
 - + /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_tools.metaquot -package ppx_driver -package ppx_core -for-pack Ppx_type_conv -predicates ppx_driver -w -40 -I src -o src/type_conv.cmx src/type_conv.ml
 - findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
 - /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_tools.metaquot -package ppx_driver -package ppx_core -for-pack Ppx_type_conv -predicates ppx_driver -w -40 -I src -o src/std.cmx src/std.ml
-- W: Cannot find source file matching module 'ppx_type_conv' in library ppx_type_conv
 - + /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_tools.metaquot -package ppx_driver -package ppx_core -for-pack Ppx_type_conv -predicates ppx_driver -w -40 -I src -o src/std.cmx src/std.ml
 - findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
 - touch src/ppx_type_conv.mli  ; if  /home/opam/.opam/system/bin/ocamlfind ocamlopt -pack -g -annot -bin-annot -I src src/ignore_unused_warning.cmx src/type_conv.cmx src/std.cmx -o src/ppx_type_conv.cmx  ; then  rm -f src/ppx_type_conv.mli  ; else  rm -f src/ppx_type_conv.mli  ; exit 1; fi
@@ -4768,6 +4768,91 @@ The following actions will be performed:
 - pkg_ppx_type_conv: ................................... /home/opam/.opam/system/lib/ppx_type_conv
 - 
 [ppx_bin_prot: make] Command started
++ make  (CWD=/home/opam/.opam/system/build/ppx_bin_prot.113.33.00)
+- ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
+- for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
+- ./setup.exe -configure 
+- 
+- Configuration: 
+- ocamlfind: ........................................... /home/opam/.opam/system/bin/ocamlfind
+- ocamlc: .............................................. /usr/bin/ocamlc.opt
+- ocamlopt: ............................................ /usr/bin/ocamlopt.opt
+- ocamlbuild: .......................................... /usr/bin/ocamlbuild
+- Package name: ........................................ ppx_bin_prot
+- Package version: ..................................... 113.33.00
+- os_type: ............................................. Unix
+- system: .............................................. linux
+- architecture: ........................................ amd64
+- ccomp_type: .......................................... cc
+- ocaml_version: ....................................... 4.02.3
+- standard_library_default: ............................ /usr/lib/ocaml
+- standard_library: .................................... /usr/lib/ocaml
+- standard_runtime: .................................... /usr/bin/ocamlrun
+- bytecomp_c_compiler: ................................. gcc -fPIC -Os -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC
+- native_c_compiler: ................................... gcc -fPIC -Os -O -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
+- model: ............................................... default
+- ext_obj: ............................................. .o
+- ext_asm: ............................................. .s
+- ext_lib: ............................................. .a
+- ext_dll: ............................................. .so
+- default_executable_name: ............................. a.out
+- systhread_supported: ................................. true
+- Install architecture-independent files dir: .......... /usr/local
+- Install architecture-dependent files in dir: ......... $prefix
+- User executables: .................................... $exec_prefix/bin
+- System admin executables: ............................ $exec_prefix/sbin
+- Program executables: ................................. $exec_prefix/libexec
+- Read-only single-machine data: ....................... $prefix/etc
+- Modifiable architecture-independent data: ............ $prefix/com
+- Modifiable single-machine data: ...................... $prefix/var
+- Object code libraries: ............................... $exec_prefix/lib
+- Read-only arch-independent data root: ................ $prefix/share
+- Read-only architecture-independent data: ............. $datarootdir
+- Info documentation: .................................. $datarootdir/info
+- Locale-dependent data: ............................... $datarootdir/locale
+- Man documentation: ................................... $datarootdir/man
+- Documentation root: .................................. $datarootdir/doc/$pkg_name
+- HTML documentation: .................................. $docdir
+- DVI documentation: ................................... $docdir
+- PDF documentation: ................................... $docdir
+- PS documentation: .................................... $docdir
+- findlib_version: ..................................... 1.6.2
+- is_native: ........................................... true
+- suffix_program: ...................................... 
+- Remove a file.: ...................................... rm -f
+- Remove a directory.: ................................. rm -rf
+- Turn ocaml debug flag on: ............................ true
+- Turn ocaml profile flag on: .......................... false
+- Compiler support generation of .cmxs.: ............... true
+- OCamlbuild additional flags: ......................... 
+- Create documentations: ............................... true
+- Compile tests executable and library and run them: ... false
+- pkg_ppx_core: ........................................ /home/opam/.opam/system/lib/ppx_core
+- pkg_ppx_tools_metaquot: .............................. /home/opam/.opam/system/lib/ppx_tools
+- pkg_ppx_type_conv: ................................... /home/opam/.opam/system/lib/ppx_type_conv
+- 
+- ./setup.exe -build 
+- ocamlfind ocamlopt unix.cmxa -I /usr/lib/ocaml/ocamlbuild /usr/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa -linkpkg myocamlbuild.ml /usr/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
+- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -modules src/ppx_bin_prot.mli > src/ppx_bin_prot.mli.depends
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmi src/ppx_bin_prot.mli
+- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmi src/ppx_bin_prot.mli
+- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
+- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -modules src/ppx_bin_prot.ml > src/ppx_bin_prot.ml.depends
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmo src/ppx_bin_prot.ml
+- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmo src/ppx_bin_prot.ml
+- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -a -linkall -thread src/ppx_bin_prot.cmo -o src/ppx_bin_prot.cma
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmx src/ppx_bin_prot.ml
+- + /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmx src/ppx_bin_prot.ml
+- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -a -linkall -thread src/ppx_bin_prot.cmx -o src/ppx_bin_prot.cmxa
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -shared -linkall -I src src/ppx_bin_prot.cmxa -o src/ppx_bin_prot.cmxs
+- make ppx_bin_prot.install
+- make[1]: Entering directory '/home/opam/.opam/system/build/ppx_bin_prot.113.33.00'
+- ocaml -I js-utils js-utils/gen_install.ml
+- make[1]: Leaving directory '/home/opam/.opam/system/build/ppx_bin_prot.113.33.00'
+-> installed ppx_bin_prot.113.33.00
+[ppx_enumerate: ./configure] Command started
 + make  (CWD=/home/opam/.opam/system/build/ppx_compare.113.33.00)
 - ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
 - for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
@@ -4867,91 +4952,6 @@ The following actions will be performed:
 - ocaml -I js-utils js-utils/gen_install.ml
 - make[1]: Leaving directory '/home/opam/.opam/system/build/ppx_compare.113.33.00'
 -> installed ppx_compare.113.33.00
-[ppx_enumerate: ./configure] Command started
-+ make  (CWD=/home/opam/.opam/system/build/ppx_bin_prot.113.33.00)
-- ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
-- for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
-- ./setup.exe -configure 
-- 
-- Configuration: 
-- ocamlfind: ........................................... /home/opam/.opam/system/bin/ocamlfind
-- ocamlc: .............................................. /usr/bin/ocamlc.opt
-- ocamlopt: ............................................ /usr/bin/ocamlopt.opt
-- ocamlbuild: .......................................... /usr/bin/ocamlbuild
-- Package name: ........................................ ppx_bin_prot
-- Package version: ..................................... 113.33.00
-- os_type: ............................................. Unix
-- system: .............................................. linux
-- architecture: ........................................ amd64
-- ccomp_type: .......................................... cc
-- ocaml_version: ....................................... 4.02.3
-- standard_library_default: ............................ /usr/lib/ocaml
-- standard_library: .................................... /usr/lib/ocaml
-- standard_runtime: .................................... /usr/bin/ocamlrun
-- bytecomp_c_compiler: ................................. gcc -fPIC -Os -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC
-- native_c_compiler: ................................... gcc -fPIC -Os -O -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT
-- model: ............................................... default
-- ext_obj: ............................................. .o
-- ext_asm: ............................................. .s
-- ext_lib: ............................................. .a
-- ext_dll: ............................................. .so
-- default_executable_name: ............................. a.out
-- systhread_supported: ................................. true
-- Install architecture-independent files dir: .......... /usr/local
-- Install architecture-dependent files in dir: ......... $prefix
-- User executables: .................................... $exec_prefix/bin
-- System admin executables: ............................ $exec_prefix/sbin
-- Program executables: ................................. $exec_prefix/libexec
-- Read-only single-machine data: ....................... $prefix/etc
-- Modifiable architecture-independent data: ............ $prefix/com
-- Modifiable single-machine data: ...................... $prefix/var
-- Object code libraries: ............................... $exec_prefix/lib
-- Read-only arch-independent data root: ................ $prefix/share
-- Read-only architecture-independent data: ............. $datarootdir
-- Info documentation: .................................. $datarootdir/info
-- Locale-dependent data: ............................... $datarootdir/locale
-- Man documentation: ................................... $datarootdir/man
-- Documentation root: .................................. $datarootdir/doc/$pkg_name
-- HTML documentation: .................................. $docdir
-- DVI documentation: ................................... $docdir
-- PDF documentation: ................................... $docdir
-- PS documentation: .................................... $docdir
-- findlib_version: ..................................... 1.6.2
-- is_native: ........................................... true
-- suffix_program: ...................................... 
-- Remove a file.: ...................................... rm -f
-- Remove a directory.: ................................. rm -rf
-- Turn ocaml debug flag on: ............................ true
-- Turn ocaml profile flag on: .......................... false
-- Compiler support generation of .cmxs.: ............... true
-- OCamlbuild additional flags: ......................... 
-- Create documentations: ............................... true
-- Compile tests executable and library and run them: ... false
-- pkg_ppx_core: ........................................ /home/opam/.opam/system/lib/ppx_core
-- pkg_ppx_tools_metaquot: .............................. /home/opam/.opam/system/lib/ppx_tools
-- pkg_ppx_type_conv: ................................... /home/opam/.opam/system/lib/ppx_type_conv
-- 
-- ./setup.exe -build 
-- ocamlfind ocamlopt unix.cmxa -I /usr/lib/ocaml/ocamlbuild /usr/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa -linkpkg myocamlbuild.ml /usr/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
-- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -modules src/ppx_bin_prot.mli > src/ppx_bin_prot.mli.depends
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmi src/ppx_bin_prot.mli
-- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmi src/ppx_bin_prot.mli
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
-- /home/opam/.opam/system/bin/ocamlfind ocamldep -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -modules src/ppx_bin_prot.ml > src/ppx_bin_prot.ml.depends
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmo src/ppx_bin_prot.ml
-- + /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmo src/ppx_bin_prot.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -a -linkall -thread src/ppx_bin_prot.cmo -o src/ppx_bin_prot.cma
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmx src/ppx_bin_prot.ml
-- + /home/opam/.opam/system/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -no-alias-deps -thread -package ppx_type_conv -package ppx_tools.metaquot -package ppx_core -predicates ppx_driver -w -40 -I src -o src/ppx_bin_prot.cmx src/ppx_bin_prot.ml
-- findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml/compiler-libs, /usr/lib/ocaml
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -a -linkall -thread src/ppx_bin_prot.cmx -o src/ppx_bin_prot.cmxa
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -shared -linkall -I src src/ppx_bin_prot.cmxa -o src/ppx_bin_prot.cmxs
-- make ppx_bin_prot.install
-- make[1]: Entering directory '/home/opam/.opam/system/build/ppx_bin_prot.113.33.00'
-- ocaml -I js-utils js-utils/gen_install.ml
-- make[1]: Leaving directory '/home/opam/.opam/system/build/ppx_bin_prot.113.33.00'
--> installed ppx_bin_prot.113.33.00
 [ppx_fields_conv: ./configure] Command started
 + ./configure "--prefix" "/home/opam/.opam/system" (CWD=/home/opam/.opam/system/build/ppx_enumerate.113.33.00)
 - 
@@ -6568,11 +6568,11 @@ The following actions will be performed:
 - /home/opam/.opam/system/bin/ocamlfind ocamlc -g -c matcher/fnmatch_stub.c
 - mv fnmatch_stub.o matcher/fnmatch_stub.o
 - /home/opam/.opam/system/bin/ocamlfind ocamlmklib -o matcher/expect_test_matcher_stubs matcher/fnmatch_stub.o
-- /home/opam/.opam/system/bin/ocamlfind ocamlopt -predicates ppx_driver -linkpkg -o ppx-driver-ppx_assert+ppx_compare+ppx_custom_printf+ppx_inline_test+ppx_sexp_conv+ppx_variants_conv.native -package ppx_assert,ppx_compare,ppx_custom_printf,ppx_inline_test,ppx_sexp_conv,ppx_variants_conv ppx_driver_runner.cmxa
 - W: Cannot find source file matching module 'ppx_expect' in library ppx_expect
 - W: Cannot find source file matching module 'Expectation_lifter' in library ppx_expect
 - W: Cannot find source file matching module 'expect_test_matcher' in library expect_test_matcher
 - W: Cannot find source file matching module 'expect_test_common' in library expect_test_common
+- /home/opam/.opam/system/bin/ocamlfind ocamlopt -predicates ppx_driver -linkpkg -o ppx-driver-ppx_assert+ppx_compare+ppx_custom_printf+ppx_inline_test+ppx_sexp_conv+ppx_variants_conv.native -package ppx_assert,ppx_compare,ppx_custom_printf,ppx_inline_test,ppx_sexp_conv,ppx_variants_conv ppx_driver_runner.cmxa
 - + /home/opam/.opam/system/bin/ocamlfind ocamlopt -predicates ppx_driver -linkpkg -o ppx-driver-ppx_assert+ppx_compare+ppx_custom_printf+ppx_inline_test+ppx_sexp_conv+ppx_variants_conv.native -package ppx_assert,ppx_compare,ppx_custom_printf,ppx_inline_test,ppx_sexp_conv,ppx_variants_conv ppx_driver_runner.cmxa
 - findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /usr/lib/ocaml, /usr/lib/ocaml/compiler-libs
 - /home/opam/.opam/system/bin/ocamlfind ocamldep -package sexplib -package variantslib -package re -package ppx_inline_test.runtime-lib -package ppx_assert.runtime-lib -pp './ppx-driver-ppx_assert+ppx_compare+ppx_custom_printf+ppx_inline_test+ppx_sexp_conv+ppx_variants_conv.native -dump-ast -inline-test-drop -inline-test-lib fake_for_drop' -predicates ppx_driver -modules matcher/choose_tag.mli > matcher/choose_tag.mli.depends
@@ -9402,8 +9402,8 @@ The following actions will be performed:
 - 
 - ./setup.exe -build 
 - ocamlfind ocamlopt -package unix -package ocamlbuild -linkpkg -package ppx_driver.ocamlbuild myocamlbuild.ml /usr/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
-- /home/opam/.opam/system/bin/ocamlfind ocamlc -g -I lib -package core -thread -c src/dump_core_on_job_delay_stubs.c
 - W: Cannot find source file matching module 'async_unix' in library async_unix
+- /home/opam/.opam/system/bin/ocamlfind ocamlc -g -I lib -package core -thread -c src/dump_core_on_job_delay_stubs.c
 - mv dump_core_on_job_delay_stubs.o src/dump_core_on_job_delay_stubs.o
 - /home/opam/.opam/system/bin/ocamlfind ocamlmklib -o src/async_unix_stubs src/dump_core_on_job_delay_stubs.o
 - /home/opam/.opam/system/bin/ocamlfind ocamldep -package variantslib -package typerep -package sexplib -package ppx_inline_test.runtime-lib -package ppx_expect.collector -package ppx_bench.runtime-lib -package ppx_assert.runtime-lib -package fieldslib -package core -package bin_prot -package async_kernel -pp 'ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop' -modules src/assign_try_with_log_exn.mli > src/assign_try_with_log_exn.mli.depends
@@ -9759,8 +9759,8 @@ The following actions will be performed:
 - 
 - ./setup.exe -build 
 - ocamlfind ocamlopt -package unix -package ocamlbuild -linkpkg -package ppx_driver.ocamlbuild myocamlbuild.ml /usr/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
-- W: Cannot find source file matching module 'async_extra' in library async_extra
 - /home/opam/.opam/system/bin/ocamlfind ocamlc -g -I src -package core -thread -c src/rpc_transport_low_latency_stubs.c
+- W: Cannot find source file matching module 'async_extra' in library async_extra
 - mv rpc_transport_low_latency_stubs.o src/rpc_transport_low_latency_stubs.o
 - /home/opam/.opam/system/bin/ocamlfind ocamlmklib -o src/async_extra_stubs src/rpc_transport_low_latency_stubs.o
 - /home/opam/.opam/system/bin/ocamlfind ocamldep -package variantslib -package typerep -package sexplib -package ppx_inline_test.runtime-lib -package ppx_expect.collector -package ppx_bench.runtime-lib -package ppx_assert.runtime-lib -package fieldslib -package core -package bin_prot -package async_unix -package async_rpc_kernel -package async_kernel -pp 'ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop' -predicates ppx_driver -modules src/bus.mli > src/bus.mli.depends
@@ -10070,10 +10070,10 @@ The following actions will be performed:
 - 
 - ./setup.exe -build 
 - ocamlfind ocamlopt -package unix -package ocamlbuild -linkpkg -package ppx_driver.ocamlbuild myocamlbuild.ml /usr/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
+- W: Cannot find source file matching module 'async' in library async
 - /home/opam/.opam/system/bin/ocamlfind ocamldep -package variantslib -package typerep -package sexplib -package ppx_inline_test.runtime-lib -package ppx_expect.collector -package ppx_bench.runtime-lib -package ppx_assert.runtime-lib -package fieldslib -package core -package bin_prot -package async_unix -package async_kernel -package async_extra -pp 'ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop' -predicates ppx_driver -modules src/clock_unit_tests.ml > src/clock_unit_tests.ml.depends
 - /home/opam/.opam/system/bin/ocamlfind ocamldep -package variantslib -package typerep -package sexplib -package ppx_inline_test.runtime-lib -package ppx_expect.collector -package ppx_bench.runtime-lib -package ppx_assert.runtime-lib -package fieldslib -package core -package bin_prot -package async_unix -package async_kernel -package async_extra -pp 'ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop' -predicates ppx_driver -modules src/std.ml > src/std.ml.depends
 - /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package variantslib -package typerep -package sexplib -package ppx_inline_test.runtime-lib -package ppx_expect.collector -package ppx_bench.runtime-lib -package ppx_assert.runtime-lib -package fieldslib -package core -package bin_prot -package async_unix -package async_kernel -package async_extra -pp 'ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop' -predicates ppx_driver -w -40 -I src -o src/std.cmo src/std.ml
-- W: Cannot find source file matching module 'async' in library async
 - /home/opam/.opam/system/bin/ocamlfind ocamldep -package variantslib -package typerep -package sexplib -package ppx_inline_test.runtime-lib -package ppx_expect.collector -package ppx_bench.runtime-lib -package ppx_assert.runtime-lib -package fieldslib -package core -package bin_prot -package async_unix -package async_kernel -package async_extra -pp 'ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop' -predicates ppx_driver -modules src/scheduler_unit_tests.ml > src/scheduler_unit_tests.ml.depends
 - /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package variantslib -package typerep -package sexplib -package ppx_inline_test.runtime-lib -package ppx_expect.collector -package ppx_bench.runtime-lib -package ppx_assert.runtime-lib -package fieldslib -package core -package bin_prot -package async_unix -package async_kernel -package async_extra -pp 'ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop' -predicates ppx_driver -w -40 -I src -o src/clock_unit_tests.cmo src/clock_unit_tests.ml
 - /home/opam/.opam/system/bin/ocamlfind ocamlc -c -g -annot -bin-annot -no-alias-deps -thread -package variantslib -package typerep -package sexplib -package ppx_inline_test.runtime-lib -package ppx_expect.collector -package ppx_bench.runtime-lib -package ppx_assert.runtime-lib -package fieldslib -package core -package bin_prot -package async_unix -package async_kernel -package async_extra -pp 'ppx-jane -dump-ast -inline-test-drop -bench-drop -inline-test-lib fake_for_drop' -predicates ppx_driver -w -40 -I src -o src/scheduler_unit_tests.cmo src/scheduler_unit_tests.ml
@@ -10343,6 +10343,6 @@ The following actions will be performed:
 - make[1]: Leaving directory '/home/opam/.opam/system/build/async_ssl.113.33.00'
 -> installed async_ssl.113.33.00
 Done.
- ---> e7e2c65512a7
-Removing intermediate container 3e5c8bcde31e
-Successfully built e7e2c65512a7
+ ---> d98ea362724f
+Removing intermediate container 46635c3a3ce9
+Successfully built d98ea362724f
