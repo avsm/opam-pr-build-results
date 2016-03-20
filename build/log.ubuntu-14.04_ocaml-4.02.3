@@ -17,41 +17,45 @@ Digest: sha256:c5bf8ad3ab388dc42dd24286fa46e18d9a2013fe8f40e23ec5e096ca209721f3
 Status: Image is up to date for ocaml/opam:ubuntu-14.04_ocaml-4.02.3
  ---> 47af9997d314
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lablgtk-depext && opam update -u" &&   sudo -u opam sh -c "opam depext -u lablgtk" &&   sudo -u opam sh -c "opam install -y -j 2 -v lablgtk"
- ---> Running in 69f8ccc06995
+ ---> Running in 3bad264b8ab4
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   8223d0d..8851f94  master     -> origin/master
-[0mUpdating 8223d0d..8851f94
+[0m[91m   8223d0d..5e91729  master     -> origin/master
+[0mUpdating 8223d0d..5e91729
 Fast-forward
- packages/async_ssl/async_ssl.113.24.00/opam        |  6 +---
- packages/async_ssl/async_ssl.113.33.00/opam        |  6 +---
+ packages/async_ssl/async_ssl.113.24.00/opam        |  6 +--
+ packages/async_ssl/async_ssl.113.33.00/opam        |  6 +--
  packages/conf-m4/conf-m4.1/opam                    |  1 +
  packages/conf-ncurses/conf-ncurses.1/opam          |  1 +
  packages/conf-openssl/conf-openssl.1/opam          |  1 +
  packages/conf-pkg-config/conf-pkg-config.1.0/opam  |  1 +
- packages/dbm/dbm.1.0/files/mkdir-stublibs.patch    | 17 ++++++++++
+ packages/dbm/dbm.1.0/files/mkdir-stublibs.patch    | 17 ++++++++
  packages/dbm/dbm.1.0/opam                          |  1 +
- packages/mirage/mirage.2.7.1/opam                  | 32 -------------------
- packages/mirage/mirage.2.7.1/url                   |  2 --
+ packages/mirage/mirage.2.7.1/opam                  | 32 --------------
+ packages/mirage/mirage.2.7.1/url                   |  2 -
  .../mirage/{mirage.2.7.1 => mirage.2.7.2}/descr    |  0
- packages/mirage/mirage.2.7.2/opam                  | 36 ++++++++++++++++++++++
- packages/mirage/mirage.2.7.2/url                   |  2 ++
+ packages/mirage/mirage.2.7.2/opam                  | 36 +++++++++++++++
+ packages/mirage/mirage.2.7.2/url                   |  2 +
  packages/re2/re2.112.06.00/opam                    |  2 +-
  packages/re2/re2.112.35.00/opam                    |  2 +-
  packages/re2/re2.113.00.00/opam                    |  2 +-
  packages/re2/re2.113.24.00/opam                    |  2 +-
- packages/re2/re2.113.33.00/opam                    |  4 +++
+ packages/re2/re2.113.33.00/opam                    |  4 ++
  .../shared-memory-ring.1.3.0/descr                 |  3 ++
  .../shared-memory-ring.1.3.0/findlib               |  1 +
- .../shared-memory-ring.1.3.0/opam                  | 26 ++++++++++++++++
- .../shared-memory-ring.1.3.0/url                   |  2 ++
- packages/vmnet/vmnet.1.0.0/opam                    |  6 +++-
- packages/vmnet/vmnet.1.0.1/opam                    |  6 +++-
- packages/vmnet/vmnet.1.0.2/opam                    |  6 +++-
- packages/vmnet/vmnet.1.1.0/descr                   | 30 ++++++++++++++++++
- packages/vmnet/vmnet.1.1.0/opam                    | 28 +++++++++++++++++
- packages/vmnet/vmnet.1.1.0/url                     |  2 ++
- 28 files changed, 177 insertions(+), 51 deletions(-)
+ .../shared-memory-ring.1.3.0/opam                  | 26 +++++++++++
+ .../shared-memory-ring.1.3.0/url                   |  2 +
+ packages/sundialsml/sundialsml.2.6.2p0/descr       | 31 +++++++++++++
+ packages/sundialsml/sundialsml.2.6.2p0/findlib     |  1 +
+ packages/sundialsml/sundialsml.2.6.2p0/opam        | 51 ++++++++++++++++++++++
+ packages/sundialsml/sundialsml.2.6.2p0/url         |  2 +
+ packages/vmnet/vmnet.1.0.0/opam                    |  6 ++-
+ packages/vmnet/vmnet.1.0.1/opam                    |  6 ++-
+ packages/vmnet/vmnet.1.0.2/opam                    |  6 ++-
+ packages/vmnet/vmnet.1.1.0/descr                   | 30 +++++++++++++
+ packages/vmnet/vmnet.1.1.0/opam                    | 28 ++++++++++++
+ packages/vmnet/vmnet.1.1.0/url                     |  2 +
+ 32 files changed, 262 insertions(+), 51 deletions(-)
  create mode 100644 packages/dbm/dbm.1.0/files/mkdir-stublibs.patch
  delete mode 100644 packages/mirage/mirage.2.7.1/opam
  delete mode 100644 packages/mirage/mirage.2.7.1/url
@@ -62,6 +66,10 @@ Fast-forward
  create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/findlib
  create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/opam
  create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/url
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/descr
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/findlib
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/opam
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/url
  create mode 100644 packages/vmnet/vmnet.1.1.0/descr
  create mode 100644 packages/vmnet/vmnet.1.1.0/opam
  create mode 100644 packages/vmnet/vmnet.1.1.0/url
@@ -138,7 +146,7 @@ Hit http://archive.ubuntu.com trusty/universe Sources
 Hit http://archive.ubuntu.com trusty/main amd64 Packages
 Hit http://archive.ubuntu.com trusty/restricted amd64 Packages
 Hit http://archive.ubuntu.com trusty/universe amd64 Packages
-Fetched 1973 kB in 22s (88.8 kB/s)
+Fetched 1973 kB in 8s (223 kB/s)
 Reading package lists...
 # OS package update successful
 The following command needs to be run through "sudo":
@@ -610,13 +618,18 @@ The following actions will be performed:
 [lablgtk: http] Command started
 [ocamlfind: http] Command started
 [ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
 [lablgtk: http] Command started
 [lablgtk.2.18.3] https://forge.ocamlcore.org/frs/download.php/1479/lablgtk-2.18.3.tar.gz downloaded
-[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
 
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [conf-m4: sh echo | m4] Command started
 [conf-pkg-config: pkg-config] Command started
++ sh "-exc" "echo | m4" (CWD=/home/opam/.opam/4.02.3/build/conf-m4.1)
+- 
+- + echo
+- + m4
+-> installed conf-m4.1
 + pkg-config "--help" (CWD=/home/opam/.opam/4.02.3/build/conf-pkg-config.1.0)
 - Usage: pkg-config [OPTION...]
 -       --version                               output version of pkg-config
@@ -674,11 +687,6 @@ The following actions will be performed:
 -       --usage                                 Display brief usage message
 -> installed conf-pkg-config.1.0
 [conf-ncurses: pkg-config ncurses] Command started
-+ sh "-exc" "echo | m4" (CWD=/home/opam/.opam/4.02.3/build/conf-m4.1)
-- 
-- + echo
-- + m4
--> installed conf-m4.1
 + pkg-config "ncurses" (CWD=/home/opam/.opam/4.02.3/build/conf-ncurses.1)
 -> installed conf-ncurses.1
 [ocamlfind: ./configure] Command started
@@ -712,8 +720,7 @@ The following actions will be performed:
 - Configuration for ocamlbuild written to site-lib-src/ocamlbuild/META
 - Configuration for compiler-libs written to site-lib-src/compiler-libs/META
 - Configuration for bytes written to site-lib-src/bytes/META
-- Detecting compiler arguments: (extractor built) 
-- ok
+- Detecting compiler arguments: (extractor built) ok
 - 
 - About the OCAML core installation:
 -     Standard library:      /home/opam/.opam/4.02.3/lib/ocaml
@@ -765,18 +772,18 @@ The following actions will be performed:
 - ocamlc -I +compiler-libs -c fl_package_base.mli
 - ocamlc -I +compiler-libs -g -c fl_package_base.ml
 - ocamlc -I +compiler-libs -c findlib.mli
-- ocamlc -I +compiler-libs -g -c findlib.ml
 - Makefile:175: depend: No such file or directory
+- ocamlc -I +compiler-libs -g -c findlib.ml
 - ocamlc -I +compiler-libs -g -c fl_args.ml
 - ocamlc -I +compiler-libs -g -c fl_lint.ml
 - ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
 - ocamlc -I +compiler-libs -g -c ocaml_args.ml
 - ocamlc -I +compiler-libs -g -c frontend.ml
+- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
+- 	           ocaml_args.cmo frontend.cmo
 - File "frontend.ml", line 1787, characters 16-29:
 - Warning 3: deprecated: String.create
 - Use Bytes.create instead.
-- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
-- 	           ocaml_args.cmo frontend.cmo
 - if [ "true" = "true" ]; then                 \
 - 		cp topfind.ml.in topfind.ml;                             \
 - 	else                                                             \
@@ -932,8 +939,7 @@ The following actions will be performed:
 - checking whether we are cross compiling... no
 - checking for suffix of object files... o
 - checking whether we are using the GNU C compiler... yes
-- checking whether gcc accepts -g... 
-- yes
+- checking whether gcc accepts -g... yes
 - checking for gcc option to accept ISO C89... none needed
 - checking platform... Unix
 - checking native dynlink... checking for pkg-config... /usr/bin/pkg-config
@@ -1049,6 +1055,22 @@ The following actions will be performed:
 - ocamlc.opt   -w s -c gobject.mli
 - ocamlc.opt   -w s -c  gobject.ml
 - ocamlc.opt   -w s -c  gdkEnums.ml
+- ocamlc.opt   -w s -c  pangoEnums.ml
+- ocamlc.opt   -w s -c  gtkEnums.ml
+- ocamlc.opt   -w s -c  pango.ml
+- ocamlc.opt   -w s -c gdk.mli
+- ocamlc.opt   -w s -c  gdk.ml
+- ocamlc.opt   -w s -c  gdkEvent.ml
+- ocamlc.opt   -w s -c  gdkKeysyms.ml
+- ocamlc.opt   -w s -c gdkPixbuf.mli
+- ocamlc.opt   -w s -c  gdkPixbuf.ml
+- ocamlc.opt   -w s -c  gtk.ml
+- camlp4o pa_macro.cmo -D HAS_PRINTEXC_BACKTRACE -impl gtkSignal.ml4 -o gtkSignal.ml
+- ocamlc.opt   -w s -c gtkSignal.mli
+- ocamlc.opt   -w s -c  gtkSignal.ml
+- ocamlc.opt   -w s -c  gtkStock.ml
+- ocamlc.opt   -w s -c  gtkObject.ml
+- ocamlc.opt -c -pp "camlp4o -impl" -impl propcc.ml4
 - File "gpointer.ml", line 144, characters 10-23:
 - Warning 3: deprecated: StdLabels.String.create
 - Use BytesLabels.create instead.
@@ -1067,22 +1089,6 @@ The following actions will be performed:
 - File "gutf8.ml", line 145, characters 11-23:
 - Warning 3: deprecated: Array.create
 - Use Array.make instead.
-- ocamlc.opt   -w s -c  pangoEnums.ml
-- ocamlc.opt   -w s -c  gtkEnums.ml
-- ocamlc.opt   -w s -c  pango.ml
-- ocamlc.opt   -w s -c gdk.mli
-- ocamlc.opt   -w s -c  gdk.ml
-- ocamlc.opt   -w s -c  gdkEvent.ml
-- ocamlc.opt   -w s -c  gdkKeysyms.ml
-- ocamlc.opt   -w s -c gdkPixbuf.mli
-- ocamlc.opt   -w s -c  gdkPixbuf.ml
-- ocamlc.opt   -w s -c  gtk.ml
-- camlp4o pa_macro.cmo -D HAS_PRINTEXC_BACKTRACE -impl gtkSignal.ml4 -o gtkSignal.ml
-- ocamlc.opt   -w s -c gtkSignal.mli
-- ocamlc.opt   -w s -c  gtkSignal.ml
-- ocamlc.opt   -w s -c  gtkStock.ml
-- ocamlc.opt   -w s -c  gtkObject.ml
-- ocamlc.opt -c -pp "camlp4o -impl" -impl propcc.ml4
 - ocamlc.opt   -o propcc propcc.cmo
 - ./propcc gtkBase.props
 - ocamlc.opt   -w s -c  gtkBaseProps.ml
@@ -1106,6 +1112,11 @@ The following actions will be performed:
 - ocamlc.opt   -w s -c  gtkTextProps.ml
 - ./propcc gtkTree.props
 - ocamlc.opt   -w s -c  gtkTreeProps.ml
+- Warning: no conversion for type PangoAttrList in class GtkLabel
+- Warning: no conversion for type GdkPixbufAnimation in class GtkImage
+- Warning: no conversion for type PangoTabArray in class GtkTextView
+- Warning: no conversion for type PangoTabArray in class GtkTextTag
+- Warning: no conversion for type PangoAttrList in class GtkCellRendererText
 - ./propcc gtkFile.props
 - ocamlc.opt   -w s -c  gtkFileProps.ml
 - ./propcc gtkAction.props
@@ -1128,15 +1139,10 @@ The following actions will be performed:
 - ocamlc.opt   -w s -c  gtkRange.ml
 - ocamlc.opt   -w s -c  gtkText.ml
 - ocamlc.opt   -w s -c  gtkTree.ml
-- ocamlc.opt   -w s -c  gtkFile.ml
-- Warning: no conversion for type PangoAttrList in class GtkLabel
-- Warning: no conversion for type GdkPixbufAnimation in class GtkImage
-- Warning: no conversion for type PangoTabArray in class GtkTextView
-- Warning: no conversion for type PangoTabArray in class GtkTextTag
-- Warning: no conversion for type PangoAttrList in class GtkCellRendererText
 - File "gtkList.ml", line 188, characters 14-26:
 - Warning 3: deprecated: StdLabels.Array.create
 - Use ArrayLabels.make instead.
+- ocamlc.opt   -w s -c  gtkFile.ml
 - ocamlc.opt   -w s -c  gtkMain.ml
 - ocamlc.opt   -w s -c  gtkBroken.ml
 - ocamlc.opt   -w s -c  gPango.ml
@@ -1249,9 +1255,6 @@ The following actions will be performed:
 - ocamlopt.opt  -w s -c gdkPixbuf.ml
 - ocamlopt.opt  -w s -c gtk.ml
 - ocamlopt.opt  -w s -c gtkSignal.ml
-- ocamlopt.opt  -w s -c gtkStock.ml
-- ocamlopt.opt  -w s -c gtkObject.ml
-- ocamlopt.opt  -w s -c gtkBaseProps.ml
 - File "gpointer.ml", line 144, characters 10-23:
 - Warning 3: deprecated: StdLabels.String.create
 - Use BytesLabels.create instead.
@@ -1270,6 +1273,9 @@ The following actions will be performed:
 - File "gutf8.ml", line 145, characters 11-23:
 - Warning 3: deprecated: Array.create
 - Use Array.make instead.
+- ocamlopt.opt  -w s -c gtkStock.ml
+- ocamlopt.opt  -w s -c gtkObject.ml
+- ocamlopt.opt  -w s -c gtkBaseProps.ml
 - ocamlopt.opt  -w s -c gtkBinProps.ml
 - ocamlopt.opt  -w s -c gtkButtonProps.ml
 - ocamlopt.opt  -w s -c gtkEditProps.ml
@@ -1298,6 +1304,9 @@ The following actions will be performed:
 - ocamlopt.opt  -w s -c gtkRange.ml
 - ocamlopt.opt  -w s -c gtkText.ml
 - ocamlopt.opt  -w s -c gtkTree.ml
+- File "gtkList.ml", line 188, characters 14-26:
+- Warning 3: deprecated: StdLabels.Array.create
+- Use ArrayLabels.make instead.
 - ocamlopt.opt  -w s -c gtkFile.ml
 - ocamlopt.opt  -w s -c gtkMain.ml
 - ocamlopt.opt  -w s -c gtkBroken.ml
@@ -1305,9 +1314,6 @@ The following actions will be performed:
 - ocamlopt.opt  -w s -c gDraw.ml
 - ocamlopt.opt  -w s -c gObj.ml
 - ocamlopt.opt  -w s -c ogtkBaseProps.ml
-- File "gtkList.ml", line 188, characters 14-26:
-- Warning 3: deprecated: StdLabels.Array.create
-- Use ArrayLabels.make instead.
 - ocamlopt.opt  -w s -c gData.ml
 - ocamlopt.opt  -w s -c ogtkBinProps.ml
 - ocamlopt.opt  -w s -c ogtkButtonProps.ml
@@ -1350,9 +1356,9 @@ The following actions will be performed:
 - ocamlopt.opt  -w s -c -thread gtkThread.ml
 - ocamlopt.opt -verbose -o lablgtk.cmxs -shared -linkall -I . \
 -         -ccopt '' lablgtk.cmxa
-- + as -o 'lablgtk.cmxs.startup.o' '/tmp/camlstartup50f278.s'
-- + gcc -shared -o 'lablgtk.cmxs'   '-L.' '-L/home/opam/.opam/4.02.3/lib/ocaml'  'lablgtk.cmxs.startup.o' 'lablgtk.a' '-llablgtk2' '-lgtk-x11-2.0' '-lgdk-x11-2.0' '-latk-1.0' '-lgio-2.0' '-lpangoft2-1.0' '-lpangocairo-1.0' '-lgdk_pixbuf-2.0' '-lcairo' '-lpango-1.0' '-lfontconfig' '-lgobject-2.0' '-lglib-2.0' '-lfreetype' 
 - make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/lablgtk.2.18.3/src'
+- + as -o 'lablgtk.cmxs.startup.o' '/tmp/camlstartup93956f.s'
+- + gcc -shared -o 'lablgtk.cmxs'   '-L.' '-L/home/opam/.opam/4.02.3/lib/ocaml'  'lablgtk.cmxs.startup.o' 'lablgtk.a' '-llablgtk2' '-lgtk-x11-2.0' '-lgdk-x11-2.0' '-latk-1.0' '-lgio-2.0' '-lpangoft2-1.0' '-lpangocairo-1.0' '-lgdk_pixbuf-2.0' '-lcairo' '-lpango-1.0' '-lfontconfig' '-lgobject-2.0' '-lglib-2.0' '-lfreetype' 
 [lablgtk: make install] Command started
 + make "install" (CWD=/home/opam/.opam/4.02.3/build/lablgtk.2.18.3)
 - make -C src install
@@ -1775,6 +1781,6 @@ The following actions will be performed:
 - ocamlfind: [WARNING] You have installed DLLs but the directory /home/opam/.opam/4.02.3/lib/stublibs is not mentioned in ld.conf
 -> installed lablgtk.2.18.3
 Done.
- ---> 0df8311a4154
-Removing intermediate container 69f8ccc06995
-Successfully built 0df8311a4154
+ ---> b20606bcd364
+Removing intermediate container 3bad264b8ab4
+Successfully built b20606bcd364

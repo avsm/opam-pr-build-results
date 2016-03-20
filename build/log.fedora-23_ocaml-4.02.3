@@ -15,41 +15,45 @@ Digest: sha256:2683f77bc1d91489dec6cc337e821c3079a718fb9737e249292487527f1da798
 Status: Image is up to date for ocaml/opam:fedora-23_ocaml-4.02.3
  ---> 99b2b1ec09e2
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lablgtk-depext && opam update -u" &&   sudo -u opam sh -c "opam depext -u lablgtk" &&   sudo -u opam sh -c "opam install -y -j 2 -v lablgtk"
- ---> Running in bdc43cbf71ea
+ ---> Running in 043602eeb977
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   8223d0d..8851f94  master     -> origin/master
-[0mUpdating 8223d0d..8851f94
+[0m[91m   8223d0d..5e91729  master     -> origin/master
+[0mUpdating 8223d0d..5e91729
 Fast-forward
- packages/async_ssl/async_ssl.113.24.00/opam        |  6 +---
- packages/async_ssl/async_ssl.113.33.00/opam        |  6 +---
+ packages/async_ssl/async_ssl.113.24.00/opam        |  6 +--
+ packages/async_ssl/async_ssl.113.33.00/opam        |  6 +--
  packages/conf-m4/conf-m4.1/opam                    |  1 +
  packages/conf-ncurses/conf-ncurses.1/opam          |  1 +
  packages/conf-openssl/conf-openssl.1/opam          |  1 +
  packages/conf-pkg-config/conf-pkg-config.1.0/opam  |  1 +
- packages/dbm/dbm.1.0/files/mkdir-stublibs.patch    | 17 ++++++++++
+ packages/dbm/dbm.1.0/files/mkdir-stublibs.patch    | 17 ++++++++
  packages/dbm/dbm.1.0/opam                          |  1 +
- packages/mirage/mirage.2.7.1/opam                  | 32 -------------------
- packages/mirage/mirage.2.7.1/url                   |  2 --
+ packages/mirage/mirage.2.7.1/opam                  | 32 --------------
+ packages/mirage/mirage.2.7.1/url                   |  2 -
  .../mirage/{mirage.2.7.1 => mirage.2.7.2}/descr    |  0
- packages/mirage/mirage.2.7.2/opam                  | 36 ++++++++++++++++++++++
- packages/mirage/mirage.2.7.2/url                   |  2 ++
+ packages/mirage/mirage.2.7.2/opam                  | 36 +++++++++++++++
+ packages/mirage/mirage.2.7.2/url                   |  2 +
  packages/re2/re2.112.06.00/opam                    |  2 +-
  packages/re2/re2.112.35.00/opam                    |  2 +-
  packages/re2/re2.113.00.00/opam                    |  2 +-
  packages/re2/re2.113.24.00/opam                    |  2 +-
- packages/re2/re2.113.33.00/opam                    |  4 +++
+ packages/re2/re2.113.33.00/opam                    |  4 ++
  .../shared-memory-ring.1.3.0/descr                 |  3 ++
  .../shared-memory-ring.1.3.0/findlib               |  1 +
- .../shared-memory-ring.1.3.0/opam                  | 26 ++++++++++++++++
- .../shared-memory-ring.1.3.0/url                   |  2 ++
- packages/vmnet/vmnet.1.0.0/opam                    |  6 +++-
- packages/vmnet/vmnet.1.0.1/opam                    |  6 +++-
- packages/vmnet/vmnet.1.0.2/opam                    |  6 +++-
- packages/vmnet/vmnet.1.1.0/descr                   | 30 ++++++++++++++++++
- packages/vmnet/vmnet.1.1.0/opam                    | 28 +++++++++++++++++
- packages/vmnet/vmnet.1.1.0/url                     |  2 ++
- 28 files changed, 177 insertions(+), 51 deletions(-)
+ .../shared-memory-ring.1.3.0/opam                  | 26 +++++++++++
+ .../shared-memory-ring.1.3.0/url                   |  2 +
+ packages/sundialsml/sundialsml.2.6.2p0/descr       | 31 +++++++++++++
+ packages/sundialsml/sundialsml.2.6.2p0/findlib     |  1 +
+ packages/sundialsml/sundialsml.2.6.2p0/opam        | 51 ++++++++++++++++++++++
+ packages/sundialsml/sundialsml.2.6.2p0/url         |  2 +
+ packages/vmnet/vmnet.1.0.0/opam                    |  6 ++-
+ packages/vmnet/vmnet.1.0.1/opam                    |  6 ++-
+ packages/vmnet/vmnet.1.0.2/opam                    |  6 ++-
+ packages/vmnet/vmnet.1.1.0/descr                   | 30 +++++++++++++
+ packages/vmnet/vmnet.1.1.0/opam                    | 28 ++++++++++++
+ packages/vmnet/vmnet.1.1.0/url                     |  2 +
+ 32 files changed, 262 insertions(+), 51 deletions(-)
  create mode 100644 packages/dbm/dbm.1.0/files/mkdir-stublibs.patch
  delete mode 100644 packages/mirage/mirage.2.7.1/opam
  delete mode 100644 packages/mirage/mirage.2.7.1/url
@@ -60,6 +64,10 @@ Fast-forward
  create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/findlib
  create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/opam
  create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/url
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/descr
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/findlib
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/opam
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/url
  create mode 100644 packages/vmnet/vmnet.1.1.0/descr
  create mode 100644 packages/vmnet/vmnet.1.1.0/opam
  create mode 100644 packages/vmnet/vmnet.1.1.0/url
@@ -104,12 +112,10 @@ Everything as up-to-date as possible (run with --verbose to show unavailable
 upgrades).
 # Detecting depexts using flags: x86_64 linux fedora
 # The following system packages are needed:
-#  - gtk+-devel
 #  - gtk2-devel
 #  - m4
 #  - ncurses-devel
 #  - pkgconfig
-package gtk+-devel is not installed
 package gtk2-devel is not installed
 package m4 is not installed
 package ncurses-devel is not installed
@@ -121,7 +127,7 @@ See 'man dnf' and 'man yum2dnf' for more information.
 To transfer transaction metadata from yum to DNF, run:
 'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
 
-[0mLast metadata expiration check performed 0:00:13 ago on Sun Mar 20 17:33:09 2016.
+[0mLast metadata expiration check performed 0:00:13 ago on Sun Mar 20 17:59:26 2016.
 Dependencies resolved.
 ================================================================================
  Package                 Arch        Version                 Repository    Size
@@ -161,9 +167,9 @@ cannot reconstruct rpm from disk files
 cannot reconstruct rpm from disk files
 [0m[91m/usr/share/doc/gnutls/AUTHORS: No such file or directory
 cannot reconstruct rpm from disk files
-[0m[91m/usr/share/doc/python3-dnf/AUTHORS: No such file or directory
-cannot reconstruct rpm from disk files
 [0m[91m/usr/share/man/man5/cert8.db.5.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/python3-dnf/AUTHORS: No such file or directory
 cannot reconstruct rpm from disk files
 [0mgnutls-3.4.10-1.fc23.x86_64: Delta RPM rebuild failed
 dnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
@@ -172,7 +178,7 @@ nss-3.23.0-1.0.fc23.x86_64: Delta RPM rebuild failed
 libsolv-0.6.19-2.fc23.x86_64: Delta RPM rebuild failed
 python3-dnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
 --------------------------------------------------------------------------------
-Total                                           158 kB/s | 7.4 MB     00:47     
+Total                                           100 kB/s | 7.4 MB     01:15     
 Delta RPMs reduced 15.7 MB of updates to 7.4 MB (53.1% saved)
 Running transaction check
 Transaction check succeeded.
@@ -260,13 +266,13 @@ Upgraded:
 Complete!
 # OS package update successful
 The following command needs to be run through "sudo":
-    yum install -y gtk+-devel gtk2-devel m4 ncurses-devel pkgconfig
-[91mYum command has been deprecated, redirecting to '/usr/bin/dnf install -y gtk+-devel gtk2-devel m4 ncurses-devel pkgconfig'.
+    yum install -y gtk2-devel m4 ncurses-devel pkgconfig
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf install -y gtk2-devel m4 ncurses-devel pkgconfig'.
 See 'man dnf' and 'man yum2dnf' for more information.
 To transfer transaction metadata from yum to DNF, run:
 'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
 
-[0mLast metadata expiration check: 0:01:59 ago on Sun Mar 20 17:33:09 2016.
+[0mLast metadata expiration check: 0:03:25 ago on Sun Mar 20 17:59:26 2016.
 Dependencies resolved.
 ================================================================================
  Package                   Arch     Version                     Repository
@@ -289,13 +295,9 @@ Installing:
  gdk-pixbuf2-devel         x86_64   2.32.3-1.fc23               updates   220 k
  gdk-pixbuf2-modules       x86_64   2.32.3-1.fc23               updates    96 k
  gl-manpages               noarch   1.1-10.20140424.fc23        fedora    1.0 M
- glib                      x86_64   1:1.2.10-46.fc23            fedora    144 k
- glib-devel                x86_64   1:1.2.10-46.fc23            fedora     44 k
  glib2-devel               x86_64   2.46.2-1.fc23               updates   436 k
  graphite2                 x86_64   1.3.6-1.fc23                updates   115 k
  graphite2-devel           x86_64   1.3.6-1.fc23                updates    43 k
- gtk+                      x86_64   1:1.2.10-81.fc23            fedora    869 k
- gtk+-devel                x86_64   1:1.2.10-81.fc23            fedora    303 k
  gtk-update-icon-cache     x86_64   3.18.9-1.fc23               updates    34 k
  gtk2                      x86_64   2.24.30-1.fc23              updates   3.4 M
  gtk2-devel                x86_64   2.24.30-1.fc23              updates   3.0 M
@@ -306,10 +308,6 @@ Installing:
  hwdata                    noarch   0.286-1.fc23                updates   1.4 M
  jasper-libs               x86_64   1.900.1-31.fc23             fedora    150 k
  jbigkit-libs              x86_64   2.1-4.fc23                  fedora     51 k
- libICE                    x86_64   1.0.9-3.fc23                fedora     70 k
- libICE-devel              x86_64   1.0.9-3.fc23                fedora     54 k
- libSM                     x86_64   1.2.2-3.fc23                fedora     43 k
- libSM-devel               x86_64   1.2.2-3.fc23                fedora     17 k
  libX11-devel              x86_64   1.6.3-2.fc23                fedora    984 k
  libXau-devel              x86_64   1.0.8-5.fc23                fedora     19 k
  libXcomposite             x86_64   0.4.4-7.fc23                fedora     27 k
@@ -332,8 +330,6 @@ Installing:
  libXrandr-devel           x86_64   1.5.0-2.fc23                fedora     25 k
  libXrender                x86_64   0.9.9-2.fc23                fedora     30 k
  libXrender-devel          x86_64   0.9.9-2.fc23                fedora     21 k
- libXt                     x86_64   1.1.5-2.fc23                fedora    178 k
- libXt-devel               x86_64   1.1.5-2.fc23                fedora    450 k
  libXxf86vm                x86_64   1.1.4-2.fc23                fedora     22 k
  libXxf86vm-devel          x86_64   1.1.4-2.fc23                fedora     23 k
  libdatrie                 x86_64   0.2.8-6.fc23                fedora     31 k
@@ -369,204 +365,184 @@ Installing:
 
 Transaction Summary
 ================================================================================
-Install  93 Packages
+Install  83 Packages
 
-Total download size: 32 M
-Installed size: 124 M
+Total download size: 30 M
+Installed size: 117 M
 Downloading Packages:
 --------------------------------------------------------------------------------
-Total                                           4.8 MB/s |  32 MB     00:06     
+Total                                           4.6 MB/s |  30 MB     00:06     
 Running transaction check
 Transaction check succeeded.
 Running transaction test
 Transaction test succeeded.
 Running transaction
-  Installing  : pkgconfig-1:0.28-9.fc23.x86_64                             1/93 
-  Installing  : xorg-x11-proto-devel-7.7-18.fc23.noarch                    2/93 
-  Installing  : libXext-1.3.3-3.fc23.x86_64                                3/93 
-  Installing  : libXrender-0.9.9-2.fc23.x86_64                             4/93 
-  Installing  : glib2-devel-2.46.2-1.fc23.x86_64                           5/93 
-  Installing  : libpng-2:1.6.19-2.fc23.x86_64                              6/93 
-  Installing  : freetype-2.6.0-3.fc23.x86_64                               7/93 
-  Installing  : libXfixes-5.0.1-5.fc23.x86_64                              8/93 
-  Installing  : gdk-pixbuf2-2.32.3-1.fc23.x86_64                           9/93 
-  Installing  : libXdamage-1.1.4-7.fc23.x86_64                            10/93 
-  Installing  : libXi-1.7.6-1.fc23.x86_64                                 11/93 
-  Installing  : libXcursor-1.1.14-4.fc23.x86_64                           12/93 
-  Installing  : libXrandr-1.5.0-2.fc23.x86_64                             13/93 
-  Installing  : libXinerama-1.1.3-5.fc23.x86_64                           14/93 
-  Installing  : libICE-1.0.9-3.fc23.x86_64                                15/93 
-  Installing  : libjpeg-turbo-1.4.1-2.fc23.x86_64                         16/93 
-  Installing  : libXcomposite-0.4.4-7.fc23.x86_64                         17/93 
-  Installing  : atk-2.18.0-1.fc23.x86_64                                  18/93 
-  Installing  : libSM-1.2.2-3.fc23.x86_64                                 19/93 
-  Installing  : libICE-devel-1.0.9-3.fc23.x86_64                          20/93 
-  Installing  : libXxf86vm-1.1.4-2.fc23.x86_64                            21/93 
-  Installing  : zlib-devel-1.2.8-9.fc23.x86_64                            22/93 
-  Installing  : libpng-devel-2:1.6.19-2.fc23.x86_64                       23/93 
-  Installing  : freetype-devel-2.6.0-3.fc23.x86_64                        24/93 
-  Installing  : graphite2-1.3.6-1.fc23.x86_64                             25/93 
-  Installing  : harfbuzz-1.0.6-1.fc23.x86_64                              26/93 
-  Installing  : mesa-libglapi-11.1.0-2.20151218.fc23.x86_64               27/93 
-  Installing  : pixman-0.34.0-1.fc23.x86_64                               28/93 
-  Installing  : libxshmfence-1.2-2.fc23.x86_64                            29/93 
-  Installing  : libwayland-server-1.9.0-1.fc23.x86_64                     30/93 
-  Installing  : libwayland-client-1.9.0-1.fc23.x86_64                     31/93 
-  Installing  : libicu-54.1-5.fc23.x86_64                                 32/93 
-  Installing  : fontpackages-filesystem-1.44-14.fc23.noarch               33/93 
-  Installing  : glib-1:1.2.10-46.fc23.x86_64                              34/93 
-  Installing  : gtk+-1:1.2.10-81.fc23.x86_64                              35/93 
-  Installing  : glib-devel-1:1.2.10-46.fc23.x86_64                        36/93 
-  Installing  : aajohan-comfortaa-fonts-2.004-5.fc23.noarch               37/93 
-  Installing  : fontconfig-2.11.94-4.fc23.x86_64                          38/93 
-  Installing  : libXft-2.3.2-3.fc23.x86_64                                39/93 
-  Installing  : harfbuzz-icu-1.0.6-1.fc23.x86_64                          40/93 
-  Installing  : libicu-devel-54.1-5.fc23.x86_64                           41/93 
-  Installing  : pixman-devel-0.34.0-1.fc23.x86_64                         42/93 
-  Installing  : graphite2-devel-1.3.6-1.fc23.x86_64                       43/93 
-  Installing  : gdk-pixbuf2-devel-2.32.3-1.fc23.x86_64                    44/93 
-  Installing  : libSM-devel-1.2.2-3.fc23.x86_64                           45/93 
-  Installing  : libXt-1.1.5-2.fc23.x86_64                                 46/93 
-  Installing  : atk-devel-2.18.0-1.fc23.x86_64                            47/93 
-  Installing  : jasper-libs-1.900.1-31.fc23.x86_64                        48/93 
-  Installing  : gtk-update-icon-cache-3.18.9-1.fc23.x86_64                49/93 
-  Installing  : libXau-devel-1.0.8-5.fc23.x86_64                          50/93 
-  Installing  : libxcb-devel-1.11.1-1.fc23.x86_64                         51/93 
-  Installing  : libX11-devel-1.6.3-2.fc23.x86_64                          52/93 
-  Installing  : libXext-devel-1.3.3-3.fc23.x86_64                         53/93 
-  Installing  : libXfixes-devel-5.0.1-5.fc23.x86_64                       54/93 
-  Installing  : libXrender-devel-0.9.9-2.fc23.x86_64                      55/93 
-  Installing  : libXi-devel-1.7.6-1.fc23.x86_64                           56/93 
-  Installing  : libXdamage-devel-1.1.4-7.fc23.x86_64                      57/93 
-  Installing  : libXxf86vm-devel-1.1.4-2.fc23.x86_64                      58/93 
-  Installing  : libXcursor-devel-1.1.14-4.fc23.x86_64                     59/93 
-  Installing  : libXrandr-devel-1.5.0-2.fc23.x86_64                       60/93 
-  Installing  : libXcomposite-devel-0.4.4-7.fc23.x86_64                   61/93 
-  Installing  : libXinerama-devel-1.1.3-5.fc23.x86_64                     62/93 
-  Installing  : libXt-devel-1.1.5-2.fc23.x86_64                           63/93 
-  Installing  : expat-devel-2.1.0-12.fc23.x86_64                          64/93 
-  Installing  : fontconfig-devel-2.11.94-4.fc23.x86_64                    65/93 
-  Installing  : libXft-devel-2.3.2-3.fc23.x86_64                          66/93 
-  Installing  : hwdata-0.286-1.fc23.noarch                                67/93 
-  Installing  : libpciaccess-0.13.4-2.fc23.x86_64                         68/93 
-  Installing  : libdrm-2.4.66-1.fc23.x86_64                               69/93 
-  Installing  : mesa-libGL-11.1.0-2.20151218.fc23.x86_64                  70/93 
-  Installing  : libdrm-devel-2.4.66-1.fc23.x86_64                         71/93 
-  Installing  : mesa-libgbm-11.1.0-2.20151218.fc23.x86_64                 72/93 
-  Installing  : mesa-libEGL-11.1.0-2.20151218.fc23.x86_64                 73/93 
-  Installing  : cairo-1.14.2-2.fc23.x86_64                                74/93 
-  Installing  : harfbuzz-devel-1.0.6-1.fc23.x86_64                        75/93 
-  Installing  : mesa-libEGL-devel-11.1.0-2.20151218.fc23.x86_64           76/93 
-  Installing  : gl-manpages-1.1-10.20140424.fc23.noarch                   77/93 
-  Installing  : mesa-libGL-devel-11.1.0-2.20151218.fc23.x86_64            78/93 
-  Installing  : cairo-devel-1.14.2-2.fc23.x86_64                          79/93 
-  Installing  : cups-libs-1:2.1.3-1.fc23.x86_64                           80/93 
-  Installing  : jbigkit-libs-2.1-4.fc23.x86_64                            81/93 
-  Installing  : libtiff-4.0.4-1.fc23.x86_64                               82/93 
-  Installing  : gdk-pixbuf2-modules-2.32.3-1.fc23.x86_64                  83/93 
-  Installing  : hicolor-icon-theme-0.15-2.fc23.noarch                     84/93 
-  Installing  : libdatrie-0.2.8-6.fc23.x86_64                             85/93 
-  Installing  : libthai-0.1.21-2.fc23.x86_64                              86/93 
-  Installing  : pango-1.38.1-1.fc23.x86_64                                87/93 
-  Installing  : gtk2-2.24.30-1.fc23.x86_64                                88/93 
-  Installing  : pango-devel-1.38.1-1.fc23.x86_64                          89/93 
-  Installing  : gtk2-devel-2.24.30-1.fc23.x86_64                          90/93 
-  Installing  : gtk+-devel-1:1.2.10-81.fc23.x86_64                        91/93 
-  Installing  : ncurses-devel-5.9-21.20150214.fc23.x86_64                 92/93 
-  Installing  : m4-1.4.17-8.fc23.x86_64                                   93/93 
-  Verifying   : m4-1.4.17-8.fc23.x86_64                                    1/93 
-  Verifying   : gtk+-devel-1:1.2.10-81.fc23.x86_64                         2/93 
-  Verifying   : gtk+-1:1.2.10-81.fc23.x86_64                               3/93 
-  Verifying   : glib-1:1.2.10-46.fc23.x86_64                               4/93 
-  Verifying   : libXext-1.3.3-3.fc23.x86_64                                5/93 
-  Verifying   : gtk2-devel-2.24.30-1.fc23.x86_64                           6/93 
-  Verifying   : atk-2.18.0-1.fc23.x86_64                                   7/93 
-  Verifying   : cairo-1.14.2-2.fc23.x86_64                                 8/93 
-  Verifying   : fontconfig-2.11.94-4.fc23.x86_64                           9/93 
-  Verifying   : freetype-2.6.0-3.fc23.x86_64                              10/93 
-  Verifying   : libXcomposite-0.4.4-7.fc23.x86_64                         11/93 
-  Verifying   : libXcursor-1.1.14-4.fc23.x86_64                           12/93 
-  Verifying   : libXdamage-1.1.4-7.fc23.x86_64                            13/93 
-  Verifying   : libXfixes-5.0.1-5.fc23.x86_64                             14/93 
-  Verifying   : libXinerama-1.1.3-5.fc23.x86_64                           15/93 
-  Verifying   : libXrandr-1.5.0-2.fc23.x86_64                             16/93 
-  Verifying   : libXrender-0.9.9-2.fc23.x86_64                            17/93 
-  Verifying   : pango-1.38.1-1.fc23.x86_64                                18/93 
-  Verifying   : fontpackages-filesystem-1.44-14.fc23.noarch               19/93 
-  Verifying   : libXft-2.3.2-3.fc23.x86_64                                20/93 
-  Verifying   : libthai-0.1.21-2.fc23.x86_64                              21/93 
-  Verifying   : libdatrie-0.2.8-6.fc23.x86_64                             22/93 
-  Verifying   : ncurses-devel-5.9-21.20150214.fc23.x86_64                 23/93 
-  Verifying   : pkgconfig-1:0.28-9.fc23.x86_64                            24/93 
-  Verifying   : atk-devel-2.18.0-1.fc23.x86_64                            25/93 
-  Verifying   : cairo-devel-1.14.2-2.fc23.x86_64                          26/93 
-  Verifying   : gdk-pixbuf2-2.32.3-1.fc23.x86_64                          27/93 
-  Verifying   : gdk-pixbuf2-devel-2.32.3-1.fc23.x86_64                    28/93 
-  Verifying   : glib2-devel-2.46.2-1.fc23.x86_64                          29/93 
-  Verifying   : gtk2-2.24.30-1.fc23.x86_64                                30/93 
-  Verifying   : gdk-pixbuf2-modules-2.32.3-1.fc23.x86_64                  31/93 
-  Verifying   : hicolor-icon-theme-0.15-2.fc23.noarch                     32/93 
-  Verifying   : jasper-libs-1.900.1-31.fc23.x86_64                        33/93 
-  Verifying   : libjpeg-turbo-1.4.1-2.fc23.x86_64                         34/93 
-  Verifying   : libtiff-4.0.4-1.fc23.x86_64                               35/93 
-  Verifying   : jbigkit-libs-2.1-4.fc23.x86_64                            36/93 
-  Verifying   : libX11-devel-1.6.3-2.fc23.x86_64                          37/93 
-  Verifying   : libXcomposite-devel-0.4.4-7.fc23.x86_64                   38/93 
-  Verifying   : libXcursor-devel-1.1.14-4.fc23.x86_64                     39/93 
-  Verifying   : libXext-devel-1.3.3-3.fc23.x86_64                         40/93 
-  Verifying   : libXfixes-devel-5.0.1-5.fc23.x86_64                       41/93 
-  Verifying   : libXi-1.7.6-1.fc23.x86_64                                 42/93 
-  Verifying   : libXi-devel-1.7.6-1.fc23.x86_64                           43/93 
-  Verifying   : libXinerama-devel-1.1.3-5.fc23.x86_64                     44/93 
-  Verifying   : libXrandr-devel-1.5.0-2.fc23.x86_64                       45/93 
-  Verifying   : pango-devel-1.38.1-1.fc23.x86_64                          46/93 
-  Verifying   : fontconfig-devel-2.11.94-4.fc23.x86_64                    47/93 
-  Verifying   : freetype-devel-2.6.0-3.fc23.x86_64                        48/93 
-  Verifying   : cups-libs-1:2.1.3-1.fc23.x86_64                           49/93 
-  Verifying   : gtk-update-icon-cache-3.18.9-1.fc23.x86_64                50/93 
-  Verifying   : libpng-2:1.6.19-2.fc23.x86_64                             51/93 
-  Verifying   : libpng-devel-2:1.6.19-2.fc23.x86_64                       52/93 
-  Verifying   : zlib-devel-1.2.8-9.fc23.x86_64                            53/93 
-  Verifying   : harfbuzz-devel-1.0.6-1.fc23.x86_64                        54/93 
-  Verifying   : harfbuzz-1.0.6-1.fc23.x86_64                              55/93 
-  Verifying   : harfbuzz-icu-1.0.6-1.fc23.x86_64                          56/93 
-  Verifying   : libicu-54.1-5.fc23.x86_64                                 57/93 
-  Verifying   : libXft-devel-2.3.2-3.fc23.x86_64                          58/93 
-  Verifying   : libXrender-devel-0.9.9-2.fc23.x86_64                      59/93 
-  Verifying   : xorg-x11-proto-devel-7.7-18.fc23.noarch                   60/93 
-  Verifying   : libxcb-devel-1.11.1-1.fc23.x86_64                         61/93 
-  Verifying   : glib-devel-1:1.2.10-46.fc23.x86_64                        62/93 
-  Verifying   : libXt-devel-1.1.5-2.fc23.x86_64                           63/93 
-  Verifying   : libXt-1.1.5-2.fc23.x86_64                                 64/93 
-  Verifying   : libICE-1.0.9-3.fc23.x86_64                                65/93 
-  Verifying   : libSM-1.2.2-3.fc23.x86_64                                 66/93 
-  Verifying   : expat-devel-2.1.0-12.fc23.x86_64                          67/93 
-  Verifying   : mesa-libEGL-devel-11.1.0-2.20151218.fc23.x86_64           68/93 
-  Verifying   : mesa-libGL-devel-11.1.0-2.20151218.fc23.x86_64            69/93 
-  Verifying   : gl-manpages-1.1-10.20140424.fc23.noarch                   70/93 
-  Verifying   : pixman-devel-0.34.0-1.fc23.x86_64                         71/93 
-  Verifying   : mesa-libEGL-11.1.0-2.20151218.fc23.x86_64                 72/93 
-  Verifying   : libwayland-client-1.9.0-1.fc23.x86_64                     73/93 
-  Verifying   : libwayland-server-1.9.0-1.fc23.x86_64                     74/93 
-  Verifying   : libxshmfence-1.2-2.fc23.x86_64                            75/93 
-  Verifying   : mesa-libGL-11.1.0-2.20151218.fc23.x86_64                  76/93 
-  Verifying   : libXxf86vm-1.1.4-2.fc23.x86_64                            77/93 
-  Verifying   : pixman-0.34.0-1.fc23.x86_64                               78/93 
-  Verifying   : libXdamage-devel-1.1.4-7.fc23.x86_64                      79/93 
-  Verifying   : libXxf86vm-devel-1.1.4-2.fc23.x86_64                      80/93 
-  Verifying   : libdrm-devel-2.4.66-1.fc23.x86_64                         81/93 
-  Verifying   : mesa-libglapi-11.1.0-2.20151218.fc23.x86_64               82/93 
-  Verifying   : libdrm-2.4.66-1.fc23.x86_64                               83/93 
-  Verifying   : libpciaccess-0.13.4-2.fc23.x86_64                         84/93 
-  Verifying   : mesa-libgbm-11.1.0-2.20151218.fc23.x86_64                 85/93 
-  Verifying   : libXau-devel-1.0.8-5.fc23.x86_64                          86/93 
-  Verifying   : graphite2-devel-1.3.6-1.fc23.x86_64                       87/93 
-  Verifying   : graphite2-1.3.6-1.fc23.x86_64                             88/93 
-  Verifying   : libicu-devel-54.1-5.fc23.x86_64                           89/93 
-  Verifying   : hwdata-0.286-1.fc23.noarch                                90/93 
-  Verifying   : libICE-devel-1.0.9-3.fc23.x86_64                          91/93 
-  Verifying   : libSM-devel-1.2.2-3.fc23.x86_64                           92/93 
-  Verifying   : aajohan-comfortaa-fonts-2.004-5.fc23.noarch               93/93 
+  Installing  : pkgconfig-1:0.28-9.fc23.x86_64                             1/83 
+  Installing  : xorg-x11-proto-devel-7.7-18.fc23.noarch                    2/83 
+  Installing  : libXext-1.3.3-3.fc23.x86_64                                3/83 
+  Installing  : libXrender-0.9.9-2.fc23.x86_64                             4/83 
+  Installing  : glib2-devel-2.46.2-1.fc23.x86_64                           5/83 
+  Installing  : libpng-2:1.6.19-2.fc23.x86_64                              6/83 
+  Installing  : freetype-2.6.0-3.fc23.x86_64                               7/83 
+  Installing  : libXfixes-5.0.1-5.fc23.x86_64                              8/83 
+  Installing  : gdk-pixbuf2-2.32.3-1.fc23.x86_64                           9/83 
+  Installing  : libXdamage-1.1.4-7.fc23.x86_64                            10/83 
+  Installing  : libXcursor-1.1.14-4.fc23.x86_64                           11/83 
+  Installing  : libXrandr-1.5.0-2.fc23.x86_64                             12/83 
+  Installing  : libXinerama-1.1.3-5.fc23.x86_64                           13/83 
+  Installing  : libXi-1.7.6-1.fc23.x86_64                                 14/83 
+  Installing  : libjpeg-turbo-1.4.1-2.fc23.x86_64                         15/83 
+  Installing  : libXcomposite-0.4.4-7.fc23.x86_64                         16/83 
+  Installing  : atk-2.18.0-1.fc23.x86_64                                  17/83 
+  Installing  : libXxf86vm-1.1.4-2.fc23.x86_64                            18/83 
+  Installing  : zlib-devel-1.2.8-9.fc23.x86_64                            19/83 
+  Installing  : libpng-devel-2:1.6.19-2.fc23.x86_64                       20/83 
+  Installing  : freetype-devel-2.6.0-3.fc23.x86_64                        21/83 
+  Installing  : graphite2-1.3.6-1.fc23.x86_64                             22/83 
+  Installing  : harfbuzz-1.0.6-1.fc23.x86_64                              23/83 
+  Installing  : mesa-libglapi-11.1.0-2.20151218.fc23.x86_64               24/83 
+  Installing  : pixman-0.34.0-1.fc23.x86_64                               25/83 
+  Installing  : libxshmfence-1.2-2.fc23.x86_64                            26/83 
+  Installing  : libwayland-server-1.9.0-1.fc23.x86_64                     27/83 
+  Installing  : libwayland-client-1.9.0-1.fc23.x86_64                     28/83 
+  Installing  : libicu-54.1-5.fc23.x86_64                                 29/83 
+  Installing  : fontpackages-filesystem-1.44-14.fc23.noarch               30/83 
+  Installing  : aajohan-comfortaa-fonts-2.004-5.fc23.noarch               31/83 
+  Installing  : fontconfig-2.11.94-4.fc23.x86_64                          32/83 
+  Installing  : libXft-2.3.2-3.fc23.x86_64                                33/83 
+  Installing  : harfbuzz-icu-1.0.6-1.fc23.x86_64                          34/83 
+  Installing  : libicu-devel-54.1-5.fc23.x86_64                           35/83 
+  Installing  : pixman-devel-0.34.0-1.fc23.x86_64                         36/83 
+  Installing  : graphite2-devel-1.3.6-1.fc23.x86_64                       37/83 
+  Installing  : gdk-pixbuf2-devel-2.32.3-1.fc23.x86_64                    38/83 
+  Installing  : atk-devel-2.18.0-1.fc23.x86_64                            39/83 
+  Installing  : jasper-libs-1.900.1-31.fc23.x86_64                        40/83 
+  Installing  : gtk-update-icon-cache-3.18.9-1.fc23.x86_64                41/83 
+  Installing  : libXau-devel-1.0.8-5.fc23.x86_64                          42/83 
+  Installing  : libxcb-devel-1.11.1-1.fc23.x86_64                         43/83 
+  Installing  : libX11-devel-1.6.3-2.fc23.x86_64                          44/83 
+  Installing  : libXext-devel-1.3.3-3.fc23.x86_64                         45/83 
+  Installing  : libXfixes-devel-5.0.1-5.fc23.x86_64                       46/83 
+  Installing  : libXrender-devel-0.9.9-2.fc23.x86_64                      47/83 
+  Installing  : libXdamage-devel-1.1.4-7.fc23.x86_64                      48/83 
+  Installing  : libXxf86vm-devel-1.1.4-2.fc23.x86_64                      49/83 
+  Installing  : libXcursor-devel-1.1.14-4.fc23.x86_64                     50/83 
+  Installing  : libXrandr-devel-1.5.0-2.fc23.x86_64                       51/83 
+  Installing  : libXcomposite-devel-0.4.4-7.fc23.x86_64                   52/83 
+  Installing  : libXi-devel-1.7.6-1.fc23.x86_64                           53/83 
+  Installing  : libXinerama-devel-1.1.3-5.fc23.x86_64                     54/83 
+  Installing  : expat-devel-2.1.0-12.fc23.x86_64                          55/83 
+  Installing  : fontconfig-devel-2.11.94-4.fc23.x86_64                    56/83 
+  Installing  : libXft-devel-2.3.2-3.fc23.x86_64                          57/83 
+  Installing  : hwdata-0.286-1.fc23.noarch                                58/83 
+  Installing  : libpciaccess-0.13.4-2.fc23.x86_64                         59/83 
+  Installing  : libdrm-2.4.66-1.fc23.x86_64                               60/83 
+  Installing  : mesa-libGL-11.1.0-2.20151218.fc23.x86_64                  61/83 
+  Installing  : libdrm-devel-2.4.66-1.fc23.x86_64                         62/83 
+  Installing  : mesa-libgbm-11.1.0-2.20151218.fc23.x86_64                 63/83 
+  Installing  : mesa-libEGL-11.1.0-2.20151218.fc23.x86_64                 64/83 
+  Installing  : cairo-1.14.2-2.fc23.x86_64                                65/83 
+  Installing  : harfbuzz-devel-1.0.6-1.fc23.x86_64                        66/83 
+  Installing  : mesa-libEGL-devel-11.1.0-2.20151218.fc23.x86_64           67/83 
+  Installing  : gl-manpages-1.1-10.20140424.fc23.noarch                   68/83 
+  Installing  : mesa-libGL-devel-11.1.0-2.20151218.fc23.x86_64            69/83 
+  Installing  : cairo-devel-1.14.2-2.fc23.x86_64                          70/83 
+  Installing  : cups-libs-1:2.1.3-1.fc23.x86_64                           71/83 
+  Installing  : jbigkit-libs-2.1-4.fc23.x86_64                            72/83 
+  Installing  : libtiff-4.0.4-1.fc23.x86_64                               73/83 
+  Installing  : gdk-pixbuf2-modules-2.32.3-1.fc23.x86_64                  74/83 
+  Installing  : hicolor-icon-theme-0.15-2.fc23.noarch                     75/83 
+  Installing  : libdatrie-0.2.8-6.fc23.x86_64                             76/83 
+  Installing  : libthai-0.1.21-2.fc23.x86_64                              77/83 
+  Installing  : pango-1.38.1-1.fc23.x86_64                                78/83 
+  Installing  : gtk2-2.24.30-1.fc23.x86_64                                79/83 
+  Installing  : pango-devel-1.38.1-1.fc23.x86_64                          80/83 
+  Installing  : gtk2-devel-2.24.30-1.fc23.x86_64                          81/83 
+  Installing  : ncurses-devel-5.9-21.20150214.fc23.x86_64                 82/83 
+  Installing  : m4-1.4.17-8.fc23.x86_64                                   83/83 
+  Verifying   : m4-1.4.17-8.fc23.x86_64                                    1/83 
+  Verifying   : gtk2-devel-2.24.30-1.fc23.x86_64                           2/83 
+  Verifying   : atk-2.18.0-1.fc23.x86_64                                   3/83 
+  Verifying   : cairo-1.14.2-2.fc23.x86_64                                 4/83 
+  Verifying   : fontconfig-2.11.94-4.fc23.x86_64                           5/83 
+  Verifying   : freetype-2.6.0-3.fc23.x86_64                               6/83 
+  Verifying   : libXcomposite-0.4.4-7.fc23.x86_64                          7/83 
+  Verifying   : libXcursor-1.1.14-4.fc23.x86_64                            8/83 
+  Verifying   : libXdamage-1.1.4-7.fc23.x86_64                             9/83 
+  Verifying   : libXext-1.3.3-3.fc23.x86_64                               10/83 
+  Verifying   : libXfixes-5.0.1-5.fc23.x86_64                             11/83 
+  Verifying   : libXinerama-1.1.3-5.fc23.x86_64                           12/83 
+  Verifying   : libXrandr-1.5.0-2.fc23.x86_64                             13/83 
+  Verifying   : libXrender-0.9.9-2.fc23.x86_64                            14/83 
+  Verifying   : pango-1.38.1-1.fc23.x86_64                                15/83 
+  Verifying   : fontpackages-filesystem-1.44-14.fc23.noarch               16/83 
+  Verifying   : libXft-2.3.2-3.fc23.x86_64                                17/83 
+  Verifying   : libthai-0.1.21-2.fc23.x86_64                              18/83 
+  Verifying   : libdatrie-0.2.8-6.fc23.x86_64                             19/83 
+  Verifying   : ncurses-devel-5.9-21.20150214.fc23.x86_64                 20/83 
+  Verifying   : pkgconfig-1:0.28-9.fc23.x86_64                            21/83 
+  Verifying   : atk-devel-2.18.0-1.fc23.x86_64                            22/83 
+  Verifying   : cairo-devel-1.14.2-2.fc23.x86_64                          23/83 
+  Verifying   : gdk-pixbuf2-2.32.3-1.fc23.x86_64                          24/83 
+  Verifying   : gdk-pixbuf2-devel-2.32.3-1.fc23.x86_64                    25/83 
+  Verifying   : glib2-devel-2.46.2-1.fc23.x86_64                          26/83 
+  Verifying   : gtk2-2.24.30-1.fc23.x86_64                                27/83 
+  Verifying   : gdk-pixbuf2-modules-2.32.3-1.fc23.x86_64                  28/83 
+  Verifying   : hicolor-icon-theme-0.15-2.fc23.noarch                     29/83 
+  Verifying   : jasper-libs-1.900.1-31.fc23.x86_64                        30/83 
+  Verifying   : libjpeg-turbo-1.4.1-2.fc23.x86_64                         31/83 
+  Verifying   : libtiff-4.0.4-1.fc23.x86_64                               32/83 
+  Verifying   : jbigkit-libs-2.1-4.fc23.x86_64                            33/83 
+  Verifying   : libX11-devel-1.6.3-2.fc23.x86_64                          34/83 
+  Verifying   : libXcomposite-devel-0.4.4-7.fc23.x86_64                   35/83 
+  Verifying   : libXcursor-devel-1.1.14-4.fc23.x86_64                     36/83 
+  Verifying   : libXext-devel-1.3.3-3.fc23.x86_64                         37/83 
+  Verifying   : libXfixes-devel-5.0.1-5.fc23.x86_64                       38/83 
+  Verifying   : libXi-1.7.6-1.fc23.x86_64                                 39/83 
+  Verifying   : libXi-devel-1.7.6-1.fc23.x86_64                           40/83 
+  Verifying   : libXinerama-devel-1.1.3-5.fc23.x86_64                     41/83 
+  Verifying   : libXrandr-devel-1.5.0-2.fc23.x86_64                       42/83 
+  Verifying   : pango-devel-1.38.1-1.fc23.x86_64                          43/83 
+  Verifying   : fontconfig-devel-2.11.94-4.fc23.x86_64                    44/83 
+  Verifying   : freetype-devel-2.6.0-3.fc23.x86_64                        45/83 
+  Verifying   : cups-libs-1:2.1.3-1.fc23.x86_64                           46/83 
+  Verifying   : gtk-update-icon-cache-3.18.9-1.fc23.x86_64                47/83 
+  Verifying   : libpng-2:1.6.19-2.fc23.x86_64                             48/83 
+  Verifying   : libpng-devel-2:1.6.19-2.fc23.x86_64                       49/83 
+  Verifying   : zlib-devel-1.2.8-9.fc23.x86_64                            50/83 
+  Verifying   : harfbuzz-devel-1.0.6-1.fc23.x86_64                        51/83 
+  Verifying   : harfbuzz-1.0.6-1.fc23.x86_64                              52/83 
+  Verifying   : harfbuzz-icu-1.0.6-1.fc23.x86_64                          53/83 
+  Verifying   : libicu-54.1-5.fc23.x86_64                                 54/83 
+  Verifying   : libXft-devel-2.3.2-3.fc23.x86_64                          55/83 
+  Verifying   : libXrender-devel-0.9.9-2.fc23.x86_64                      56/83 
+  Verifying   : xorg-x11-proto-devel-7.7-18.fc23.noarch                   57/83 
+  Verifying   : libxcb-devel-1.11.1-1.fc23.x86_64                         58/83 
+  Verifying   : expat-devel-2.1.0-12.fc23.x86_64                          59/83 
+  Verifying   : mesa-libEGL-devel-11.1.0-2.20151218.fc23.x86_64           60/83 
+  Verifying   : mesa-libGL-devel-11.1.0-2.20151218.fc23.x86_64            61/83 
+  Verifying   : gl-manpages-1.1-10.20140424.fc23.noarch                   62/83 
+  Verifying   : pixman-devel-0.34.0-1.fc23.x86_64                         63/83 
+  Verifying   : mesa-libEGL-11.1.0-2.20151218.fc23.x86_64                 64/83 
+  Verifying   : libwayland-client-1.9.0-1.fc23.x86_64                     65/83 
+  Verifying   : libwayland-server-1.9.0-1.fc23.x86_64                     66/83 
+  Verifying   : libxshmfence-1.2-2.fc23.x86_64                            67/83 
+  Verifying   : mesa-libGL-11.1.0-2.20151218.fc23.x86_64                  68/83 
+  Verifying   : libXxf86vm-1.1.4-2.fc23.x86_64                            69/83 
+  Verifying   : pixman-0.34.0-1.fc23.x86_64                               70/83 
+  Verifying   : libXdamage-devel-1.1.4-7.fc23.x86_64                      71/83 
+  Verifying   : libXxf86vm-devel-1.1.4-2.fc23.x86_64                      72/83 
+  Verifying   : libdrm-devel-2.4.66-1.fc23.x86_64                         73/83 
+  Verifying   : mesa-libglapi-11.1.0-2.20151218.fc23.x86_64               74/83 
+  Verifying   : libdrm-2.4.66-1.fc23.x86_64                               75/83 
+  Verifying   : libpciaccess-0.13.4-2.fc23.x86_64                         76/83 
+  Verifying   : mesa-libgbm-11.1.0-2.20151218.fc23.x86_64                 77/83 
+  Verifying   : libXau-devel-1.0.8-5.fc23.x86_64                          78/83 
+  Verifying   : graphite2-devel-1.3.6-1.fc23.x86_64                       79/83 
+  Verifying   : graphite2-1.3.6-1.fc23.x86_64                             80/83 
+  Verifying   : libicu-devel-54.1-5.fc23.x86_64                           81/83 
+  Verifying   : hwdata-0.286-1.fc23.noarch                                82/83 
+  Verifying   : aajohan-comfortaa-fonts-2.004-5.fc23.noarch               83/83 
 
 Installed:
   aajohan-comfortaa-fonts.noarch 2.004-5.fc23                                   
@@ -585,13 +561,9 @@ Installed:
   gdk-pixbuf2-devel.x86_64 2.32.3-1.fc23                                        
   gdk-pixbuf2-modules.x86_64 2.32.3-1.fc23                                      
   gl-manpages.noarch 1.1-10.20140424.fc23                                       
-  glib.x86_64 1:1.2.10-46.fc23                                                  
-  glib-devel.x86_64 1:1.2.10-46.fc23                                            
   glib2-devel.x86_64 2.46.2-1.fc23                                              
   graphite2.x86_64 1.3.6-1.fc23                                                 
   graphite2-devel.x86_64 1.3.6-1.fc23                                           
-  gtk+.x86_64 1:1.2.10-81.fc23                                                  
-  gtk+-devel.x86_64 1:1.2.10-81.fc23                                            
   gtk-update-icon-cache.x86_64 3.18.9-1.fc23                                    
   gtk2.x86_64 2.24.30-1.fc23                                                    
   gtk2-devel.x86_64 2.24.30-1.fc23                                              
@@ -602,10 +574,6 @@ Installed:
   hwdata.noarch 0.286-1.fc23                                                    
   jasper-libs.x86_64 1.900.1-31.fc23                                            
   jbigkit-libs.x86_64 2.1-4.fc23                                                
-  libICE.x86_64 1.0.9-3.fc23                                                    
-  libICE-devel.x86_64 1.0.9-3.fc23                                              
-  libSM.x86_64 1.2.2-3.fc23                                                     
-  libSM-devel.x86_64 1.2.2-3.fc23                                               
   libX11-devel.x86_64 1.6.3-2.fc23                                              
   libXau-devel.x86_64 1.0.8-5.fc23                                              
   libXcomposite.x86_64 0.4.4-7.fc23                                             
@@ -628,8 +596,6 @@ Installed:
   libXrandr-devel.x86_64 1.5.0-2.fc23                                           
   libXrender.x86_64 0.9.9-2.fc23                                                
   libXrender-devel.x86_64 0.9.9-2.fc23                                          
-  libXt.x86_64 1.1.5-2.fc23                                                     
-  libXt-devel.x86_64 1.1.5-2.fc23                                               
   libXxf86vm.x86_64 1.1.4-2.fc23                                                
   libXxf86vm-devel.x86_64 1.1.4-2.fc23                                          
   libdatrie.x86_64 0.2.8-6.fc23                                                 
@@ -665,8 +631,7 @@ Installed:
 
 Complete!
 The following command needs to be run through "sudo":
-    rpm -q gtk+-devel gtk2-devel m4 ncurses-devel pkgconfig
-gtk+-devel-1.2.10-81.fc23.x86_64
+    rpm -q gtk2-devel m4 ncurses-devel pkgconfig
 gtk2-devel-2.24.30-1.fc23.x86_64
 m4-1.4.17-8.fc23.x86_64
 ncurses-devel-5.9-21.20150214.fc23.x86_64
@@ -819,8 +784,8 @@ The following actions will be performed:
 - ocamlc -I +compiler-libs -g -c fl_package_base.ml
 - ocamlc -I +compiler-libs -c findlib.mli
 - ocamlc -I +compiler-libs -g -c findlib.ml
-- ocamlc -I +compiler-libs -g -c fl_args.ml
 - Makefile:175: depend: No such file or directory
+- ocamlc -I +compiler-libs -g -c fl_args.ml
 - ocamlc -I +compiler-libs -g -c fl_lint.ml
 - ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
 - ocamlc -I +compiler-libs -g -c ocaml_args.ml
@@ -980,7 +945,8 @@ The following actions will be performed:
 - checking whether the C compiler works... yes
 - checking for C compiler default output file name... a.out
 - checking for suffix of executables... 
-- checking whether we are cross compiling... no
+- checking whether we are cross compiling... 
+- no
 - checking for suffix of object files... o
 - checking whether we are using the GNU C compiler... yes
 - checking whether gcc accepts -g... yes
@@ -1066,11 +1032,13 @@ The following actions will be performed:
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gdk.c'
 - ./varcc glib_tags.var
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_glib.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_glib.c'
 - ./varcc gobject_tags.var
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gobject.c
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gpointer.c
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gvaluecaml.c
-- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_glib.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose wrappers.c
+- ./varcc gtk_tags.var
 - ml_glib.c: In function 'ml_g_io_channel_read':
 - ml_glib.c:369:3: warning: 'g_io_channel_read' is deprecated: Use 'g_io_channel_read_chars' instead [-Wdeprecated-declarations]
 -    switch (g_io_channel_read(GIOChannel_val(io), 
@@ -1094,18 +1062,16 @@ The following actions will be performed:
 -                        ^
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gpointer.c'
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gvaluecaml.c'
-- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose wrappers.c
-- ./varcc gtk_tags.var
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'wrappers.c'
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtk.c
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_pango.c
-- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'wrappers.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtkaction.c
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtk.c'
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_pango.c'
-- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtkaction.c
+- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtkaction.c'
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtkbin.c
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtkbroken.c
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtkbutton.c
-- + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtkaction.c'
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtkbin.c'
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtkbroken.c'
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtkbutton.c'
@@ -1124,12 +1090,12 @@ The following actions will be performed:
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtkpack.c
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtkrange.c
 - ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtkstock.c
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtktext.c
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtkpack.c'
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtkrange.c'
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtkstock.c'
-- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtktext.c
-- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtktree.c
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtktext.c'
+- ocamlc.opt -c -ccopt '-DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O' -verbose ml_gtktree.c
 - + gcc -O -fno-defer-pop -Wall -D_FILE_OFFSET_BITS=64 -D_REENTRANT -O -fPIC -c  -DG_DISABLE_ASSERT -DG_DISABLE_CAST_CHECKS -pthread -I/usr/include/gtk-2.0 -I/usr/lib64/gtk-2.0/include -I/usr/include/pango-1.0 -I/usr/include/atk-1.0 -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/libdrm -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/libpng16 -I/usr/include/pango-1.0 -I/usr/include/harfbuzz -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib64/glib-2.0/include -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/freetype2 -I/usr/include/libpng16  -imacros ml_domain.h -O  -I'/home/opam/.opam/4.02.3/lib/ocaml' 'ml_gtktree.c'
 - ocamlc.opt   -w s -c  gaux.ml
 - ocamlc.opt   -w s -c gpointer.mli
@@ -1152,6 +1118,10 @@ The following actions will be performed:
 - ocamlc.opt   -w s -c  gdkPixbuf.ml
 - ocamlc.opt   -w s -c  gtk.ml
 - camlp4o pa_macro.cmo -D HAS_PRINTEXC_BACKTRACE -impl gtkSignal.ml4 -o gtkSignal.ml
+- ocamlc.opt   -w s -c gtkSignal.mli
+- ocamlc.opt   -w s -c  gtkSignal.ml
+- ocamlc.opt   -w s -c  gtkStock.ml
+- ocamlc.opt   -w s -c  gtkObject.ml
 - File "gpointer.ml", line 144, characters 10-23:
 - Warning 3: deprecated: StdLabels.String.create
 - Use BytesLabels.create instead.
@@ -1170,10 +1140,6 @@ The following actions will be performed:
 - File "gutf8.ml", line 145, characters 11-23:
 - Warning 3: deprecated: Array.create
 - Use Array.make instead.
-- ocamlc.opt   -w s -c gtkSignal.mli
-- ocamlc.opt   -w s -c  gtkSignal.ml
-- ocamlc.opt   -w s -c  gtkStock.ml
-- ocamlc.opt   -w s -c  gtkObject.ml
 - ocamlc.opt -c -pp "camlp4o -impl" -impl propcc.ml4
 - ocamlc.opt   -o propcc propcc.cmo
 - ./propcc gtkBase.props
@@ -1196,6 +1162,10 @@ The following actions will be performed:
 - ocamlc.opt   -w s -c  gtkRangeProps.ml
 - ./propcc gtkText.props
 - ocamlc.opt   -w s -c  gtkTextProps.ml
+- Warning: no conversion for type PangoAttrList in class GtkLabel
+- Warning: no conversion for type GdkPixbufAnimation in class GtkImage
+- Warning: no conversion for type PangoTabArray in class GtkTextView
+- Warning: no conversion for type PangoTabArray in class GtkTextTag
 - ./propcc gtkTree.props
 - ocamlc.opt   -w s -c  gtkTreeProps.ml
 - ./propcc gtkFile.props
@@ -1225,14 +1195,6 @@ The following actions will be performed:
 - ocamlc.opt   -w s -c  gtkBroken.ml
 - ocamlc.opt   -w s -c  gPango.ml
 - ocamlc.opt   -w s -c gDraw.mli
-- Warning: no conversion for type PangoAttrList in class GtkLabel
-- Warning: no conversion for type GdkPixbufAnimation in class GtkImage
-- Warning: no conversion for type PangoTabArray in class GtkTextView
-- Warning: no conversion for type PangoTabArray in class GtkTextTag
-- Warning: no conversion for type PangoAttrList in class GtkCellRendererText
-- File "gtkList.ml", line 188, characters 14-26:
-- Warning 3: deprecated: StdLabels.Array.create
-- Use ArrayLabels.make instead.
 - ocamlc.opt   -w s -c  gDraw.ml
 - ocamlc.opt   -w s -c gObj.mli
 - ocamlc.opt   -w s -c  gObj.ml
@@ -1242,6 +1204,10 @@ The following actions will be performed:
 - ocamlc.opt   -w s -c  ogtkBinProps.ml
 - ocamlc.opt   -w s -c  ogtkButtonProps.ml
 - ocamlc.opt   -w s -c  ogtkEditProps.ml
+- Warning: no conversion for type PangoAttrList in class GtkCellRendererText
+- File "gtkList.ml", line 188, characters 14-26:
+- Warning 3: deprecated: StdLabels.Array.create
+- Use ArrayLabels.make instead.
 - ocamlc.opt   -w s -c  ogtkListProps.ml
 - ocamlc.opt   -w s -c  ogtkMenuProps.ml
 - ocamlc.opt   -w s -c  ogtkMiscProps.ml
@@ -1338,9 +1304,6 @@ The following actions will be performed:
 - ocamlopt.opt  -w s -c gdk.ml
 - ocamlopt.opt  -w s -c gdkEvent.ml
 - ocamlopt.opt  -w s -c gdkKeysyms.ml
-- ocamlopt.opt  -w s -c gdkPixbuf.ml
-- ocamlopt.opt  -w s -c gtk.ml
-- ocamlopt.opt  -w s -c gtkSignal.ml
 - File "gpointer.ml", line 144, characters 10-23:
 - Warning 3: deprecated: StdLabels.String.create
 - Use BytesLabels.create instead.
@@ -1359,6 +1322,9 @@ The following actions will be performed:
 - File "gutf8.ml", line 145, characters 11-23:
 - Warning 3: deprecated: Array.create
 - Use Array.make instead.
+- ocamlopt.opt  -w s -c gdkPixbuf.ml
+- ocamlopt.opt  -w s -c gtk.ml
+- ocamlopt.opt  -w s -c gtkSignal.ml
 - ocamlopt.opt  -w s -c gtkStock.ml
 - ocamlopt.opt  -w s -c gtkObject.ml
 - ocamlopt.opt  -w s -c gtkBaseProps.ml
@@ -1387,14 +1353,14 @@ The following actions will be performed:
 - ocamlopt.opt  -w s -c gtkList.ml
 - ocamlopt.opt  -w s -c gtkBin.ml
 - ocamlopt.opt  -w s -c gtkEdit.ml
-- File "gtkList.ml", line 188, characters 14-26:
-- Warning 3: deprecated: StdLabels.Array.create
-- Use ArrayLabels.make instead.
 - ocamlopt.opt  -w s -c gtkRange.ml
 - ocamlopt.opt  -w s -c gtkText.ml
 - ocamlopt.opt  -w s -c gtkTree.ml
 - ocamlopt.opt  -w s -c gtkFile.ml
 - ocamlopt.opt  -w s -c gtkMain.ml
+- File "gtkList.ml", line 188, characters 14-26:
+- Warning 3: deprecated: StdLabels.Array.create
+- Use ArrayLabels.make instead.
 - ocamlopt.opt  -w s -c gtkBroken.ml
 - ocamlopt.opt  -w s -c gPango.ml
 - ocamlopt.opt  -w s -c gDraw.ml
@@ -1443,7 +1409,7 @@ The following actions will be performed:
 - ocamlopt.opt -verbose -o lablgtk.cmxs -shared -linkall -I . \
 -         -ccopt '' lablgtk.cmxa
 - make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/lablgtk.2.18.3/src'
-- + as -o 'lablgtk.cmxs.startup.o' '/tmp/camlstartup45bb7d.s'
+- + as -o 'lablgtk.cmxs.startup.o' '/tmp/camlstartup6a1436.s'
 - + gcc -shared -o 'lablgtk.cmxs'   '-L.' '-L/home/opam/.opam/4.02.3/lib/ocaml'  'lablgtk.cmxs.startup.o' 'lablgtk.a' '-llablgtk2' '-lgtk-x11-2.0' '-lgdk-x11-2.0' '-lpangocairo-1.0' '-latk-1.0' '-lcairo' '-lgdk_pixbuf-2.0' '-lgio-2.0' '-lpangoft2-1.0' '-lpango-1.0' '-lgobject-2.0' '-lglib-2.0' '-lfontconfig' '-lfreetype' 
 [lablgtk: make install] Command started
 + make "install" (CWD=/home/opam/.opam/4.02.3/build/lablgtk.2.18.3)
@@ -1867,6 +1833,6 @@ The following actions will be performed:
 - ocamlfind: [WARNING] You have installed DLLs but the directory /home/opam/.opam/4.02.3/lib/stublibs is not mentioned in ld.conf
 -> installed lablgtk.2.18.3
 Done.
- ---> 6cd3b95ddd14
-Removing intermediate container bdc43cbf71ea
-Successfully built 6cd3b95ddd14
+ ---> 376b287d55aa
+Removing intermediate container 043602eeb977
+Successfully built 376b287d55aa
