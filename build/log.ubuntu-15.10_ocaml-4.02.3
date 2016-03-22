@@ -1,0 +1,1540 @@
+Running this Dockerfile:
+FROM ocaml/opam:ubuntu-15.10_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/lefessan/opam-repository.git 2016-03-22-conf-wxwidgets && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u wxOCaml" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v wxOCaml"Sending build context to Docker daemon 37.38 kB
+Step 1 : FROM ocaml/opam:ubuntu-15.10_ocaml-4.02.3
+ubuntu-15.10_ocaml-4.02.3: Pulling from ocaml/opam
+d9aca89b8809: Already exists
+a9d344cc6f06: Already exists
+27e2ab7f0ea3: Already exists
+a3ed95caeb02: Already exists
+4184ffa0ca0f: Already exists
+d5bf8bc5ab10: Already exists
+d01804b42e41: Already exists
+Digest: sha256:5008212b79d7475134048612335c129d51013ab79b15eb15de0767f69c3e5a51
+Status: Image is up to date for ocaml/opam:ubuntu-15.10_ocaml-4.02.3
+ ---> 0b266b16efb1
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/lefessan/opam-repository.git 2016-03-22-conf-wxwidgets && opam update -u" &&   sudo -u opam sh -c "opam depext -u wxOCaml" &&   sudo -u opam sh -c "opam install -y -j 2 -v wxOCaml"
+ ---> Running in ce39e7ad1d94
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0m[91m   8223d0d..6b3fe5c  master     -> origin/master
+[0mUpdating 8223d0d..6b3fe5c
+Fast-forward
+ compilers/4.04.0/4.04.0+pr486/4.04.0+pr486.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr518/4.04.0+pr518.descr   |  1 -
+ .../4.04.0+pr519.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr519/4.04.0+pr519.descr   |  1 +
+ .../4.04.0+pr520.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr520/4.04.0+pr520.descr   |  1 +
+ packages/async_ssl/async_ssl.113.24.00/opam        |  6 +--
+ packages/async_ssl/async_ssl.113.33.00/opam        |  6 +--
+ packages/c3/c3.0.2.1/opam                          |  7 ++-
+ packages/c3/c3.0.3.0/opam                          |  7 ++-
+ packages/charrua-core/charrua-core.0.2/opam        |  4 +-
+ packages/conf-m4/conf-m4.1/opam                    |  1 +
+ packages/conf-ncurses/conf-ncurses.1/opam          |  1 +
+ packages/conf-openssl/conf-openssl.1/opam          |  1 +
+ packages/conf-pkg-config/conf-pkg-config.1.0/opam  |  1 +
+ packages/core_kernel/core_kernel.113.33.01/descr   |  6 +++
+ packages/core_kernel/core_kernel.113.33.01/opam    | 28 ++++++++++++
+ packages/core_kernel/core_kernel.113.33.01/url     |  2 +
+ packages/ctypes/ctypes.0.5.0/descr                 | 18 ++++++++
+ packages/ctypes/ctypes.0.5.0/findlib               |  1 +
+ packages/ctypes/ctypes.0.5.0/opam                  | 32 ++++++++++++++
+ packages/ctypes/ctypes.0.5.0/url                   |  2 +
+ packages/dbm/dbm.1.0/files/mkdir-stublibs.patch    | 17 ++++++++
+ packages/dbm/dbm.1.0/opam                          |  1 +
+ packages/frama-c-e-acsl/frama-c-e-acsl.0.5/opam    |  6 ++-
+ packages/hashcons/hashcons.1.0.1/opam              |  1 +
+ packages/iri/iri.0.2.0/descr                       |  5 +++
+ packages/iri/iri.0.2.0/opam                        | 24 ++++++++++
+ packages/iri/iri.0.2.0/url                         |  2 +
+ packages/lablgtk/lablgtk.2.16.0/opam               |  4 ++
+ packages/lablgtk/lablgtk.2.18.2/opam               |  4 ++
+ packages/lablgtk/lablgtk.2.18.3/opam               |  4 ++
+ packages/mirage-dns/mirage-dns.2.5.0/opam          |  1 +
+ packages/mirage/mirage.2.7.1/opam                  | 32 --------------
+ packages/mirage/mirage.2.7.1/url                   |  2 -
+ .../mirage/{mirage.2.7.1 => mirage.2.7.3}/descr    |  0
+ packages/mirage/mirage.2.7.3/opam                  | 36 +++++++++++++++
+ packages/mirage/mirage.2.7.3/url                   |  2 +
+ packages/mlpost/mlpost.0.8.1/opam                  | 14 +++---
+ packages/nocrypto/nocrypto.0.5.3/descr             |  6 +++
+ packages/nocrypto/nocrypto.0.5.3/opam              | 45 +++++++++++++++++++
+ packages/nocrypto/nocrypto.0.5.3/url               |  2 +
+ packages/ocaml-protoc/ocaml-protoc.0.1.2/descr     |  4 ++
+ packages/ocaml-protoc/ocaml-protoc.0.1.2/opam      | 25 +++++++++++
+ packages/ocaml-protoc/ocaml-protoc.0.1.2/url       |  2 +
+ packages/ocamlviz/ocamlviz.1.01/opam               | 29 +++++++++---
+ packages/opass/opass.0.2.0/opam                    |  5 ++-
+ packages/opass/opass.0.2.1/opam                    |  3 ++
+ packages/opass/opass.1.0.0/opam                    |  9 +++-
+ packages/opass/opass.1.0.1/opam                    |  9 +++-
+ packages/opass/opass.1.0.2/opam                    |  9 +++-
+ packages/opass/opass.1.0.6/desc                    |  2 +
+ packages/opass/opass.1.0.6/opam                    | 30 +++++++++++++
+ packages/opass/opass.1.0.6/url                     |  2 +
+ packages/otr/otr.0.2.0/opam                        |  2 +-
+ packages/otr/otr.0.3.0/opam                        |  2 +-
+ packages/otr/otr.0.3.1/descr                       |  8 ++++
+ packages/otr/otr.0.3.1/opam                        | 30 +++++++++++++
+ packages/otr/otr.0.3.1/url                         |  2 +
+ packages/pds/pds.3.0.2/desc                        |  1 +
+ packages/pds/pds.3.0.2/opam                        | 30 +++++++++++++
+ packages/pds/pds.3.0.2/url                         |  2 +
+ packages/planets/planets.0.1.14/opam               |  2 +-
+ .../ppx_jsobject_conv.0.0.2/descr                  |  6 +++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/opam | 22 ++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/url  |  3 ++
+ .../ppx_jsobject_conv.0.0.3/descr                  |  6 +++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/opam | 22 ++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/url  |  3 ++
+ packages/rdf/rdf.0.10.0/descr                      | 13 ++++++
+ packages/rdf/rdf.0.10.0/opam                       | 38 ++++++++++++++++
+ packages/rdf/rdf.0.10.0/url                        |  2 +
+ packages/re2/re2.112.06.00/opam                    |  2 +-
+ packages/re2/re2.112.35.00/opam                    |  2 +-
+ packages/re2/re2.113.00.00/opam                    |  2 +-
+ packages/re2/re2.113.24.00/opam                    |  2 +-
+ packages/re2/re2.113.33.00/opam                    |  4 ++
+ .../shared-memory-ring.1.3.0/descr                 |  3 ++
+ .../shared-memory-ring.1.3.0/findlib               |  1 +
+ .../shared-memory-ring.1.3.0/opam                  | 26 +++++++++++
+ .../shared-memory-ring.1.3.0/url                   |  2 +
+ packages/socket-daemon/socket-daemon.0.2.0/descr   |  6 +++
+ packages/socket-daemon/socket-daemon.0.2.0/opam    | 28 ++++++++++++
+ packages/socket-daemon/socket-daemon.0.2.0/url     |  2 +
+ packages/sundialsml/sundialsml.2.6.2p0/descr       | 31 +++++++++++++
+ packages/sundialsml/sundialsml.2.6.2p0/findlib     |  1 +
+ packages/sundialsml/sundialsml.2.6.2p0/opam        | 51 ++++++++++++++++++++++
+ packages/sundialsml/sundialsml.2.6.2p0/url         |  2 +
+ packages/tls/tls.0.7.0/opam                        |  2 +-
+ packages/tls/tls.0.7.1/descr                       |  4 ++
+ packages/tls/tls.0.7.1/findlib                     |  1 +
+ packages/tls/tls.0.7.1/opam                        | 48 ++++++++++++++++++++
+ packages/tls/tls.0.7.1/url                         |  2 +
+ packages/vmnet/vmnet.1.0.0/opam                    |  6 ++-
+ packages/vmnet/vmnet.1.0.1/opam                    |  6 ++-
+ packages/vmnet/vmnet.1.0.2/opam                    |  6 ++-
+ packages/vmnet/vmnet.1.1.0/descr                   | 30 +++++++++++++
+ packages/vmnet/vmnet.1.1.0/opam                    | 28 ++++++++++++
+ packages/vmnet/vmnet.1.1.0/url                     |  2 +
+ packages/x509/x509.0.5.0/opam                      |  2 +-
+ packages/x509/x509.0.5.1/descr                     |  4 ++
+ packages/x509/x509.0.5.1/findlib                   |  1 +
+ packages/x509/x509.0.5.1/opam                      | 35 +++++++++++++++
+ packages/x509/x509.0.5.1/url                       |  2 +
+ 104 files changed, 921 insertions(+), 85 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr486/4.04.0+pr486.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr518/4.04.0+pr518.descr
+ rename compilers/4.04.0/{4.04.0+pr518/4.04.0+pr518.comp => 4.04.0+pr519/4.04.0+pr519.comp} (72%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr519/4.04.0+pr519.descr
+ rename compilers/4.04.0/{4.04.0+pr486/4.04.0+pr486.comp => 4.04.0+pr520/4.04.0+pr520.comp} (76%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr520/4.04.0+pr520.descr
+ create mode 100644 packages/core_kernel/core_kernel.113.33.01/descr
+ create mode 100644 packages/core_kernel/core_kernel.113.33.01/opam
+ create mode 100644 packages/core_kernel/core_kernel.113.33.01/url
+ create mode 100644 packages/ctypes/ctypes.0.5.0/descr
+ create mode 100644 packages/ctypes/ctypes.0.5.0/findlib
+ create mode 100644 packages/ctypes/ctypes.0.5.0/opam
+ create mode 100644 packages/ctypes/ctypes.0.5.0/url
+ create mode 100644 packages/dbm/dbm.1.0/files/mkdir-stublibs.patch
+ create mode 100644 packages/iri/iri.0.2.0/descr
+ create mode 100644 packages/iri/iri.0.2.0/opam
+ create mode 100644 packages/iri/iri.0.2.0/url
+ delete mode 100644 packages/mirage/mirage.2.7.1/opam
+ delete mode 100644 packages/mirage/mirage.2.7.1/url
+ rename packages/mirage/{mirage.2.7.1 => mirage.2.7.3}/descr (100%)
+ create mode 100644 packages/mirage/mirage.2.7.3/opam
+ create mode 100644 packages/mirage/mirage.2.7.3/url
+ create mode 100644 packages/nocrypto/nocrypto.0.5.3/descr
+ create mode 100644 packages/nocrypto/nocrypto.0.5.3/opam
+ create mode 100644 packages/nocrypto/nocrypto.0.5.3/url
+ create mode 100644 packages/ocaml-protoc/ocaml-protoc.0.1.2/descr
+ create mode 100644 packages/ocaml-protoc/ocaml-protoc.0.1.2/opam
+ create mode 100644 packages/ocaml-protoc/ocaml-protoc.0.1.2/url
+ create mode 100644 packages/opass/opass.1.0.6/desc
+ create mode 100644 packages/opass/opass.1.0.6/opam
+ create mode 100644 packages/opass/opass.1.0.6/url
+ create mode 100644 packages/otr/otr.0.3.1/descr
+ create mode 100644 packages/otr/otr.0.3.1/opam
+ create mode 100644 packages/otr/otr.0.3.1/url
+ create mode 100644 packages/pds/pds.3.0.2/desc
+ create mode 100644 packages/pds/pds.3.0.2/opam
+ create mode 100644 packages/pds/pds.3.0.2/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/url
+ create mode 100644 packages/rdf/rdf.0.10.0/descr
+ create mode 100644 packages/rdf/rdf.0.10.0/opam
+ create mode 100644 packages/rdf/rdf.0.10.0/url
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/descr
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/findlib
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/opam
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/url
+ create mode 100644 packages/socket-daemon/socket-daemon.0.2.0/descr
+ create mode 100644 packages/socket-daemon/socket-daemon.0.2.0/opam
+ create mode 100644 packages/socket-daemon/socket-daemon.0.2.0/url
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/descr
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/findlib
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/opam
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/url
+ create mode 100644 packages/tls/tls.0.7.1/descr
+ create mode 100644 packages/tls/tls.0.7.1/findlib
+ create mode 100644 packages/tls/tls.0.7.1/opam
+ create mode 100644 packages/tls/tls.0.7.1/url
+ create mode 100644 packages/vmnet/vmnet.1.1.0/descr
+ create mode 100644 packages/vmnet/vmnet.1.1.0/opam
+ create mode 100644 packages/vmnet/vmnet.1.1.0/url
+ create mode 100644 packages/x509/x509.0.5.1/descr
+ create mode 100644 packages/x509/x509.0.5.1/findlib
+ create mode 100644 packages/x509/x509.0.5.1/opam
+ create mode 100644 packages/x509/x509.0.5.1/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/lefessan/opam-repository
+ * branch            2016-03-22-conf-wxwidgets -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/descr |  2 ++
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/opam  | 11 +++++++++++
+ packages/wxOCaml/wxOCaml.1.0.1/opam              |  5 ++---
+ 3 files changed, 15 insertions(+), 3 deletions(-)
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/descr
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/opam
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux ubuntu
+# The following system packages are needed:
+#  - debianutils
+#  - m4
+#  - ncurses-dev
+#  - pkg-config
+# The following new OS packages need to be installed: ncurses-dev
+The following command needs to be run through "sudo":
+    apt-get update
+Hit http://archive.ubuntu.com wily InRelease
+Get:1 http://archive.ubuntu.com wily-updates InRelease [65.9 kB]
+Get:2 http://archive.ubuntu.com wily-security InRelease [65.9 kB]
+Get:3 http://archive.ubuntu.com wily/main Sources [1411 kB]
+Get:4 http://archive.ubuntu.com wily/restricted Sources [7171 B]
+Get:5 http://archive.ubuntu.com wily/universe Sources [8976 kB]
+Get:6 http://archive.ubuntu.com wily/main amd64 Packages [1833 kB]
+Get:7 http://archive.ubuntu.com wily/restricted amd64 Packages [23.1 kB]
+Get:8 http://archive.ubuntu.com wily/universe amd64 Packages [8673 kB]
+Get:9 http://archive.ubuntu.com wily-updates/main Sources [88.7 kB]
+Get:10 http://archive.ubuntu.com wily-updates/restricted Sources [3560 B]
+Get:11 http://archive.ubuntu.com wily-updates/universe Sources [23.3 kB]
+Get:12 http://archive.ubuntu.com wily-updates/main amd64 Packages [254 kB]
+Get:13 http://archive.ubuntu.com wily-updates/restricted amd64 Packages [20.4 kB]
+Get:14 http://archive.ubuntu.com wily-updates/universe amd64 Packages [109 kB]
+Get:15 http://archive.ubuntu.com wily-security/main Sources [50.7 kB]
+Get:16 http://archive.ubuntu.com wily-security/restricted Sources [2681 B]
+Get:17 http://archive.ubuntu.com wily-security/universe Sources [11.3 kB]
+Get:18 http://archive.ubuntu.com wily-security/main amd64 Packages [175 kB]
+Get:19 http://archive.ubuntu.com wily-security/restricted amd64 Packages [17.4 kB]
+Get:20 http://archive.ubuntu.com wily-security/universe amd64 Packages [60.3 kB]
+Fetched 21.9 MB in 1min 59s (183 kB/s)
+Reading package lists...
+# OS package update successful
+The following command needs to be run through "sudo":
+    apt-get install -qq -yy ncurses-dev
+# OS packages installation successful
+The following actions will be performed:
+  - install conf-wxwidgets  3.0                                 [required by wxOCaml]
+  - install conf-pkg-config 1.0                                 [required by conf-ncurses]
+  - install conf-m4         1                                   [required by ocamlfind]
+  - install conf-ncurses    1                                   [required by ocamlfind]
+  - install ocamlfind       1.6.2                               [required by wxOCaml]
+  - install ocp-build       1.99.13-beta                        [required by wxOCaml]
+  - install wxOCaml         1.0.1       
+===== 7 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[ocamlfind: http] Command started
+[ocp-build: http] Command started
+[wxOCaml: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
+[wxOCaml: http] Command started
+[wxOCaml.1.0.1] https://github.com/OCamlPro/ocplib-wxOCaml/archive/1.0.1.tar.gz downloaded
+[ocp-build: http] Command started
+[ocp-build.1.99.13-beta] http://github.com/OCamlPro/ocp-build/archive/1.99.13-beta.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[conf-m4: sh echo | m4] Command started
+[conf-pkg-config: pkg-config] Command started
++ sh "-exc" "echo | m4" (CWD=/home/opam/.opam/4.02.3/build/conf-m4.1)
+- 
+- + echo
+- + m4
+-> installed conf-m4.1
+[conf-wxwidgets: wx-config] Command started
++ pkg-config "--help" (CWD=/home/opam/.opam/4.02.3/build/conf-pkg-config.1.0)
+- Usage:
+-   pkg-config [OPTION...]
+- 
+- Help Options:
+-   -h, --help                              Show help options
+- 
+- Application Options:
+-   --version                               output version of pkg-config
+-   --modversion                            output version for package
+-   --atleast-pkgconfig-version=VERSION     require given version of pkg-config
+-   --libs                                  output all linker flags
+-   --static                                output linker flags for static linking
+-   --short-errors                          print short errors
+-   --libs-only-l                           output -l flags
+-   --libs-only-other                       output other libs (e.g. -pthread)
+-   --libs-only-L                           output -L flags
+-   --cflags                                output all pre-processor and compiler flags
+-   --cflags-only-I                         output -I flags
+-   --cflags-only-other                     output cflags not covered by the cflags-only-I option
+-   --variable=NAME                         get the value of variable named NAME
+-   --define-variable=NAME=VALUE            set variable NAME to VALUE
+-   --exists                                return 0 if the module(s) exist
+-   --print-variables                       output list of variables defined by the module
+-   --uninstalled                           return 0 if the uninstalled version of one or more module(s) or their dependencies will be used
+-   --atleast-version=VERSION               return 0 if the module is at least version VERSION
+-   --exact-version=VERSION                 return 0 if the module is at exactly version VERSION
+-   --max-version=VERSION                   return 0 if the module is at no newer than version VERSION
+-   --list-all                              list all known packages
+-   --debug                                 show verbose debug information
+-   --print-errors                          show verbose information about missing or conflicting packages (default unless --exists or --atleast/exact/max-version given on the command line)
+-   --silence-errors                        be silent about errors (default when --exists or --atleast/exact/max-version given on the command line)
+-   --errors-to-stdout                      print errors from --print-errors to stdout not stderr
+-   --print-provides                        print which packages the package provides
+-   --print-requires                        print which packages the package requires
+-   --print-requires-private                print which packages the package requires for static linking
+- 
+-> installed conf-pkg-config.1.0
+[conf-ncurses: pkg-config ncurses] Command started
++ wx-config "--libs" (CWD=/home/opam/.opam/4.02.3/build/conf-wxwidgets.3.0)
+[91m[ERROR] The compilation of conf-wxwidgets failed at "wx-config --libs".
+[0m+ pkg-config "ncurses" (CWD=/home/opam/.opam/4.02.3/build/conf-ncurses.1)
+-> installed conf-ncurses.1
+[ocamlfind: ./configure] Command started
++ ./configure "-bindir" "/home/opam/.opam/4.02.3/bin" "-sitelib" "/home/opam/.opam/4.02.3/lib" "-mandir" "/home/opam/.opam/4.02.3/man" "-config" "/home/opam/.opam/4.02.3/lib/findlib.conf" (CWD=/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2)
+- Welcome to findlib version 1.6.2
+- Configuring core...
+- Checking for #remove_directory...
+- Testing threading model...
+- systhread_supported: true
+- Testing DLLs...
+- Testing whether ppxopt can be supported...
+- Configuring libraries...
+- native dynlink: found
+- labltk: not present
+- ocamlbuild: found
+- camlp4: using camlp4, style 310
+- compiler-libs: found
+- dbm: not present (normal since OCaml-4.00)
+- bytes: found, installing fake library
+- Configuration for dynlink written to site-lib-src/dynlink/META
+- Configuration for graphics written to site-lib-src/graphics/META
+- Configuration for num written to site-lib-src/num/META
+- Configuration for num-top written to site-lib-src/num-top/META
+- Configuration for str written to site-lib-src/str/META
+- Configuration for threads written to site-lib-src/threads/META
+- Configuration for unix written to site-lib-src/unix/META
+- Configuration for stdlib written to site-lib-src/stdlib/META
+- Configuration for bigarray written to site-lib-src/bigarray/META
+- Configuration for ocamldoc written to site-lib-src/ocamldoc/META
+- Configuration for camlp4 written to site-lib-src/camlp4/META
+- Configuration for ocamlbuild written to site-lib-src/ocamlbuild/META
+- Configuration for compiler-libs written to site-lib-src/compiler-libs/META
+- Configuration for bytes written to site-lib-src/bytes/META
+- Detecting compiler arguments: (extractor built) ok
+- 
+- About the OCAML core installation:
+-     Standard library:      /home/opam/.opam/4.02.3/lib/ocaml
+-     Binaries:              /home/opam/.opam/4.02.3/bin
+-     Manual pages:          /home/opam/.opam/4.02.3/man
+-     Multi-threading type:  posix
+- The directory of site-specific packages will be
+-     site-lib:              /home/opam/.opam/4.02.3/lib
+- The configuration file is written to:
+-     findlib config file:   /home/opam/.opam/4.02.3/lib/findlib.conf
+- Software will be installed:
+-     Libraries:             in <site-lib>/findlib
+-     Binaries:              /home/opam/.opam/4.02.3/bin
+-     Manual pages:          /home/opam/.opam/4.02.3/man
+-     topfind script:        /home/opam/.opam/4.02.3/lib/ocaml
+- Topfind ppxopt support:    yes
+- Toolbox:                   no
+- Link custom runtime:       yes
+- Need bytes compatibility:  no
+- 
+- Configuration has been written to Makefile.config
+- 
+- You can now do 'make all', and optionally 'make opt', to build ocamlfind.
+[ocamlfind: make all] Command started
++ make "all" (CWD=/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make all ) || exit; done
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- ocamllex fl_meta.mll
+- 22 states, 392 transitions, table size 1700 bytes
+- ocamldep *.ml *.mli >depend
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib_config.mlp | \
+- 	../../tools/patch '@CONFIGFILE@' '/home/opam/.opam/4.02.3/lib/findlib.conf' | \
+- 	../../tools/patch '@STDLIB@' '/home/opam/.opam/4.02.3/lib/ocaml' | \
+- 	sed -e 's;@AUTOLINK@;true;g' \
+- 	    -e 's;@SYSTEM@;linux;g' \
+- 	     >findlib_config.ml
+- ocamlc -I +compiler-libs -g -c findlib_config.ml
+- ocamlc -I +compiler-libs -g -c fl_split.ml
+- ocamlc -I +compiler-libs -g -c fl_metatoken.ml
+- ocamlc -I +compiler-libs -g -c fl_meta.ml
+- ocamlc -I +compiler-libs -c fl_metascanner.mli
+- ocamlc -I +compiler-libs -g -c fl_metascanner.ml
+- ocamlc -I +compiler-libs -c fl_topo.mli
+- ocamlc -I +compiler-libs -g -c fl_topo.ml
+- ocamlc -I +compiler-libs -c fl_package_base.mli
+- ocamlc -I +compiler-libs -g -c fl_package_base.ml
+- ocamlc -I +compiler-libs -c findlib.mli
+- ocamlc -I +compiler-libs -g -c findlib.ml
+- Makefile:175: depend: No such file or directory
+- ocamlc -I +compiler-libs -g -c fl_args.ml
+- ocamlc -I +compiler-libs -g -c fl_lint.ml
+- ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
+- ocamlc -I +compiler-libs -g -c ocaml_args.ml
+- ocamlc -I +compiler-libs -g -c frontend.ml
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
+-            ocaml_args.cmo frontend.cmo
+- if [ "true" = "true" ]; then                 \
+- 	cp topfind.ml.in topfind.ml;                             \
+- else                                                             \
+- 	sed -e '/PPXOPT_BEGIN/,/PPXOPT_END/ d' topfind.ml.in     \
+- 		> topfind.ml ;                                   \
+- fi
+- ocamlc -I +compiler-libs -c topfind.mli
+- ocamlc -I +compiler-libs -g -c topfind.ml
+- ocamlc -I +compiler-libs -a -o findlib_top.cma topfind.cmo
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat topfind_rd1.p | \
+- 	../../tools/patch '@SITELIB@' '/home/opam/.opam/4.02.3/lib' \
+-     	    >topfind
+- ocamlc -I +compiler-libs -c num_top_printers.mli
+- ocamlc -I +compiler-libs -g -c num_top_printers.ml
+- ocamlc -I +compiler-libs -c num_top.mli
+- ocamlc -I +compiler-libs -g -c num_top.ml
+- ocamlc -I +compiler-libs -a -o num_top.cma num_top_printers.cmo num_top.cmo
+- ocamlc -I +compiler-libs -c fl_dynload.mli
+- ocamlc -I +compiler-libs -g -c fl_dynload.ml
+- ocamlc -I +compiler-libs -a -o findlib_dynload.cma fl_dynload.cmo
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- make all-config
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib.conf.in | \
+- 	tools/patch '@SITELIB@' '/home/opam/.opam/4.02.3/lib' >findlib.conf
+- if ocamlc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlc="ocamlc.opt"' >>findlib.conf; \
+- fi
+- if ocamlopt.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlopt="ocamlopt.opt"' >>findlib.conf; \
+- fi
+- if ocamldep.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldep="ocamldep.opt"' >>findlib.conf; \
+- fi
+- if ocamldoc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldoc="ocamldoc.opt"' >>findlib.conf; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+[ocamlfind: make opt] Command started
++ make "opt" (CWD=/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make opt ) || exit; done
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- ocamldep *.ml *.mli >depend
+- ocamlopt -I +compiler-libs -c findlib_config.ml
+- ocamlopt -I +compiler-libs -c fl_split.ml
+- ocamlopt -I +compiler-libs -c fl_metatoken.ml
+- ocamlopt -I +compiler-libs -c fl_meta.ml
+- ocamlopt -I +compiler-libs -c fl_metascanner.ml
+- ocamlopt -I +compiler-libs -c fl_topo.ml
+- ocamlopt -I +compiler-libs -c fl_package_base.ml
+- ocamlopt -I +compiler-libs -c findlib.ml
+- ocamlopt -I +compiler-libs -c fl_args.ml
+- ocamlopt -I +compiler-libs -c fl_lint.ml
+- ocamlopt -I +compiler-libs -a -o findlib.cmxa findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib.cmxs findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx; \
+- fi
+- ocamlopt -I +compiler-libs -c ocaml_args.ml
+- ocamlopt -I +compiler-libs -c frontend.ml
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- ocamlopt -I +compiler-libs -o ocamlfind_opt findlib.cmxa unix.cmxa \
+- 	   ocaml_args.cmx frontend.cmx
+- ocamlopt -I +compiler-libs -c fl_dynload.ml
+- ocamlopt -I +compiler-libs -a -o findlib_dynload.cmxa fl_dynload.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib_dynload.cmxs fl_dynload.cmx; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+[ocamlfind: make install] Command started
++ make "install" (CWD=/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2)
+- mkdir -p "/home/opam/.opam/4.02.3/bin"
+- mkdir -p "/home/opam/.opam/4.02.3/man"
+- make install-config
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- mkdir -p "`dirname \"/home/opam/.opam/4.02.3/lib/findlib.conf\"`"
+- test -f "/home/opam/.opam/4.02.3/lib/findlib.conf" || cp findlib.conf "/home/opam/.opam/4.02.3/lib/findlib.conf"
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- for p in findlib; do ( cd src/$p; make install ); done
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/4.02.3/lib/findlib"
+- mkdir -p "/home/opam/.opam/4.02.3/bin"
+- test 1 -eq 0 || cp topfind "/home/opam/.opam/4.02.3/lib/ocaml"
+- files=`../../tools/collect_files ../../Makefile.config findlib.cmi findlib.mli findlib.cma topfind.cmi topfind.mli fl_package_base.mli fl_package_base.cmi fl_metascanner.mli fl_metascanner.cmi fl_metatoken.cmi findlib_top.cma findlib.cmxa findlib.a findlib.cmxs findlib_dynload.cma findlib_dynload.cmxa findlib_dynload.a findlib_dynload.cmxs fl_dynload.mli fl_dynload.cmi META` && \
+- cp $files "/home/opam/.opam/4.02.3/lib/findlib"
+- f="ocamlfind"; { test -f ocamlfind_opt && f="ocamlfind_opt"; }; \
+- cp $f "/home/opam/.opam/4.02.3/bin/ocamlfind"
+- # the following "if" block is only needed for 4.00beta2
+- if [ 1 -eq 0 -a -f "/home/opam/.opam/4.02.3/lib/ocaml/compiler-libs/topdirs.cmi" ]; then \
+-     cd "/home/opam/.opam/4.02.3/lib/ocaml/compiler-libs/"; \
+-     cp topdirs.cmi toploop.cmi "/home/opam/.opam/4.02.3/lib/findlib/"; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- make install-meta
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- for x in `ls site-lib-src`; do if [ -f "site-lib-src/$x/META" ]; then mkdir -p "/home/opam/.opam/4.02.3/lib/$x"; cp site-lib-src/$x/META "/home/opam/.opam/4.02.3/lib/$x"; fi; done
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- cd src/findlib; make install-num-top
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/4.02.3/lib/num-top"
+- cp num_top.cma num_top.cmi num_top_printers.cmi \
+- 	"/home/opam/.opam/4.02.3/lib/num-top"
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- if [ 1 -eq 1 ]; then \
+- 	cp tools/safe_camlp4 "/home/opam/.opam/4.02.3/bin"; \
+- fi
+- make install-doc
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- mkdir -p "/home/opam/.opam/4.02.3/man/man1" "/home/opam/.opam/4.02.3/man/man3 /home/opam/.opam/4.02.3/man/man5"
+- cp doc/ref-man/ocamlfind.1 "/home/opam/.opam/4.02.3/man/man1"
+- cp doc/ref-man/META.5 doc/ref-man/site-lib.5 doc/ref-man/findlib.conf.5 "/home/opam/.opam/4.02.3/man/man5"
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+-> installed ocamlfind.1.6.2
+[ocp-build: ./configure] Command started
++ ./configure "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ocp-build.1.99.13-beta)
+- checking for gcc... gcc
+- checking whether the C compiler works... yes
+- checking for C compiler default output file name... a.out
+- checking for suffix of executables... 
+- checking whether we are cross compiling... no
+- checking for suffix of object files... o
+- checking whether we are using the GNU C compiler... yes
+- checking whether gcc accepts -g... yes
+- checking for gcc option to accept ISO C89... none needed
+- checking for ocamlc... ocamlc
+- OCaml version is 4.02.3
+- OCaml library path is /home/opam/.opam/4.02.3/lib/ocaml
+- checking for ocamlopt... ocamlopt
+- checking for ocamlc.opt... ocamlc.opt
+- checking for ocamlopt.opt... ocamlopt.opt
+- checking for ocaml... ocaml
+- checking for ocamldep... ocamldep
+- checking for ocamlmktop... ocamlmktop
+- checking for ocamlmklib... ocamlmklib
+- checking for ocamldoc... ocamldoc
+- checking for ocamlbuild... ocamlbuild
+- checking for camlp4... camlp4
+- checking for camlp4boot... camlp4boot
+- checking for camlp4o... camlp4o
+- checking for camlp4of... camlp4of
+- checking for camlp4oof... camlp4oof
+- checking for camlp4orf... camlp4orf
+- checking for camlp4prof... camlp4prof
+- checking for camlp4r... camlp4r
+- checking for camlp4rf... camlp4rf
+- checking for a sed that does not truncate output... /bin/sed
+- checking Major version... 4
+- checking Minor version... 02
+- checking Point version... 3
+- checking for gawk... no
+- checking for mawk... mawk
+- configure: creating ./config.status
+- config.status: creating Makefile.config
+- 
+- Executables will be installed in /home/opam/.opam/4.02.3/bin
+- Libraries will be installed in /home/opam/.opam/4.02.3/lib/ocaml/typerex
+- Data files will be installed in /home/opam/.opam/4.02.3/share/typerex
+- Manual pages will be installed in /home/opam/.opam/4.02.3/share/man
+- Creating root directory _obuild/
+[ocp-build: make] Command started
++ make  (CWD=/home/opam/.opam/4.02.3/build/ocp-build.1.99.13-beta)
+- make create-booter
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocp-build.1.99.13-beta'
+- cp -f ocplib-compat/with-bytes/stringCompat.ml \
+- 	ocplib-compat/string-compat/stringCompat.ml
+- ocamllex.opt ocplib-lang/ocamllexer.mll
+- 81 states, 1371 transitions, table size 5970 bytes
+- camlp4o.opt -impl ocplib-system/simpleConfig.ml4 > ocplib-system/simpleConfig.ml
+- ocamlyacc ocp-build/buildOCPParser.mly
+- echo "let version=\"1.99.13-beta\"" > ocp-build/buildVersion.ml
+- ocamllex.opt ocp-build/metaLexer.mll
+- 22 states, 692 transitions, table size 2900 bytes
+- ocamlopt.opt -c -o ocplib-compat/string-compat/stringCompat.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-compat/string-compat/stringCompat.ml
+- ocamlc.opt -c -o ocplib-debug/debugVerbosity.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-debug/debugVerbosity.mli
+- ocamlopt.opt -c -o ocplib-debug/debugVerbosity.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-debug/debugVerbosity.ml
+- ocamlc.opt -c -o ocplib-debug/debugTyperex.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-debug/debugTyperex.mli
+- ocamlopt.opt -c -o ocplib-debug/debugTyperex.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-debug/debugTyperex.ml
+- ocamlc.opt -c -o ocplib-lang/ocpPervasives.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpPervasives.mli
+- ocamlopt.opt -c -o ocplib-lang/ocpPervasives.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpPervasives.ml
+- ocamlc.opt -c -o ocplib-lang/ocpList.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpList.mli
+- ocamlopt.opt -c -o ocplib-lang/ocpList.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpList.ml
+- ocamlc.opt -c -o ocplib-lang/ocpString.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpString.mli
+- ocamlopt.opt -c -o ocplib-lang/ocpString.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpString.ml
+- ocamlc.opt -c -o ocplib-lang/ocpStream.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpStream.mli
+- ocamlopt.opt -c -o ocplib-lang/ocpStream.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpStream.ml
+- ocamlc.opt -c -o ocplib-lang/ocpGenlex.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpGenlex.mli
+- ocamlopt.opt -c -o ocplib-lang/ocpGenlex.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpGenlex.ml
+- ocamlc.opt -c -o ocplib-lang/ocpHashtbl.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpHashtbl.mli
+- ocamlopt.opt -c -o ocplib-lang/ocpHashtbl.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpHashtbl.ml
+- ocamlc.opt -c -o ocplib-lang/ocpDigest.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpDigest.mli
+- ocamlopt.opt -c -o ocplib-lang/ocpDigest.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpDigest.ml
+- ocamlc.opt -c -o ocplib-lang/option.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/option.mli
+- ocamlopt.opt -c -o ocplib-lang/option.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/option.ml
+- ocamlc.opt -c -o ocplib-lang/intMap.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/intMap.mli
+- ocamlopt.opt -c -o ocplib-lang/intMap.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/intMap.ml
+- ocamlc.opt -c -o ocplib-lang/intSet.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/intSet.mli
+- ocamlopt.opt -c -o ocplib-lang/intSet.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/intSet.ml
+- ocamlc.opt -c -o ocplib-lang/stringMap.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/stringMap.mli
+- ocamlopt.opt -c -o ocplib-lang/stringMap.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/stringMap.ml
+- ocamlc.opt -c -o ocplib-lang/stringSet.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/stringSet.mli
+- ocamlopt.opt -c -o ocplib-lang/stringSet.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/stringSet.ml
+- ocamlc.opt -c -o ocplib-lang/toposort.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/toposort.mli
+- ocamlopt.opt -c -o ocplib-lang/toposort.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/toposort.ml
+- ocamlc.opt -c -o ocplib-lang/linearToposort.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/linearToposort.mli
+- ocamlopt.opt -c -o ocplib-lang/linearToposort.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/linearToposort.ml
+- ocamlc.opt -c -o ocplib-lang/ocamllexer.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocamllexer.mli
+- ocamlopt.opt -c -o ocplib-lang/ocamllexer.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocamllexer.ml
+- 12 shift/reduce conflicts, 22 reduce/reduce conflicts.
+- ocamlc.opt -c -o ocplib-lang/trie.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/trie.mli
+- ocamlopt.opt -c -o ocplib-lang/trie.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/trie.ml
+- ocamlc.opt -c -o ocplib-lang/ocpLang.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpLang.mli
+- ocamlopt.opt -c -o ocplib-lang/ocpLang.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/ocpLang.ml
+- ocamlc.opt -c -o ocplib-lang/stringSubst.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/stringSubst.mli
+- ocamlopt.opt -c -o ocplib-lang/stringSubst.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/stringSubst.ml
+- ocamlc.opt -c -o ocplib-lang/manpage.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/manpage.mli
+- ocamlopt.opt -c -o ocplib-lang/manpage.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/manpage.ml
+- ocamlc.opt -c -o ocplib-lang/stringTemplate.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/stringTemplate.mli
+- ocamlopt.opt -c -o ocplib-lang/stringTemplate.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-lang/stringTemplate.ml
+- ocamlc.opt -c -o ocplib-unix/minUnix.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-unix/minUnix.mli
+- ocamlopt.opt -c -o ocplib-unix/minUnix.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-unix/minUnix.ml
+- ocamlc.opt -c -o ocplib-unix/onlyUnix.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-unix/onlyUnix.mli
+- ocamlopt.opt -c -o ocplib-unix/onlyUnix.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-unix/onlyUnix.ml
+- ocamlc.opt -c -o ocplib-unix/onlyWin32.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-unix/onlyWin32.mli
+- ocamlopt.opt -c -o ocplib-unix/onlyWin32.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-unix/onlyWin32.ml
+- ocamlc.opt -c -o ocplib-compat/string-compat/stringCompat.cmo -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-compat/string-compat/stringCompat.ml
+- ocamlc.opt -c -o ocplib-system/reentrantBuffers.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/reentrantBuffers.mli
+- ocamlopt.opt -c -o ocplib-system/reentrantBuffers.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/reentrantBuffers.ml
+- ocamlc.opt -c -o ocplib-system/file.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/file.mli
+- ocamlopt.opt -c -o ocplib-system/file.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/file.ml
+- ocamlc.opt -c -o ocplib-system/fileLines.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/fileLines.mli
+- ocamlopt.opt -c -o ocplib-system/fileLines.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/fileLines.ml
+- ocamlc.opt -c -o ocplib-system/fileLabels.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/fileLabels.mli
+- ocamlopt.opt -c -o ocplib-system/fileLabels.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/fileLabels.ml
+- ocamlc.opt -c -o ocplib-system/date.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/date.mli
+- ocamlopt.opt -c -o ocplib-system/date.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/date.ml
+- ocamlc.opt -c -o ocplib-system/ocpUnix.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/ocpUnix.mli
+- ocamlopt.opt -c -o ocplib-system/ocpUnix.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/ocpUnix.ml
+- ocamlc.opt -c -o ocplib-system/ocpFilename.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/ocpFilename.mli
+- ocamlopt.opt -c -o ocplib-system/ocpFilename.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/ocpFilename.ml
+- ocamlc.opt -c -o ocplib-system/debug.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/debug.mli
+- ocamlopt.opt -c -o ocplib-system/debug.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/debug.ml
+- ocamlc.opt -c -o ocplib-system/configParser.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/configParser.mli
+- ocamlopt.opt -c -o ocplib-system/configParser.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/configParser.ml
+- ocamlc.opt -c -o ocplib-system/simpleConfig.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/simpleConfig.mli
+- ocamlopt.opt -c -o ocplib-system/simpleConfig.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/simpleConfig.ml
+- ocamlc.opt -c -o ocplib-system/fileTemplate.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/fileTemplate.mli
+- ocamlopt.opt -c -o ocplib-system/fileTemplate.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-system/fileTemplate.ml
+- ocamlopt.opt -c -o ocp-build/logger.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/logger.ml
+- ocamlopt.opt -c -o ocp-build/buildMisc.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildMisc.ml
+- ocamlc.opt -c -o ocp-build/buildMtime.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildMtime.mli
+- ocamlopt.opt -c -o ocp-build/buildMtime.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildMtime.ml
+- ocamlc.opt -c -o ocp-build/buildScanner.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildScanner.mli
+- ocamlopt.opt -c -o ocp-build/buildScanner.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildScanner.ml
+- ocamlc.opt -c -o ocp-build/buildSubst.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildSubst.mli
+- ocamlopt.opt -c -o ocp-build/buildSubst.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildSubst.ml
+- ocamlc.opt -c -o ocp-build/buildFind.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildFind.mli
+- ocamlopt.opt -c -o ocp-build/buildFind.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildFind.ml
+- ocamlc.opt -c -o ocp-build/buildTerm.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildTerm.mli
+- ocamlopt.opt -c -o ocp-build/buildTerm.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildTerm.ml
+- ocamlc.opt -c -o ocp-build/ocamldot.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/ocamldot.mli
+- ocamlopt.opt -c -o ocp-build/ocamldot.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/ocamldot.ml
+- ocamlc.opt -c -o ocp-build/buildValue.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildValue.mli
+- ocamlopt.opt -c -o ocp-build/buildValue.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildValue.ml
+- ocamlc.opt -c -o ocp-build/versioning.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/versioning.mli
+- ocamlopt.opt -c -o ocp-build/versioning.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/versioning.ml
+- ocamlc.opt -c -o ocp-build/buildOCPTypes.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPTypes.mli
+- ocamlopt.opt -c -o ocp-build/buildOCPTypes.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPTypes.ml
+- ocamlc.opt -c -o ocp-build/buildOCPTree.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPTree.mli
+- ocamlopt.opt -c -o ocp-build/buildOCPTree.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPTree.ml
+- ocamlc.opt -c -o ocp-build/buildOCPParser.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPParser.mli
+- ocamlopt.opt -c -o ocp-build/buildOCPParser.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPParser.ml
+- ocamlc.opt -c -o ocp-build/buildOCPParse.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPParse.mli
+- ocamlopt.opt -c -o ocp-build/buildOCPParse.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPParse.ml
+- ocamlc.opt -c -o ocp-build/buildOCPPrinter.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPPrinter.mli
+- ocamlopt.opt -c -o ocp-build/buildOCPPrinter.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPPrinter.ml
+- ocamlc.opt -c -o ocp-build/buildOCPInterp.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPInterp.mli
+- ocamlopt.opt -c -o ocp-build/buildOCPInterp.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCPInterp.ml
+- ocamlc.opt -c -o ocp-build/buildOCP.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCP.mli
+- ocamlopt.opt -c -o ocp-build/buildOCP.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCP.ml
+- ocamlc.opt -c -o ocp-build/buildEngineTypes.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngineTypes.mli
+- ocamlopt.opt -c -o ocp-build/buildEngineTypes.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngineTypes.ml
+- ocamlc.opt -c -o ocp-build/buildEngineGlobals.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngineGlobals.mli
+- ocamlopt.opt -c -o ocp-build/buildEngineGlobals.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngineGlobals.ml
+- ocamlopt.opt -c -o ocp-build/buildEngineRules.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngineRules.ml
+- ocamlc.opt -c -o ocp-build/buildEngineContext.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngineContext.mli
+- ocamlopt.opt -c -o ocp-build/buildEngineContext.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngineContext.ml
+- ocamlc.opt -c -o ocp-build/buildEngineDisplay.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngineDisplay.mli
+- ocamlopt.opt -c -o ocp-build/buildEngineDisplay.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngineDisplay.ml
+- ocamlc.opt -c -o ocp-build/buildEngine.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngine.mli
+- ocamlopt.opt -c -o ocp-build/buildEngine.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildEngine.ml
+- ocamlc.opt -c -o ocp-build/buildObjectInspector.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildObjectInspector.mli
+- ocamlopt.opt -c -o ocp-build/buildObjectInspector.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildObjectInspector.ml
+- ocamlopt.opt -c -o ocp-build/buildVersion.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildVersion.ml
+- ocamlc.opt -c -o ocp-build/buildTypes.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildTypes.mli
+- ocamlopt.opt -c -o ocp-build/buildTypes.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildTypes.ml
+- ocamlc.opt -c -o ocp-build/buildOptions.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOptions.mli
+- ocamlopt.opt -c -o ocp-build/buildOptions.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOptions.ml
+- ocamlopt.opt -c -o ocp-build/buildGlobals.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildGlobals.ml
+- ocamlc.opt -c -o ocp-build/buildConfig.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildConfig.mli
+- ocamlopt.opt -c -o ocp-build/buildConfig.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildConfig.ml
+- ocamlc.opt -c -o ocp-build/buildUninstall.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildUninstall.mli
+- ocamlopt.opt -c -o ocp-build/buildUninstall.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildUninstall.ml
+- ocamlc.opt -c -o ocp-build/buildAutogen.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildAutogen.mli
+- ocamlopt.opt -c -o ocp-build/buildAutogen.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildAutogen.ml
+- ocamlc.opt -c -o ocp-build/metaTypes.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaTypes.mli
+- ocamlopt.opt -c -o ocp-build/metaTypes.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaTypes.ml
+- ocamlc.opt -c -o ocp-build/metaLexer.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaLexer.mli
+- ocamlopt.opt -c -o ocp-build/metaLexer.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaLexer.ml
+- ocamlc.opt -c -o ocp-build/metaFile.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaFile.mli
+- ocamlopt.opt -c -o ocp-build/metaFile.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaFile.ml
+- ocamlc.opt -c -o ocp-build/metaParser.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaParser.mli
+- ocamlopt.opt -c -o ocp-build/metaParser.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaParser.ml
+- ocamlc.opt -c -o ocp-build/metaConfig.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaConfig.mli
+- ocamlopt.opt -c -o ocp-build/metaConfig.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/metaConfig.ml
+- ocamlc.opt -c -o ocp-build/buildOCamlConfig.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlConfig.mli
+- ocamlopt.opt -c -o ocp-build/buildOCamlConfig.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlConfig.ml
+- ocamlc.opt -c -o ocp-build/buildOCamlTypes.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlTypes.mli
+- ocamlopt.opt -c -o ocp-build/buildOCamlTypes.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlTypes.ml
+- ocamlopt.opt -c -o ocp-build/buildOCamlGlobals.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlGlobals.ml
+- ocamlopt.opt -c -o ocp-build/buildOCamlMisc.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlMisc.ml
+- ocamlopt.opt -c -o ocp-build/buildOCamlVariables.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlVariables.ml
+- ocamlc.opt -c -o ocp-build/buildOCamldep.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamldep.mli
+- ocamlopt.opt -c -o ocp-build/buildOCamldep.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamldep.ml
+- ocamlc.opt -c -o ocp-build/buildOCamlSyntaxes.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlSyntaxes.mli
+- ocamlopt.opt -c -o ocp-build/buildOCamlSyntaxes.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlSyntaxes.ml
+- ocamlc.opt -c -o ocp-build/buildOCamlRules.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlRules.mli
+- ocamlopt.opt -c -o ocp-build/buildOCamlRules.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlRules.ml
+- ocamlc.opt -c -o ocp-build/buildOCamlInstall.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlInstall.mli
+- ocamlopt.opt -c -o ocp-build/buildOCamlInstall.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlInstall.ml
+- ocamlc.opt -c -o ocp-build/buildOCamlMeta.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlMeta.mli
+- ocamlopt.opt -c -o ocp-build/buildOCamlMeta.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlMeta.ml
+- ocamlc.opt -c -o ocp-build/buildOCamlTest.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlTest.mli
+- ocamlopt.opt -c -o ocp-build/buildOCamlTest.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOCamlTest.ml
+- ocamlc.opt -c -o ocp-build/buildOasis.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOasis.mli
+- ocamlopt.opt -c -o ocp-build/buildOasis.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildOasis.ml
+- ocamlopt.opt -c -o ocp-build/buildArgs.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildArgs.ml
+- ocamlc.opt -c -o ocp-build/buildActions.cmi -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActions.mli
+- ocamlopt.opt -c -o ocp-build/buildActions.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActions.ml
+- ocamlopt.opt -c -o ocp-build/buildActionRoot.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionRoot.ml
+- ocamlopt.opt -c -o ocp-build/buildActionPrefs.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionPrefs.ml
+- ocamlopt.opt -c -o ocp-build/buildActionConfigure.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionConfigure.ml
+- ocamlopt.opt -c -o ocp-build/buildActionBuild.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionBuild.ml
+- ocamlopt.opt -c -o ocp-build/buildActionInstall.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionInstall.ml
+- ocamlopt.opt -c -o ocp-build/buildActionClean.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionClean.ml
+- ocamlopt.opt -c -o ocp-build/buildActionTests.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionTests.ml
+- ocamlopt.opt -c -o ocp-build/buildActionUninstall.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionUninstall.ml
+- ocamlopt.opt -c -o ocp-build/buildActionQuery.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionQuery.ml
+- ocamlopt.opt -c -o ocp-build/buildActionHelp.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildActionHelp.ml
+- ocamlopt.opt -c -o ocp-build/buildMain.cmx -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocp-build/buildMain.ml
+- ocamlc.opt -c -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-unix/minUnix_c.c
+- mv `basename ocplib-unix/minUnix_c.o` ocplib-unix/minUnix_c.o
+- ocamlc.opt -c -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-unix/onlyWin32_c.c
+- mv `basename ocplib-unix/onlyWin32_c.o` ocplib-unix/onlyWin32_c.o
+- ocamlc.opt -c -I ocplib-compat/string-compat -I ocplib-debug -I ocplib-lang -I ocplib-system -I ocplib-unix -I ocp-build ocplib-unix/onlyUnix_c.c
+- mv `basename ocplib-unix/onlyUnix_c.o` ocplib-unix/onlyUnix_c.o
+- ocamlopt.opt -o boot/ocp-build.asm unix.cmxa ocplib-compat/string-compat/stringCompat.cmx ocplib-debug/debugVerbosity.cmx ocplib-debug/debugTyperex.cmx ocplib-lang/ocpPervasives.cmx ocplib-lang/ocpList.cmx ocplib-lang/ocpString.cmx ocplib-lang/ocpStream.cmx ocplib-lang/ocpGenlex.cmx ocplib-lang/ocpHashtbl.cmx ocplib-lang/ocpDigest.cmx ocplib-lang/option.cmx ocplib-lang/intMap.cmx ocplib-lang/intSet.cmx ocplib-lang/stringMap.cmx ocplib-lang/stringSet.cmx ocplib-lang/toposort.cmx ocplib-lang/linearToposort.cmx ocplib-lang/ocamllexer.cmx ocplib-lang/trie.cmx ocplib-lang/ocpLang.cmx ocplib-lang/stringSubst.cmx ocplib-lang/manpage.cmx ocplib-lang/stringTemplate.cmx ocplib-unix/minUnix.cmx ocplib-unix/onlyUnix.cmx ocplib-unix/onlyWin32.cmx ocplib-system/reentrantBuffers.cmx ocplib-system/file.cmx ocplib-system/fileLines.cmx ocplib-system/fileLabels.cmx ocplib-system/date.cmx ocplib-system/ocpUnix.cmx ocplib-system/ocpFilename.cmx ocplib-system/debug.cmx ocplib-system/configParser.cmx ocplib-system/simpleConfig.cmx ocplib-system/fileTemplate.cmx ocp-build/logger.cmx ocp-build/buildMisc.cmx ocp-build/buildMtime.cmx ocp-build/buildScanner.cmx ocp-build/buildSubst.cmx ocp-build/buildFind.cmx ocp-build/buildTerm.cmx ocp-build/ocamldot.cmx ocp-build/buildValue.cmx ocp-build/versioning.cmx ocp-build/buildOCPTypes.cmx ocp-build/buildOCPTree.cmx ocp-build/buildOCPParser.cmx ocp-build/buildOCPParse.cmx ocp-build/buildOCPPrinter.cmx ocp-build/buildOCPInterp.cmx ocp-build/buildOCP.cmx ocp-build/buildEngineTypes.cmx ocp-build/buildEngineGlobals.cmx ocp-build/buildEngineRules.cmx ocp-build/buildEngineContext.cmx ocp-build/buildEngineDisplay.cmx ocp-build/buildEngine.cmx ocp-build/buildObjectInspector.cmx ocp-build/buildVersion.cmx ocp-build/buildTypes.cmx ocp-build/buildOptions.cmx ocp-build/buildGlobals.cmx ocp-build/buildConfig.cmx ocp-build/buildUninstall.cmx ocp-build/buildAutogen.cmx ocp-build/metaTypes.cmx ocp-build/metaLexer.cmx ocp-build/metaFile.cmx ocp-build/metaParser.cmx ocp-build/metaConfig.cmx ocp-build/buildOCamlConfig.cmx ocp-build/buildOCamlTypes.cmx ocp-build/buildOCamlGlobals.cmx ocp-build/buildOCamlMisc.cmx ocp-build/buildOCamlVariables.cmx ocp-build/buildOCamldep.cmx ocp-build/buildOCamlSyntaxes.cmx ocp-build/buildOCamlRules.cmx ocp-build/buildOCamlInstall.cmx ocp-build/buildOCamlMeta.cmx ocp-build/buildOCamlTest.cmx ocp-build/buildOasis.cmx ocp-build/buildArgs.cmx ocp-build/buildActions.cmx ocp-build/buildActionRoot.cmx ocp-build/buildActionPrefs.cmx ocp-build/buildActionConfigure.cmx ocp-build/buildActionBuild.cmx ocp-build/buildActionInstall.cmx ocp-build/buildActionClean.cmx ocp-build/buildActionTests.cmx ocp-build/buildActionUninstall.cmx ocp-build/buildActionQuery.cmx ocp-build/buildActionHelp.cmx ocp-build/buildMain.cmx ocplib-unix/minUnix_c.o ocplib-unix/onlyWin32_c.o ocplib-unix/onlyUnix_c.o
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocp-build.1.99.13-beta'
+- make partialclean
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocp-build.1.99.13-beta'
+- rm -f ocp-build/buildOCPParser.mli ocp-build/buildOCPParser.ml ocplib-lang/ocamllexer.ml ocp-build/metaLexer.ml ocplib-system/simpleConfig.ml ocp-build/buildVersion.ml ocplib-compat/string-compat/stringCompat.ml ocplib-compat/string-compat/stringCompat.cmi ocplib-debug/debugVerbosity.cmi ocplib-debug/debugTyperex.cmi ocplib-lang/ocpPervasives.cmi ocplib-lang/ocpList.cmi ocplib-lang/ocpString.cmi ocplib-lang/ocpStream.cmi ocplib-lang/ocpGenlex.cmi ocplib-lang/ocpHashtbl.cmi ocplib-lang/ocpDigest.cmi ocplib-lang/option.cmi ocplib-lang/intMap.cmi ocplib-lang/intSet.cmi ocplib-lang/stringMap.cmi ocplib-lang/stringSet.cmi ocplib-lang/toposort.cmi ocplib-lang/linearToposort.cmi ocplib-lang/ocamllexer.cmi ocplib-lang/trie.cmi ocplib-lang/ocpLang.cmi ocplib-lang/stringSubst.cmi ocplib-lang/manpage.cmi ocplib-lang/stringTemplate.cmi ocplib-unix/minUnix.cmi ocplib-unix/onlyUnix.cmi ocplib-unix/onlyWin32.cmi ocplib-system/reentrantBuffers.cmi ocplib-system/file.cmi ocplib-system/fileLines.cmi ocplib-system/fileLabels.cmi ocplib-system/date.cmi ocplib-system/ocpUnix.cmi ocplib-system/ocpFilename.cmi ocplib-system/debug.cmi ocplib-system/configParser.cmi ocplib-system/simpleConfig.cmi ocplib-system/fileTemplate.cmi ocp-build/logger.cmi ocp-build/buildMisc.cmi ocp-build/buildMtime.cmi ocp-build/buildScanner.cmi ocp-build/buildSubst.cmi ocp-build/buildFind.cmi ocp-build/buildTerm.cmi ocp-build/ocamldot.cmi ocp-build/buildValue.cmi ocp-build/versioning.cmi ocp-build/buildOCPTypes.cmi ocp-build/buildOCPTree.cmi ocp-build/buildOCPParser.cmi ocp-build/buildOCPParse.cmi ocp-build/buildOCPPrinter.cmi ocp-build/buildOCPInterp.cmi ocp-build/buildOCP.cmi ocp-build/buildEngineTypes.cmi ocp-build/buildEngineGlobals.cmi ocp-build/buildEngineRules.cmi ocp-build/buildEngineContext.cmi ocp-build/buildEngineDisplay.cmi ocp-build/buildEngine.cmi ocp-build/buildObjectInspector.cmi ocp-build/buildVersion.cmi ocp-build/buildTypes.cmi ocp-build/buildOptions.cmi ocp-build/buildGlobals.cmi ocp-build/buildConfig.cmi ocp-build/buildUninstall.cmi ocp-build/buildAutogen.cmi ocp-build/metaTypes.cmi ocp-build/metaLexer.cmi ocp-build/metaFile.cmi ocp-build/metaParser.cmi ocp-build/metaConfig.cmi ocp-build/buildOCamlConfig.cmi ocp-build/buildOCamlTypes.cmi ocp-build/buildOCamlGlobals.cmi ocp-build/buildOCamlMisc.cmi ocp-build/buildOCamlVariables.cmi ocp-build/buildOCamldep.cmi ocp-build/buildOCamlSyntaxes.cmi ocp-build/buildOCamlRules.cmi ocp-build/buildOCamlInstall.cmi ocp-build/buildOCamlMeta.cmi ocp-build/buildOCamlTest.cmi ocp-build/buildOasis.cmi ocp-build/buildArgs.cmi ocp-build/buildActions.cmi ocp-build/buildActionRoot.cmi ocp-build/buildActionPrefs.cmi ocp-build/buildActionConfigure.cmi ocp-build/buildActionBuild.cmi ocp-build/buildActionInstall.cmi ocp-build/buildActionClean.cmi ocp-build/buildActionTests.cmi ocp-build/buildActionUninstall.cmi ocp-build/buildActionQuery.cmi ocp-build/buildActionHelp.cmi ocp-build/buildMain.cmi ocplib-compat/string-compat/stringCompat.cmo ocplib-debug/debugVerbosity.cmo ocplib-debug/debugTyperex.cmo ocplib-lang/ocpPervasives.cmo ocplib-lang/ocpList.cmo ocplib-lang/ocpString.cmo ocplib-lang/ocpStream.cmo ocplib-lang/ocpGenlex.cmo ocplib-lang/ocpHashtbl.cmo ocplib-lang/ocpDigest.cmo ocplib-lang/option.cmo ocplib-lang/intMap.cmo ocplib-lang/intSet.cmo ocplib-lang/stringMap.cmo ocplib-lang/stringSet.cmo ocplib-lang/toposort.cmo ocplib-lang/linearToposort.cmo ocplib-lang/ocamllexer.cmo ocplib-lang/trie.cmo ocplib-lang/ocpLang.cmo ocplib-lang/stringSubst.cmo ocplib-lang/manpage.cmo ocplib-lang/stringTemplate.cmo ocplib-unix/minUnix.cmo ocplib-unix/onlyUnix.cmo ocplib-unix/onlyWin32.cmo ocplib-system/reentrantBuffers.cmo ocplib-system/file.cmo ocplib-system/fileLines.cmo ocplib-system/fileLabels.cmo ocplib-system/date.cmo ocplib-system/ocpUnix.cmo ocplib-system/ocpFilename.cmo ocplib-system/debug.cmo ocplib-system/configParser.cmo ocplib-system/simpleConfig.cmo ocplib-system/fileTemplate.cmo ocp-build/logger.cmo ocp-build/buildMisc.cmo ocp-build/buildMtime.cmo ocp-build/buildScanner.cmo ocp-build/buildSubst.cmo ocp-build/buildFind.cmo ocp-build/buildTerm.cmo ocp-build/ocamldot.cmo ocp-build/buildValue.cmo ocp-build/versioning.cmo ocp-build/buildOCPTypes.cmo ocp-build/buildOCPTree.cmo ocp-build/buildOCPParser.cmo ocp-build/buildOCPParse.cmo ocp-build/buildOCPPrinter.cmo ocp-build/buildOCPInterp.cmo ocp-build/buildOCP.cmo ocp-build/buildEngineTypes.cmo ocp-build/buildEngineGlobals.cmo ocp-build/buildEngineRules.cmo ocp-build/buildEngineContext.cmo ocp-build/buildEngineDisplay.cmo ocp-build/buildEngine.cmo ocp-build/buildObjectInspector.cmo ocp-build/buildVersion.cmo ocp-build/buildTypes.cmo ocp-build/buildOptions.cmo ocp-build/buildGlobals.cmo ocp-build/buildConfig.cmo ocp-build/buildUninstall.cmo ocp-build/buildAutogen.cmo ocp-build/metaTypes.cmo ocp-build/metaLexer.cmo ocp-build/metaFile.cmo ocp-build/metaParser.cmo ocp-build/metaConfig.cmo ocp-build/buildOCamlConfig.cmo ocp-build/buildOCamlTypes.cmo ocp-build/buildOCamlGlobals.cmo ocp-build/buildOCamlMisc.cmo ocp-build/buildOCamlVariables.cmo ocp-build/buildOCamldep.cmo ocp-build/buildOCamlSyntaxes.cmo ocp-build/buildOCamlRules.cmo ocp-build/buildOCamlInstall.cmo ocp-build/buildOCamlMeta.cmo ocp-build/buildOCamlTest.cmo ocp-build/buildOasis.cmo ocp-build/buildArgs.cmo ocp-build/buildActions.cmo ocp-build/buildActionRoot.cmo ocp-build/buildActionPrefs.cmo ocp-build/buildActionConfigure.cmo ocp-build/buildActionBuild.cmo ocp-build/buildActionInstall.cmo ocp-build/buildActionClean.cmo ocp-build/buildActionTests.cmo ocp-build/buildActionUninstall.cmo ocp-build/buildActionQuery.cmo ocp-build/buildActionHelp.cmo ocp-build/buildMain.cmo ocplib-compat/string-compat/stringCompat.cmx ocplib-debug/debugVerbosity.cmx ocplib-debug/debugTyperex.cmx ocplib-lang/ocpPervasives.cmx ocplib-lang/ocpList.cmx ocplib-lang/ocpString.cmx ocplib-lang/ocpStream.cmx ocplib-lang/ocpGenlex.cmx ocplib-lang/ocpHashtbl.cmx ocplib-lang/ocpDigest.cmx ocplib-lang/option.cmx ocplib-lang/intMap.cmx ocplib-lang/intSet.cmx ocplib-lang/stringMap.cmx ocplib-lang/stringSet.cmx ocplib-lang/toposort.cmx ocplib-lang/linearToposort.cmx ocplib-lang/ocamllexer.cmx ocplib-lang/trie.cmx ocplib-lang/ocpLang.cmx ocplib-lang/stringSubst.cmx ocplib-lang/manpage.cmx ocplib-lang/stringTemplate.cmx ocplib-unix/minUnix.cmx ocplib-unix/onlyUnix.cmx ocplib-unix/onlyWin32.cmx ocplib-system/reentrantBuffers.cmx ocplib-system/file.cmx ocplib-system/fileLines.cmx ocplib-system/fileLabels.cmx ocplib-system/date.cmx ocplib-system/ocpUnix.cmx ocplib-system/ocpFilename.cmx ocplib-system/debug.cmx ocplib-system/configParser.cmx ocplib-system/simpleConfig.cmx ocplib-system/fileTemplate.cmx ocp-build/logger.cmx ocp-build/buildMisc.cmx ocp-build/buildMtime.cmx ocp-build/buildScanner.cmx ocp-build/buildSubst.cmx ocp-build/buildFind.cmx ocp-build/buildTerm.cmx ocp-build/ocamldot.cmx ocp-build/buildValue.cmx ocp-build/versioning.cmx ocp-build/buildOCPTypes.cmx ocp-build/buildOCPTree.cmx ocp-build/buildOCPParser.cmx ocp-build/buildOCPParse.cmx ocp-build/buildOCPPrinter.cmx ocp-build/buildOCPInterp.cmx ocp-build/buildOCP.cmx ocp-build/buildEngineTypes.cmx ocp-build/buildEngineGlobals.cmx ocp-build/buildEngineRules.cmx ocp-build/buildEngineContext.cmx ocp-build/buildEngineDisplay.cmx ocp-build/buildEngine.cmx ocp-build/buildObjectInspector.cmx ocp-build/buildVersion.cmx ocp-build/buildTypes.cmx ocp-build/buildOptions.cmx ocp-build/buildGlobals.cmx ocp-build/buildConfig.cmx ocp-build/buildUninstall.cmx ocp-build/buildAutogen.cmx ocp-build/metaTypes.cmx ocp-build/metaLexer.cmx ocp-build/metaFile.cmx ocp-build/metaParser.cmx ocp-build/metaConfig.cmx ocp-build/buildOCamlConfig.cmx ocp-build/buildOCamlTypes.cmx ocp-build/buildOCamlGlobals.cmx ocp-build/buildOCamlMisc.cmx ocp-build/buildOCamlVariables.cmx ocp-build/buildOCamldep.cmx ocp-build/buildOCamlSyntaxes.cmx ocp-build/buildOCamlRules.cmx ocp-build/buildOCamlInstall.cmx ocp-build/buildOCamlMeta.cmx ocp-build/buildOCamlTest.cmx ocp-build/buildOasis.cmx ocp-build/buildArgs.cmx ocp-build/buildActions.cmx ocp-build/buildActionRoot.cmx ocp-build/buildActionPrefs.cmx ocp-build/buildActionConfigure.cmx ocp-build/buildActionBuild.cmx ocp-build/buildActionInstall.cmx ocp-build/buildActionClean.cmx ocp-build/buildActionTests.cmx ocp-build/buildActionUninstall.cmx ocp-build/buildActionQuery.cmx ocp-build/buildActionHelp.cmx ocp-build/buildMain.cmx ocplib-unix/minUnix_c.o ocplib-unix/onlyWin32_c.o ocplib-unix/onlyUnix_c.o ocplib-compat/string-compat/stringCompat.o ocplib-debug/debugVerbosity.o ocplib-debug/debugTyperex.o ocplib-lang/ocpPervasives.o ocplib-lang/ocpList.o ocplib-lang/ocpString.o ocplib-lang/ocpStream.o ocplib-lang/ocpGenlex.o ocplib-lang/ocpHashtbl.o ocplib-lang/ocpDigest.o ocplib-lang/option.o ocplib-lang/intMap.o ocplib-lang/intSet.o ocplib-lang/stringMap.o ocplib-lang/stringSet.o ocplib-lang/toposort.o ocplib-lang/linearToposort.o ocplib-lang/ocamllexer.o ocplib-lang/trie.o ocplib-lang/ocpLang.o ocplib-lang/stringSubst.o ocplib-lang/manpage.o ocplib-lang/stringTemplate.o ocplib-unix/minUnix.o ocplib-unix/onlyUnix.o ocplib-unix/onlyWin32.o ocplib-system/reentrantBuffers.o ocplib-system/file.o ocplib-system/fileLines.o ocplib-system/fileLabels.o ocplib-system/date.o ocplib-system/ocpUnix.o ocplib-system/ocpFilename.o ocplib-system/debug.o ocplib-system/configParser.o ocplib-system/simpleConfig.o ocplib-system/fileTemplate.o ocp-build/logger.o ocp-build/buildMisc.o ocp-build/buildMtime.o ocp-build/buildScanner.o ocp-build/buildSubst.o ocp-build/buildFind.o ocp-build/buildTerm.o ocp-build/ocamldot.o ocp-build/buildValue.o ocp-build/versioning.o ocp-build/buildOCPTypes.o ocp-build/buildOCPTree.o ocp-build/buildOCPParser.o ocp-build/buildOCPParse.o ocp-build/buildOCPPrinter.o ocp-build/buildOCPInterp.o ocp-build/buildOCP.o ocp-build/buildEngineTypes.o ocp-build/buildEngineGlobals.o ocp-build/buildEngineRules.o ocp-build/buildEngineContext.o ocp-build/buildEngineDisplay.o ocp-build/buildEngine.o ocp-build/buildObjectInspector.o ocp-build/buildVersion.o ocp-build/buildTypes.o ocp-build/buildOptions.o ocp-build/buildGlobals.o ocp-build/buildConfig.o ocp-build/buildUninstall.o ocp-build/buildAutogen.o ocp-build/metaTypes.o ocp-build/metaLexer.o ocp-build/metaFile.o ocp-build/metaParser.o ocp-build/metaConfig.o ocp-build/buildOCamlConfig.o ocp-build/buildOCamlTypes.o ocp-build/buildOCamlGlobals.o ocp-build/buildOCamlMisc.o ocp-build/buildOCamlVariables.o ocp-build/buildOCamldep.o ocp-build/buildOCamlSyntaxes.o ocp-build/buildOCamlRules.o ocp-build/buildOCamlInstall.o ocp-build/buildOCamlMeta.o ocp-build/buildOCamlTest.o ocp-build/buildOasis.o ocp-build/buildArgs.o ocp-build/buildActions.o ocp-build/buildActionRoot.o ocp-build/buildActionPrefs.o ocp-build/buildActionConfigure.o ocp-build/buildActionBuild.o ocp-build/buildActionInstall.o ocp-build/buildActionClean.o ocp-build/buildActionTests.o ocp-build/buildActionUninstall.o ocp-build/buildActionQuery.o ocp-build/buildActionHelp.o ocp-build/buildMain.o
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocp-build.1.99.13-beta'
+- boot/ocp-build.asm init
+- boot/ocp-build.asm
+- tput: unknown terminal "unknown"
+- tput: unknown terminal "unknown"
+- stty: standard input: Inappropriate ioctl for device
+- tput: unknown terminal "unknown"
+- tput: unknown terminal "unknown"
+- stty: standard input: Inappropriate ioctl for device
+- find_project_root
+- Warning: file "/home/opam/.ocp/ocp-build.prefs" does not exist. Creating with default values.
+- Warning: Could not find OCaml ocamldoc tool.
+- Warning: missing dependency, bytecode "camlp4.quotations.o" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.quotations.o"
+- 	Disabling native version of "camlp4.quotations.o"
+- Warning: both versions disabled
+- Package "camlp4.quotations.o" disabled
+- Warning: missing dependency, bytecode "camlp4.quotations.r" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.quotations.r"
+- 	Disabling native version of "camlp4.quotations.r"
+- Warning: both versions disabled
+- Package "camlp4.quotations.r" disabled
+- Warning: missing dependency, bytecode "camlp4.extend" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.extend"
+- 	Disabling native version of "camlp4.extend"
+- Warning: both versions disabled
+- Package "camlp4.extend" disabled
+- Warning: missing dependency, bytecode "camlp4.listcomprehension" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.listcomprehension"
+- 	Disabling native version of "camlp4.listcomprehension"
+- Warning: both versions disabled
+- Package "camlp4.listcomprehension" disabled
+- Warning: missing dependency, bytecode "camlp4.macro" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.macro"
+- 	Disabling native version of "camlp4.macro"
+- Warning: both versions disabled
+- Package "camlp4.macro" disabled
+- Warning: missing dependency, bytecode "camlp4.mapgenerator" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.mapgenerator"
+- 	Disabling native version of "camlp4.mapgenerator"
+- Warning: both versions disabled
+- Package "camlp4.mapgenerator" disabled
+- Warning: missing dependency, bytecode "camlp4.foldgenerator" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.foldgenerator"
+- 	Disabling native version of "camlp4.foldgenerator"
+- Warning: both versions disabled
+- Package "camlp4.foldgenerator" disabled
+- Warning: missing dependency, bytecode "camlp4.metagenerator" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.metagenerator"
+- 	Disabling native version of "camlp4.metagenerator"
+- Warning: both versions disabled
+- Package "camlp4.metagenerator" disabled
+- Warning: missing dependency, bytecode "camlp4.locationstripper" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.locationstripper"
+- 	Disabling native version of "camlp4.locationstripper"
+- Warning: both versions disabled
+- Package "camlp4.locationstripper" disabled
+- Warning: missing dependency, bytecode "camlp4.tracer" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.tracer"
+- 	Disabling native version of "camlp4.tracer"
+- Warning: both versions disabled
+- Package "camlp4.tracer" disabled
+- Warning: missing dependency, bytecode "camlp4.exceptiontracer" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.exceptiontracer"
+- 	Disabling native version of "camlp4.exceptiontracer"
+- Warning: both versions disabled
+- Package "camlp4.exceptiontracer" disabled
+- Warning: missing dependency, bytecode "camlp4.profiler" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.profiler"
+- 	Disabling native version of "camlp4.profiler"
+- Warning: both versions disabled
+- Package "camlp4.profiler" disabled
+- Warning: missing dependency, bytecode "camlp4.quotations" requires "camlp4.quotations.r" bytecode
+- 	Disabling bytecode version of "camlp4.quotations"
+- 	Disabling native version of "camlp4.quotations"
+- Warning: both versions disabled
+- Package "camlp4.quotations" disabled
+- Warning: missing dependency, bytecode "camlp4.lib" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.lib"
+- 	Disabling native version of "camlp4.lib"
+- Warning: both versions disabled
+- Package "camlp4.lib" disabled
+- Warning: missing dependency, bytecode "camlp4.fulllib" requires "camlp4lib" bytecode
+- 	Disabling bytecode version of "camlp4.fulllib"
+- 	Disabling native version of "camlp4.fulllib"
+- Warning: both versions disabled
+- Package "camlp4.fulllib" disabled
+- Warning: missing dependency, bytecode "camlp4.gramlib" requires "camlp4.lib" bytecode
+- 	Disabling bytecode version of "camlp4.gramlib"
+- 	Disabling native version of "camlp4.gramlib"
+- Warning: both versions disabled
+- Package "camlp4.gramlib" disabled
+- Warning: 2 missing and 16 disabled (use -print-missing)
+- Updating ocp-build.root
+- Warning: 11 package conflicts solved (use -print-conflicts)
+- Warning: package "ocplib-compat"
+- Warning: pp_requires: dependency "ocp-pp" not declared as syntax
+- 0.04s ocplib-debug/debugVerbosity.mlimods                              [ done ]
+- 0.04s ocplib-debug/debugVerbosity.mlmods                               [ done ]
+- 0.04s ocplib-debug/debugTyperex.mlimods                                [ done ]
+- 0.04s ocplib-debug/debugTyperex.mlmods                                 [ done ]
+- 0.04s no-unix/unix.mlmods                                              [ done ]
+- 0.04s ocplib-subcmd/subcommands.mlimods                                [ done ]
+- 0.04s ocplib-subcmd/subcommands.mlmods                                 [ done ]
+- 0.04s ocplib-unix/minUnix.mlimods                                      [ done ]
+- 0.04s ocplib-unix/minUnix.mlmods                                       [ done ]
+- 0.04s ocplib-unix/onlyUnix.mlimods                                     [ done ]
+- 0.04s ocplib-unix/onlyUnix.mlmods                                      [ done ]
+- 0.04s ocplib-unix/onlyWin32.mlimods                                    [ done ]
+- 0.04s ocplib-unix/onlyWin32.mlmods                                     [ done ]
+- 0.04s ocp-pp/ocpp_version.mlmods                                       [ done ]
+- 0.04s ocp-pp/versioning.mlimods                                        [ done ]
+- 0.04s ocp-pp/versioning.mlmods                                         [ done ]
+- 0.04s ocp-pp/_temp/ocpp_parser.ml                                      [ done ]
+- 0.04s ocp-pp/ocpp_types.mlmods                                         [ done ]
+- 0.04s ocp-pp/ocpp.mlmods                                               [ done ]
+- 0.05s ocp-pp/main.mlmods                                               [ done ]
+- 0.05s ocplib-lang/ocpPervasives.mlimods                                [ done ]
+- 0.05s ocplib-lang/ocpPervasives.mlmods                                 [ done ]
+- 0.05s ocplib-lang/ocpList.mlimods                                      [ done ]
+- 0.05s ocplib-lang/ocpList.mlmods                                       [ done ]
+- 0.05s ocplib-lang/ocpString.mlimods                                    [ done ]
+- 0.05s ocplib-lang/ocpString.mlmods                                     [ done ]
+- 0.05s ocplib-lang/ocpStream.mlimods                                    [ done ]
+- 0.06s ocplib-lang/ocpStream.mlmods                                     [ done ]
+- 0.06s ocplib-lang/ocpGenlex.mlimods                                    [ done ]
+- 0.07s ocplib-unix/onlyUnix_c.o                                         [ done ]
+- 0.06s ocplib-lang/ocpGenlex.mlmods                                     [ done ]
+- 0.06s ocplib-lang/ocpHashtbl.mlimods                                   [ done ]
+- 0.08s ocplib-unix/onlyWin32_c.o                                        [ done ]
+- 0.06s ocplib-lang/ocpHashtbl.mlmods                                    [ done ]
+- 0.06s ocplib-lang/ocpDigest.mlimods                                    [ done ]
+- 0.06s ocplib-lang/ocpDigest.mlmods                                     [ done ]
+- 0.06s ocplib-lang/option.mlimods                                       [ done ]
+- 0.06s ocplib-lang/option.mlmods                                        [ done ]
+- 0.06s ocplib-lang/intMap.mlimods                                       [ done ]
+- 0.06s ocplib-lang/intMap.mlmods                                        [ done ]
+- 0.06s ocplib-lang/intSet.mlimods                                       [ done ]
+- 0.09s ocplib-unix/minUnix_c.o                                          [ done ]
+- 0.07s ocplib-lang/intSet.mlmods                                        [ done ]
+- 0.07s ocplib-lang/stringMap.mlimods                                    [ done ]
+- 0.07s ocplib-lang/stringMap.mlmods                                     [ done ]
+- 0.07s ocplib-lang/stringSet.mlimods                                    [ done ]
+- 0.07s ocplib-lang/stringSet.mlmods                                     [ done ]
+- 0.07s ocplib-lang/toposort.mlimods                                     [ done ]
+- 0.07s ocplib-lang/toposort.mlmods                                      [ done ]
+- 0.07s ocplib-debug/debugVerbosity.cmi                                  [ done ]
+- 0.07s ocplib-lang/linearToposort.mlimods                               [ done ]
+- 0.07s ocplib-debug/debugTyperex.cmi                                    [ done ]
+- 0.07s ocplib-lang/linearToposort.mlmods                                [ done ]
+- 0.07s no-unix/unix.cmo                                                 [ done ]
+- 0.07s ocplib-subcmd/subcommands.cmi                                    [ done ]
+- 0.07s ocplib-lang/_temp/ocamllexer.ml                                  [ done ]
+- -- stdout for _obuild/ocplib-lang/_temp/ocamllexer.ml --
+- 81 states, 1371 transitions, table size 5970 bytes
+- 0.07s ocplib-unix/minUnix.cmi                                          [ done ]
+- 0.07s ocplib-lang/ocamllexer.mlimods                                   [ done ]
+- 0.07s ocplib-lang/trie.mlimods                                         [ done ]
+- 0.07s ocplib-lang/trie.mlmods                                          [ done ]
+- 0.07s ocplib-lang/ocpLang.mlimods                                      [ done ]
+- 0.07s ocplib-lang/ocpLang.mlmods                                       [ done ]
+- 0.07s ocp-pp/ocpp_version.cmo                                          [ done ]
+- 0.07s ocp-pp/versioning.cmi                                            [ done ]
+- 0.07s ocplib-lang/stringSubst.mlimods                                  [ done ]
+- 0.07s ocp-pp/ocpp_parser.mlimods                                       [ done ]
+- 0.07s ocp-pp/ocpp_parser.mlmods                                        [ done ]
+- 0.07s ocplib-lang/stringSubst.mlmods                                   [ done ]
+- 0.07s ocplib-lang/manpage.mlimods                                      [ done ]
+- 0.07s ocplib-lang/ocpPervasives.cmi                                    [ done ]
+- 0.07s ocplib-lang/manpage.mlmods                                       [ done ]
+- 0.07s ocplib-lang/ocpList.cmi                                          [ done ]
+- 0.07s ocplib-lang/stringTemplate.mlimods                               [ done ]
+- 0.07s ocplib-lang/ocpString.cmi                                        [ done ]
+- 0.07s ocplib-lang/stringTemplate.mlmods                                [ done ]
+- 0.07s ocplib-lang/ocpStream.cmi                                        [ done ]
+- 0.07s ocplib-test/test.mlimods                                         [ done ]
+- 0.07s ocplib-lang/ocpGenlex.cmi                                        [ done ]
+- 0.07s ocplib-test/test.mlmods                                          [ done ]
+- 0.07s ocplib-system/reentrantBuffers.mlimods                           [ done ]
+- 0.07s ocplib-lang/ocpHashtbl.cmi                                       [ done ]
+- 0.07s ocplib-system/reentrantBuffers.mlmods                            [ done ]
+- 0.07s ocplib-system/file.mlimods                                       [ done ]
+- 0.07s ocplib-lang/ocpDigest.cmi                                        [ done ]
+- 0.07s ocplib-system/file.mlmods                                        [ done ]
+- 0.07s ocplib-lang/option.cmi                                           [ done ]
+- 0.07s ocplib-system/fileLines.mlimods                                  [ done ]
+- 0.07s ocplib-lang/intMap.cmi                                           [ done ]
+- 0.07s ocplib-system/fileLines.mlmods                                   [ done ]
+- 0.07s ocplib-lang/intSet.cmi                                           [ done ]
+- 0.07s ocplib-unix/libmlocplib-unix.a                                   [ done ]
+- 0.07s ocplib-system/fileLabels.mlimods                                 [ done ]
+- 0.07s ocplib-lang/stringMap.cmi                                        [ done ]
+- 0.07s ocplib-system/fileLabels.mlmods                                  [ done ]
+- 0.07s ocplib-lang/stringSet.cmi                                        [ done ]
+- 0.07s ocplib-system/date.mlimods                                       [ done ]
+- 0.07s ocplib-lang/toposort.cmi                                         [ done ]
+- 0.07s ocplib-system/date.mlmods                                        [ done ]
+- 0.07s ocplib-debug/debugVerbosity.cmo                                  [ done ]
+- 0.07s ocplib-debug/debugVerbosity.cmx                                  [ done ]
+- 0.08s ocplib-debug/debugTyperex.cmo                                    [ done ]
+- 0.08s ocplib-debug/debugTyperex.cmx                                    [ done ]
+- 0.08s no-unix/unix.cmx                                                 [ done ]
+- 0.08s no-unix/no-unix.cma                                              [ done ]
+- 0.08s ocplib-subcmd/subcommands.cmo                                    [ done ]
+- 0.08s ocplib-subcmd/subcommands.cmx                                    [ done ]
+- 0.08s ocplib-unix/minUnix.cmo                                          [ done ]
+- 0.08s ocplib-unix/minUnix.cmx                                          [ done ]
+- 0.08s ocplib-unix/onlyUnix.cmi                                         [ done ]
+- 0.09s ocplib-unix/onlyWin32.cmi                                        [ done ]
+- 0.09s ocplib-lang/linearToposort.cmi                                   [ done ]
+- 0.09s ocp-pp/ocpp_version.cmx                                          [ done ]
+- 0.09s ocp-pp/versioning.cmo                                            [ done ]
+- 0.09s ocp-pp/versioning.cmx                                            [ done ]
+- 0.09s ocp-pp/ocpp_types.cmo                                            [ done ]
+- 0.09s ocplib-lang/ocamllexer.cmi                                       [ done ]
+- 0.09s ocplib-lang/ocamllexer.mlmods                                    [ done ]
+- 0.09s ocplib-lang/trie.cmi                                             [ done ]
+- 0.09s ocplib-lang/ocpPervasives.cmo                                    [ done ]
+- 0.09s ocplib-lang/ocpPervasives.cmx                                    [ done ]
+- 0.09s ocplib-lang/ocpList.cmo                                          [ done ]
+- 0.09s ocplib-lang/ocpList.cmx                                          [ done ]
+- 0.09s ocplib-lang/stringSubst.cmi                                      [ done ]
+- 0.09s ocplib-lang/manpage.cmi                                          [ done ]
+- 0.09s ocplib-lang/ocpStream.cmo                                        [ done ]
+- 0.09s ocplib-lang/stringTemplate.cmi                                   [ done ]
+- 0.09s ocplib-lang/ocpGenlex.cmo                                        [ done ]
+- 0.09s ocplib-test/test.cmi                                             [ done ]
+- 0.09s ocplib-system/ocpUnix.mlimods                                    [ done ]
+- 0.09s ocplib-lang/ocpHashtbl.cmo                                       [ done ]
+- 0.09s ocplib-lang/ocpHashtbl.cmx                                       [ done ]
+- 0.09s ocplib-system/ocpUnix.mlmods                                     [ done ]
+- 0.09s ocplib-lang/ocpLang.cmi                                          [ done ]
+- 0.09s ocplib-system/ocpFilename.mlimods                                [ done ]
+- 0.09s ocplib-lang/option.cmo                                           [ done ]
+- 0.10s ocplib-lang/option.cmx                                           [ done ]
+- 0.10s ocplib-lang/intMap.cmo                                           [ done ]
+- 0.10s ocplib-lang/intMap.cmx                                           [ done ]
+- 0.10s ocplib-lang/intSet.cmo                                           [ done ]
+- 0.10s ocplib-lang/intSet.cmx                                           [ done ]
+- 0.10s ocplib-system/fileLines.cmi                                      [ done ]
+- 0.10s ocplib-lang/stringMap.cmo                                        [ done ]
+- 0.10s ocplib-lang/stringMap.cmx                                        [ done ]
+- 0.10s ocplib-lang/stringSet.cmo                                        [ done ]
+- 0.10s ocplib-lang/stringSet.cmx                                        [ done ]
+- 0.10s ocplib-lang/toposort.cmo                                         [ done ]
+- 0.10s ocplib-lang/toposort.cmx                                         [ done ]
+- 0.10s ocplib-system/fileLabels.cmi                                     [ done ]
+- 0.10s ocplib-system/date.cmi                                           [ done ]
+- 0.10s ocplib-debug/ocplib-debug.cma                                    [ done ]
+- 0.09s ocplib-debug/ocplib-debug.cmxa                                   [ done ]
+- 0.09s no-unix/no-unix.cmxa                                             [ done ]
+- 0.09s ocplib-system/ocpFilename.mlmods                                 [ done ]
+- 0.09s ocplib-subcmd/ocplib-subcmd.cma                                  [ done ]
+- 0.09s ocplib-subcmd/ocplib-subcmd.cmxa                                 [ done ]
+- 0.09s ocplib-system/debug.mlimods                                      [ done ]
+- 0.09s ocplib-system/debug.mlmods                                       [ done ]
+- 0.09s ocplib-unix/onlyUnix.cmo                                         [ done ]
+- 0.09s ocplib-unix/onlyUnix.cmx                                         [ done ]
+- 0.09s ocplib-unix/onlyWin32.cmo                                        [ done ]
+- 0.10s ocplib-unix/onlyWin32.cmx                                        [ done ]
+- 0.10s ocplib-lang/linearToposort.cmo                                   [ done ]
+- 0.10s ocplib-system/configParser.mlimods                               [ done ]
+- 0.10s ocp-pp/ocpp_parser.cmi                                           [ done ]
+- 0.10s ocp-pp/ocpp_types.cmx                                            [ done ]
+- 0.10s ocplib-system/configParser.mlmods                                [ done ]
+- 0.10s ocplib-lang/trie.cmo                                             [ done ]
+- 0.10s ocplib-lang/trie.cmx                                             [ done ]
+- 0.10s ocplib-system/fileTemplate.mlimods                               [ done ]
+- 0.10s ocplib-lang/stringSubst.cmo                                      [ done ]
+- 0.10s ocplib-lang/stringSubst.cmx                                      [ done ]
+- 0.10s ocplib-lang/manpage.cmo                                          [ done ]
+- 0.10s ocplib-lang/manpage.cmx                                          [ done ]
+- 0.10s ocplib-system/fileTemplate.mlmods                                [ done ]
+- 0.10s ocp-build-misc/logger.mlmods                                     [ done ]
+- 0.10s ocplib-system/ocpUnix.cmi                                        [ done ]
+- 0.10s ocp-build-misc/buildMisc.mlmods                                  [ done ]
+- 0.10s ocp-build-misc/buildMtime.mlimods                                [ done ]
+- 0.10s ocp-build-misc/buildMtime.mlmods                                 [ done ]
+- 0.10s ocplib-lang/ocpLang.cmo                                          [ done ]
+- 0.09s ocplib-system/ocpFilename.cmi                                    [ done ]
+- 0.09s ocp-build-misc/buildScanner.mlimods                              [ done ]
+- 0.09s ocp-build-misc/buildScanner.mlmods                               [ done ]
+- 0.09s ocp-build-misc/buildSubst.mlimods                                [ done ]
+- 0.09s ocplib-lang/linearToposort.cmx                                   [ done ]
+- 0.09s ocp-build-misc/buildSubst.mlmods                                 [ done ]
+- 0.09s ocp-build-misc/buildFind.mlimods                                 [ done ]
+- 0.09s ocp-build-misc/buildFind.mlmods                                  [ done ]
+- 0.09s ocp-build-misc/buildTerm.mlimods                                 [ done ]
+- 0.09s ocp-build-misc/buildTerm.mlmods                                  [ done ]
+- 0.09s ocp-build-misc/ocamldot.mlimods                                  [ done ]
+- 0.09s ocp-build-misc/ocamldot.mlmods                                   [ done ]
+- 0.09s ocp-build-misc/buildValue.mlimods                                [ done ]
+- 0.09s ocp-build-misc/buildValue.mlmods                                 [ done ]
+- 0.09s ocp-build-misc/versioning.mlimods                                [ done ]
+- 0.09s ocplib-system/date.cmo                                           [ done ]
+- 0.09s ocplib-system/date.cmx                                           [ done ]
+- 0.09s ocplib-debug/ocplib-debug.cmxa                                   [ done ]
+- 0.09s no-unix/no-unix.cmxa                                             [ done ]
+- 0.16s ocplib-system/_temp/simpleConfig.mlipp                           [ done ]
+- 0.10s ocp-build-misc/versioning.mlmods                                 [ done ]
+- 0.10s ocplib-system.test/file_test.mlmods                              [ done ]
+- 0.10s ocplib-subcmd/ocplib-subcmd.cmxa                                 [ done ]
+- 0.10s ocplib-system/debug.cmi                                          [ done ]
+- 0.10s ocplib-lang.test/ocpList_test.mlmods                             [ done ]
+- 0.10s ocplib-lang.test/ocpString_test.mlmods                           [ done ]
+- 0.10s ocp-build-ocaml/buildObjectInspector.mlimods                     [ done ]
+- 0.09s ocplib-unix/ocplib-unix.cma                                      [ done ]
+- 0.09s ocplib-unix/ocplib-unix.cmxa                                     [ done ]
+- 0.09s ocp-build-ocaml/buildObjectInspector.mlmods                      [ done ]
+- 0.09s ocplib-ocamlfind/metaTypes.mlimods                               [ done ]
+- 0.09s ocp-pp/ocpp_parser.cmo                                           [ done ]
+- 0.09s ocp-pp/ocpp_parser.cmx                                           [ done ]
+- 0.09s ocplib-ocamlfind/metaTypes.mlmods                                [ done ]
+- 0.09s ocplib-ocamlfind/_temp/metaLexer.ml                              [ done ]
+- -- stdout for ...d/ocplib-ocamlfind/_temp/metaLexer.ml --
+- 22 states, 692 transitions, table size 2900 bytes
+- 0.09s ocplib-system/fileTemplate.cmi                                   [ done ]
+- 0.09s ocplib-ocamlfind/metaLexer.mlimods                               [ done ]
+- 0.09s ocplib-ocamlfind/metaFile.mlimods                                [ done ]
+- 0.09s ocplib-ocamlfind/metaFile.mlmods                                 [ done ]
+- 0.09s ocplib-ocamlfind/metaParser.mlimods                              [ done ]
+- 0.09s ocplib-ocamlfind/metaParser.mlmods                               [ done ]
+- 0.09s ocp-build-misc/logger.cmo                                        [ done ]
+- 0.09s ocplib-ocamlfind/metaConfig.mlimods                              [ done ]
+- 0.09s ocplib-ocamlfind/metaConfig.mlmods                               [ done ]
+- 0.09s ocp-build-misc/buildMtime.cmi                                    [ done ]
+- 0.09s ocp-build-engine/buildEngineTypes.mlimods                        [ done ]
+- 0.22s ocp-build-engine/buildEngineTypes.mlmods                         [ done ]
+- 0.23s ocplib-system/ocpFilename.cmo                                    [ done ]
+- 0.26s ocp-pp/ocpp.cmo                                                  [ done ]
+- 0.23s ocp-build-engine/buildEngineGlobals.mlimods                      [ done ]
+- 0.23s ocp-build-engine/buildEngineGlobals.mlmods                       [ done ]
+- 0.23s ocp-build-misc/buildSubst.cmi                                    [ done ]
+- 0.23s ocp-build-engine/buildEngineRules.mlmods                         [ done ]
+- 0.23s ocp-build-engine/buildEngineContext.mlimods                      [ done ]
+- 0.23s ocp-build-misc/buildFind.cmi                                     [ done ]
+- 0.24s ocp-build-engine/buildEngineContext.mlmods                       [ done ]
+- 0.24s ocp-build-misc/buildTerm.cmi                                     [ done ]
+- 0.24s ocp-build-engine/buildEngineDisplay.mlimods                      [ done ]
+- 0.24s ocp-build-misc/ocamldot.cmi                                      [ done ]
+- 0.24s ocp-build-engine/buildEngineDisplay.mlmods                       [ done ]
+- 0.24s ocp-build-engine/buildEngine.mlimods                             [ done ]
+- 0.24s ocp-build-engine/buildEngine.mlmods                              [ done ]
+- 0.24s ocp-build-misc/versioning.cmi                                    [ done ]
+- 0.24s ocp-build-project/buildOCPTypes.mlimods                          [ done ]
+- 0.24s ocp-build-project/buildOCPTypes.mlmods                           [ done ]
+- 0.24s ocp-build-project/buildOCPTree.mlimods                           [ done ]
+- 0.24s ocp-build-project/buildOCPTree.mlmods                            [ done ]
+- 0.24s ocplib-system/simpleConfig.mlimods                               [ done ]
+- 0.24s ocp-build-project/_temp/buildOCPParser.ml                        [ done ]
+- -- stderr for ...build-project/_temp/buildOCPParser.ml --
+- 12 shift/reduce conflicts, 22 reduce/reduce conflicts.
+- 0.24s ocp-build-project/buildOCPParse.mlimods                          [ done ]
+- 0.24s ocp-build-project/buildOCPParse.mlmods                           [ done ]
+- 0.24s ocp-build-project/buildOCPPrinter.mlimods                        [ done ]
+- 0.24s ocplib-lang.test/ocpList_test.cmo                                [ done ]
+- 0.24s ocp-build-project/buildOCPPrinter.mlmods                         [ done ]
+- 0.24s ocp-build-ocaml/buildObjectInspector.cmi                         [ done ]
+- 0.24s ocp-build-project/buildOCPInterp.mlimods                         [ done ]
+- 0.24s ocplib-unix/ocplib-unix.cmxa                                     [ done ]
+- 0.24s ocp-build-project/buildOCPInterp.mlmods                          [ done ]
+- 0.25s ocp-build-project/buildOCP.mlimods                               [ done ]
+- 0.25s ocp-build-project/buildOCP.mlmods                                [ done ]
+- 0.25s ocp-project/projectMain.mlmods                                   [ done ]
+- 0.25s ocp-build-oasis/buildOasis.mlimods                               [ done ]
+- 0.25s ocplib-ocamlfind/metaLexer.mlmods                                [ done ]
+- 0.25s ocp-build-oasis/buildOasis.mlmods                                [ done ]
+- 0.25s ocplib-ocamlfind/metaLexer.cmi                                   [ done ]
+- 0.25s ocp-build-lib/buildVersion.mlmods                                [ done ]
+- 0.25s ocp-build-lib/buildTypes.mlimods                                 [ done ]
+- 0.25s ocp-build-lib/buildTypes.mlmods                                  [ done ]
+- 0.25s ocp-build-lib/buildOptions.mlimods                               [ done ]
+- 0.25s ocp-build-misc/logger.cmx                                        [ done ]
+- 0.25s ocplib-ocamlfind/metaConfig.cmi                                  [ done ]
+- 0.25s ocp-build-lib/buildOptions.mlmods                                [ done ]
+- 0.25s ocp-build-misc/buildMtime.cmo                                    [ done ]
+- 0.12s ocp-build-lib/buildGlobals.mlmods                                [ done ]
+- 0.12s ocp-build-lib/buildConfig.mlimods                                [ done ]
+- 0.11s ocp-build-lib/buildConfig.mlmods                                 [ done ]
+- 0.11s ocp-pp/main.cmo                                                  [ done ]
+- 0.11s ocp-build-lib/buildUninstall.mlimods                             [ done ]
+- 0.11s ocp-build-misc/buildSubst.cmo                                    [ done ]
+- 0.11s ocp-build-lib/buildUninstall.mlmods                              [ done ]
+- 0.11s test-meta/metaMain.mlmods                                        [ done ]
+- 0.11s ocp-build-misc/buildFind.cmo                                     [ done ]
+- 0.11s ocp-build-misc/buildFind.cmx                                     [ done ]
+- 0.11s ocp-build-ocaml-plugin/buildOCamlConfig.mlimods                  [ done ]
+- 0.10s ocp-build-ocaml-plugin/buildOCamlConfig.mlmods                   [ done ]
+- 0.10s ocp-build-misc/ocamldot.cmo                                      [ done ]
+- 0.10s ocp-build-misc/ocamldot.cmx                                      [ done ]
+- 0.09s ocp-build-ocaml-plugin/buildOCamlTypes.mlimods                   [ done ]
+- 0.09s ocp-build-ocaml-plugin/buildOCamlTypes.mlmods                    [ done ]
+- 0.09s ocp-build-misc/versioning.cmo                                    [ done ]
+- 0.09s ocp-build-misc/versioning.cmx                                    [ done ]
+- 0.09s ocp-build-ocaml-plugin/buildOCamlGlobals.mlmods                  [ done ]
+- 0.09s ocp-build-ocaml-plugin/buildOCamlMisc.mlmods                     [ done ]
+- 0.09s ocp-build-ocaml-plugin/buildOCamlVariables.mlmods                [ done ]
+- 0.08s ocp-build-ocaml-plugin/buildOCamldep.mlimods                     [ done ]
+- 0.08s ocp-build-project/buildOCPParser.mlimods                         [ done ]
+- 0.08s ocp-build-project/buildOCPParser.mlmods                          [ done ]
+- 0.08s ocp-build-ocaml-plugin/buildOCamldep.mlmods                      [ done ]
+- 0.08s ocp-build-ocaml-plugin/buildOCamlSyntaxes.mlimods                [ done ]
+- 0.08s ocp-build-ocaml-plugin/buildOCamlSyntaxes.mlmods                 [ done ]
+- 0.08s ocp-build-ocaml-plugin/buildOCamlRules.mlimods                   [ done ]
+- 0.07s ocp-build-ocaml-plugin/buildOCamlRules.mlmods                    [ done ]
+- 0.07s ocp-build-ocaml-plugin/buildOCamlInstall.mlimods                 [ done ]
+- 0.07s ocp-build-ocaml-plugin/buildOCamlInstall.mlmods                  [ done ]
+- 0.07s ocp-build-ocaml-plugin/buildOCamlMeta.mlimods                    [ done ]
+- 0.06s ocp-build-ocaml-plugin/buildOCamlMeta.mlmods                     [ done ]
+- 0.06s ocp-build-ocaml-plugin/buildOCamlTest.mlimods                    [ done ]
+- 0.06s ocp-build-ocaml-plugin/buildOCamlTest.mlmods                     [ done ]
+- 0.06s ocp-build-ocaml-plugin/buildAutogen.mlimods                      [ done ]
+- 0.05s ocp-build-ocaml-plugin/buildAutogen.mlmods                       [ done ]
+- 0.05s ocp-build/buildArgs.mlmods                                       [ done ]
+- 0.05s ocplib-ocamlfind/metaLexer.cmo                                   [ done ]
+- 0.05s ocplib-ocamlfind/metaLexer.cmx                                   [ done ]
+- 0.04s ocp-build-lib/buildVersion.cmo                                   [ done ]
+- 0.04s ocp-build/buildActions.mlimods                                   [ done ]
+- 0.04s ocp-build/buildActions.mlmods                                    [ done ]
+- 0.04s ocp-build/buildActionRoot.mlmods                                 [ done ]
+- 0.04s ocp-build/buildActionPrefs.mlmods                                [ done ]
+- 0.04s ocp-build/buildActionConfigure.mlmods                            [ done ]
+- 0.04s ocp-build/buildActionBuild.mlmods                                [ done ]
+- 0.03s ocp-build/buildActionInstall.mlmods                              [ done ]
+- 0.03s ocp-build/buildActionClean.mlmods                                [ done ]
+- 0.03s ocp-build/buildActionTests.mlmods                                [ done ]
+- 0.03s ocp-build/buildActionUninstall.mlmods                            [ done ]
+- 0.03s ocp-build/buildActionQuery.mlmods                                [ done ]
+- 0.02s ocp-build/buildActionHelp.mlmods                                 [ done ]
+- 0.02s ocp-build/buildMain.mlmods                                       [ done ]
+- 0.16s ocp-pp/ocpp.cmx                                                  [ done ]
+- 0.02s ocp-build-lib/buildVersion.cmx                                   [ done ]
+- 0.55s ocplib-system/_temp/simpleConfig.ml4pp                           [ done ]
+- 0.04s ocp-pp/main.cmx                                                  [ done ]
+- 0.01s ocplib-system/simpleConfig.mlmods                                [ done ]
+- 0.49s ocp-pp/ocp-pp.byte                                               [ done ]
+- 0.02s ocplib-compat/_temp/stringCompat.mlpp                            [ done ]
+- 0.01s ocplib-compat/stringCompat.mlmods                                [ done ]
+- 0.02s ocplib-compat/stringCompat.cmo                                   [ done ]
+- 0.03s ocplib-compat/ocplib-compat.cma                                  [ done ]
+- 0.02s ocplib-system/reentrantBuffers.cmi                               [ done ]
+- 0.01s ocp-build-misc/buildScanner.cmi                                  [ done ]
+- 0.01s ocplib-system/file.cmi                                           [ done ]
+- 0.06s ocplib-compat/stringCompat.cmx                                   [ done ]
+- 0.06s ocplib-lang/ocpString.cmo                                        [ done ]
+- 0.06s ocplib-lang/ocpDigest.cmo                                        [ done ]
+- 0.06s ocplib-lang/ocamllexer.cmo                                       [ done ]
+- 0.06s ocplib-lang/stringTemplate.cmo                                   [ done ]
+- 0.06s ocplib-test/test.cmo                                             [ done ]
+- 0.05s ocplib-system/debug.cmo                                          [ done ]
+- 0.05s ocp-build-misc/buildValue.cmi                                    [ done ]
+- 0.06s ocplib-lang.test/ocpString_test.cmo                              [ done ]
+- 0.06s ocplib-ocamlfind/metaTypes.cmi                                   [ done ]
+- 0.06s ocplib-system/reentrantBuffers.cmo                               [ done ]
+- 0.06s ocplib-system/file.cmo                                           [ done ]
+- 0.06s ocplib-system/fileLines.cmo                                      [ done ]
+- 0.05s ocplib-system/fileLabels.cmo                                     [ done ]
+- 0.05s ocplib-system/ocpUnix.cmo                                        [ done ]
+- 0.05s ocplib-system/configParser.cmi                                   [ done ]
+- 0.05s ocplib-system/simpleConfig.cmi                                   [ done ]
+- 0.05s ocplib-system/fileTemplate.cmo                                   [ done ]
+- 0.05s ocp-build-misc/buildScanner.cmo                                  [ done ]
+- 0.05s ocp-build-engine/buildEngineTypes.cmi                            [ done ]
+- 0.06s ocplib-compat/ocplib-compat.cmxa                                 [ done ]
+- 0.06s ocplib-lang/ocpDigest.cmx                                        [ done ]
+- 0.06s ocplib-lang/stringTemplate.cmx                                   [ done ]
+- 0.05s ocplib-system/reentrantBuffers.cmx                               [ done ]
+- 0.05s ocplib-system/debug.cmx                                          [ done ]
+- 0.05s ocplib-lang/ocplib-lang.cma                                      [ done ]
+- 0.06s ocplib-lang/ocamllexer.cmx                                       [ done ]
+- 0.05s ocplib-test/ocplib-test.cma                                      [ done ]
+- 0.05s ocp-build-misc/buildValue.cmo                                    [ done ]
+- 0.04s ocp-build-project/buildOCPTypes.cmi                              [ done ]
+- 0.06s ocp-build-misc/buildValue.cmx                                    [ done ]
+- 0.06s ocp-build-lib/buildConfig.cmi                                    [ done ]
+- 0.06s ocplib-lang.test/ocplib-lang.test.cma                            [ done ]
+- 0.05s ocplib-ocamlfind/metaTypes.cmo                                   [ done ]
+- 0.05s ocplib-ocamlfind/metaTypes.cmx                                   [ done ]
+- 0.05s ocplib-ocamlfind/metaFile.cmi                                    [ done ]
+- 0.05s ocplib-ocamlfind/metaParser.cmi                                  [ done ]
+- 0.05s ocplib-system/configParser.cmo                                   [ done ]
+- 0.05s ocp-build-lib/buildOptions.cmi                                   [ done ]
+- 0.05s ocp-build-engine/buildEngineTypes.cmo                            [ done ]
+- 0.04s ocp-build-engine/buildEngineGlobals.cmi                          [ done ]
+- 0.04s ocp-build-engine/buildEngineContext.cmi                          [ done ]
+- 0.05s ocp-build-engine/buildEngineDisplay.cmi                          [ done ]
+- 0.04s ocp-build-engine/buildEngine.cmi                                 [ done ]
+- 0.04s ocp-build-misc/buildMtime.cmx                                    [ done ]
+- 0.03s ocp-build-project/buildOCPTypes.cmo                              [ done ]
+- 0.03s ocp-build-project/buildOCPTree.cmi                               [ done ]
+- 0.04s ocp-build-project/buildOCPPrinter.cmi                            [ done ]
+- 0.04s ocp-build-project/buildOCPInterp.cmi                             [ done ]
+- 0.04s ocp-build-lib/buildTypes.cmi                                     [ done ]
+- 0.12s ocplib-lang/ocpString.cmx                                        [ done ]
+- 0.07s ocplib-compat/ocplib-compat.cmxa                                 [ done ]
+- 0.06s ocp-build-ocaml-plugin/buildOCamlVariables.cmo                   [ done ]
+- 0.06s ocp-build-ocaml-plugin/buildAutogen.cmi                          [ done ]
+- 0.05s ocp-build-project/buildOCPTypes.cmx                              [ done ]
+- 0.06s ocp-build-lib/buildConfig.cmo                                    [ done ]
+- 0.05s ocplib-ocamlfind/metaFile.cmo                                    [ done ]
+- 0.05s ocplib-ocamlfind/metaParser.cmo                                  [ done ]
+- 0.05s ocp-build-ocaml-plugin/buildOCamlConfig.cmi                      [ done ]
+- 0.05s ocp-build-engine/buildEngineGlobals.cmo                          [ done ]
+- 0.04s ocp-build-engine/buildEngineRules.cmo                            [ done ]
+- 0.06s ocplib-ocamlfind/metaFile.cmx                                    [ done ]
+- 0.05s ocp-build-engine/buildEngineContext.cmo                          [ done ]
+- 0.04s ocp-build-project/buildOCPTree.cmo                               [ done ]
+- 0.04s ocp-build-project/buildOCPParser.cmi                             [ done ]
+- 0.04s ocp-build-project/buildOCPParse.cmi                              [ done ]
+- 0.04s ocp-build-project/buildOCP.cmi                                   [ done ]
+- 0.04s ocp-build-project/buildOCPPrinter.cmo                            [ done ]
+- 0.04s ocp-build-oasis/buildOasis.cmi                                   [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlMeta.cmi                        [ done ]
+- 0.04s ocp-build-lib/buildTypes.cmo                                     [ done ]
+- 0.04s ocp-build-lib/buildUninstall.cmi                                 [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlTypes.cmi                       [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlRules.cmi                       [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlInstall.cmi                     [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlTest.cmi                        [ done ]
+- 0.04s ocplib-lang/ocpStream.cmx                                        [ done ]
+- 0.04s ocp-build-misc/buildSubst.cmx                                    [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildAutogen.cmo                          [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlVariables.cmx                   [ done ]
+- 0.03s ocp-project/projectMain.cmo                                      [ done ]
+- 0.03s ocp-build-project/buildOCPParser.cmo                             [ done ]
+- 0.02s ocp-build-ocaml-plugin/buildOCamlTypes.cmo                       [ done ]
+- 0.02s ocp-build-ocaml-plugin/buildOCamldep.cmi                         [ done ]
+- 0.05s ocp-build-project/buildOCPTree.cmx                               [ done ]
+- 0.02s ocp-build-ocaml-plugin/buildOCamlSyntaxes.cmi                    [ done ]
+- 0.02s ocp-build/buildActions.cmi                                       [ done ]
+- 0.05s ocp-build-engine/buildEngineDisplay.cmo                          [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlMeta.cmo                        [ done ]
+- 0.04s ocp-build-lib/buildUninstall.cmo                                 [ done ]
+- 0.20s ocplib-system.test/file_test.cmo                                 [ done ]
+- 0.05s ocp-build-oasis/buildOasis.cmo                                   [ done ]
+- 0.01s ocplib-system.test/ocplib-system.test.cma                        [ done ]
+- 0.01s ocp-build-oasis/ocp-build-oasis.cma                              [ done ]
+- 0.08s ocp-build-project/buildOCPPrinter.cmx                            [ done ]
+- 0.22s ocp-build-misc/buildMisc.cmo                                     [ done ]
+- 0.14s test-meta/metaMain.cmo                                           [ done ]
+- 0.18s ocplib-ocamlfind/metaParser.cmx                                  [ done ]
+- 0.16s ocplib-lang/ocpGenlex.cmx                                        [ done ]
+- 0.15s ocp-build-project/buildOCPParser.cmx                             [ done ]
+- 0.12s ocp-build-misc/buildTerm.cmo                                     [ done ]
+- 0.12s ocp-build-ocaml/buildObjectInspector.cmo                         [ done ]
+- 0.12s ocplib-ocamlfind/metaConfig.cmo                                  [ done ]
+- 0.12s ocp-build-project/buildOCPParse.cmo                              [ done ]
+- 0.12s ocp-build-lib/buildOptions.cmo                                   [ done ]
+- 0.11s ocp-build-lib/buildGlobals.cmo                                   [ done ]
+- 0.13s ocp-build-project/buildOCPInterp.cmo                             [ done ]
+- 0.13s ocp-build-project/buildOCP.cmo                                   [ done ]
+- 0.12s ocp-build-ocaml-plugin/buildOCamlConfig.cmo                      [ done ]
+- 0.12s ocp-build-ocaml-plugin/buildOCamlMisc.cmo                        [ done ]
+- 0.02s ocp-build-misc/ocp-build-misc.cma                                [ done ]
+- 0.02s ocp-build-ocaml/ocp-build-ocaml.cma                              [ done ]
+- 0.01s ocplib-ocamlfind/ocplib-ocamlfind.cma                            [ done ]
+- 0.01s ocp-build-lib/ocp-build-lib.cma                                  [ done ]
+- 0.14s ocp-build-engine/buildEngine.cmo                                 [ done ]
+- 0.01s ocp-build-project/ocp-build-project.cma                          [ done ]
+- 0.32s ocplib-system/simpleConfig.cmo                                   [ done ]
+- 0.01s ocp-build-engine/ocp-build-engine.cma                            [ done ]
+- 0.02s ocp-build/buildArgs.cmo                                          [ done ]
+- 0.06s test-meta/metaMain.cmx                                           [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlGlobals.cmo                     [ done ]
+- 0.07s ocplib-lang/ocpLang.cmx                                          [ done ]
+- 0.05s ocp-build/buildActions.cmo                                       [ done ]
+- 0.04s ocplib-system/ocplib-system.cma                                  [ done ]
+- 0.04s ocp-build/buildActionRoot.cmo                                    [ done ]
+- 0.03s ocp-build/buildActionPrefs.cmo                                   [ done ]
+- 0.03s ocp-build/buildActionConfigure.cmo                               [ done ]
+- 0.03s ocp-build/buildActionClean.cmo                                   [ done ]
+- 0.03s ocp-build/buildActionUninstall.cmo                               [ done ]
+- 0.03s ocp-build/buildActionHelp.cmo                                    [ done ]
+- 0.03s ocplib-lang/ocplib-lang.cmxa                                     [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamldep.cmo                         [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlSyntaxes.cmo                    [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlInstall.cmo                     [ done ]
+- 0.03s ocplib-system/ocpFilename.cmx                                    [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlTest.cmo                        [ done ]
+- 0.05s ocplib-test/test.cmx                                             [ done ]
+- 0.02s ocplib-test/ocplib-test.cmxa                                     [ done ]
+- 0.07s ocp-build/buildActionBuild.cmo                                   [ done ]
+- 0.09s ocplib-system/file.cmx                                           [ done ]
+- 0.09s ocplib-lang/ocplib-lang.cmxa                                     [ done ]
+- 0.05s ocplib-lang.test/ocpList_test.cmx                                [ done ]
+- 0.03s ocp-build/buildActionInstall.cmo                                 [ done ]
+- 0.03s ocp-build/buildActionTests.cmo                                   [ done ]
+- 0.03s ocp-build/buildActionQuery.cmo                                   [ done ]
+- 0.06s ocplib-lang.test/ocpString_test.cmx                              [ done ]
+- 0.12s test-meta/test-meta.byte                                         [ done ]
+- 0.04s ocplib-system/fileLines.cmx                                      [ done ]
+- 0.12s ocp-project/ocp-project.byte                                     [ done ]
+- 0.12s ocp-build-infer-env/ocp-build-infer-env.byte                     [ done ]
+- 0.02s ocplib-lang.test/ocplib-lang.test.cmxa                           [ done ]
+- 0.05s ocplib-system/fileLabels.cmx                                     [ done ]
+- 0.07s ocplib-test/ocplib-test.cmxa                                     [ done ]
+- 0.05s ocplib-system/ocpUnix.cmx                                        [ done ]
+- 0.04s ocp-build-misc/buildScanner.cmx                                  [ done ]
+- 0.03s ocp-build/buildMain.cmo                                          [ done ]
+- 0.05s ocplib-system/fileTemplate.cmx                                   [ done ]
+- 0.05s ocplib-system/configParser.cmx                                   [ done ]
+- 0.04s ocp-build-engine/buildEngineTypes.cmx                            [ done ]
+- 0.05s ocp-build-lib/buildConfig.cmx                                    [ done ]
+- 0.05s ocp-build-ocaml-plugin/buildAutogen.cmx                          [ done ]
+- 0.07s ocp-build-misc/buildMisc.cmx                                     [ done ]
+- 0.03s ocp-build-engine/buildEngineGlobals.cmx                          [ done ]
+- 0.20s ocp-build-ocaml-plugin/buildOCamlRules.cmo                       [ done ]
+- 0.05s ocplib-lang.test/ocplib-lang.test.cmxa                           [ done ]
+- 0.05s ocplib-system.test/file_test.cmx                                 [ done ]
+- 0.04s ocp-build-lib/buildTypes.cmx                                     [ done ]
+- 0.01s ocp-build-ocaml-plugin/ocp-build-ocaml-plugin.cma                [ done ]
+- 0.04s ocplib-ocamlfind/metaConfig.cmx                                  [ done ]
+- 0.03s ocplib-system.test/ocplib-system.test.cmxa                       [ done ]
+- 0.05s ocp-build-ocaml/buildObjectInspector.cmx                         [ done ]
+- 0.05s ocp-build-misc/buildTerm.cmx                                     [ done ]
+- 0.05s ocp-build-project/buildOCPParse.cmx                              [ done ]
+- 0.04s ocp-build-ocaml-plugin/buildOCamlTypes.cmx                       [ done ]
+- 0.02s ocplib-ocamlfind/ocplib-ocamlfind.cmxa                           [ done ]
+- 0.02s ocp-build-ocaml/ocp-build-ocaml.cmxa                             [ done ]
+- 0.06s ocp-build-engine/buildEngineRules.cmx                            [ done ]
+- 0.02s ocp-build-misc/ocp-build-misc.cmxa                               [ done ]
+- 0.06s ocp-build-lib/buildUninstall.cmx                                 [ done ]
+- 0.07s ocp-build-engine/buildEngineContext.cmx                          [ done ]
+- 0.06s ocplib-system.test/ocplib-system.test.cmxa                       [ done ]
+- 0.02s ocp-build-ocaml-plugin/buildOCamlMisc.cmx                        [ done ]
+- 0.05s ocp-build-ocaml/ocp-build-ocaml.cmxa                             [ done ]
+- 0.06s ocplib-ocamlfind/ocplib-ocamlfind.cmxa                           [ done ]
+- 0.07s ocp-build-misc/ocp-build-misc.cmxa                               [ done ]
+- 0.06s ocp-build-lib/buildGlobals.cmx                                   [ done ]
+- 0.09s ocp-build-engine/buildEngineDisplay.cmx                          [ done ]
+- 0.11s ocp-build-project/buildOCPInterp.cmx                             [ done ]
+- 0.14s ocp-build/ocp-build.byte                                         [ done ]
+- 0.30s ocplib-system/simpleConfig.cmx                                   [ done ]
+- 0.03s ocplib-system/ocplib-system.cmxa                                 [ done ]
+- 0.08s ocp-build-oasis/buildOasis.cmx                                   [ done ]
+- 0.01s ocp-build-oasis/ocp-build-oasis.cmxa                             [ done ]
+- 0.04s ocp-build-oasis/ocp-build-oasis.cmxa                             [ done ]
+- 0.06s ocplib-system/ocplib-system.cmxa                                 [ done ]
+- 0.15s ocp-build-project/buildOCP.cmx                                   [ done ]
+- 0.23s ocp-build-engine/buildEngine.cmx                                 [ done ]
+- 0.02s ocp-build-project/ocp-build-project.cmxa                         [ done ]
+- 0.02s ocp-build-engine/ocp-build-engine.cmxa                           [ done ]
+- 0.05s ocp-project/projectMain.cmx                                      [ done ]
+- 0.12s test-meta/test-meta.asm                                          [ done ]
+- 0.06s ocp-build-project/ocp-build-project.cmxa                         [ done ]
+- 0.06s ocp-build-engine/ocp-build-engine.cmxa                           [ done ]
+- 1.55s ocp-pp/ocp-pp.asm                                                [ done ]
+- 0.14s ocp-build-lib/buildOptions.cmx                                   [ done ]
+- 0.02s ocp-build-lib/ocp-build-lib.cmxa                                 [ done ]
+- 0.03s ocp-build-ocaml-plugin/buildOCamlGlobals.cmx                     [ done ]
+- 0.07s ocp-build-ocaml-plugin/buildOCamlConfig.cmx                      [ done ]
+- 0.14s ocp-project/ocp-project.asm                                      [ done ]
+- 0.06s ocp-build-lib/ocp-build-lib.cmxa                                 [ done ]
+- 0.08s ocp-build-ocaml-plugin/buildOCamlSyntaxes.cmx                    [ done ]
+- 0.08s ocp-build-ocaml-plugin/buildOCamldep.cmx                         [ done ]
+- 0.05s ocp-build/buildArgs.cmx                                          [ done ]
+- 0.09s ocp-build-ocaml-plugin/buildOCamlInstall.cmx                     [ done ]
+- 0.06s ocp-build-ocaml-plugin/buildOCamlMeta.cmx                        [ done ]
+- 0.10s ocp-build-ocaml-plugin/buildOCamlTest.cmx                        [ done ]
+- 0.04s ocp-build/buildActionRoot.cmx                                    [ done ]
+- 0.04s ocp-build/buildActionPrefs.cmx                                   [ done ]
+- 0.04s ocp-build/buildActionConfigure.cmx                               [ done ]
+- 0.04s ocp-build/buildActions.cmx                                       [ done ]
+- 0.16s ocp-build/buildActionClean.cmx                                   [ done ]
+- 0.16s ocp-build/buildActionUninstall.cmx                               [ done ]
+- 0.16s ocp-build/buildActionHelp.cmx                                    [ done ]
+- 0.54s ocp-build-ocaml-plugin/buildOCamlRules.cmx                       [ done ]
+- 0.02s ocp-build-ocaml-plugin/ocp-build-ocaml-plugin.cmxa               [ done ]
+- 0.58s ocp-build-ocaml-plugin/ocp-build-ocaml-plugin.cmxa               [ done ]
+- 0.61s ocp-build/buildActionBuild.cmx                                   [ done ]
+- 0.04s ocp-build/buildActionTests.cmx                                   [ done ]
+- 0.13s ocp-build/buildActionInstall.cmx                                 [ done ]
+- 0.13s ocp-build/buildActionQuery.cmx                                   [ done ]
+- 0.05s ocp-build/buildMain.cmx                                          [ done ]
+- 0.20s ocp-build/ocp-build.asm                                          [ done ]
+- Build Successful in 4.19s. 572 jobs (parallelism 12.5x), 820 files generated.
+[ocp-build: make install] Command started
++ make "install" (CWD=/home/opam/.opam/4.02.3/build/ocp-build.1.99.13-beta)
+- cp ./_obuild/ocp-build/ocp-build.asm /home/opam/.opam/4.02.3/bin/ocp-build
+- mkdir -p /home/opam/.opam/4.02.3/lib/ocaml/typerex/ocp-build
+- cp -f boot/camlp4.ocp boot/ocaml.ocp /home/opam/.opam/4.02.3/lib/ocaml/typerex/ocp-build
+- cp -f build.ocp /home/opam/.opam/4.02.3/lib/ocaml/typerex/installed.ocp
+- echo "generated = true" >> /home/opam/.opam/4.02.3/lib/ocaml/typerex/installed.ocp
+- for lib in debug lang unix system compat subcmd; do \
+- 	mkdir -p /home/opam/.opam/4.02.3/lib/ocaml/typerex/ocplib-$lib; \
+- 	cp -f ocplib-$lib/build.ocp \
+- 		 /home/opam/.opam/4.02.3/lib/ocaml/typerex/ocplib-$lib/; \
+- 	cp -f ./_obuild/ocplib-$lib/*.cmi \
+- 	      ./_obuild/ocplib-$lib/*.cma \
+- 	      ./_obuild/ocplib-$lib/*.cmx \
+- 	      ./_obuild/ocplib-$lib/*.cmxa \
+- 	      ./_obuild/ocplib-$lib/*.cmxs \
+- 	      ./_obuild/ocplib-$lib/*.a \
+- 			 /home/opam/.opam/4.02.3/lib/ocaml/typerex/ocplib-$lib/; \
+- done
+- if test -f ./_obuild/ocp-pp/ocp-pp.asm; then make install-ocp-pp; else :; fi
+- make[1]: Entering directory '/home/opam/.opam/4.02.3/build/ocp-build.1.99.13-beta'
+- cp -f ./_obuild/ocp-pp/ocp-pp.asm /home/opam/.opam/4.02.3/bin/ocp-pp
+- make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ocp-build.1.99.13-beta'
+-> installed ocp-build.1.99.13-beta
+[91m
+#=== ERROR while installing conf-wxwidgets.3.0 ================================#
+# opam-version         1.2.2 (2dee5d69c0bd29731e6cb2ee537f0adf72404ba4)
+# os                   linux
+# command              wx-config --libs
+# path                 /home/opam/.opam/4.02.3/build/conf-wxwidgets.3.0
+# compiler             4.02.3
+# exit-code            127
+# env-file             /home/opam/.opam/4.02.3/build/conf-wxwidgets.3.0/conf-wxwidgets-268-6d07ae.env
+# stdout-file          /home/opam/.opam/4.02.3/build/conf-wxwidgets.3.0/conf-wxwidgets-268-6d07ae.out
+# stderr-file          /home/opam/.opam/4.02.3/build/conf-wxwidgets.3.0/conf-wxwidgets-268-6d07ae.err
+
+[0m
+
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions were aborted
+  - install wxOCaml 1.0.1
+The following actions failed
+  - install conf-wxwidgets 3.0
+The following changes have been performed
+  - install conf-m4         1           
+  - install conf-ncurses    1           
+  - install conf-pkg-config 1.0         
+  - install ocamlfind       1.6.2       
+  - install ocp-build       1.99.13-beta
+
+=-=- conf-wxwidgets.3.0 troubleshooting -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=> This package requires wxWidgets 3.0 development packages installed on your
+   system
+[91m
+The former state can be restored with:
+    opam switch import "~/.opam/4.02.3/backup/state-20160222143232.export"
+'opam install -y -j 2 -v wxOCaml' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/lefessan/opam-repository.git 2016-03-22-conf-wxwidgets && opam update -u" &&   sudo -u opam sh -c "opam depext -u wxOCaml" &&   sudo -u opam sh -c "opam install -y -j 2 -v wxOCaml"' returned a non-zero code: 4

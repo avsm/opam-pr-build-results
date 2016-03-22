@@ -1,0 +1,274 @@
+Running this Dockerfile:
+FROM ocaml/opam:debian-7_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/lefessan/opam-repository.git 2016-03-22-conf-wxwidgets && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u wxOCaml" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v wxOCaml"Sending build context to Docker daemon 37.38 kB
+Step 1 : FROM ocaml/opam:debian-7_ocaml-4.02.3
+debian-7_ocaml-4.02.3: Pulling from ocaml/opam
+4d690fa98655: Already exists
+a3ed95caeb02: Already exists
+72d65ac6647a: Already exists
+bee75b857662: Already exists
+86a4d2161693: Already exists
+Digest: sha256:223e694b0c3de44ef7c054b8dab4000ec4dcff8e749d0204358dab73966407cb
+Status: Image is up to date for ocaml/opam:debian-7_ocaml-4.02.3
+ ---> 5c1b06a90e09
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/lefessan/opam-repository.git 2016-03-22-conf-wxwidgets && opam update -u" &&   sudo -u opam sh -c "opam depext -u wxOCaml" &&   sudo -u opam sh -c "opam install -y -j 2 -v wxOCaml"
+ ---> Running in fd95216e58b4
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 8223d0d..6b3fe5c
+Fast-forward
+ compilers/4.04.0/4.04.0+pr486/4.04.0+pr486.descr   |    1 -
+ compilers/4.04.0/4.04.0+pr518/4.04.0+pr518.descr   |    1 -
+ .../4.04.0+pr519.comp}                             |    2 +-
+ compilers/4.04.0/4.04.0+pr519/4.04.0+pr519.descr   |    1 +
+ .../4.04.0+pr520.comp}                             |    2 +-
+ compilers/4.04.0/4.04.0+pr520/4.04.0+pr520.descr   |    1 +
+ packages/async_ssl/async_ssl.113.24.00/opam        |    6 +--
+ packages/async_ssl/async_ssl.113.33.00/opam        |    6 +--
+ packages/c3/c3.0.2.1/opam                          |    7 ++-
+ packages/c3/c3.0.3.0/opam                          |    7 ++-
+ packages/charrua-core/charrua-core.0.2/opam        |    4 +-
+ packages/conf-m4/conf-m4.1/opam                    |    1 +
+ packages/conf-ncurses/conf-ncurses.1/opam          |    1 +
+ packages/conf-openssl/conf-openssl.1/opam          |    1 +
+ packages/conf-pkg-config/conf-pkg-config.1.0/opam  |    1 +
+ packages/core_kernel/core_kernel.113.33.01/descr   |    6 +++
+ packages/core_kernel/core_kernel.113.33.01/opam    |   28 +++++++++++
+ packages/core_kernel/core_kernel.113.33.01/url     |    2 +
+ packages/ctypes/ctypes.0.5.0/descr                 |   18 +++++++
+ packages/ctypes/ctypes.0.5.0/findlib               |    1 +
+ packages/ctypes/ctypes.0.5.0/opam                  |   32 ++++++++++++
+ packages/ctypes/ctypes.0.5.0/url                   |    2 +
+ packages/dbm/dbm.1.0/files/mkdir-stublibs.patch    |   17 +++++++
+ packages/dbm/dbm.1.0/opam                          |    1 +
+ packages/frama-c-e-acsl/frama-c-e-acsl.0.5/opam    |    6 ++-
+ packages/hashcons/hashcons.1.0.1/opam              |    1 +
+ packages/iri/iri.0.2.0/descr                       |    5 ++
+ packages/iri/iri.0.2.0/opam                        |   24 +++++++++
+ packages/iri/iri.0.2.0/url                         |    2 +
+ packages/lablgtk/lablgtk.2.16.0/opam               |    4 ++
+ packages/lablgtk/lablgtk.2.18.2/opam               |    4 ++
+ packages/lablgtk/lablgtk.2.18.3/opam               |    4 ++
+ packages/mirage-dns/mirage-dns.2.5.0/opam          |    1 +
+ packages/mirage/mirage.2.7.1/opam                  |   32 ------------
+ packages/mirage/mirage.2.7.1/url                   |    2 -
+ .../mirage/{mirage.2.7.1 => mirage.2.7.3}/descr    |    0
+ packages/mirage/mirage.2.7.3/opam                  |   36 ++++++++++++++
+ packages/mirage/mirage.2.7.3/url                   |    2 +
+ packages/mlpost/mlpost.0.8.1/opam                  |   14 +++---
+ packages/nocrypto/nocrypto.0.5.3/descr             |    6 +++
+ packages/nocrypto/nocrypto.0.5.3/opam              |   45 +++++++++++++++++
+ packages/nocrypto/nocrypto.0.5.3/url               |    2 +
+ packages/ocaml-protoc/ocaml-protoc.0.1.2/descr     |    4 ++
+ packages/ocaml-protoc/ocaml-protoc.0.1.2/opam      |   25 ++++++++++
+ packages/ocaml-protoc/ocaml-protoc.0.1.2/url       |    2 +
+ packages/ocamlviz/ocamlviz.1.01/opam               |   29 ++++++++---
+ packages/opass/opass.0.2.0/opam                    |    5 +-
+ packages/opass/opass.0.2.1/opam                    |    3 ++
+ packages/opass/opass.1.0.0/opam                    |    9 +++-
+ packages/opass/opass.1.0.1/opam                    |    9 +++-
+ packages/opass/opass.1.0.2/opam                    |    9 +++-
+ packages/opass/opass.1.0.6/desc                    |    2 +
+ packages/opass/opass.1.0.6/opam                    |   30 ++++++++++++
+ packages/opass/opass.1.0.6/url                     |    2 +
+ packages/otr/otr.0.2.0/opam                        |    2 +-
+ packages/otr/otr.0.3.0/opam                        |    2 +-
+ packages/otr/otr.0.3.1/descr                       |    8 +++
+ packages/otr/otr.0.3.1/opam                        |   30 ++++++++++++
+ packages/otr/otr.0.3.1/url                         |    2 +
+ packages/pds/pds.3.0.2/desc                        |    1 +
+ packages/pds/pds.3.0.2/opam                        |   30 ++++++++++++
+ packages/pds/pds.3.0.2/url                         |    2 +
+ packages/planets/planets.0.1.14/opam               |    2 +-
+ .../ppx_jsobject_conv.0.0.2/descr                  |    6 +++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/opam |   22 +++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/url  |    3 ++
+ .../ppx_jsobject_conv.0.0.3/descr                  |    6 +++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/opam |   22 +++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/url  |    3 ++
+ packages/rdf/rdf.0.10.0/descr                      |   13 +++++
+ packages/rdf/rdf.0.10.0/opam                       |   38 +++++++++++++++
+ packages/rdf/rdf.0.10.0/url                        |    2 +
+ packages/re2/re2.112.06.00/opam                    |    2 +-
+ packages/re2/re2.112.35.00/opam                    |    2 +-
+ packages/re2/re2.113.00.00/opam                    |    2 +-
+ packages/re2/re2.113.24.00/opam                    |    2 +-
+ packages/re2/re2.113.33.00/opam                    |    4 ++
+ .../shared-memory-ring.1.3.0/descr                 |    3 ++
+ .../shared-memory-ring.1.3.0/findlib               |    1 +
+ .../shared-memory-ring.1.3.0/opam                  |   26 ++++++++++
+ .../shared-memory-ring.1.3.0/url                   |    2 +
+ packages/socket-daemon/socket-daemon.0.2.0/descr   |    6 +++
+ packages/socket-daemon/socket-daemon.0.2.0/opam    |   28 +++++++++++
+ packages/socket-daemon/socket-daemon.0.2.0/url     |    2 +
+ packages/sundialsml/sundialsml.2.6.2p0/descr       |   31 ++++++++++++
+ packages/sundialsml/sundialsml.2.6.2p0/findlib     |    1 +
+ packages/sundialsml/sundialsml.2.6.2p0/opam        |   51 ++++++++++++++++++++
+ packages/sundialsml/sundialsml.2.6.2p0/url         |    2 +
+ packages/tls/tls.0.7.0/opam                        |    2 +-
+ packages/tls/tls.0.7.1/descr                       |    4 ++
+ packages/tls/tls.0.7.1/findlib                     |    1 +
+ packages/tls/tls.0.7.1/opam                        |   48 ++++++++++++++++++
+ packages/tls/tls.0.7.1/url                         |    2 +
+ packages/vmnet/vmnet.1.0.0/opam                    |    6 ++-
+ packages/vmnet/vmnet.1.0.1/opam                    |    6 ++-
+ packages/vmnet/vmnet.1.0.2/opam                    |    6 ++-
+ packages/vmnet/vmnet.1.1.0/descr                   |   30 ++++++++++++
+ packages/vmnet/vmnet.1.1.0/opam                    |   28 +++++++++++
+ packages/vmnet/vmnet.1.1.0/url                     |    2 +
+ packages/x509/x509.0.5.0/opam                      |    2 +-
+ packages/x509/x509.0.5.1/descr                     |    4 ++
+ packages/x509/x509.0.5.1/findlib                   |    1 +
+ packages/x509/x509.0.5.1/opam                      |   35 ++++++++++++++
+ packages/x509/x509.0.5.1/url                       |    2 +
+ 104 files changed, 921 insertions(+), 85 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr486/4.04.0+pr486.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr518/4.04.0+pr518.descr
+ rename compilers/4.04.0/{4.04.0+pr518/4.04.0+pr518.comp => 4.04.0+pr519/4.04.0+pr519.comp} (72%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr519/4.04.0+pr519.descr
+ rename compilers/4.04.0/{4.04.0+pr486/4.04.0+pr486.comp => 4.04.0+pr520/4.04.0+pr520.comp} (76%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr520/4.04.0+pr520.descr
+ create mode 100644 packages/core_kernel/core_kernel.113.33.01/descr
+ create mode 100644 packages/core_kernel/core_kernel.113.33.01/opam
+ create mode 100644 packages/core_kernel/core_kernel.113.33.01/url
+ create mode 100644 packages/ctypes/ctypes.0.5.0/descr
+ create mode 100644 packages/ctypes/ctypes.0.5.0/findlib
+ create mode 100644 packages/ctypes/ctypes.0.5.0/opam
+ create mode 100644 packages/ctypes/ctypes.0.5.0/url
+ create mode 100644 packages/dbm/dbm.1.0/files/mkdir-stublibs.patch
+ create mode 100644 packages/iri/iri.0.2.0/descr
+ create mode 100644 packages/iri/iri.0.2.0/opam
+ create mode 100644 packages/iri/iri.0.2.0/url
+ delete mode 100644 packages/mirage/mirage.2.7.1/opam
+ delete mode 100644 packages/mirage/mirage.2.7.1/url
+ rename packages/mirage/{mirage.2.7.1 => mirage.2.7.3}/descr (100%)
+ create mode 100644 packages/mirage/mirage.2.7.3/opam
+ create mode 100644 packages/mirage/mirage.2.7.3/url
+ create mode 100644 packages/nocrypto/nocrypto.0.5.3/descr
+ create mode 100644 packages/nocrypto/nocrypto.0.5.3/opam
+ create mode 100644 packages/nocrypto/nocrypto.0.5.3/url
+ create mode 100644 packages/ocaml-protoc/ocaml-protoc.0.1.2/descr
+ create mode 100644 packages/ocaml-protoc/ocaml-protoc.0.1.2/opam
+ create mode 100644 packages/ocaml-protoc/ocaml-protoc.0.1.2/url
+ create mode 100644 packages/opass/opass.1.0.6/desc
+ create mode 100644 packages/opass/opass.1.0.6/opam
+ create mode 100644 packages/opass/opass.1.0.6/url
+ create mode 100644 packages/otr/otr.0.3.1/descr
+ create mode 100644 packages/otr/otr.0.3.1/opam
+ create mode 100644 packages/otr/otr.0.3.1/url
+ create mode 100644 packages/pds/pds.3.0.2/desc
+ create mode 100644 packages/pds/pds.3.0.2/opam
+ create mode 100644 packages/pds/pds.3.0.2/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.2/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.3/url
+ create mode 100644 packages/rdf/rdf.0.10.0/descr
+ create mode 100644 packages/rdf/rdf.0.10.0/opam
+ create mode 100644 packages/rdf/rdf.0.10.0/url
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/descr
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/findlib
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/opam
+ create mode 100644 packages/shared-memory-ring/shared-memory-ring.1.3.0/url
+ create mode 100644 packages/socket-daemon/socket-daemon.0.2.0/descr
+ create mode 100644 packages/socket-daemon/socket-daemon.0.2.0/opam
+ create mode 100644 packages/socket-daemon/socket-daemon.0.2.0/url
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/descr
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/findlib
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/opam
+ create mode 100644 packages/sundialsml/sundialsml.2.6.2p0/url
+ create mode 100644 packages/tls/tls.0.7.1/descr
+ create mode 100644 packages/tls/tls.0.7.1/findlib
+ create mode 100644 packages/tls/tls.0.7.1/opam
+ create mode 100644 packages/tls/tls.0.7.1/url
+ create mode 100644 packages/vmnet/vmnet.1.1.0/descr
+ create mode 100644 packages/vmnet/vmnet.1.1.0/opam
+ create mode 100644 packages/vmnet/vmnet.1.1.0/url
+ create mode 100644 packages/x509/x509.0.5.1/descr
+ create mode 100644 packages/x509/x509.0.5.1/findlib
+ create mode 100644 packages/x509/x509.0.5.1/opam
+ create mode 100644 packages/x509/x509.0.5.1/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/lefessan/opam-repository
+ * branch            2016-03-22-conf-wxwidgets -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/descr |    2 ++
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/opam  |   11 +++++++++++
+ packages/wxOCaml/wxOCaml.1.0.1/opam              |    5 ++---
+ 3 files changed, 15 insertions(+), 3 deletions(-)
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/descr
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/opam
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux debian
+# The following system packages are needed:
+#  - debianutils
+#  - libwxgtk-media3.0-dev
+#  - libwxgtk-webview3.0-dev
+#  - libwxgtk3.0-dev
+#  - m4
+#  - ncurses-dev
+#  - pkg-config
+#  - wx3.0-headers
+# The following new OS packages need to be installed: libwxgtk-media3.0-dev libwxgtk-webview3.0-dev libwxgtk3.0-dev ncurses-dev wx3.0-headers
+The following command needs to be run through "sudo":
+    apt-get update
+Get:1 http://security.debian.org wheezy/updates Release.gpg [1554 B]
+Get:2 http://security.debian.org wheezy/updates Release [102 kB]
+Get:3 http://security.debian.org wheezy/updates/main amd64 Packages [434 kB]
+Get:4 http://httpredir.debian.org wheezy Release.gpg [2373 B]
+Get:5 http://httpredir.debian.org wheezy-updates Release.gpg [1554 B]
+Get:6 http://httpredir.debian.org wheezy Release [191 kB]
+Get:7 http://httpredir.debian.org wheezy-updates Release [151 kB]
+Hit http://httpredir.debian.org wheezy/main amd64 Packages
+Get:8 http://httpredir.debian.org wheezy-updates/main amd64 Packages [7436 B]
+Fetched 891 kB in 1s (594 kB/s)
+Reading package lists...
+[91mW: Size of file /var/lib/apt/lists/security.debian.org_dists_wheezy_updates_main_binary-amd64_Packages.gz is not what the server reported 433574 433647
+[0m# OS package update successful
+The following command needs to be run through "sudo":
+    apt-get install -qq -yy libwxgtk-media3.0-dev libwxgtk-webview3.0-dev libwxgtk3.0-dev ncurses-dev wx3.0-headers
+[91mE: Unable to locate package libwxgtk-media3.0-dev
+E: Couldn't find any package by regex 'libwxgtk-media3.0-dev'
+E: Unable to locate package libwxgtk-webview3.0-dev
+E: Couldn't find any package by regex 'libwxgtk-webview3.0-dev'
+E: Unable to locate package libwxgtk3.0-dev
+E: Couldn't find any package by regex 'libwxgtk3.0-dev'
+E: Unable to locate package wx3.0-headers
+E: Couldn't find any package by regex 'wx3.0-headers'
+[0m[91mOS package installation failed
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/lefessan/opam-repository.git 2016-03-22-conf-wxwidgets && opam update -u" &&   sudo -u opam sh -c "opam depext -u wxOCaml" &&   sudo -u opam sh -c "opam install -y -j 2 -v wxOCaml"' returned a non-zero code: 1
