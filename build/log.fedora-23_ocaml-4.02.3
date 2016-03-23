@@ -1,0 +1,152 @@
+Running this Dockerfile:
+FROM ocaml/opam:fedora-23_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/timbertson/opam-repository.git tk && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u labltk" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v labltk"Sending build context to Docker daemon 37.38 kB
+Step 1 : FROM ocaml/opam:fedora-23_ocaml-4.02.3
+fedora-23_ocaml-4.02.3: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+236608c7b546: Already exists
+dd0ebd1c124d: Already exists
+e2e2e0f4a0e2: Already exists
+72ee8814e4a7: Already exists
+Digest: sha256:020f57499f6bf9beb03df51d17a60b7946c8038f258052a1502d41a7a76ee585
+Status: Image is up to date for ocaml/opam:fedora-23_ocaml-4.02.3
+ ---> 6f4ba847ae3f
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/timbertson/opam-repository.git tk && opam update -u" &&   sudo -u opam sh -c "opam depext -u labltk" &&   sudo -u opam sh -c "opam install -y -j 2 -v labltk"
+ ---> Running in 73a11c1ce3d3
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0m[91m   6f6eed5..66b0666  master     -> origin/master
+[0mUpdating 6f6eed5..66b0666
+Fast-forward
+ packages/0install/0install.2.6.2/opam              |  1 +
+ packages/0install/0install.2.8/opam                |  3 +-
+ packages/0install/0install.2.9.1/opam              |  1 +
+ packages/cmark/cmark.0.2.0/descr                   |  1 +
+ packages/cmark/cmark.0.2.0/opam                    | 19 ++++++++
+ packages/cmark/cmark.0.2.0/url                     |  2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/descr   |  2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/opam    | 11 +++++
+ packages/llvm/llvm.3.8/descr                       |  3 ++
+ packages/llvm/llvm.3.8/files/install.sh            | 50 ++++++++++++++++++++++
+ packages/llvm/llvm.3.8/opam                        | 23 ++++++++++
+ packages/llvm/llvm.3.8/url                         |  2 +
+ packages/mirage-unix/mirage-unix.2.4.1/descr       |  1 +
+ packages/mirage-unix/mirage-unix.2.4.1/opam        | 23 ++++++++++
+ packages/mirage-unix/mirage-unix.2.4.1/url         |  2 +
+ .../mirage-xen-minios/mirage-xen-minios.0.7.0/opam |  5 ++-
+ packages/mirage-xen/mirage-xen.2.4.1/descr         |  3 ++
+ packages/mirage-xen/mirage-xen.2.4.1/opam          | 30 +++++++++++++
+ packages/mirage-xen/mirage-xen.2.4.1/url           |  2 +
+ packages/pcap-format/pcap-format.0.3.1/opam        | 10 +++++
+ packages/pcap-format/pcap-format.0.3.2/opam        | 10 +++++
+ packages/pcap-format/pcap-format.0.3.3/opam        | 14 +++++-
+ packages/ppx_expect/ppx_expect.113.33.01/descr     |  2 +
+ packages/ppx_expect/ppx_expect.113.33.01/opam      | 30 +++++++++++++
+ packages/ppx_expect/ppx_expect.113.33.01/url       |  2 +
+ packages/stog-rdf/stog-rdf.0.10.0/opam             | 12 ++++--
+ packages/stog-rdf/stog-rdf.0.11.0/opam             | 12 ++++--
+ packages/stog-rdf/stog-rdf.0.15.0/opam             |  2 +-
+ packages/stog-rdf/stog-rdf.0.16.0/opam             |  2 +-
+ packages/stog-rdf/stog-rdf.0.6/descr               |  1 -
+ packages/stog-rdf/stog-rdf.0.6/opam                | 12 ------
+ packages/stog-rdf/stog-rdf.0.6/url                 |  2 -
+ packages/stog-rdf/stog-rdf.0.8.0/descr             |  1 -
+ packages/stog-rdf/stog-rdf.0.8.0/opam              | 12 ------
+ packages/stog-rdf/stog-rdf.0.8.0/url               |  2 -
+ packages/stog-rdf/stog-rdf.0.9.0/descr             |  1 -
+ packages/stog-rdf/stog-rdf.0.9.0/findlib           |  1 -
+ packages/stog-rdf/stog-rdf.0.9.0/opam              | 16 -------
+ packages/stog-rdf/stog-rdf.0.9.0/url               |  2 -
+ .../toplevel_expect_test.113.33.01/descr           |  5 +++
+ .../toplevel_expect_test.113.33.01/opam            | 31 ++++++++++++++
+ .../toplevel_expect_test.113.33.01/url             |  2 +
+ packages/wxOCaml/wxOCaml.1.0.1/opam                |  5 +--
+ 43 files changed, 308 insertions(+), 65 deletions(-)
+ create mode 100644 packages/cmark/cmark.0.2.0/descr
+ create mode 100644 packages/cmark/cmark.0.2.0/opam
+ create mode 100644 packages/cmark/cmark.0.2.0/url
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/descr
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/opam
+ create mode 100644 packages/llvm/llvm.3.8/descr
+ create mode 100755 packages/llvm/llvm.3.8/files/install.sh
+ create mode 100644 packages/llvm/llvm.3.8/opam
+ create mode 100644 packages/llvm/llvm.3.8/url
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/descr
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/opam
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/url
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/descr
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/opam
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/url
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/descr
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/opam
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/findlib
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/timbertson/opam-repository
+ * branch            tk         -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/conf-tcl/conf-tcl.1/descr  |  2 ++
+ packages/conf-tcl/conf-tcl.1/opam   | 11 +++++++++++
+ packages/conf-tk/conf-tk.1/descr    |  2 ++
+ packages/conf-tk/conf-tk.1/opam     | 10 ++++++++++
+ packages/conf-zlib/conf-zlib.1/opam |  1 +
+ packages/ivy/ivy.1.2.2/opam         |  4 +---
+ packages/ivy/ivy.1.3.1/opam         |  9 ++++++---
+ packages/labltk/labltk.8.06.0/opam  |  6 +-----
+ 8 files changed, 34 insertions(+), 11 deletions(-)
+ create mode 100644 packages/conf-tcl/conf-tcl.1/descr
+ create mode 100644 packages/conf-tcl/conf-tcl.1/opam
+ create mode 100644 packages/conf-tk/conf-tk.1/descr
+ create mode 100644 packages/conf-tk/conf-tk.1/opam
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux fedora
+# The following system packages are needed:
+#  - m4
+#  - ncurses-devel
+#  - pkgconfig
+package m4 is not installed
+package ncurses-devel is not installed
+package pkgconfig is not installed
+Not running as root, the following command will be run through "sudo":
+    yum -y update
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf -y update'.
+See 'man dnf' and 'man yum2dnf' for more information.
+To transfer transaction metadata from yum to DNF, run:
+'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
+
+[0m[91mError: Failed to synchronize cache for repo 'updates' from 'https://mirrors.fedoraproject.org/metalink?repo=updates-released-f23&arch=x86_64': Cannot prepare internal mirrorlist: Status code: 503 for https://mirrors.fedoraproject.org/metalink?repo=updates-released-f23&arch=x86_64
+[0m[91mopam-depext: internal error, uncaught exception:
+             Failure("OS package update failed")
+             
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/timbertson/opam-repository.git tk && opam update -u" &&   sudo -u opam sh -c "opam depext -u labltk" &&   sudo -u opam sh -c "opam install -y -j 2 -v labltk"' returned a non-zero code: 1
