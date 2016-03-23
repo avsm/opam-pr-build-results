@@ -1,0 +1,148 @@
+Running this Dockerfile:
+FROM ocaml/opam:alpine-3.3_ocaml-4.03.0_trunk
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u planets" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v planets"Sending build context to Docker daemon 78.34 kB
+Step 1 : FROM ocaml/opam:alpine-3.3_ocaml-4.03.0_trunk
+alpine-3.3_ocaml-4.03.0_trunk: Pulling from ocaml/opam
+4d06f2521e4f: Already exists
+956efefe7c26: Already exists
+2dd6721292de: Already exists
+57b222b2031a: Already exists
+Digest: sha256:5442385c29dd15c51685217fb521ffb2feaedd2b0dd93ddbdf15f90961153036
+Status: Image is up to date for ocaml/opam:alpine-3.3_ocaml-4.03.0_trunk
+ ---> 274963d861e7
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"
+ ---> Running in c7c18062ee23
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0m[91m   6f6eed5..080baea  master     -> origin/master
+[0mUpdating 6f6eed5..080baea
+Fast-forward
+ packages/0install/0install.2.6.2/opam              |  1 +
+ packages/0install/0install.2.8/opam                |  3 +-
+ packages/0install/0install.2.9.1/opam              |  1 +
+ packages/cmark/cmark.0.2.0/descr                   |  1 +
+ packages/cmark/cmark.0.2.0/opam                    | 19 ++++++++
+ packages/cmark/cmark.0.2.0/url                     |  2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/descr   |  2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/opam    | 11 +++++
+ packages/llvm/llvm.3.8/descr                       |  3 ++
+ packages/llvm/llvm.3.8/files/install.sh            | 50 ++++++++++++++++++++++
+ packages/llvm/llvm.3.8/opam                        | 23 ++++++++++
+ packages/llvm/llvm.3.8/url                         |  2 +
+ packages/mirage-unix/mirage-unix.2.4.1/descr       |  1 +
+ packages/mirage-unix/mirage-unix.2.4.1/opam        | 23 ++++++++++
+ packages/mirage-unix/mirage-unix.2.4.1/url         |  2 +
+ .../mirage-xen-minios/mirage-xen-minios.0.7.0/opam |  5 ++-
+ packages/mirage-xen/mirage-xen.2.4.1/descr         |  3 ++
+ packages/mirage-xen/mirage-xen.2.4.1/opam          | 30 +++++++++++++
+ packages/mirage-xen/mirage-xen.2.4.1/url           |  2 +
+ packages/msat/msat.0.2/opam                        |  1 +
+ packages/pcap-format/pcap-format.0.3.1/opam        | 10 +++++
+ packages/pcap-format/pcap-format.0.3.2/opam        | 10 +++++
+ packages/pcap-format/pcap-format.0.3.3/opam        | 14 +++++-
+ packages/ppx_expect/ppx_expect.113.33.01/descr     |  2 +
+ packages/ppx_expect/ppx_expect.113.33.01/opam      | 30 +++++++++++++
+ packages/ppx_expect/ppx_expect.113.33.01/url       |  2 +
+ packages/stog-rdf/stog-rdf.0.10.0/opam             | 12 ++++--
+ packages/stog-rdf/stog-rdf.0.11.0/opam             | 12 ++++--
+ packages/stog-rdf/stog-rdf.0.15.0/opam             |  2 +-
+ packages/stog-rdf/stog-rdf.0.16.0/opam             |  2 +-
+ packages/stog-rdf/stog-rdf.0.6/descr               |  1 -
+ packages/stog-rdf/stog-rdf.0.6/opam                | 12 ------
+ packages/stog-rdf/stog-rdf.0.6/url                 |  2 -
+ packages/stog-rdf/stog-rdf.0.8.0/descr             |  1 -
+ packages/stog-rdf/stog-rdf.0.8.0/opam              | 12 ------
+ packages/stog-rdf/stog-rdf.0.8.0/url               |  2 -
+ packages/stog-rdf/stog-rdf.0.9.0/descr             |  1 -
+ packages/stog-rdf/stog-rdf.0.9.0/findlib           |  1 -
+ packages/stog-rdf/stog-rdf.0.9.0/opam              | 16 -------
+ packages/stog-rdf/stog-rdf.0.9.0/url               |  2 -
+ .../toplevel_expect_test.113.33.01/descr           |  5 +++
+ .../toplevel_expect_test.113.33.01/opam            | 31 ++++++++++++++
+ .../toplevel_expect_test.113.33.01/url             |  2 +
+ .../toplevel_expect_test.113.33.02/descr           |  5 +++
+ .../toplevel_expect_test.113.33.02/opam            | 31 ++++++++++++++
+ .../toplevel_expect_test.113.33.02/url             |  2 +
+ packages/wxOCaml/wxOCaml.1.0.1/opam                |  5 +--
+ 47 files changed, 347 insertions(+), 65 deletions(-)
+ create mode 100644 packages/cmark/cmark.0.2.0/descr
+ create mode 100644 packages/cmark/cmark.0.2.0/opam
+ create mode 100644 packages/cmark/cmark.0.2.0/url
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/descr
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/opam
+ create mode 100644 packages/llvm/llvm.3.8/descr
+ create mode 100755 packages/llvm/llvm.3.8/files/install.sh
+ create mode 100644 packages/llvm/llvm.3.8/opam
+ create mode 100644 packages/llvm/llvm.3.8/url
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/descr
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/opam
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/url
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/descr
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/opam
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/url
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/descr
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/opam
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/findlib
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/UnixJunkie/opam-repository
+ * branch            cairo-use-conf-autoconf -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/cairo/cairo.0.4.1/opam | 7 +++----
+ packages/cairo/cairo.0.4.2/opam | 7 +++----
+ packages/cairo/cairo.1.2.0/opam | 7 ++-----
+ 3 files changed, 8 insertions(+), 13 deletions(-)
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux alpine
+# The following system packages are needed:
+#  - m4
+#  - ncurses-dev
+Not running as root, the following command will be run through "sudo":
+    apk update
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.3/main/x86_64/APKINDEX.tar.gz
+ERROR: http://dl-cdn.alpinelinux.org/alpine/v3.3/main: No such file or directory
+fetch http://dl-cdn.alpinelinux.org/alpine/v3.3/community/x86_64/APKINDEX.tar.gz
+ERROR: http://dl-cdn.alpinelinux.org/alpine/v3.3/community: No such file or directory
+fetch http://www.cl.cam.ac.uk/~avsm2/alpine-ocaml/x86_64/APKINDEX.tar.gz
+v3.3.2-20-g98a1941 [http://dl-cdn.alpinelinux.org/alpine/v3.3/main]
+v3.3.1-122-g47d8282 [http://dl-cdn.alpinelinux.org/alpine/v3.3/community]
+testing v3.3.0-55-g55836a9 [http://www.cl.cam.ac.uk/~avsm2/alpine-ocaml/]
+2 errors; 5860 distinct packages available
+[91mopam-depext: internal error, uncaught exception:
+             Failure("OS package update failed")
+             
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"' returned a non-zero code: 1

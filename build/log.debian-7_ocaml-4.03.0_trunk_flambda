@@ -1,0 +1,219 @@
+Running this Dockerfile:
+FROM ocaml/opam:debian-7_ocaml-4.03.0_trunk_flambda
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u planets" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v planets"Sending build context to Docker daemon 78.34 kB
+Step 1 : FROM ocaml/opam:debian-7_ocaml-4.03.0_trunk_flambda
+debian-7_ocaml-4.03.0_trunk_flambda: Pulling from ocaml/opam
+4d690fa98655: Already exists
+a3ed95caeb02: Already exists
+72d65ac6647a: Already exists
+010fb78aa338: Already exists
+166fa8fb492e: Already exists
+Digest: sha256:e73a12d2a83d5a2a62794c5d1256a76ecdce5a646da934053903ec6c6eea5c3d
+Status: Image is up to date for ocaml/opam:debian-7_ocaml-4.03.0_trunk_flambda
+ ---> 39d43b2957ea
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"
+ ---> Running in 5b3a4ef63473
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 6f6eed5..080baea
+Fast-forward
+ packages/0install/0install.2.6.2/opam              |    1 +
+ packages/0install/0install.2.8/opam                |    3 +-
+ packages/0install/0install.2.9.1/opam              |    1 +
+ packages/cmark/cmark.0.2.0/descr                   |    1 +
+ packages/cmark/cmark.0.2.0/opam                    |   19 ++++++++
+ packages/cmark/cmark.0.2.0/url                     |    2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/descr   |    2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/opam    |   11 +++++
+ packages/llvm/llvm.3.8/descr                       |    3 ++
+ packages/llvm/llvm.3.8/files/install.sh            |   50 ++++++++++++++++++++
+ packages/llvm/llvm.3.8/opam                        |   23 +++++++++
+ packages/llvm/llvm.3.8/url                         |    2 +
+ packages/mirage-unix/mirage-unix.2.4.1/descr       |    1 +
+ packages/mirage-unix/mirage-unix.2.4.1/opam        |   23 +++++++++
+ packages/mirage-unix/mirage-unix.2.4.1/url         |    2 +
+ .../mirage-xen-minios/mirage-xen-minios.0.7.0/opam |    5 +-
+ packages/mirage-xen/mirage-xen.2.4.1/descr         |    3 ++
+ packages/mirage-xen/mirage-xen.2.4.1/opam          |   30 ++++++++++++
+ packages/mirage-xen/mirage-xen.2.4.1/url           |    2 +
+ packages/msat/msat.0.2/opam                        |    1 +
+ packages/pcap-format/pcap-format.0.3.1/opam        |   10 ++++
+ packages/pcap-format/pcap-format.0.3.2/opam        |   10 ++++
+ packages/pcap-format/pcap-format.0.3.3/opam        |   14 +++++-
+ packages/ppx_expect/ppx_expect.113.33.01/descr     |    2 +
+ packages/ppx_expect/ppx_expect.113.33.01/opam      |   30 ++++++++++++
+ packages/ppx_expect/ppx_expect.113.33.01/url       |    2 +
+ packages/stog-rdf/stog-rdf.0.10.0/opam             |   12 +++--
+ packages/stog-rdf/stog-rdf.0.11.0/opam             |   12 +++--
+ packages/stog-rdf/stog-rdf.0.15.0/opam             |    2 +-
+ packages/stog-rdf/stog-rdf.0.16.0/opam             |    2 +-
+ packages/stog-rdf/stog-rdf.0.6/descr               |    1 -
+ packages/stog-rdf/stog-rdf.0.6/opam                |   12 -----
+ packages/stog-rdf/stog-rdf.0.6/url                 |    2 -
+ packages/stog-rdf/stog-rdf.0.8.0/descr             |    1 -
+ packages/stog-rdf/stog-rdf.0.8.0/opam              |   12 -----
+ packages/stog-rdf/stog-rdf.0.8.0/url               |    2 -
+ packages/stog-rdf/stog-rdf.0.9.0/descr             |    1 -
+ packages/stog-rdf/stog-rdf.0.9.0/findlib           |    1 -
+ packages/stog-rdf/stog-rdf.0.9.0/opam              |   16 -------
+ packages/stog-rdf/stog-rdf.0.9.0/url               |    2 -
+ .../toplevel_expect_test.113.33.01/descr           |    5 ++
+ .../toplevel_expect_test.113.33.01/opam            |   31 ++++++++++++
+ .../toplevel_expect_test.113.33.01/url             |    2 +
+ .../toplevel_expect_test.113.33.02/descr           |    5 ++
+ .../toplevel_expect_test.113.33.02/opam            |   31 ++++++++++++
+ .../toplevel_expect_test.113.33.02/url             |    2 +
+ packages/wxOCaml/wxOCaml.1.0.1/opam                |    5 +-
+ 47 files changed, 347 insertions(+), 65 deletions(-)
+ create mode 100644 packages/cmark/cmark.0.2.0/descr
+ create mode 100644 packages/cmark/cmark.0.2.0/opam
+ create mode 100644 packages/cmark/cmark.0.2.0/url
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/descr
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/opam
+ create mode 100644 packages/llvm/llvm.3.8/descr
+ create mode 100755 packages/llvm/llvm.3.8/files/install.sh
+ create mode 100644 packages/llvm/llvm.3.8/opam
+ create mode 100644 packages/llvm/llvm.3.8/url
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/descr
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/opam
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/url
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/descr
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/opam
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/url
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/descr
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/opam
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/findlib
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/UnixJunkie/opam-repository
+ * branch            cairo-use-conf-autoconf -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/cairo/cairo.0.4.1/opam |    7 +++----
+ packages/cairo/cairo.0.4.2/opam |    7 +++----
+ packages/cairo/cairo.1.2.0/opam |    7 ++-----
+ 3 files changed, 8 insertions(+), 13 deletions(-)
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux debian
+# The following system packages are needed:
+#  - m4
+#  - ncurses-dev
+#  - pkg-config
+#  - tcl-dev
+#  - tcl8.5-dev
+#  - tk-dev
+#  - tk8.5-dev
+# The following new OS packages need to be installed: ncurses-dev tcl-dev tcl8.5-dev tk-dev tk8.5-dev
+Not running as root, the following command will be run through "sudo":
+    apt-get update
+Get:1 http://security.debian.org wheezy/updates Release.gpg [1554 B]
+Get:2 http://security.debian.org wheezy/updates Release [102 kB]
+Get:3 http://security.debian.org wheezy/updates/main amd64 Packages [434 kB]
+Get:4 http://httpredir.debian.org wheezy Release.gpg [2373 B]
+Get:5 http://httpredir.debian.org wheezy-updates Release.gpg [1554 B]
+Get:6 http://httpredir.debian.org wheezy Release [191 kB]
+Get:7 http://httpredir.debian.org wheezy-updates Release [151 kB]
+Hit http://httpredir.debian.org wheezy/main amd64 Packages
+Get:8 http://httpredir.debian.org wheezy-updates/main amd64 Packages [7436 B]
+Fetched 891 kB in 1s (517 kB/s)
+Reading package lists...
+# OS package update successful
+Not running as root, the following command will be run through "sudo":
+    apt-get install -qq -yy ncurses-dev tcl-dev tcl8.5-dev tk-dev tk8.5-dev
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mSelecting previously unselected package libexpat1-dev.
+(Reading database ... 20449 files and directories currently installed.)
+Unpacking libexpat1-dev (from .../libexpat1-dev_2.1.0-1+deb7u2_amd64.deb) ...
+Selecting previously unselected package zlib1g-dev:amd64.
+Unpacking zlib1g-dev:amd64 (from .../zlib1g-dev_1%3a1.2.7.dfsg-13_amd64.deb) ...
+Selecting previously unselected package libfreetype6-dev.
+Unpacking libfreetype6-dev (from .../libfreetype6-dev_2.4.9-1.1+deb7u3_amd64.deb) ...
+Selecting previously unselected package libfontconfig1-dev.
+Unpacking libfontconfig1-dev (from .../libfontconfig1-dev_2.9.0-7.1_amd64.deb) ...
+Selecting previously unselected package x11proto-xext-dev.
+Unpacking x11proto-xext-dev (from .../x11proto-xext-dev_7.2.1-1_all.deb) ...
+Selecting previously unselected package libxext-dev:amd64.
+Unpacking libxext-dev:amd64 (from .../libxext-dev_2%3a1.3.1-2+deb7u1_amd64.deb) ...
+Selecting previously unselected package x11proto-render-dev.
+Unpacking x11proto-render-dev (from .../x11proto-render-dev_2%3a0.11.1-2_all.deb) ...
+Selecting previously unselected package libxrender-dev:amd64.
+Unpacking libxrender-dev:amd64 (from .../libxrender-dev_1%3a0.9.7-1+deb7u2_amd64.deb) ...
+Selecting previously unselected package libxft-dev.
+Unpacking libxft-dev (from .../libxft-dev_2.3.1-1_amd64.deb) ...
+Selecting previously unselected package x11proto-scrnsaver-dev.
+Unpacking x11proto-scrnsaver-dev (from .../x11proto-scrnsaver-dev_1.2.2-1_all.deb) ...
+Selecting previously unselected package libxss-dev:amd64.
+Unpacking libxss-dev:amd64 (from .../libxss-dev_1%3a1.2.2-1_amd64.deb) ...
+Selecting previously unselected package tcl.
+Unpacking tcl (from .../archives/tcl_8.5.0-2.1_all.deb) ...
+Selecting previously unselected package tcl8.5-dev.
+Unpacking tcl8.5-dev (from .../tcl8.5-dev_8.5.11-2_amd64.deb) ...
+Selecting previously unselected package tcl-dev.
+Unpacking tcl-dev (from .../tcl-dev_8.5.0-2.1_all.deb) ...
+Selecting previously unselected package tk.
+Unpacking tk (from .../archives/tk_8.5.0-2.1_all.deb) ...
+Selecting previously unselected package tk8.5-dev.
+Unpacking tk8.5-dev (from .../tk8.5-dev_8.5.11-2_amd64.deb) ...
+Selecting previously unselected package tk-dev.
+Unpacking tk-dev (from .../tk-dev_8.5.0-2.1_all.deb) ...
+Setting up libexpat1-dev (2.1.0-1+deb7u2) ...
+Setting up zlib1g-dev:amd64 (1:1.2.7.dfsg-13) ...
+Setting up libfreetype6-dev (2.4.9-1.1+deb7u3) ...
+Setting up libfontconfig1-dev (2.9.0-7.1) ...
+Setting up x11proto-xext-dev (7.2.1-1) ...
+Setting up libxext-dev:amd64 (2:1.3.1-2+deb7u1) ...
+Setting up x11proto-render-dev (2:0.11.1-2) ...
+Setting up libxrender-dev:amd64 (1:0.9.7-1+deb7u2) ...
+Setting up libxft-dev (2.3.1-1) ...
+Setting up x11proto-scrnsaver-dev (1.2.2-1) ...
+Setting up libxss-dev:amd64 (1:1.2.2-1) ...
+Setting up tcl (8.5.0-2.1) ...
+update-alternatives: using /usr/bin/tclsh-default to provide /usr/bin/tclsh (tclsh) in auto mode
+Setting up tcl8.5-dev (8.5.11-2) ...
+Setting up tcl-dev (8.5.0-2.1) ...
+Setting up tk (8.5.0-2.1) ...
+update-alternatives: using /usr/bin/wish-default to provide /usr/bin/wish (wish) in auto mode
+Setting up tk8.5-dev (8.5.11-2) ...
+Setting up tk-dev (8.5.0-2.1) ...
+# OS packages installation successful
+The following dependencies couldn't be met:
+  - planets -> core < 113.24.00
+Your request can't be satisfied:
+  - core<113.24.00 is not available because your system doesn't comply with ocaml-version >= "4.02.1" & ocaml-version < "4.03".
+
+No solution found, exiting
+[91m'opam install -y -j 2 -v planets' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"' returned a non-zero code: 3

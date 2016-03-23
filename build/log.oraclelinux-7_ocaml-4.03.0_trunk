@@ -1,0 +1,139 @@
+Running this Dockerfile:
+FROM ocaml/opam:oraclelinux-7_ocaml-4.03.0_trunk
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u planets" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v planets"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.367 MB
+Step 1 : FROM ocaml/opam:oraclelinux-7_ocaml-4.03.0_trunk
+oraclelinux-7_ocaml-4.03.0_trunk: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+ffe36b360c6d: Already exists
+a3ed95caeb02: Already exists
+28c81cf3d0db: Already exists
+75695864e00f: Already exists
+8ac394932278: Already exists
+Digest: sha256:50883007286193c1b28102fc158ffdfafdaff8a8fd916b5ce966c8b6d85fa506
+Status: Image is up to date for ocaml/opam:oraclelinux-7_ocaml-4.03.0_trunk
+ ---> 72fc7fb459c4
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"
+ ---> Running in 2d88059646c5
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 6f6eed5..2ae9713
+Fast-forward
+ packages/0install/0install.2.6.2/opam              |  1 +
+ packages/0install/0install.2.8/opam                |  3 +-
+ packages/0install/0install.2.9.1/opam              |  1 +
+ packages/cairo/cairo.0.4.1/opam                    |  7 ++-
+ packages/cairo/cairo.0.4.2/opam                    |  7 ++-
+ packages/cairo/cairo.1.2.0/opam                    |  7 +--
+ packages/cmark/cmark.0.2.0/descr                   |  1 +
+ packages/cmark/cmark.0.2.0/opam                    | 19 ++++++++
+ packages/cmark/cmark.0.2.0/url                     |  2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/descr   |  2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/opam    | 11 +++++
+ packages/llvm/llvm.3.8/descr                       |  3 ++
+ packages/llvm/llvm.3.8/files/install.sh            | 50 ++++++++++++++++++++++
+ packages/llvm/llvm.3.8/opam                        | 23 ++++++++++
+ packages/llvm/llvm.3.8/url                         |  2 +
+ packages/mirage-unix/mirage-unix.2.4.1/descr       |  1 +
+ packages/mirage-unix/mirage-unix.2.4.1/opam        | 23 ++++++++++
+ packages/mirage-unix/mirage-unix.2.4.1/url         |  2 +
+ .../mirage-xen-minios/mirage-xen-minios.0.7.0/opam |  5 ++-
+ packages/mirage-xen/mirage-xen.2.4.1/descr         |  3 ++
+ packages/mirage-xen/mirage-xen.2.4.1/opam          | 30 +++++++++++++
+ packages/mirage-xen/mirage-xen.2.4.1/url           |  2 +
+ packages/msat/msat.0.2/opam                        |  1 +
+ packages/pcap-format/pcap-format.0.3.1/opam        | 10 +++++
+ packages/pcap-format/pcap-format.0.3.2/opam        | 10 +++++
+ packages/pcap-format/pcap-format.0.3.3/opam        | 14 +++++-
+ packages/ppx_expect/ppx_expect.113.33.01/descr     |  2 +
+ packages/ppx_expect/ppx_expect.113.33.01/opam      | 30 +++++++++++++
+ packages/ppx_expect/ppx_expect.113.33.01/url       |  2 +
+ packages/stog-rdf/stog-rdf.0.10.0/opam             | 12 ++++--
+ packages/stog-rdf/stog-rdf.0.11.0/opam             | 12 ++++--
+ packages/stog-rdf/stog-rdf.0.15.0/opam             |  2 +-
+ packages/stog-rdf/stog-rdf.0.16.0/opam             |  2 +-
+ packages/stog-rdf/stog-rdf.0.6/descr               |  1 -
+ packages/stog-rdf/stog-rdf.0.6/opam                | 12 ------
+ packages/stog-rdf/stog-rdf.0.6/url                 |  2 -
+ packages/stog-rdf/stog-rdf.0.8.0/descr             |  1 -
+ packages/stog-rdf/stog-rdf.0.8.0/opam              | 12 ------
+ packages/stog-rdf/stog-rdf.0.8.0/url               |  2 -
+ packages/stog-rdf/stog-rdf.0.9.0/descr             |  1 -
+ packages/stog-rdf/stog-rdf.0.9.0/findlib           |  1 -
+ packages/stog-rdf/stog-rdf.0.9.0/opam              | 16 -------
+ packages/stog-rdf/stog-rdf.0.9.0/url               |  2 -
+ .../toplevel_expect_test.113.33.01/descr           |  5 +++
+ .../toplevel_expect_test.113.33.01/opam            | 31 ++++++++++++++
+ .../toplevel_expect_test.113.33.01/url             |  2 +
+ .../toplevel_expect_test.113.33.02/descr           |  5 +++
+ .../toplevel_expect_test.113.33.02/opam            | 31 ++++++++++++++
+ .../toplevel_expect_test.113.33.02/url             |  2 +
+ packages/wxOCaml/wxOCaml.1.0.1/opam                |  5 +--
+ 50 files changed, 355 insertions(+), 78 deletions(-)
+ create mode 100644 packages/cmark/cmark.0.2.0/descr
+ create mode 100644 packages/cmark/cmark.0.2.0/opam
+ create mode 100644 packages/cmark/cmark.0.2.0/url
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/descr
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/opam
+ create mode 100644 packages/llvm/llvm.3.8/descr
+ create mode 100755 packages/llvm/llvm.3.8/files/install.sh
+ create mode 100644 packages/llvm/llvm.3.8/opam
+ create mode 100644 packages/llvm/llvm.3.8/url
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/descr
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/opam
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/url
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/descr
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/opam
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/url
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/descr
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/opam
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/findlib
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/UnixJunkie/opam-repository
+ * branch            cairo-use-conf-autoconf -> FETCH_HEAD
+[0mAlready up-to-date.
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux ol
+# No extra OS packages requirements found.
+The following dependencies couldn't be met:
+  - planets -> core < 113.24.00
+Your request can't be satisfied:
+  - core<113.24.00 is not available because your system doesn't comply with ocaml-version >= "4.02.1" & ocaml-version < "4.03".
+
+No solution found, exiting
+[91m'opam install -y -j 2 -v planets' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"' returned a non-zero code: 3

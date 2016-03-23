@@ -1,0 +1,194 @@
+Running this Dockerfile:
+FROM ocaml/opam:centos-6_ocaml-4.03.0_trunk_flambda
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u planets" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v planets"Sending build context to Docker daemon 78.34 kB
+Step 1 : FROM ocaml/opam:centos-6_ocaml-4.03.0_trunk_flambda
+centos-6_ocaml-4.03.0_trunk_flambda: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+204c9415d16d: Already exists
+a3ed95caeb02: Already exists
+a3ed95caeb02: Already exists
+a223479fbf94: Already exists
+525e362425ab: Already exists
+46db22304ec9: Already exists
+Digest: sha256:742ce4b1d4fddedf90964b0a4cf5235c40c871c210436fb8d086a99efe561d19
+Status: Image is up to date for ocaml/opam:centos-6_ocaml-4.03.0_trunk_flambda
+ ---> c2f4f36a4411
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"
+ ---> Running in 613fbd3d7ce5
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 6f6eed5..080baea
+Fast-forward
+ packages/0install/0install.2.6.2/opam              |    1 +
+ packages/0install/0install.2.8/opam                |    3 +-
+ packages/0install/0install.2.9.1/opam              |    1 +
+ packages/cmark/cmark.0.2.0/descr                   |    1 +
+ packages/cmark/cmark.0.2.0/opam                    |   19 +++++++
+ packages/cmark/cmark.0.2.0/url                     |    2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/descr   |    2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/opam    |   11 ++++
+ packages/llvm/llvm.3.8/descr                       |    3 +
+ packages/llvm/llvm.3.8/files/install.sh            |   50 ++++++++++++++++++++
+ packages/llvm/llvm.3.8/opam                        |   23 +++++++++
+ packages/llvm/llvm.3.8/url                         |    2 +
+ packages/mirage-unix/mirage-unix.2.4.1/descr       |    1 +
+ packages/mirage-unix/mirage-unix.2.4.1/opam        |   23 +++++++++
+ packages/mirage-unix/mirage-unix.2.4.1/url         |    2 +
+ .../mirage-xen-minios/mirage-xen-minios.0.7.0/opam |    5 ++-
+ packages/mirage-xen/mirage-xen.2.4.1/descr         |    3 +
+ packages/mirage-xen/mirage-xen.2.4.1/opam          |   30 ++++++++++++
+ packages/mirage-xen/mirage-xen.2.4.1/url           |    2 +
+ packages/msat/msat.0.2/opam                        |    1 +
+ packages/pcap-format/pcap-format.0.3.1/opam        |   10 ++++
+ packages/pcap-format/pcap-format.0.3.2/opam        |   10 ++++
+ packages/pcap-format/pcap-format.0.3.3/opam        |   14 +++++-
+ packages/ppx_expect/ppx_expect.113.33.01/descr     |    2 +
+ packages/ppx_expect/ppx_expect.113.33.01/opam      |   30 ++++++++++++
+ packages/ppx_expect/ppx_expect.113.33.01/url       |    2 +
+ packages/stog-rdf/stog-rdf.0.10.0/opam             |   12 ++++-
+ packages/stog-rdf/stog-rdf.0.11.0/opam             |   12 ++++-
+ packages/stog-rdf/stog-rdf.0.15.0/opam             |    2 +-
+ packages/stog-rdf/stog-rdf.0.16.0/opam             |    2 +-
+ packages/stog-rdf/stog-rdf.0.6/descr               |    1 -
+ packages/stog-rdf/stog-rdf.0.6/opam                |   12 -----
+ packages/stog-rdf/stog-rdf.0.6/url                 |    2 -
+ packages/stog-rdf/stog-rdf.0.8.0/descr             |    1 -
+ packages/stog-rdf/stog-rdf.0.8.0/opam              |   12 -----
+ packages/stog-rdf/stog-rdf.0.8.0/url               |    2 -
+ packages/stog-rdf/stog-rdf.0.9.0/descr             |    1 -
+ packages/stog-rdf/stog-rdf.0.9.0/findlib           |    1 -
+ packages/stog-rdf/stog-rdf.0.9.0/opam              |   16 ------
+ packages/stog-rdf/stog-rdf.0.9.0/url               |    2 -
+ .../toplevel_expect_test.113.33.01/descr           |    5 ++
+ .../toplevel_expect_test.113.33.01/opam            |   31 ++++++++++++
+ .../toplevel_expect_test.113.33.01/url             |    2 +
+ .../toplevel_expect_test.113.33.02/descr           |    5 ++
+ .../toplevel_expect_test.113.33.02/opam            |   31 ++++++++++++
+ .../toplevel_expect_test.113.33.02/url             |    2 +
+ packages/wxOCaml/wxOCaml.1.0.1/opam                |    5 +-
+ 47 files changed, 347 insertions(+), 65 deletions(-)
+ create mode 100644 packages/cmark/cmark.0.2.0/descr
+ create mode 100644 packages/cmark/cmark.0.2.0/opam
+ create mode 100644 packages/cmark/cmark.0.2.0/url
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/descr
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/opam
+ create mode 100644 packages/llvm/llvm.3.8/descr
+ create mode 100755 packages/llvm/llvm.3.8/files/install.sh
+ create mode 100644 packages/llvm/llvm.3.8/opam
+ create mode 100644 packages/llvm/llvm.3.8/url
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/descr
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/opam
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/url
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/descr
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/opam
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/url
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/descr
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/opam
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/findlib
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/UnixJunkie/opam-repository
+ * branch            cairo-use-conf-autoconf -> FETCH_HEAD
+[0mMerge made by recursive.
+ packages/cairo/cairo.0.4.1/opam |    7 +++----
+ packages/cairo/cairo.0.4.2/opam |    7 +++----
+ packages/cairo/cairo.1.2.0/opam |    7 ++-----
+ 3 files changed, 8 insertions(+), 13 deletions(-)
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux centos
+# The following system packages are needed:
+#  - m4
+#  - ncurses-devel
+#  - pkgconfig
+Name        : m4                           Relocations: (not relocatable)
+Version     : 1.4.13                            Vendor: CentOS
+Release     : 5.el6                         Build Date: Thu Nov 11 17:17:34 2010
+Install Date: Wed Mar 16 14:18:40 2016         Build Host: c6b3.bsys.dev.centos.org
+Group       : Applications/Text             Source RPM: m4-1.4.13-5.el6.src.rpm
+Size        : 560949                           License: GPLv3+
+Signature   : RSA/8, Sun Jul  3 04:44:33 2011, Key ID 0946fca2c105b9de
+Packager    : CentOS BuildSystem <http://bugs.centos.org>
+URL         : http://www.gnu.org/software/m4/
+Summary     : The GNU macro processor
+Description :
+A GNU implementation of the traditional UNIX macro processor.  M4 is
+useful for writing text files which can be logically parsed, and is used
+by many programs as part of their build process.  M4 has built-in
+functions for including files, running shell commands, doing arithmetic,
+etc.  The autoconf program needs m4 for generating configure scripts, but
+not for running configure scripts.
+
+Install m4 if you need a macro processor.
+Name        : ncurses-devel                Relocations: (not relocatable)
+Version     : 5.7                               Vendor: CentOS
+Release     : 4.20090207.el6                Build Date: Mon Mar 16 08:54:02 2015
+Install Date: Wed Mar 16 14:19:26 2016         Build Host: c6b9.bsys.dev.centos.org
+Group       : Development/Libraries         Source RPM: ncurses-5.7-4.20090207.el6.src.rpm
+Size        : 1795830                          License: MIT
+Signature   : RSA/SHA1, Mon Mar 16 14:43:08 2015, Key ID 0946fca2c105b9de
+Packager    : CentOS BuildSystem <http://bugs.centos.org>
+URL         : http://invisible-island.net/ncurses/ncurses.html
+Summary     : Development files for the ncurses library
+Description :
+The header files and libraries for developing applications that use
+the ncurses terminal handling library.
+
+Install the ncurses-devel package if you want to develop applications
+which will use ncurses.
+Name        : pkgconfig                    Relocations: (not relocatable)
+Version     : 0.23                              Vendor: CentOS
+Release     : 9.1.el6                       Build Date: Thu Aug 19 03:30:32 2010
+Install Date: Fri Mar  4 06:26:08 2016         Build Host: c6b1.bsys.dev.centos.org
+Group       : Development/Tools             Source RPM: pkgconfig-0.23-9.1.el6.src.rpm
+Size        : 140091                           License: GPLv2+
+Signature   : RSA/8, Sun Jul  3 04:57:05 2011, Key ID 0946fca2c105b9de
+Packager    : CentOS BuildSystem <http://bugs.centos.org>
+URL         : http://pkgconfig.freedesktop.org
+Summary     : A tool for determining compilation options
+Description :
+The pkgconfig tool determines compilation options. For each required
+library, it reads the configuration file and outputs the necessary
+compiler and linker flags.
+# All required OS packages found.
+The following dependencies couldn't be met:
+  - planets -> core < 113.24.00
+Your request can't be satisfied:
+  - core<113.24.00 is not available because your system doesn't comply with ocaml-version >= "4.02.1" & ocaml-version < "4.03".
+
+No solution found, exiting
+[91m'opam install -y -j 2 -v planets' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"' returned a non-zero code: 3

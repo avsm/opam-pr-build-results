@@ -1,0 +1,416 @@
+Running this Dockerfile:
+FROM ocaml/opam:fedora-23_ocaml-4.03.0_trunk
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u planets" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v planets"Sending build context to Docker daemon 434.7 kB
+Step 1 : FROM ocaml/opam:fedora-23_ocaml-4.03.0_trunk
+fedora-23_ocaml-4.03.0_trunk: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+236608c7b546: Already exists
+dd0ebd1c124d: Already exists
+e402b507dc8b: Already exists
+0e96cead083f: Already exists
+Digest: sha256:dac006acae97859a3f11bf38dec5f4cd2c9547c4156f35b4e3be6452e5bd12d7
+Status: Image is up to date for ocaml/opam:fedora-23_ocaml-4.03.0_trunk
+ ---> f7a2730c4fd3
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"
+ ---> Running in 188cfc541f06
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0m[91m   6f6eed5..080baea  master     -> origin/master
+[0mUpdating 6f6eed5..080baea
+Fast-forward
+ packages/0install/0install.2.6.2/opam              |  1 +
+ packages/0install/0install.2.8/opam                |  3 +-
+ packages/0install/0install.2.9.1/opam              |  1 +
+ packages/cmark/cmark.0.2.0/descr                   |  1 +
+ packages/cmark/cmark.0.2.0/opam                    | 19 ++++++++
+ packages/cmark/cmark.0.2.0/url                     |  2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/descr   |  2 +
+ packages/conf-wxwidgets/conf-wxwidgets.3.0/opam    | 11 +++++
+ packages/llvm/llvm.3.8/descr                       |  3 ++
+ packages/llvm/llvm.3.8/files/install.sh            | 50 ++++++++++++++++++++++
+ packages/llvm/llvm.3.8/opam                        | 23 ++++++++++
+ packages/llvm/llvm.3.8/url                         |  2 +
+ packages/mirage-unix/mirage-unix.2.4.1/descr       |  1 +
+ packages/mirage-unix/mirage-unix.2.4.1/opam        | 23 ++++++++++
+ packages/mirage-unix/mirage-unix.2.4.1/url         |  2 +
+ .../mirage-xen-minios/mirage-xen-minios.0.7.0/opam |  5 ++-
+ packages/mirage-xen/mirage-xen.2.4.1/descr         |  3 ++
+ packages/mirage-xen/mirage-xen.2.4.1/opam          | 30 +++++++++++++
+ packages/mirage-xen/mirage-xen.2.4.1/url           |  2 +
+ packages/msat/msat.0.2/opam                        |  1 +
+ packages/pcap-format/pcap-format.0.3.1/opam        | 10 +++++
+ packages/pcap-format/pcap-format.0.3.2/opam        | 10 +++++
+ packages/pcap-format/pcap-format.0.3.3/opam        | 14 +++++-
+ packages/ppx_expect/ppx_expect.113.33.01/descr     |  2 +
+ packages/ppx_expect/ppx_expect.113.33.01/opam      | 30 +++++++++++++
+ packages/ppx_expect/ppx_expect.113.33.01/url       |  2 +
+ packages/stog-rdf/stog-rdf.0.10.0/opam             | 12 ++++--
+ packages/stog-rdf/stog-rdf.0.11.0/opam             | 12 ++++--
+ packages/stog-rdf/stog-rdf.0.15.0/opam             |  2 +-
+ packages/stog-rdf/stog-rdf.0.16.0/opam             |  2 +-
+ packages/stog-rdf/stog-rdf.0.6/descr               |  1 -
+ packages/stog-rdf/stog-rdf.0.6/opam                | 12 ------
+ packages/stog-rdf/stog-rdf.0.6/url                 |  2 -
+ packages/stog-rdf/stog-rdf.0.8.0/descr             |  1 -
+ packages/stog-rdf/stog-rdf.0.8.0/opam              | 12 ------
+ packages/stog-rdf/stog-rdf.0.8.0/url               |  2 -
+ packages/stog-rdf/stog-rdf.0.9.0/descr             |  1 -
+ packages/stog-rdf/stog-rdf.0.9.0/findlib           |  1 -
+ packages/stog-rdf/stog-rdf.0.9.0/opam              | 16 -------
+ packages/stog-rdf/stog-rdf.0.9.0/url               |  2 -
+ .../toplevel_expect_test.113.33.01/descr           |  5 +++
+ .../toplevel_expect_test.113.33.01/opam            | 31 ++++++++++++++
+ .../toplevel_expect_test.113.33.01/url             |  2 +
+ .../toplevel_expect_test.113.33.02/descr           |  5 +++
+ .../toplevel_expect_test.113.33.02/opam            | 31 ++++++++++++++
+ .../toplevel_expect_test.113.33.02/url             |  2 +
+ packages/wxOCaml/wxOCaml.1.0.1/opam                |  5 +--
+ 47 files changed, 347 insertions(+), 65 deletions(-)
+ create mode 100644 packages/cmark/cmark.0.2.0/descr
+ create mode 100644 packages/cmark/cmark.0.2.0/opam
+ create mode 100644 packages/cmark/cmark.0.2.0/url
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/descr
+ create mode 100644 packages/conf-wxwidgets/conf-wxwidgets.3.0/opam
+ create mode 100644 packages/llvm/llvm.3.8/descr
+ create mode 100755 packages/llvm/llvm.3.8/files/install.sh
+ create mode 100644 packages/llvm/llvm.3.8/opam
+ create mode 100644 packages/llvm/llvm.3.8/url
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/descr
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/opam
+ create mode 100644 packages/mirage-unix/mirage-unix.2.4.1/url
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/descr
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/opam
+ create mode 100644 packages/mirage-xen/mirage-xen.2.4.1/url
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/descr
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/opam
+ create mode 100644 packages/ppx_expect/ppx_expect.113.33.01/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.6/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.8.0/url
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/descr
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/findlib
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/opam
+ delete mode 100644 packages/stog-rdf/stog-rdf.0.9.0/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.01/url
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/descr
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/opam
+ create mode 100644 packages/toplevel_expect_test/toplevel_expect_test.113.33.02/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/UnixJunkie/opam-repository
+ * branch            cairo-use-conf-autoconf -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/cairo/cairo.0.4.1/opam | 7 +++----
+ packages/cairo/cairo.0.4.2/opam | 7 +++----
+ packages/cairo/cairo.1.2.0/opam | 7 ++-----
+ 3 files changed, 8 insertions(+), 13 deletions(-)
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux fedora
+# The following system packages are needed:
+#  - m4
+#  - ncurses-devel
+#  - pkgconfig
+package m4 is not installed
+package ncurses-devel is not installed
+package pkgconfig is not installed
+Not running as root, the following command will be run through "sudo":
+    yum -y update
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf -y update'.
+See 'man dnf' and 'man yum2dnf' for more information.
+To transfer transaction metadata from yum to DNF, run:
+'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
+
+[0mLast metadata expiration check performed 0:00:15 ago on Wed Mar 23 13:48:34 2016.
+Dependencies resolved.
+================================================================================
+ Package                 Arch        Version                 Repository    Size
+================================================================================
+Installing:
+ kernel-debug-devel      x86_64      4.4.5-300.fc23          updates       10 M
+ libsecret               x86_64      0.18.3-1.fc23           fedora       156 k
+Upgrading:
+ ca-certificates         noarch      2016.2.7-1.0.fc23       updates      425 k
+ dbus                    x86_64      1:1.10.8-1.fc23         updates      244 k
+ dbus-libs               x86_64      1:1.10.8-1.fc23         updates      173 k
+ dnf                     noarch      1.1.7-2.fc23            updates      295 k
+ dnf-conf                noarch      1.1.7-2.fc23            updates       92 k
+ dnf-yum                 noarch      1.1.7-2.fc23            updates       86 k
+ git                     x86_64      2.5.5-1.fc23            updates      156 k
+ git-core                x86_64      2.5.5-1.fc23            updates      3.1 M
+ git-core-doc            x86_64      2.5.5-1.fc23            updates      2.2 M
+ gnutls                  x86_64      3.4.10-1.fc23           updates      659 k
+ kernel-headers          x86_64      4.4.5-300.fc23          updates      1.0 M
+ krb5-libs               x86_64      1.14.1-3.fc23           updates      840 k
+ libsolv                 x86_64      0.6.19-2.fc23           updates      349 k
+ nss                     x86_64      3.23.0-1.0.fc23         updates      871 k
+ nss-softokn             x86_64      3.23.0-1.0.fc23         updates      317 k
+ nss-softokn-freebl      x86_64      3.23.0-1.0.fc23         updates      214 k
+ nss-sysinit             x86_64      3.23.0-1.0.fc23         updates       57 k
+ nss-tools               x86_64      3.23.0-1.0.fc23         updates      494 k
+ nss-util                x86_64      3.23.0-1.0.fc23         updates       82 k
+ perl-Git                noarch      2.5.5-1.fc23            updates       61 k
+ pinentry                x86_64      0.9.6-4.fc23            updates       81 k
+ python3-dnf             noarch      1.1.7-2.fc23            updates      455 k
+ shadow-utils            x86_64      2:4.2.1-8.fc23          updates      1.1 M
+ sqlite-libs             x86_64      3.11.0-3.fc23           updates      449 k
+ tzdata                  noarch      2016b-1.fc23            updates      411 k
+
+Transaction Summary
+================================================================================
+Install   2 Packages
+Upgrade  25 Packages
+
+Total download size: 24 M
+Downloading Packages:
+[91m/usr/share/doc/dnf/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/man/man8/ca-legacy.8.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/shadow-utils/HOWTO: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/sqlite-libs/README.md: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/gnutls/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/libsolv/BUGS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/man/man5/cert8.db.5.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/python3-dnf/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/krb5-libs/NOTICE: No such file or directory
+cannot reconstruct rpm from disk files
+[0mpython3-dnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
+gnutls-3.4.10-1.fc23.x86_64: Delta RPM rebuild failed
+krb5-libs-1.14.1-3.fc23.x86_64: Delta RPM rebuild failed
+shadow-utils-2:4.2.1-8.fc23.x86_64: Delta RPM rebuild failed
+ca-certificates-2016.2.7-1.0.fc23.noarch: Delta RPM rebuild failed
+sqlite-libs-3.11.0-3.fc23.x86_64: Delta RPM rebuild failed
+dnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
+libsolv-0.6.19-2.fc23.x86_64: Delta RPM rebuild failed
+nss-3.23.0-1.0.fc23.x86_64: Delta RPM rebuild failed
+--------------------------------------------------------------------------------
+Total                                           550 kB/s |  15 MB     00:27     
+Delta RPMs reduced 24.4 MB of updates to 14.9 MB (38.1% saved)
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Upgrading   : nss-util-3.23.0-1.0.fc23.x86_64                            1/52 
+  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                  2/52 
+  Upgrading   : git-core-2.5.5-1.fc23.x86_64                               3/52 
+  Upgrading   : git-core-doc-2.5.5-1.fc23.x86_64                           4/52 
+  Upgrading   : perl-Git-2.5.5-1.fc23.noarch                               5/52 
+  Upgrading   : git-2.5.5-1.fc23.x86_64                                    6/52 
+  Upgrading   : sqlite-libs-3.11.0-3.fc23.x86_64                           7/52 
+  Upgrading   : nss-softokn-3.23.0-1.0.fc23.x86_64                         8/52 
+  Upgrading   : nss-sysinit-3.23.0-1.0.fc23.x86_64                         9/52 
+  Upgrading   : nss-3.23.0-1.0.fc23.x86_64                                10/52 
+  Upgrading   : shadow-utils-2:4.2.1-8.fc23.x86_64                        11/52 
+  Upgrading   : dnf-conf-1.1.7-2.fc23.noarch                              12/52 
+  Upgrading   : python3-dnf-1.1.7-2.fc23.noarch                           13/52 
+  Upgrading   : dnf-1.1.7-2.fc23.noarch                                   14/52 
+  Upgrading   : dbus-libs-1:1.10.8-1.fc23.x86_64                          15/52 
+  Installing  : libsecret-0.18.3-1.fc23.x86_64                            16/52 
+  Upgrading   : pinentry-0.9.6-4.fc23.x86_64                              17/52 
+  Upgrading   : dbus-1:1.10.8-1.fc23.x86_64                               18/52 
+  Upgrading   : dnf-yum-1.1.7-2.fc23.noarch                               19/52 
+  Upgrading   : nss-tools-3.23.0-1.0.fc23.x86_64                          20/52 
+  Upgrading   : tzdata-2016b-1.fc23.noarch                                21/52 
+  Upgrading   : libsolv-0.6.19-2.fc23.x86_64                              22/52 
+  Upgrading   : krb5-libs-1.14.1-3.fc23.x86_64                            23/52 
+  Upgrading   : kernel-headers-4.4.5-300.fc23.x86_64                      24/52 
+  Upgrading   : gnutls-3.4.10-1.fc23.x86_64                               25/52 
+  Upgrading   : ca-certificates-2016.2.7-1.0.fc23.noarch                  26/52 
+  Installing  : kernel-debug-devel-4.4.5-300.fc23.x86_64                  27/52 
+  Cleanup     : perl-Git-2.5.0-4.fc23.noarch                              28/52 
+  Cleanup     : git-2.5.0-4.fc23.x86_64                                   29/52 
+  Cleanup     : git-core-doc-2.5.0-4.fc23.x86_64                          30/52 
+  Cleanup     : dnf-yum-1.1.6-2.fc23.noarch                               31/52 
+  Cleanup     : dnf-1.1.6-2.fc23.noarch                                   32/52 
+  Cleanup     : python3-dnf-1.1.6-2.fc23.noarch                           33/52 
+  Cleanup     : dnf-conf-1.1.6-2.fc23.noarch                              34/52 
+  Cleanup     : tzdata-2016a-1.fc23.noarch                                35/52 
+  Cleanup     : libsolv-0.6.14-7.fc23.x86_64                              36/52 
+  Cleanup     : kernel-headers-4.4.4-301.fc23.x86_64                      37/52 
+  Cleanup     : ca-certificates-2015.2.6-1.0.fc23.noarch                  38/52 
+  Cleanup     : nss-tools-3.22.2-1.0.fc23.x86_64                          39/52 
+  Cleanup     : nss-sysinit-3.22.2-1.0.fc23.x86_64                        40/52 
+  Cleanup     : nss-3.22.2-1.0.fc23.x86_64                                41/52 
+  Cleanup     : nss-softokn-3.22.2-1.0.fc23.x86_64                        42/52 
+  Cleanup     : dbus-1:1.10.6-1.fc23.x86_64                               43/52 
+  Cleanup     : shadow-utils-2:4.2.1-3.fc23.x86_64                        44/52 
+  Cleanup     : dbus-libs-1:1.10.6-1.fc23.x86_64                          45/52 
+  Cleanup     : nss-util-3.22.2-1.0.fc23.x86_64                           46/52 
+  Cleanup     : sqlite-libs-3.11.0-2.fc23.x86_64                          47/52 
+  Cleanup     : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 48/52 
+  Cleanup     : git-core-2.5.0-4.fc23.x86_64                              49/52 
+  Cleanup     : pinentry-0.9.6-3.fc23.x86_64                              50/52 
+  Cleanup     : krb5-libs-1.14.1-1.fc23.x86_64                            51/52 
+  Cleanup     : gnutls-3.4.9-1.fc23.x86_64                                52/52 
+  Verifying   : kernel-debug-devel-4.4.5-300.fc23.x86_64                   1/52 
+  Verifying   : libsecret-0.18.3-1.fc23.x86_64                             2/52 
+  Verifying   : ca-certificates-2016.2.7-1.0.fc23.noarch                   3/52 
+  Verifying   : dbus-1:1.10.8-1.fc23.x86_64                                4/52 
+  Verifying   : dbus-libs-1:1.10.8-1.fc23.x86_64                           5/52 
+  Verifying   : dnf-1.1.7-2.fc23.noarch                                    6/52 
+  Verifying   : python3-dnf-1.1.7-2.fc23.noarch                            7/52 
+  Verifying   : dnf-conf-1.1.7-2.fc23.noarch                               8/52 
+  Verifying   : dnf-yum-1.1.7-2.fc23.noarch                                9/52 
+  Verifying   : git-2.5.5-1.fc23.x86_64                                   10/52 
+  Verifying   : git-core-2.5.5-1.fc23.x86_64                              11/52 
+  Verifying   : git-core-doc-2.5.5-1.fc23.x86_64                          12/52 
+  Verifying   : perl-Git-2.5.5-1.fc23.noarch                              13/52 
+  Verifying   : gnutls-3.4.10-1.fc23.x86_64                               14/52 
+  Verifying   : kernel-headers-4.4.5-300.fc23.x86_64                      15/52 
+  Verifying   : krb5-libs-1.14.1-3.fc23.x86_64                            16/52 
+  Verifying   : libsolv-0.6.19-2.fc23.x86_64                              17/52 
+  Verifying   : nss-3.23.0-1.0.fc23.x86_64                                18/52 
+  Verifying   : nss-softokn-3.23.0-1.0.fc23.x86_64                        19/52 
+  Verifying   : nss-util-3.23.0-1.0.fc23.x86_64                           20/52 
+  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                 21/52 
+  Verifying   : nss-tools-3.23.0-1.0.fc23.x86_64                          22/52 
+  Verifying   : nss-sysinit-3.23.0-1.0.fc23.x86_64                        23/52 
+  Verifying   : pinentry-0.9.6-4.fc23.x86_64                              24/52 
+  Verifying   : shadow-utils-2:4.2.1-8.fc23.x86_64                        25/52 
+  Verifying   : sqlite-libs-3.11.0-3.fc23.x86_64                          26/52 
+  Verifying   : tzdata-2016b-1.fc23.noarch                                27/52 
+  Verifying   : gnutls-3.4.9-1.fc23.x86_64                                28/52 
+  Verifying   : kernel-headers-4.4.4-301.fc23.x86_64                      29/52 
+  Verifying   : ca-certificates-2015.2.6-1.0.fc23.noarch                  30/52 
+  Verifying   : krb5-libs-1.14.1-1.fc23.x86_64                            31/52 
+  Verifying   : pinentry-0.9.6-3.fc23.x86_64                              32/52 
+  Verifying   : dbus-1:1.10.6-1.fc23.x86_64                               33/52 
+  Verifying   : nss-3.22.2-1.0.fc23.x86_64                                34/52 
+  Verifying   : dbus-libs-1:1.10.6-1.fc23.x86_64                          35/52 
+  Verifying   : python3-dnf-1.1.6-2.fc23.noarch                           36/52 
+  Verifying   : nss-softokn-3.22.2-1.0.fc23.x86_64                        37/52 
+  Verifying   : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 38/52 
+  Verifying   : nss-util-3.22.2-1.0.fc23.x86_64                           39/52 
+  Verifying   : dnf-1.1.6-2.fc23.noarch                                   40/52 
+  Verifying   : dnf-conf-1.1.6-2.fc23.noarch                              41/52 
+  Verifying   : dnf-yum-1.1.6-2.fc23.noarch                               42/52 
+  Verifying   : nss-tools-3.22.2-1.0.fc23.x86_64                          43/52 
+  Verifying   : nss-sysinit-3.22.2-1.0.fc23.x86_64                        44/52 
+  Verifying   : shadow-utils-2:4.2.1-3.fc23.x86_64                        45/52 
+  Verifying   : sqlite-libs-3.11.0-2.fc23.x86_64                          46/52 
+  Verifying   : git-2.5.0-4.fc23.x86_64                                   47/52 
+  Verifying   : git-core-2.5.0-4.fc23.x86_64                              48/52 
+  Verifying   : git-core-doc-2.5.0-4.fc23.x86_64                          49/52 
+  Verifying   : perl-Git-2.5.0-4.fc23.noarch                              50/52 
+  Verifying   : libsolv-0.6.14-7.fc23.x86_64                              51/52 
+  Verifying   : tzdata-2016a-1.fc23.noarch                                52/52 
+
+Installed:
+  kernel-debug-devel.x86_64 4.4.5-300.fc23    libsecret.x86_64 0.18.3-1.fc23   
+
+Upgraded:
+  ca-certificates.noarch 2016.2.7-1.0.fc23                                      
+  dbus.x86_64 1:1.10.8-1.fc23                                                   
+  dbus-libs.x86_64 1:1.10.8-1.fc23                                              
+  dnf.noarch 1.1.7-2.fc23                                                       
+  dnf-conf.noarch 1.1.7-2.fc23                                                  
+  dnf-yum.noarch 1.1.7-2.fc23                                                   
+  git.x86_64 2.5.5-1.fc23                                                       
+  git-core.x86_64 2.5.5-1.fc23                                                  
+  git-core-doc.x86_64 2.5.5-1.fc23                                              
+  gnutls.x86_64 3.4.10-1.fc23                                                   
+  kernel-headers.x86_64 4.4.5-300.fc23                                          
+  krb5-libs.x86_64 1.14.1-3.fc23                                                
+  libsolv.x86_64 0.6.19-2.fc23                                                  
+  nss.x86_64 3.23.0-1.0.fc23                                                    
+  nss-softokn.x86_64 3.23.0-1.0.fc23                                            
+  nss-softokn-freebl.x86_64 3.23.0-1.0.fc23                                     
+  nss-sysinit.x86_64 3.23.0-1.0.fc23                                            
+  nss-tools.x86_64 3.23.0-1.0.fc23                                              
+  nss-util.x86_64 3.23.0-1.0.fc23                                               
+  perl-Git.noarch 2.5.5-1.fc23                                                  
+  pinentry.x86_64 0.9.6-4.fc23                                                  
+  python3-dnf.noarch 1.1.7-2.fc23                                               
+  shadow-utils.x86_64 2:4.2.1-8.fc23                                            
+  sqlite-libs.x86_64 3.11.0-3.fc23                                              
+  tzdata.noarch 2016b-1.fc23                                                    
+
+Complete!
+# OS package update successful
+Not running as root, the following command will be run through "sudo":
+    yum install -y m4 ncurses-devel pkgconfig
+Not running as root, the following command will be run through "sudo":
+    rpm -q m4 ncurses-devel pkgconfig
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf install -y m4 ncurses-devel pkgconfig'.
+See 'man dnf' and 'man yum2dnf' for more information.
+To transfer transaction metadata from yum to DNF, run:
+'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
+
+[0mLast metadata expiration check: 0:01:39 ago on Wed Mar 23 13:48:34 2016.
+Dependencies resolved.
+================================================================================
+ Package             Arch         Version                    Repository    Size
+================================================================================
+Installing:
+ m4                  x86_64       1.4.17-8.fc23              fedora       266 k
+ ncurses-devel       x86_64       5.9-21.20150214.fc23       fedora       732 k
+ pkgconfig           x86_64       1:0.28-9.fc23              fedora        60 k
+
+Transaction Summary
+================================================================================
+Install  3 Packages
+
+Total download size: 1.0 M
+Installed size: 2.8 M
+Downloading Packages:
+--------------------------------------------------------------------------------
+Total                                           658 kB/s | 1.0 MB     00:01     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Installing  : pkgconfig-1:0.28-9.fc23.x86_64                              1/3 
+  Installing  : ncurses-devel-5.9-21.20150214.fc23.x86_64                   2/3 
+  Installing  : m4-1.4.17-8.fc23.x86_64                                     3/3 
+  Verifying   : m4-1.4.17-8.fc23.x86_64                                     1/3 
+  Verifying   : ncurses-devel-5.9-21.20150214.fc23.x86_64                   2/3 
+  Verifying   : pkgconfig-1:0.28-9.fc23.x86_64                              3/3 
+
+Installed:
+  m4.x86_64 1.4.17-8.fc23           ncurses-devel.x86_64 5.9-21.20150214.fc23   
+  pkgconfig.x86_64 1:0.28-9.fc23   
+
+Complete!
+m4-1.4.17-8.fc23.x86_64
+ncurses-devel-5.9-21.20150214.fc23.x86_64
+pkgconfig-0.28-9.fc23.x86_64
+# OS packages installation successful
+The following dependencies couldn't be met:
+  - planets -> core < 113.24.00
+Your request can't be satisfied:
+  - core<113.24.00 is not available because your system doesn't comply with ocaml-version >= "4.02.1" & ocaml-version < "4.03".
+
+No solution found, exiting
+[91m'opam install -y -j 2 -v planets' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/UnixJunkie/opam-repository.git cairo-use-conf-autoconf && opam update -u" &&   sudo -u opam sh -c "opam depext -u planets" &&   sudo -u opam sh -c "opam install -y -j 2 -v planets"' returned a non-zero code: 3
