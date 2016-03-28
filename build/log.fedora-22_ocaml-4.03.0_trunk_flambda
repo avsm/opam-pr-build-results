@@ -1,0 +1,9 @@
+Running this Dockerfile:
+FROM ocaml/opam:fedora-22_ocaml-4.03.0_trunk_flambda
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/talex5/opam-repository.git 0install.2.11 && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u 0install" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v 0install"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.785 MBSending build context to Docker daemon 3.342 MBSending build context to Docker daemon 3.899 MBSending build context to Docker daemon 4.456 MBSending build context to Docker daemon 5.014 MBSending build context to Docker daemon 5.452 MB
+Step 1 : FROM ocaml/opam:fedora-22_ocaml-4.03.0_trunk_flambda
+Pulling repository docker.io/ocaml/opam
+Get https://registry-1.docker.io/v1/repositories/ocaml/opam/tags/fedora-22_ocaml-4.03.0_trunk_flambda: dial tcp: lookup registry-1.docker.io on 127.0.0.1:53: no such host
