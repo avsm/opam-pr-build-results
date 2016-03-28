@@ -3,4 +3,361 @@ FROM ocaml/opam:centos-7_ocaml-4.03.0_trunk
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 78.34 kB
+Step 1 : FROM ocaml/opam:centos-7_ocaml-4.03.0_trunk
+centos-7_ocaml-4.03.0_trunk: Pulling from ocaml/opam
+a3ed95caeb02: Pulling fs layer
+196355c4b639: Pulling fs layer
+0e359d925e0e: Pulling fs layer
+936c94b1cf2c: Pulling fs layer
+6b067179006b: Pulling fs layer
+a3ed95caeb02: Waiting
+196355c4b639: Waiting
+0e359d925e0e: Waiting
+6b067179006b: Waiting
+a3ed95caeb02: Verifying Checksum
+a3ed95caeb02: Download complete
+a3ed95caeb02: Pull complete
+a3ed95caeb02: Pull complete
+196355c4b639: Verifying Checksum
+196355c4b639: Download complete
+196355c4b639: Pull complete
+196355c4b639: Pull complete
+0e359d925e0e: Verifying Checksum
+0e359d925e0e: Download complete
+0e359d925e0e: Pull complete
+0e359d925e0e: Pull complete
+936c94b1cf2c: Verifying Checksum
+936c94b1cf2c: Download complete
+936c94b1cf2c: Pull complete
+936c94b1cf2c: Pull complete
+6b067179006b: Verifying Checksum
+6b067179006b: Download complete
+6b067179006b: Pull complete
+6b067179006b: Pull complete
+Digest: sha256:18d9e9931d4efa9d205d033336bc9b5fb3a0911fbea409e618924017b6941e34
+Status: Downloaded newer image for ocaml/opam:centos-7_ocaml-4.03.0_trunk
+ ---> bc4daff40353
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
+ ---> Running in 798ba3fc0e13
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 90aa923..f7aad90
+Fast-forward
+ compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    | 11 ++++++
+ compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |  1 +
+ .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |  1 +
+ .../aws-autoscaling/aws-autoscaling.0.1.0/opam     | 20 ++++++++++
+ packages/aws-autoscaling/aws-autoscaling.0.1.0/url |  2 +
+ .../aws-cloudformation.0.1.0/descr                 |  1 +
+ .../aws-cloudformation.0.1.0/opam                  | 20 ++++++++++
+ .../aws-cloudformation.0.1.0/url                   |  2 +
+ packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |  1 +
+ packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  | 20 ++++++++++
+ packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |  2 +
+ packages/aws-ec2/aws-ec2.0.1.0/descr               |  1 +
+ packages/aws-ec2/aws-ec2.0.1.0/opam                | 20 ++++++++++
+ packages/aws-ec2/aws-ec2.0.1.0/url                 |  2 +
+ .../aws-elasticloadbalancing.0.1.0/descr           |  1 +
+ .../aws-elasticloadbalancing.0.1.0/opam            | 20 ++++++++++
+ .../aws-elasticloadbalancing.0.1.0/url             |  2 +
+ packages/aws-sdb/aws-sdb.0.1.0/descr               |  1 +
+ packages/aws-sdb/aws-sdb.0.1.0/opam                | 20 ++++++++++
+ packages/aws-sdb/aws-sdb.0.1.0/url                 |  2 +
+ packages/aws-ssm/aws-ssm.0.1.0/descr               |  1 +
+ packages/aws-ssm/aws-ssm.0.1.0/opam                | 20 ++++++++++
+ packages/aws-ssm/aws-ssm.0.1.0/url                 |  2 +
+ packages/aws-sts/aws-sts.0.1.0/descr               |  1 +
+ packages/aws-sts/aws-sts.0.1.0/opam                | 20 ++++++++++
+ packages/aws-sts/aws-sts.0.1.0/url                 |  2 +
+ packages/aws/aws.1.0.1/opam                        |  2 +-
+ packages/aws/aws.1.0.2/descr                       |  6 +++
+ packages/aws/aws.1.0.2/opam                        | 46 ++++++++++++++++++++++
+ packages/aws/aws.1.0.2/url                         |  2 +
+ packages/ocp-build/ocp-build.1.99.14-beta/descr    |  1 +
+ packages/ocp-build/ocp-build.1.99.14-beta/findlib  |  1 +
+ packages/ocp-build/ocp-build.1.99.14-beta/opam     | 36 +++++++++++++++++
+ packages/ocp-build/ocp-build.1.99.14-beta/url      |  2 +
+ 34 files changed, 291 insertions(+), 1 deletion(-)
+ create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
+ create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
+ create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
+ create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
+ create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
+ create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
+ create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
+ create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
+ create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
+ create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
+ create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
+ create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
+ create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
+ create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
+ create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
+ create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
+ create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
+ create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
+ create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
+ create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
+ create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
+ create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
+ create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
+ create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
+ create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
+ create mode 100644 packages/aws/aws.1.0.2/descr
+ create mode 100644 packages/aws/aws.1.0.2/opam
+ create mode 100644 packages/aws/aws.1.0.2/url
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/seliopou/opam-repository
+ * branch            opam-publish/aws-rds.0.1.0 -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/aws-rds/aws-rds.0.1.0/descr |  1 +
+ packages/aws-rds/aws-rds.0.1.0/opam  | 20 ++++++++++++++++++++
+ packages/aws-rds/aws-rds.0.1.0/url   |  2 ++
+ 3 files changed, 23 insertions(+)
+ create mode 100644 packages/aws-rds/aws-rds.0.1.0/descr
+ create mode 100644 packages/aws-rds/aws-rds.0.1.0/opam
+ create mode 100644 packages/aws-rds/aws-rds.0.1.0/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux centos
+# The following system packages are needed:
+#  - gmp
+#  - gmp-devel
+#  - m4
+#  - ncurses-devel
+#  - pkgconfig
+#  - xen-devel
+Name        : gmp
+Epoch       : 1
+Version     : 6.0.0
+Release     : 12.el7_1
+Architecture: x86_64
+Install Date: Fri Mar  4 06:12:04 2016
+Group       : System Environment/Libraries
+Size        : 652070
+License     : LGPLv3+ or GPLv2+
+Signature   : RSA/SHA256, Tue Nov  3 18:49:55 2015, Key ID 24c6a8a7f4a80eb5
+Source RPM  : gmp-6.0.0-12.el7_1.src.rpm
+Build Date  : Tue Nov  3 12:26:11 2015
+Build Host  : worker1.bsys.centos.org
+Relocations : (not relocatable)
+Packager    : CentOS BuildSystem <http://bugs.centos.org>
+Vendor      : CentOS
+URL         : http://gmplib.org/
+Summary     : A GNU arbitrary precision library
+Description :
+The gmp package contains GNU MP, a library for arbitrary precision
+arithmetic, signed integers operations, rational numbers and floating
+point numbers. GNU MP is designed for speed, for both small and very
+large operands. GNU MP is fast because it uses fullwords as the basic
+arithmetic type, it uses fast algorithms, it carefully optimizes
+assembly code for many CPUs' most common inner loops, and it generally
+emphasizes speed over simplicity/elegance in its operations.
+
+Install the gmp package if you need a fast arbitrary precision
+library.
+package gmp-devel is not installed
+Name        : m4
+Version     : 1.4.16
+Release     : 10.el7
+Architecture: x86_64
+Install Date: Thu Mar 24 23:21:42 2016
+Group       : Applications/Text
+Size        : 525707
+License     : GPLv3+
+Signature   : RSA/SHA256, Wed Nov 25 15:16:04 2015, Key ID 24c6a8a7f4a80eb5
+Source RPM  : m4-1.4.16-10.el7.src.rpm
+Build Date  : Fri Nov 20 07:28:07 2015
+Build Host  : worker1.bsys.centos.org
+Relocations : (not relocatable)
+Packager    : CentOS BuildSystem <http://bugs.centos.org>
+Vendor      : CentOS
+URL         : http://www.gnu.org/software/m4/
+Summary     : The GNU macro processor
+Description :
+A GNU implementation of the traditional UNIX macro processor.  M4 is
+useful for writing text files which can be logically parsed, and is used
+by many programs as part of their build process.  M4 has built-in
+functions for including files, running shell commands, doing arithmetic,
+etc.  The autoconf program needs m4 for generating configure scripts, but
+not for running configure scripts.
+
+Install m4 if you need a macro processor.
+package ncurses-devel is not installed
+Name        : pkgconfig
+Epoch       : 1
+Version     : 0.27.1
+Release     : 4.el7
+Architecture: x86_64
+Install Date: Fri Mar  4 06:12:02 2016
+Group       : Development/Tools
+Size        : 105522
+License     : GPLv2+
+Signature   : RSA/SHA256, Fri Jul  4 04:28:33 2014, Key ID 24c6a8a7f4a80eb5
+Source RPM  : pkgconfig-0.27.1-4.el7.src.rpm
+Build Date  : Mon Jun  9 22:05:48 2014
+Build Host  : worker1.bsys.centos.org
+Relocations : (not relocatable)
+Packager    : CentOS BuildSystem <http://bugs.centos.org>
+Vendor      : CentOS
+URL         : http://pkgconfig.freedesktop.org
+Summary     : A tool for determining compilation options
+Description :
+The pkgconfig tool determines compilation options. For each required
+library, it reads the configuration file and outputs the necessary
+compiler and linker flags.
+package xen-devel is not installed
+# The following new OS packages need to be installed: gmp-devel ncurses-devel xen-devel
+The following command needs to be run through "sudo":
+    yum -y update
+Loaded plugins: fastestmirror, ovl
+Determining fastest mirrors
+ * base: mirror.econdc.com
+ * extras: mirrors.coreix.net
+ * updates: mirrors.coreix.net
+Resolving Dependencies
+--> Running transaction check
+---> Package bind-license.noarch 32:9.9.4-29.el7_2.2 will be updated
+---> Package bind-license.noarch 32:9.9.4-29.el7_2.3 will be an update
+---> Package libssh2.x86_64 0:1.4.3-10.el7 will be updated
+---> Package libssh2.x86_64 0:1.4.3-10.el7_2.1 will be an update
+---> Package nss-util.x86_64 0:3.19.1-4.el7_1 will be updated
+---> Package nss-util.x86_64 0:3.19.1-9.el7_2 will be an update
+---> Package tzdata.noarch 0:2016a-1.el7 will be updated
+---> Package tzdata.noarch 0:2016c-1.el7 will be an update
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package            Arch         Version                    Repository     Size
+================================================================================
+Updating:
+ bind-license       noarch       32:9.9.4-29.el7_2.3        updates        82 k
+ libssh2            x86_64       1.4.3-10.el7_2.1           updates       134 k
+ nss-util           x86_64       3.19.1-9.el7_2             updates        71 k
+ tzdata             noarch       2016c-1.el7                updates       437 k
+
+Transaction Summary
+================================================================================
+Upgrade  4 Packages
+
+Total download size: 723 k
+Downloading packages:
+Delta RPMs disabled because /usr/bin/applydeltarpm not installed.
+--------------------------------------------------------------------------------
+Total                                              2.5 MB/s | 723 kB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Updating   : tzdata-2016c-1.el7.noarch                                    1/8 
+  Updating   : nss-util-3.19.1-9.el7_2.x86_64                               2/8 
+  Updating   : libssh2-1.4.3-10.el7_2.1.x86_64                              3/8 
+  Updating   : 32:bind-license-9.9.4-29.el7_2.3.noarch                      4/8 
+  Cleanup    : tzdata-2016a-1.el7.noarch                                    5/8 
+  Cleanup    : 32:bind-license-9.9.4-29.el7_2.2.noarch                      6/8 
+  Cleanup    : nss-util-3.19.1-4.el7_1.x86_64                               7/8 
+  Cleanup    : libssh2-1.4.3-10.el7.x86_64                                  8/8 
+  Verifying  : 32:bind-license-9.9.4-29.el7_2.3.noarch                      1/8 
+  Verifying  : libssh2-1.4.3-10.el7_2.1.x86_64                              2/8 
+  Verifying  : nss-util-3.19.1-9.el7_2.x86_64                               3/8 
+  Verifying  : tzdata-2016c-1.el7.noarch                                    4/8 
+  Verifying  : libssh2-1.4.3-10.el7.x86_64                                  5/8 
+  Verifying  : tzdata-2016a-1.el7.noarch                                    6/8 
+  Verifying  : 32:bind-license-9.9.4-29.el7_2.2.noarch                      7/8 
+  Verifying  : nss-util-3.19.1-4.el7_1.x86_64                               8/8 
+
+Updated:
+  bind-license.noarch 32:9.9.4-29.el7_2.3   libssh2.x86_64 0:1.4.3-10.el7_2.1  
+  nss-util.x86_64 0:3.19.1-9.el7_2          tzdata.noarch 0:2016c-1.el7        
+
+Complete!
+# OS package update successful
+The following command needs to be run through "sudo":
+    yum install -y gmp-devel ncurses-devel xen-devel
+Loaded plugins: fastestmirror, ovl
+Loading mirror speeds from cached hostfile
+ * base: mirror.econdc.com
+ * extras: mirrors.coreix.net
+ * updates: mirrors.coreix.net
+No package xen-devel available.
+Resolving Dependencies
+--> Running transaction check
+---> Package gmp-devel.x86_64 1:6.0.0-12.el7_1 will be installed
+---> Package ncurses-devel.x86_64 0:5.9-13.20130511.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package             Arch         Version                   Repository     Size
+================================================================================
+Installing:
+ gmp-devel           x86_64       1:6.0.0-12.el7_1          updates       181 k
+ ncurses-devel       x86_64       5.9-13.20130511.el7       base          713 k
+
+Transaction Summary
+================================================================================
+Install  2 Packages
+
+Total download size: 893 k
+Installed size: 2.5 M
+Downloading packages:
+--------------------------------------------------------------------------------
+Total                                              2.8 MB/s | 893 kB  00:00     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : ncurses-devel-5.9-13.20130511.el7.x86_64                     1/2 
+  Installing : 1:gmp-devel-6.0.0-12.el7_1.x86_64                            2/2 
+  Verifying  : 1:gmp-devel-6.0.0-12.el7_1.x86_64                            1/2 
+  Verifying  : ncurses-devel-5.9-13.20130511.el7.x86_64                     2/2 
+
+Installed:
+  gmp-devel.x86_64 1:6.0.0-12.el7_1  ncurses-devel.x86_64 0:5.9-13.20130511.el7 
+
+Complete!
+The following command needs to be run through "sudo":
+    rpm -q gmp-devel ncurses-devel xen-devel
+gmp-devel-6.0.0-12.el7_1.x86_64
+ncurses-devel-5.9-13.20130511.el7.x86_64
+package xen-devel is not installed
+[91mOS package installation failed
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"' returned a non-zero code: 1

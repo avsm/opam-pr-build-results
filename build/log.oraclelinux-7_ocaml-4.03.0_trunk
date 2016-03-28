@@ -3,4 +3,262 @@ FROM ocaml/opam:oraclelinux-7_ocaml-4.03.0_trunk
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.382 MB
+Step 1 : FROM ocaml/opam:oraclelinux-7_ocaml-4.03.0_trunk
+oraclelinux-7_ocaml-4.03.0_trunk: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+ffe36b360c6d: Pulling fs layer
+a3ed95caeb02: Pulling fs layer
+7f54ff898437: Pulling fs layer
+7e08892e6a05: Pulling fs layer
+01d821064525: Pulling fs layer
+ffe36b360c6d: Waiting
+a3ed95caeb02: Waiting
+7f54ff898437: Waiting
+7e08892e6a05: Waiting
+01d821064525: Waiting
+a3ed95caeb02: Verifying Checksum
+a3ed95caeb02: Download complete
+ffe36b360c6d: Verifying Checksum
+ffe36b360c6d: Download complete
+ffe36b360c6d: Pull complete
+ffe36b360c6d: Pull complete
+a3ed95caeb02: Pull complete
+a3ed95caeb02: Pull complete
+7f54ff898437: Verifying Checksum
+7f54ff898437: Download complete
+7e08892e6a05: Verifying Checksum
+7e08892e6a05: Download complete
+7f54ff898437: Pull complete
+7f54ff898437: Pull complete
+7e08892e6a05: Pull complete
+7e08892e6a05: Pull complete
+01d821064525: Download complete
+01d821064525: Pull complete
+01d821064525: Pull complete
+Digest: sha256:891fca0c33f0c7e691a2dad56a6618820c9cabb452daca3add4b9ee56d414334
+Status: Downloaded newer image for ocaml/opam:oraclelinux-7_ocaml-4.03.0_trunk
+ ---> 9b0d58d8ce66
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
+ ---> Running in b77a2e5de5fd
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 90aa923..f7aad90
+Fast-forward
+ compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    | 11 ++++++
+ compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |  1 +
+ .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |  1 +
+ .../aws-autoscaling/aws-autoscaling.0.1.0/opam     | 20 ++++++++++
+ packages/aws-autoscaling/aws-autoscaling.0.1.0/url |  2 +
+ .../aws-cloudformation.0.1.0/descr                 |  1 +
+ .../aws-cloudformation.0.1.0/opam                  | 20 ++++++++++
+ .../aws-cloudformation.0.1.0/url                   |  2 +
+ packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |  1 +
+ packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  | 20 ++++++++++
+ packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |  2 +
+ packages/aws-ec2/aws-ec2.0.1.0/descr               |  1 +
+ packages/aws-ec2/aws-ec2.0.1.0/opam                | 20 ++++++++++
+ packages/aws-ec2/aws-ec2.0.1.0/url                 |  2 +
+ .../aws-elasticloadbalancing.0.1.0/descr           |  1 +
+ .../aws-elasticloadbalancing.0.1.0/opam            | 20 ++++++++++
+ .../aws-elasticloadbalancing.0.1.0/url             |  2 +
+ packages/aws-sdb/aws-sdb.0.1.0/descr               |  1 +
+ packages/aws-sdb/aws-sdb.0.1.0/opam                | 20 ++++++++++
+ packages/aws-sdb/aws-sdb.0.1.0/url                 |  2 +
+ packages/aws-ssm/aws-ssm.0.1.0/descr               |  1 +
+ packages/aws-ssm/aws-ssm.0.1.0/opam                | 20 ++++++++++
+ packages/aws-ssm/aws-ssm.0.1.0/url                 |  2 +
+ packages/aws-sts/aws-sts.0.1.0/descr               |  1 +
+ packages/aws-sts/aws-sts.0.1.0/opam                | 20 ++++++++++
+ packages/aws-sts/aws-sts.0.1.0/url                 |  2 +
+ packages/aws/aws.1.0.1/opam                        |  2 +-
+ packages/aws/aws.1.0.2/descr                       |  6 +++
+ packages/aws/aws.1.0.2/opam                        | 46 ++++++++++++++++++++++
+ packages/aws/aws.1.0.2/url                         |  2 +
+ packages/ocp-build/ocp-build.1.99.14-beta/descr    |  1 +
+ packages/ocp-build/ocp-build.1.99.14-beta/findlib  |  1 +
+ packages/ocp-build/ocp-build.1.99.14-beta/opam     | 36 +++++++++++++++++
+ packages/ocp-build/ocp-build.1.99.14-beta/url      |  2 +
+ 34 files changed, 291 insertions(+), 1 deletion(-)
+ create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
+ create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
+ create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
+ create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
+ create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
+ create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
+ create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
+ create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
+ create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
+ create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
+ create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
+ create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
+ create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
+ create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
+ create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
+ create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
+ create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
+ create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
+ create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
+ create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
+ create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
+ create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
+ create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
+ create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
+ create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
+ create mode 100644 packages/aws/aws.1.0.2/descr
+ create mode 100644 packages/aws/aws.1.0.2/opam
+ create mode 100644 packages/aws/aws.1.0.2/url
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/seliopou/opam-repository
+ * branch            opam-publish/aws-rds.0.1.0 -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/aws-rds/aws-rds.0.1.0/descr |  1 +
+ packages/aws-rds/aws-rds.0.1.0/opam  | 20 ++++++++++++++++++++
+ packages/aws-rds/aws-rds.0.1.0/url   |  2 ++
+ 3 files changed, 23 insertions(+)
+ create mode 100644 packages/aws-rds/aws-rds.0.1.0/descr
+ create mode 100644 packages/aws-rds/aws-rds.0.1.0/opam
+ create mode 100644 packages/aws-rds/aws-rds.0.1.0/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux oraclelinux
+# The following system packages are needed:
+#  - m4
+#  - ncurses-devel
+#  - pkgconfig
+Name        : m4
+Version     : 1.4.16
+Release     : 10.el7
+Architecture: x86_64
+Install Date: Thu Mar 24 23:19:24 2016
+Group       : Applications/Text
+Size        : 521587
+License     : GPLv3+
+Signature   : RSA/SHA256, Wed Sep 30 19:02:18 2015, Key ID 72f97b74ec551f03
+Source RPM  : m4-1.4.16-10.el7.src.rpm
+Build Date  : Thu Sep 10 05:22:26 2015
+Build Host  : x86-ol7-builder-04.us.oracle.com
+Relocations : (not relocatable)
+Vendor      : Oracle America
+URL         : http://www.gnu.org/software/m4/
+Summary     : The GNU macro processor
+Description :
+A GNU implementation of the traditional UNIX macro processor.  M4 is
+useful for writing text files which can be logically parsed, and is used
+by many programs as part of their build process.  M4 has built-in
+functions for including files, running shell commands, doing arithmetic,
+etc.  The autoconf program needs m4 for generating configure scripts, but
+not for running configure scripts.
+
+Install m4 if you need a macro processor.
+package ncurses-devel is not installed
+Name        : pkgconfig
+Epoch       : 1
+Version     : 0.27.1
+Release     : 4.el7
+Architecture: x86_64
+Install Date: Wed Mar  2 00:56:52 2016
+Group       : Development/Tools
+Size        : 105554
+License     : GPLv2+
+Signature   : RSA/SHA256, Wed May 14 01:02:50 2014, Key ID 72f97b74ec551f03
+Source RPM  : pkgconfig-0.27.1-4.el7.src.rpm
+Build Date  : Sat May  3 17:34:09 2014
+Build Host  : ca-buildj3.us.oracle.com
+Relocations : (not relocatable)
+Vendor      : Oracle America
+URL         : http://pkgconfig.freedesktop.org
+Summary     : A tool for determining compilation options
+Description :
+The pkgconfig tool determines compilation options. For each required
+library, it reads the configuration file and outputs the necessary
+compiler and linker flags.
+# The following new OS packages need to be installed: ncurses-devel
+The following command needs to be run through "sudo":
+    echo Skipping system update on this platform.
+Skipping system update on this platform.
+# OS package update successful
+The following command needs to be run through "sudo":
+    yum install -y ncurses-devel
+Loaded plugins: ulninfo
+Resolving Dependencies
+--> Running transaction check
+---> Package ncurses-devel.x86_64 0:5.9-13.20130511.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package            Arch        Version                   Repository       Size
+================================================================================
+Installing:
+ ncurses-devel      x86_64      5.9-13.20130511.el7       ol7_latest      712 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 712 k
+Installed size: 2.1 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : ncurses-devel-5.9-13.20130511.el7.x86_64                     1/1 
+  Verifying  : ncurses-devel-5.9-13.20130511.el7.x86_64                     1/1 
+
+Installed:
+  ncurses-devel.x86_64 0:5.9-13.20130511.el7                                    
+
+Complete!
+The following command needs to be run through "sudo":
+    rpm -q ncurses-devel
+ncurses-devel-5.9-13.20130511.el7.x86_64
+# OS packages installation successful
+The following dependencies couldn't be met:
+  - aws-rds -> aws >= 0.1.0 -> nocrypto -> ctypes < 0.4.0
+  - aws-rds -> aws >= 0.1.0 -> nocrypto -> oasis
+  - aws-rds -> aws >= 0.1.0 -> nocrypto -> sexplib < 113.01.00
+Your request can't be satisfied:
+  - ctypes<0.4.0 is not available because your system doesn't comply with ocaml-version >= "4.00.0" & ocaml-version < "4.03.0".
+  - oasis is not available because your system doesn't comply with ocaml-version >= "3.11.2" & ocaml-version < "4.03.0".
+  - sexplib<113.01.00 is not available because your system doesn't comply with ocaml-version >= "4.02.1" & ocaml-version < "4.03".
+
+No solution found, exiting
+[91m'opam install -y -j 2 -v aws-rds' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"' returned a non-zero code: 3

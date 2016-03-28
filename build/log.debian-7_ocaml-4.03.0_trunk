@@ -3,4 +3,216 @@ FROM ocaml/opam:debian-7_ocaml-4.03.0_trunk
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Cannot connect to the Docker daemon. Is the docker daemon running on this host?
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 78.34 kB
+Step 1 : FROM ocaml/opam:debian-7_ocaml-4.03.0_trunk
+debian-7_ocaml-4.03.0_trunk: Pulling from ocaml/opam
+4d690fa98655: Pulling fs layer
+a3ed95caeb02: Pulling fs layer
+9a23f747197e: Pulling fs layer
+93d082f83d06: Pulling fs layer
+d9cfd4912897: Pulling fs layer
+4d690fa98655: Waiting
+a3ed95caeb02: Waiting
+9a23f747197e: Waiting
+93d082f83d06: Waiting
+4d690fa98655: Download complete
+a3ed95caeb02: Download complete
+4d690fa98655: Pull complete
+4d690fa98655: Pull complete
+a3ed95caeb02: Pull complete
+a3ed95caeb02: Pull complete
+9a23f747197e: Verifying Checksum
+9a23f747197e: Download complete
+9a23f747197e: Pull complete
+9a23f747197e: Pull complete
+93d082f83d06: Verifying Checksum
+93d082f83d06: Download complete
+93d082f83d06: Pull complete
+93d082f83d06: Pull complete
+d9cfd4912897: Verifying Checksum
+d9cfd4912897: Download complete
+d9cfd4912897: Pull complete
+d9cfd4912897: Pull complete
+Digest: sha256:913a4d6b79185cc7ddc9e5e40c25799d82474c66a5a1ea31c88d674683178a51
+Status: Downloaded newer image for ocaml/opam:debian-7_ocaml-4.03.0_trunk
+ ---> 2f948121f91f
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
+ ---> Running in 330ae6f60de2
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 90aa923..f7aad90
+Fast-forward
+ compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    |   11 +++++
+ compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |    1 +
+ .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |    1 +
+ .../aws-autoscaling/aws-autoscaling.0.1.0/opam     |   20 +++++++++
+ packages/aws-autoscaling/aws-autoscaling.0.1.0/url |    2 +
+ .../aws-cloudformation.0.1.0/descr                 |    1 +
+ .../aws-cloudformation.0.1.0/opam                  |   20 +++++++++
+ .../aws-cloudformation.0.1.0/url                   |    2 +
+ packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |    1 +
+ packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  |   20 +++++++++
+ packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |    2 +
+ packages/aws-ec2/aws-ec2.0.1.0/descr               |    1 +
+ packages/aws-ec2/aws-ec2.0.1.0/opam                |   20 +++++++++
+ packages/aws-ec2/aws-ec2.0.1.0/url                 |    2 +
+ .../aws-elasticloadbalancing.0.1.0/descr           |    1 +
+ .../aws-elasticloadbalancing.0.1.0/opam            |   20 +++++++++
+ .../aws-elasticloadbalancing.0.1.0/url             |    2 +
+ packages/aws-sdb/aws-sdb.0.1.0/descr               |    1 +
+ packages/aws-sdb/aws-sdb.0.1.0/opam                |   20 +++++++++
+ packages/aws-sdb/aws-sdb.0.1.0/url                 |    2 +
+ packages/aws-ssm/aws-ssm.0.1.0/descr               |    1 +
+ packages/aws-ssm/aws-ssm.0.1.0/opam                |   20 +++++++++
+ packages/aws-ssm/aws-ssm.0.1.0/url                 |    2 +
+ packages/aws-sts/aws-sts.0.1.0/descr               |    1 +
+ packages/aws-sts/aws-sts.0.1.0/opam                |   20 +++++++++
+ packages/aws-sts/aws-sts.0.1.0/url                 |    2 +
+ packages/aws/aws.1.0.1/opam                        |    2 +-
+ packages/aws/aws.1.0.2/descr                       |    6 +++
+ packages/aws/aws.1.0.2/opam                        |   46 ++++++++++++++++++++
+ packages/aws/aws.1.0.2/url                         |    2 +
+ packages/ocp-build/ocp-build.1.99.14-beta/descr    |    1 +
+ packages/ocp-build/ocp-build.1.99.14-beta/findlib  |    1 +
+ packages/ocp-build/ocp-build.1.99.14-beta/opam     |   36 +++++++++++++++
+ packages/ocp-build/ocp-build.1.99.14-beta/url      |    2 +
+ 34 files changed, 291 insertions(+), 1 deletion(-)
+ create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
+ create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
+ create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
+ create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
+ create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
+ create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
+ create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
+ create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
+ create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
+ create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
+ create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
+ create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
+ create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
+ create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
+ create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
+ create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
+ create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
+ create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
+ create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
+ create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
+ create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
+ create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
+ create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
+ create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
+ create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
+ create mode 100644 packages/aws/aws.1.0.2/descr
+ create mode 100644 packages/aws/aws.1.0.2/opam
+ create mode 100644 packages/aws/aws.1.0.2/url
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
+ create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/seliopou/opam-repository
+ * branch            opam-publish/aws-rds.0.1.0 -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/aws-rds/aws-rds.0.1.0/descr |    1 +
+ packages/aws-rds/aws-rds.0.1.0/opam  |   20 ++++++++++++++++++++
+ packages/aws-rds/aws-rds.0.1.0/url   |    2 ++
+ 3 files changed, 23 insertions(+)
+ create mode 100644 packages/aws-rds/aws-rds.0.1.0/descr
+ create mode 100644 packages/aws-rds/aws-rds.0.1.0/opam
+ create mode 100644 packages/aws-rds/aws-rds.0.1.0/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux debian
+# The following system packages are needed:
+#  - debianutils
+#  - libgmp-dev
+#  - libxen-dev
+#  - m4
+#  - ncurses-dev
+#  - perl
+#  - pkg-config
+#  - time
+#  - uuid-dev
+# The following new OS packages need to be installed: libgmp-dev libxen-dev ncurses-dev time uuid-dev
+The following command needs to be run through "sudo":
+    apt-get update
+Hit http://security.debian.org wheezy/updates Release.gpg
+Hit http://security.debian.org wheezy/updates Release
+Hit http://security.debian.org wheezy/updates/main amd64 Packages
+Get:1 http://httpredir.debian.org wheezy Release.gpg [2373 B]
+Get:2 http://httpredir.debian.org wheezy-updates Release.gpg [1554 B]
+Hit http://httpredir.debian.org wheezy Release
+Get:3 http://httpredir.debian.org wheezy-updates Release [151 kB]
+Hit http://httpredir.debian.org wheezy/main amd64 Packages
+Get:4 http://httpredir.debian.org wheezy-updates/main amd64 Packages [7475 B]
+Fetched 163 kB in 1s (110 kB/s)
+Reading package lists...
+# OS package update successful
+The following command needs to be run through "sudo":
+    apt-get install -qq -yy libgmp-dev libxen-dev ncurses-dev time uuid-dev
+[91mdebconf: delaying package configuration, since apt-utils is not installed
+[0mSelecting previously unselected package libgmpxx4ldbl:amd64.
+(Reading database ... 20458 files and directories currently installed.)
+Unpacking libgmpxx4ldbl:amd64 (from .../libgmpxx4ldbl_2%3a5.0.5+dfsg-2_amd64.deb) ...
+Selecting previously unselected package time.
+Unpacking time (from .../archives/time_1.7-24_amd64.deb) ...
+Selecting previously unselected package libgmp-dev:amd64.
+Unpacking libgmp-dev:amd64 (from .../libgmp-dev_2%3a5.0.5+dfsg-2_amd64.deb) ...
+Selecting previously unselected package libxen-4.1.
+Unpacking libxen-4.1 (from .../libxen-4.1_4.1.4-3+deb7u9_amd64.deb) ...
+Selecting previously unselected package libxenstore3.0.
+Unpacking libxenstore3.0 (from .../libxenstore3.0_4.1.4-3+deb7u9_amd64.deb) ...
+Selecting previously unselected package libxen-dev.
+Unpacking libxen-dev (from .../libxen-dev_4.1.4-3+deb7u9_amd64.deb) ...
+Selecting previously unselected package uuid-dev.
+Unpacking uuid-dev (from .../uuid-dev_2.20.1-5.3_amd64.deb) ...
+Setting up libgmpxx4ldbl:amd64 (2:5.0.5+dfsg-2) ...
+Setting up time (1.7-24) ...
+Setting up libgmp-dev:amd64 (2:5.0.5+dfsg-2) ...
+Setting up libxen-4.1 (4.1.4-3+deb7u9) ...
+Setting up libxenstore3.0 (4.1.4-3+deb7u9) ...
+Setting up libxen-dev (4.1.4-3+deb7u9) ...
+Setting up uuid-dev (2.20.1-5.3) ...
+# OS packages installation successful
+The following dependencies couldn't be met:
+  - aws-rds -> aws >= 0.1.0 -> nocrypto -> ctypes < 0.4.0
+  - aws-rds -> aws >= 0.1.0 -> nocrypto -> oasis
+  - aws-rds -> aws >= 0.1.0 -> nocrypto -> sexplib < 113.01.00
+Your request can't be satisfied:
+  - ctypes<0.4.0 is not available because your system doesn't comply with ocaml-version >= "4.00.0" & ocaml-version < "4.03.0".
+  - oasis is not available because your system doesn't comply with ocaml-version >= "3.11.2" & ocaml-version < "4.03.0".
+  - sexplib<113.01.00 is not available because your system doesn't comply with ocaml-version >= "4.02.1" & ocaml-version < "4.03".
+
+No solution found, exiting
+[91m'opam install -y -j 2 -v aws-rds' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"' returned a non-zero code: 3
