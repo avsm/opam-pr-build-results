@@ -1,0 +1,6 @@
+Running this Dockerfile:
+FROM ocaml/opam:debian-testing_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u aws-rds" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Cannot connect to the Docker daemon. Is the docker daemon running on this host?
