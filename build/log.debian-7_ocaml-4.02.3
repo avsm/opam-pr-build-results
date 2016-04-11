@@ -6,111 +6,48 @@ RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master 
   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 78.34 kB
 Step 1 : FROM ocaml/opam:debian-7_ocaml-4.02.3
 debian-7_ocaml-4.02.3: Pulling from ocaml/opam
-4d690fa98655: Pulling fs layer
+8dddc0afbe0a: Pulling fs layer
 a3ed95caeb02: Pulling fs layer
-9a23f747197e: Pulling fs layer
-da9db6a53bfc: Pulling fs layer
-da0b5e3bfd1e: Pulling fs layer
-4d690fa98655: Waiting
-a3ed95caeb02: Waiting
-9a23f747197e: Waiting
-da0b5e3bfd1e: Waiting
-da9db6a53bfc: Waiting
-4d690fa98655: Verifying Checksum
-4d690fa98655: Download complete
+9976d9db0d4e: Pulling fs layer
+2670b09c9f01: Pulling fs layer
+718408730429: Pulling fs layer
+718408730429: Waiting
+2670b09c9f01: Waiting
 a3ed95caeb02: Download complete
-4d690fa98655: Pull complete
-4d690fa98655: Pull complete
+8dddc0afbe0a: Verifying Checksum
+8dddc0afbe0a: Download complete
+8dddc0afbe0a: Pull complete
+8dddc0afbe0a: Pull complete
 a3ed95caeb02: Pull complete
 a3ed95caeb02: Pull complete
-9a23f747197e: Verifying Checksum
-9a23f747197e: Download complete
-9a23f747197e: Pull complete
-9a23f747197e: Pull complete
-da9db6a53bfc: Verifying Checksum
-da9db6a53bfc: Download complete
-da9db6a53bfc: Pull complete
-da9db6a53bfc: Pull complete
-da0b5e3bfd1e: Download complete
-da0b5e3bfd1e: Pull complete
-da0b5e3bfd1e: Pull complete
-Digest: sha256:1ee43a915df2502e19645991cc0aa857006d11ecfc6764cacc0c4c6eac6f2cc8
+9976d9db0d4e: Verifying Checksum
+9976d9db0d4e: Download complete
+9976d9db0d4e: Pull complete
+9976d9db0d4e: Pull complete
+2670b09c9f01: Verifying Checksum
+2670b09c9f01: Download complete
+2670b09c9f01: Pull complete
+2670b09c9f01: Pull complete
+718408730429: Verifying Checksum
+718408730429: Download complete
+718408730429: Pull complete
+718408730429: Pull complete
+Digest: sha256:1cc4315f2ca7ee877768006e449d382b3e96190b5b2fa6e5c70cac71440de4cd
 Status: Downloaded newer image for ocaml/opam:debian-7_ocaml-4.02.3
- ---> 48eee1804dad
+ ---> aff48247c9b1
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in 98f699dddc03
+ ---> Running in c8046396c506
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0mUpdating 90aa923..f7aad90
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    |   11 +++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |    1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |    1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     |   20 +++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |    2 +
- .../aws-cloudformation.0.1.0/descr                 |    1 +
- .../aws-cloudformation.0.1.0/opam                  |   20 +++++++++
- .../aws-cloudformation.0.1.0/url                   |    2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |    1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  |   20 +++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |    2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |    1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                |   20 +++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |    2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |    1 +
- .../aws-elasticloadbalancing.0.1.0/opam            |   20 +++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |    2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |    1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                |   20 +++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |    2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |    1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                |   20 +++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |    2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |    1 +
- packages/aws-sts/aws-sts.0.1.0/opam                |   20 +++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |    2 +
- packages/aws/aws.1.0.1/opam                        |    2 +-
- packages/aws/aws.1.0.2/descr                       |    6 +++
- packages/aws/aws.1.0.2/opam                        |   46 ++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |    2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |    1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |    1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     |   36 +++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |    2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |    3 +++
+ packages/argon2/argon2.0.2/opam  |   23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |    2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started
@@ -169,14 +106,14 @@ The following command needs to be run through "sudo":
     apt-get update
 Hit http://security.debian.org wheezy/updates Release.gpg
 Hit http://security.debian.org wheezy/updates Release
-Hit http://httpredir.debian.org wheezy Release.gpg
-Get:1 http://httpredir.debian.org wheezy-updates Release.gpg [1554 B]
-Hit http://httpredir.debian.org wheezy Release
-Get:2 http://httpredir.debian.org wheezy-updates Release [151 kB]
 Hit http://security.debian.org wheezy/updates/main amd64 Packages
+Get:1 http://httpredir.debian.org wheezy Release.gpg [2373 B]
+Get:2 http://httpredir.debian.org wheezy-updates Release.gpg [1554 B]
+Hit http://httpredir.debian.org wheezy Release
+Hit http://httpredir.debian.org wheezy-updates Release
 Hit http://httpredir.debian.org wheezy/main amd64 Packages
-Get:3 http://httpredir.debian.org wheezy-updates/main amd64 Packages [7475 B]
-Fetched 160 kB in 1s (155 kB/s)
+Hit http://httpredir.debian.org wheezy-updates/main amd64 Packages
+Fetched 3927 B in 1s (2667 B/s)
 Reading package lists...
 # OS package update successful
 The following command needs to be run through "sudo":
@@ -227,7 +164,7 @@ The following actions will be performed:
   - install ocaml-data-notation 0.0.11                          [required by oasis]
   - install ppx_core            113.33.00                       [required by ppx_sexp_conv]
   - install ppx_deriving        3.3                             [required by ppx_type_conv]
-  - install stringext           1.4.1                           [required by uri]
+  - install stringext           1.4.2                           [required by uri]
   - install re                  1.5.0                           [required by uri]
   - install ocplib-endian       0.8                             [required by cstruct]
   - install oasis               0.4.5                           [required by nocrypto]
@@ -249,29 +186,29 @@ The following actions will be performed:
 [calendar: http] Command started
 [calendar.2.03.2] http://forge.ocamlcore.org/frs/download.php/915/calendar-2.03.2.tar.gz downloaded
 [cppo: http] Command started
-[aws-rds: http] Command started
-[aws-rds.0.1.0] https://github.com/inhabitedtype/ocaml-aws/releases/download/aws-1.0.2/aws-rds-0.1.0.tar.gz downloaded
-[cstruct: http] Command started
-[cppo: http] Command started
-[cppo.1.3.1] https://github.com/mjambon/cppo/archive/v1.3.1.tar.gz downloaded
-[ezxmlm: http] Command started
 [aws: http] Command started
 [aws.1.0.2] https://github.com/inhabitedtype/ocaml-aws/releases/download/aws-1.0.2/aws-1.0.2.tar.gz downloaded
-[nocrypto: http] Command started
+[cstruct: http] Command started
+[aws-rds: http] Command started
+[aws-rds.0.1.0] https://github.com/inhabitedtype/ocaml-aws/releases/download/aws-1.0.2/aws-rds-0.1.0.tar.gz downloaded
 [ezxmlm: http] Command started
-[ezxmlm.1.0.1] https://github.com/avsm/ezxmlm/archive/v1.0.1.tar.gz downloaded
-[oasis: http] Command started
+[cppo: http] Command started
+[cppo.1.3.1] https://github.com/mjambon/cppo/archive/v1.3.1.tar.gz downloaded
+[nocrypto: http] Command started
 [cstruct: http] Command started
 [cstruct.1.9.0] https://github.com/mirage/ocaml-cstruct/archive/v1.9.0.tar.gz downloaded
-[ocaml-data-notation: http] Command started
+[oasis: http] Command started
 [oasis: http] Command started
 [oasis.0.4.5] https://forge.ocamlcore.org/frs/download.php/1475/oasis-0.4.5.tar.gz downloaded
-[ocamlfind: http] Command started
 [ocaml-data-notation: http] Command started
-[ocaml-data-notation.0.0.11] https://forge.ocamlcore.org/frs/download.php/1310/ocaml-data-notation-0.0.11.tar.gz downloaded
-[ocamlify: http] Command started
+[ezxmlm: http] Command started
+[ezxmlm.1.0.1] https://github.com/avsm/ezxmlm/archive/v1.0.1.tar.gz downloaded
+[ocamlfind: http] Command started
 [ocamlfind: http] Command started
 [ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
+[ocamlify: http] Command started
+[ocaml-data-notation: http] Command started
+[ocaml-data-notation.0.0.11] https://forge.ocamlcore.org/frs/download.php/1310/ocaml-data-notation-0.0.11.tar.gz downloaded
 [ocamlmod: http] Command started
 [ocamlify: http] Command started
 [ocamlify.0.0.1] http://forge.ocamlcore.org/frs/download.php/379/ocamlify-0.0.1.tar.gz downloaded
@@ -279,11 +216,11 @@ The following actions will be performed:
 [ocamlmod: http] Command started
 [ocamlmod.0.0.8] https://forge.ocamlcore.org/frs/download.php/1544/ocamlmod-0.0.8.tar.gz downloaded
 [ppx_core: http] Command started
-[ppx_core: http] Command started
-[ppx_core.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_core-113.33.00.tar.gz downloaded
-[ppx_deriving: http] Command started
 [ocplib-endian: http] Command started
 [ocplib-endian.0.8] https://github.com/OCamlPro/ocplib-endian/archive/0.8.tar.gz downloaded
+[ppx_deriving: http] Command started
+[ppx_core: http] Command started
+[ppx_core.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_core-113.33.00.tar.gz downloaded
 [ppx_driver: http] Command started
 [ppx_driver: http] Command started
 [ppx_driver.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_driver-113.33.00.tar.gz downloaded
@@ -291,39 +228,39 @@ The following actions will be performed:
 [ppx_deriving: http] Command started
 [ppx_deriving.3.3] https://github.com/whitequark/ppx_deriving/archive/v3.3.tar.gz downloaded
 [ppx_sexp_conv: http] Command started
-[ppx_sexp_conv: http] Command started
 [ppx_optcomp: http] Command started
-[ppx_sexp_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_conv-113.33.00.tar.gz downloaded
-[ppx_tools: http] Command started
-[nocrypto: http] Command started
 [ppx_optcomp.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_optcomp-113.33.00.tar.gz downloaded
+[ppx_tools: http] Command started
+[ppx_sexp_conv: http] Command started
+[ppx_sexp_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_conv-113.33.00.tar.gz downloaded
 [ppx_type_conv: http] Command started
-[nocrypto.0.5.3] https://github.com/mirleft/ocaml-nocrypto/archive/v0.5.3.tar.gz downloaded
+[ppx_tools: http] Command started
+[ppx_tools.4.02.3] https://github.com/alainfrisch/ppx_tools/archive/v4.02.3.tar.gz downloaded
 [re: http] Command started
 [ppx_type_conv: http] Command started
 [ppx_type_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_type_conv-113.33.00.tar.gz downloaded
 [sexplib: http] Command started
-[ppx_tools: http] Command started
-[ppx_tools.4.02.3] https://github.com/alainfrisch/ppx_tools/archive/v4.02.3.tar.gz downloaded
-[stringext: http] Command started
 [re: http] Command started
 [re.1.5.0] https://github.com/ocaml/ocaml-re/archive/ocaml-re-1.5.0.tar.gz downloaded
-[type_conv: http] Command started
+[stringext: http] Command started
 [sexplib: http] Command started
 [sexplib.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/sexplib-113.33.00.tar.gz downloaded
-[uri: http] Command started
+[type_conv: http] Command started
 [type_conv: http] Command started
 [type_conv.113.00.02] https://ocaml.janestreet.com/ocaml-core/113.00/files/type_conv-113.00.02.tar.gz downloaded
-[xmlm: http] Command started
+[uri: http] Command started
 [stringext: http] Command started
-[stringext.1.4.1] https://github.com/rgrinberg/stringext/archive/v1.4.1.tar.gz downloaded
-[zarith: http] Command started
+[stringext.1.4.2] https://github.com/rgrinberg/stringext/archive/v1.4.2.tar.gz downloaded
+[xmlm: http] Command started
 [xmlm: http] Command started
 [xmlm.1.2.0] http://erratique.ch/software/xmlm/releases/xmlm-1.2.0.tbz downloaded
+[zarith: http] Command started
 [zarith: http] Command started
 [zarith.1.4.1] https://forge.ocamlcore.org/frs/download.php/1574/zarith-1.4.1.tgz downloaded
 [uri: http] Command started
 [uri.1.9.2] https://github.com/mirage/ocaml-uri/archive/v1.9.2.tar.gz downloaded
+[nocrypto: http] Command started
+[nocrypto.0.5.3] https://github.com/mirleft/ocaml-nocrypto/archive/v0.5.3.tar.gz downloaded
 
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [conf-gmp: sh] Command started
@@ -444,7 +381,8 @@ The following actions will be performed:
 - Configuration for ocamlbuild written to site-lib-src/ocamlbuild/META
 - Configuration for compiler-libs written to site-lib-src/compiler-libs/META
 - Configuration for bytes written to site-lib-src/bytes/META
-- Detecting compiler arguments: (extractor built) ok
+- Detecting compiler arguments: (extractor built) 
+- ok
 - 
 - About the OCAML core installation:
 -     Standard library:      /home/opam/.opam/4.02.3/lib/ocaml
@@ -490,6 +428,7 @@ The following actions will be performed:
 - ocamlc -I +compiler-libs -g -c fl_metatoken.ml
 - ocamlc -I +compiler-libs -g -c fl_meta.ml
 - ocamlc -I +compiler-libs -c fl_metascanner.mli
+- Makefile:175: depend: No such file or directory
 - ocamlc -I +compiler-libs -g -c fl_metascanner.ml
 - ocamlc -I +compiler-libs -c fl_topo.mli
 - ocamlc -I +compiler-libs -g -c fl_topo.ml
@@ -498,13 +437,15 @@ The following actions will be performed:
 - ocamlc -I +compiler-libs -c findlib.mli
 - ocamlc -I +compiler-libs -g -c findlib.ml
 - ocamlc -I +compiler-libs -g -c fl_args.ml
-- Makefile:175: depend: No such file or directory
 - ocamlc -I +compiler-libs -g -c fl_lint.ml
 - ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
 - ocamlc -I +compiler-libs -g -c ocaml_args.ml
 - ocamlc -I +compiler-libs -g -c frontend.ml
 - ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
 - 	           ocaml_args.cmo frontend.cmo
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
 - if [ "true" = "true" ]; then                 \
 - 		cp topfind.ml.in topfind.ml;                             \
 - 	else                                                             \
@@ -512,9 +453,6 @@ The following actions will be performed:
 - 			> topfind.ml ;                                   \
 - 	fi
 - ocamlc -I +compiler-libs -c topfind.mli
-- File "frontend.ml", line 1787, characters 16-29:
-- Warning 3: deprecated: String.create
-- Use Bytes.create instead.
 - ocamlc -I +compiler-libs -g -c topfind.ml
 - ocamlc -I +compiler-libs -a -o findlib_top.cma topfind.cmo
 - USE_CYGPATH="0"; \
@@ -753,6 +691,17 @@ The following actions will be performed:
 - ocamlfind ocamlopt -a -package ocamlbuild ocamlbuild_cppo.cmx -o ocamlbuild_cppo.cmxa
 - ocamlfind ocamlopt -shared -package ocamlbuild ocamlbuild_cppo.cmx -o ocamlbuild_cppo.cmxs
 [cppo: make install-lib] Command started
++ make "install-lib" (CWD=/home/opam/.opam/4.02.3/build/cppo.1.3.1)
+- ocamlfind install -patch-version 1.3.1 "cppo_ocamlbuild" \
+- 		META ocamlbuild_plugin/_build/ocamlbuild_cppo.cmi ocamlbuild_plugin/_build/ocamlbuild_cppo.cma ocamlbuild_plugin/_build/ocamlbuild_cppo.cmxa ocamlbuild_plugin/_build/ocamlbuild_cppo.a ocamlbuild_plugin/_build/ocamlbuild_cppo.cmxs
+- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.cmxs
+- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.a
+- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.cmxa
+- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.cma
+- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.cmi
+- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/META
+-> installed cppo.1.3.1
+[ocamlmod: ocaml setup.ml] Command started
 + ocaml "setup.ml" "-configure" "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ocamlify.0.0.1)
 - 
 - Configuration: 
@@ -808,29 +757,8 @@ The following actions will be performed:
 - ocamlc: ........................................ /home/opam/.opam/4.02.3/bin/ocamlc.opt
 - ocamlfind: ..................................... /home/opam/.opam/4.02.3/bin/ocamlfind
 - 
-- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlc.opt -config > /tmp/oasis-f77197.txt'
-- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlfind query -format %v findlib > /tmp/oasis-09eba0.txt'
-[ocamlify: ocaml setup.ml] Command started
-+ make "install-lib" (CWD=/home/opam/.opam/4.02.3/build/cppo.1.3.1)
-- ocamlfind install -patch-version 1.3.1 "cppo_ocamlbuild" \
-- 		META ocamlbuild_plugin/_build/ocamlbuild_cppo.cmi ocamlbuild_plugin/_build/ocamlbuild_cppo.cma ocamlbuild_plugin/_build/ocamlbuild_cppo.cmxa ocamlbuild_plugin/_build/ocamlbuild_cppo.a ocamlbuild_plugin/_build/ocamlbuild_cppo.cmxs
-- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.cmxs
-- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.a
-- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.cmxa
-- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.cma
-- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/ocamlbuild_cppo.cmi
-- Installed /home/opam/.opam/4.02.3/lib/cppo_ocamlbuild/META
--> installed cppo.1.3.1
-[ocamlmod: ocaml setup.ml] Command started
-+ ocaml "setup.ml" "-build" (CWD=/home/opam/.opam/4.02.3/build/ocamlify.0.0.1)
-- /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
-- ocamlfind ocamldep -modules src/ocamlify.ml > src/ocamlify.ml.depends
-- ocamlfind ocamldep -modules src/OCamlifyConfig.ml > src/OCamlifyConfig.ml.depends
-- ocamlfind ocamlc -c -g -I src -o src/OCamlifyConfig.cmo src/OCamlifyConfig.ml
-- ocamlfind ocamlc -c -g -I src -o src/ocamlify.cmo src/ocamlify.ml
-- ocamlfind ocamlc -g -linkpkg src/OCamlifyConfig.cmo src/ocamlify.cmo -o src/ocamlify.byte
-- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlbuild src/ocamlify.byte -tag debug'
-- I: Running command 'cp '_build/src/ocamlify.byte' '_build/src/ocamlify''
+- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlc.opt -config > /tmp/oasis-83cf2a.txt'
+- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlfind query -format %v findlib > /tmp/oasis-9e19c7.txt'
 [ocamlify: ocaml setup.ml] Command started
 + ocaml "setup.ml" "-configure" "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ocamlmod.0.0.8)
 - 
@@ -897,6 +825,16 @@ The following actions will be performed:
 - Warning 3: deprecated: Lazy.lazy_from_fun
 - Use Lazy.from_fun instead.
 [ocamlmod: ocaml setup.ml] Command started
++ ocaml "setup.ml" "-build" (CWD=/home/opam/.opam/4.02.3/build/ocamlify.0.0.1)
+- /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
+- ocamlfind ocamldep -modules src/ocamlify.ml > src/ocamlify.ml.depends
+- ocamlfind ocamldep -modules src/OCamlifyConfig.ml > src/OCamlifyConfig.ml.depends
+- ocamlfind ocamlc -c -g -I src -o src/OCamlifyConfig.cmo src/OCamlifyConfig.ml
+- ocamlfind ocamlc -c -g -I src -o src/ocamlify.cmo src/ocamlify.ml
+- ocamlfind ocamlc -g -linkpkg src/OCamlifyConfig.cmo src/ocamlify.cmo -o src/ocamlify.byte
+- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlbuild src/ocamlify.byte -tag debug'
+- I: Running command 'cp '_build/src/ocamlify.byte' '_build/src/ocamlify''
+[ocamlify: ocaml setup.ml] Command started
 + ocaml "setup.ml" "-install" (CWD=/home/opam/.opam/4.02.3/build/ocamlify.0.0.1)
 - I: Copying file '/home/opam/.opam/4.02.3/build/ocamlify.0.0.1/_build/src/ocamlify' to '/home/opam/.opam/4.02.3/bin/ocamlify'
 - I: Running command 'cp '/home/opam/.opam/4.02.3/build/ocamlify.0.0.1/_build/src/ocamlify' '/home/opam/.opam/4.02.3/bin/ocamlify''
@@ -2175,7 +2113,7 @@ The following actions will be performed:
 - pkg_ppx_tools_metaquot: .............................. /home/opam/.opam/4.02.3/lib/ppx_tools
 - 
 [ppx_optcomp: make] Command started
-+ ocaml "setup.ml" "-configure" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.1)
++ ocaml "setup.ml" "-configure" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.2)
 - 
 - Configuration: 
 - ocamlfind: ........................................... /home/opam/.opam/4.02.3/bin/ocamlfind
@@ -2233,6 +2171,39 @@ The following actions will be performed:
 - Compile tests executable and library and run them: ... false
 - pkg_bytes: ........................................... /home/opam/.opam/4.02.3/lib/bytes
 - 
+[stringext: ocaml setup.ml] Command started
++ ocaml "setup.ml" "-build" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.2)
+- /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
+- File "_tags", line 22, characters 41-50:
+- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 26, characters 48-57:
+- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 27, characters 48-58:
+- Warning: the tag "pkg_qcheck" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 28, characters 48-64:
+- Warning: the tag "pkg_qcheck.ounit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 31, characters 23-32:
+- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 32, characters 23-33:
+- Warning: the tag "pkg_qcheck" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 33, characters 23-39:
+- Warning: the tag "pkg_qcheck.ounit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package bytes -modules lib/stringext.mli > lib/stringext.mli.depends
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmi lib/stringext.mli
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package bytes -modules lib/stringext.ml > lib/stringext.ml.depends
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmo lib/stringext.ml
+- + /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmo lib/stringext.ml
+- File "lib/stringext.ml", line 245, characters 4-22:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -a lib/stringext.cmo -o lib/stringext.cma
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmx lib/stringext.ml
+- + /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmx lib/stringext.ml
+- File "lib/stringext.ml", line 245, characters 4-22:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -a lib/stringext.cmx -o lib/stringext.cmxa
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -shared lib/stringext.cmxa lib/stringext.cmx -o lib/stringext.cmxs
 [stringext: ocaml setup.ml] Command started
 + make  (CWD=/home/opam/.opam/4.02.3/build/ppx_optcomp.113.33.00)
 - ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
@@ -2328,32 +2299,7 @@ The following actions will be performed:
 - make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ppx_optcomp.113.33.00'
 -> installed ppx_optcomp.113.33.00
 [ppx_driver: ./configure] Command started
-+ ocaml "setup.ml" "-build" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.1)
-- /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
-- File "_tags", line 22, characters 41-50:
-- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 26, characters 48-57:
-- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 27, characters 48-58:
-- Warning: the tag "pkg_qcheck" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 28, characters 48-64:
-- Warning: the tag "pkg_qcheck.ounit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 31, characters 23-32:
-- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 32, characters 23-33:
-- Warning: the tag "pkg_qcheck" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 33, characters 23-39:
-- Warning: the tag "pkg_qcheck.ounit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package bytes -modules lib/stringext.mli > lib/stringext.mli.depends
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmi lib/stringext.mli
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package bytes -modules lib/stringext.ml > lib/stringext.ml.depends
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmo lib/stringext.ml
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -a lib/stringext.cmo -o lib/stringext.cma
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmx lib/stringext.ml
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -a lib/stringext.cmx -o lib/stringext.cmxa
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -shared lib/stringext.cmxa lib/stringext.cmx -o lib/stringext.cmxs
-[stringext: ocaml setup.ml] Command started
-+ ocaml "setup.ml" "-install" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.1)
++ ocaml "setup.ml" "-install" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.2)
 - Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.mli
 - Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cma
 - Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmxa
@@ -2365,7 +2311,7 @@ The following actions will be performed:
 - Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.annot
 - Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmx
 - Installed /home/opam/.opam/4.02.3/lib/stringext/META
--> installed stringext.1.4.1
+-> installed stringext.1.4.2
 [type_conv: make] Command started
 + ./configure "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ppx_driver.113.33.00)
 - 
@@ -3049,30 +2995,6 @@ The following actions will be performed:
 - Use Lazy.from_fun instead.
 - W: Tests are turned off, consider enabling with 'ocaml setup.ml -configure --enable-tests'
 [ocaml-data-notation: make install] Command started
-+ make "install" (CWD=/home/opam/.opam/4.02.3/build/ocaml-data-notation.0.0.11)
-- ocaml setup.ml -install 
-- File "setup.ml", line 232, characters 8-26:
-- Warning 3: deprecated: String.set
-- Use Bytes.set instead.
-- File "setup.ml", line 1946, characters 6-24:
-- Warning 3: deprecated: Lazy.lazy_from_fun
-- Use Lazy.from_fun instead.
-- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.ml
-- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cma
-- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cmxa
-- Installed /home/opam/.opam/4.02.3/lib/odn/odn.a
-- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cmxs
-- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.cmi
-- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.cmx
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.ml
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.cma
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.cmi
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.ml
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.cma
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.cmi
-- Installed /home/opam/.opam/4.02.3/lib/odn/META
--> installed ocaml-data-notation.0.0.11
-[oasis: ocaml setup.ml] Command started
 + make "install" (CWD=/home/opam/.opam/4.02.3/build/cstruct.1.9.0)
 - ocaml setup.ml -install 
 - Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.mli
@@ -3114,6 +3036,30 @@ The following actions will be performed:
 - install -m 0644 js/cstruct.js /home/opam/.opam/4.02.3/lib/cstruct
 -> installed cstruct.1.9.0
 [ppx_sexp_conv: ./configure] Command started
++ make "install" (CWD=/home/opam/.opam/4.02.3/build/ocaml-data-notation.0.0.11)
+- ocaml setup.ml -install 
+- File "setup.ml", line 232, characters 8-26:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- File "setup.ml", line 1946, characters 6-24:
+- Warning 3: deprecated: Lazy.lazy_from_fun
+- Use Lazy.from_fun instead.
+- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.ml
+- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cma
+- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cmxa
+- Installed /home/opam/.opam/4.02.3/lib/odn/odn.a
+- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cmxs
+- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.cmi
+- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.cmx
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.ml
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.cma
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.cmi
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.ml
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.cma
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.cmi
+- Installed /home/opam/.opam/4.02.3/lib/odn/META
+-> installed ocaml-data-notation.0.0.11
+[oasis: ocaml setup.ml] Command started
 + ./configure "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ppx_sexp_conv.113.33.00)
 - 
 - Configuration: 
@@ -4154,6 +4100,21 @@ The following actions will be performed:
 - ocamlmod src/plugins/custom/CustomSys.mod
 - ocamlify --output src/plugins/custom/CustomData.ml src/plugins/custom/CustomData.mlify
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package ocamlbuild -package odn -package unix -modules src/plugins/custom/CustomData.ml > src/plugins/custom/CustomData.ml.depends
+- File "src/oasis/OASISString.ml", line 148, characters 8-26:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- File "src/oasis/OASISFindlib.ml", line 262, characters 6-24:
+- Warning 3: deprecated: Lazy.lazy_from_fun
+- Use Lazy.from_fun instead.
+- W: Cannot find source file matching module 'plugins/none/NoneData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/internal/InternalData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/ocamlbuild/OCamlbuildData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/custom/CustomData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/extra/META/METAData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/extra/devfiles/DevFilesData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/extra/stdfiles/StdFilesData' in library builtin-plugins
+- W: Cannot find source file matching module 'OASISData' in library oasis
+- W: Cannot find source file matching module 'OASISData' in library oasis
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -I src/oasis -I src/base -package ocamlbuild -package odn -package unix -warn-error +8 -I src -I src/base -I src/oasis -I src/plugins/extra/META -I src/plugins/extra/devfiles -I src/plugins/extra/stdfiles -I src/plugins/internal -I src/plugins/none -I src/plugins/ocamlbuild -I src/plugins/custom -o src/plugins/custom/CustomData.cmo src/plugins/custom/CustomData.ml
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package ocamlbuild -package odn -package unix -modules src/plugins/extra/devfiles/DevFilesPlugin.ml > src/plugins/extra/devfiles/DevFilesPlugin.ml.depends
 - ocamlify --depends --output src/plugins/extra/devfiles/DevFilesData.mlify.depends src/plugins/extra/devfiles/DevFilesData.mlify
@@ -4181,21 +4142,6 @@ The following actions will be performed:
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package ocamlbuild -package odn -package unix -modules src/plugins/none/NoneData.ml > src/plugins/none/NoneData.ml.depends
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -I src/oasis -I src/base -package ocamlbuild -package odn -package unix -warn-error +8 -I src -I src/base -I src/oasis -I src/plugins/custom -I src/plugins/extra/META -I src/plugins/extra/devfiles -I src/plugins/extra/stdfiles -I src/plugins/internal -I src/plugins/ocamlbuild -I src/plugins/none -o src/plugins/none/NoneData.cmo src/plugins/none/NoneData.ml
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package ocamlbuild -package odn -syntax camlp4o -package odn.with.syntax -package unix -syntax camlp4o -modules src/plugins/ocamlbuild/OCamlbuildDocPlugin.ml > src/plugins/ocamlbuild/OCamlbuildDocPlugin.ml.depends
-- File "src/oasis/OASISString.ml", line 148, characters 8-26:
-- Warning 3: deprecated: String.set
-- Use Bytes.set instead.
-- File "src/oasis/OASISFindlib.ml", line 262, characters 6-24:
-- Warning 3: deprecated: Lazy.lazy_from_fun
-- Use Lazy.from_fun instead.
-- W: Cannot find source file matching module 'plugins/none/NoneData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/internal/InternalData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/ocamlbuild/OCamlbuildData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/custom/CustomData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/extra/META/METAData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/extra/devfiles/DevFilesData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/extra/stdfiles/StdFilesData' in library builtin-plugins
-- W: Cannot find source file matching module 'OASISData' in library oasis
-- W: Cannot find source file matching module 'OASISData' in library oasis
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package ocamlbuild -package odn -syntax camlp4o -package odn.with.syntax -package unix -syntax camlp4o -modules src/plugins/ocamlbuild/OCamlbuildCommon.ml > src/plugins/ocamlbuild/OCamlbuildCommon.ml.depends
 - ocamlify --depends --output src/plugins/ocamlbuild/OCamlbuildData.mlify.depends src/plugins/ocamlbuild/OCamlbuildData.mlify
 - ocamlmod src/plugins/ocamlbuild/MyOCamlbuildSys.mod
@@ -5049,10 +4995,10 @@ The following actions will be performed:
 - /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/types.ml > lib/types.ml.depends
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/errors.ml > lib/errors.ml.depends
+- W: Cannot find source file matching module 'aws-rds' in library aws-rds
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/addSourceIdentifierToSubscription.mli > lib/addSourceIdentifierToSubscription.mli.depends
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package aws -I lib -o lib/errors.cmo lib/errors.ml
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package aws -I lib -o lib/types.cmo lib/types.ml
-- W: Cannot find source file matching module 'aws-rds' in library aws-rds
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package aws -I lib -o lib/addSourceIdentifierToSubscription.cmi lib/addSourceIdentifierToSubscription.mli
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/addSourceIdentifierToSubscription.ml > lib/addSourceIdentifierToSubscription.ml.depends
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/addTagsToResource.mli > lib/addTagsToResource.mli.depends
@@ -5146,9 +5092,9 @@ The following actions will be performed:
 - Error: Unbound module DescribeAccountAttributesMessage
 - Command exited with code 2.
 - E: Failure("Command ''/home/opam/.opam/4.02.3/bin/ocamlbuild' lib/aws-rds.cma lib/aws-rds.cmxa lib/aws-rds.a lib/aws-rds.cmxs -tag debug' terminated with error code 10")
+[aws-rds: ocamlfind remove] Command started
 [91m[ERROR] The compilation of aws-rds failed at "ocaml setup.ml -build".
-[0m[aws-rds: ocamlfind remove] Command started
-+ ocamlfind "remove" "aws-autoscaling" (CWD=/home/opam/.opam/4.02.3/build/aws-rds.0.1.0)
+[0m+ ocamlfind "remove" "aws-autoscaling" (CWD=/home/opam/.opam/4.02.3/build/aws-rds.0.1.0)
 - ocamlfind: [WARNING] No such directory: /home/opam/.opam/4.02.3/lib/aws-autoscaling
 [91m
 #=== ERROR while installing aws-rds.0.1.0 =====================================#
@@ -5158,9 +5104,9 @@ The following actions will be performed:
 # path                 /home/opam/.opam/4.02.3/build/aws-rds.0.1.0
 # compiler             4.02.3
 # exit-code            1
-# env-file             /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-390-a5e08f.env
-# stdout-file          /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-390-a5e08f.out
-# stderr-file          /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-390-a5e08f.err
+# env-file             /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-389-a5e08f.env
+# stdout-file          /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-389-a5e08f.out
+# stderr-file          /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-389-a5e08f.err
 ### stdout ###
 # [...]
 # /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/deleteEventSubscription.ml > lib/deleteEventSubscription.ml.depends
@@ -5211,13 +5157,13 @@ The following changes have been performed
   - install ppx_type_conv       113.33.00
   - install re                  1.5.0    
   - install sexplib             113.33.00
-  - install stringext           1.4.1    
+  - install stringext           1.4.2    
   - install type_conv           113.00.02
   - install uri                 1.9.2    
   - install xmlm                1.2.0    
   - install zarith              1.4.1    
 [91m
 The former state can be restored with:
-    opam switch import "~/.opam/4.02.3/backup/state-20160228172740.export"
+    opam switch import "~/.opam/4.02.3/backup/state-20160311171413.export"
 'opam install -y -j 2 -v aws-rds' failed.
 [0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"' returned a non-zero code: 4

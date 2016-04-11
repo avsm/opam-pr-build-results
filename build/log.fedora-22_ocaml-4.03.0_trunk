@@ -3,112 +3,46 @@ FROM ocaml/opam:fedora-22_ocaml-4.03.0_trunk
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 759.3 kB
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 416.8 kB
 Step 1 : FROM ocaml/opam:fedora-22_ocaml-4.03.0_trunk
 fedora-22_ocaml-4.03.0_trunk: Pulling from ocaml/opam
 a3ed95caeb02: Already exists
-0967f2c8ac7a: Pulling fs layer
-758f5c9b6266: Pulling fs layer
-7cfb0358f9b3: Pulling fs layer
-8d61ebfdc990: Pulling fs layer
-758f5c9b6266: Waiting
-7cfb0358f9b3: Waiting
-8d61ebfdc990: Waiting
-0967f2c8ac7a: Waiting
-0967f2c8ac7a: Verifying Checksum
-0967f2c8ac7a: Download complete
-0967f2c8ac7a: Pull complete
-0967f2c8ac7a: Pull complete
-7cfb0358f9b3: Verifying Checksum
-7cfb0358f9b3: Download complete
-8d61ebfdc990: Verifying Checksum
-8d61ebfdc990: Download complete
-758f5c9b6266: Verifying Checksum
-758f5c9b6266: Download complete
-758f5c9b6266: Pull complete
-758f5c9b6266: Pull complete
-7cfb0358f9b3: Pull complete
-7cfb0358f9b3: Pull complete
-8d61ebfdc990: Pull complete
-8d61ebfdc990: Pull complete
-Digest: sha256:f4e96af764e0e57c24ae6a637f0f7c354022c56d2b3ea0560dcffa4dc163879d
+0967f2c8ac7a: Already exists
+ec8dd1e37ce9: Pulling fs layer
+38b6d1c430ec: Pulling fs layer
+4ce0617608f5: Pulling fs layer
+ec8dd1e37ce9: Waiting
+38b6d1c430ec: Waiting
+4ce0617608f5: Waiting
+38b6d1c430ec: Verifying Checksum
+38b6d1c430ec: Download complete
+ec8dd1e37ce9: Verifying Checksum
+ec8dd1e37ce9: Download complete
+4ce0617608f5: Verifying Checksum
+4ce0617608f5: Download complete
+ec8dd1e37ce9: Pull complete
+ec8dd1e37ce9: Pull complete
+38b6d1c430ec: Pull complete
+38b6d1c430ec: Pull complete
+4ce0617608f5: Pull complete
+4ce0617608f5: Pull complete
+Digest: sha256:f3a79fc3fcf013668e43e99ab6cca18c6c2a060a88f758a1f4f54edfa42e5262
 Status: Downloaded newer image for ocaml/opam:fedora-22_ocaml-4.03.0_trunk
- ---> 9fb83426af97
+ ---> f5276dbfb311
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in f060236c4f63
+ ---> Running in faef90cd6763
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   90aa923..f7aad90  master     -> origin/master
-[0mUpdating 90aa923..f7aad90
+[0m[91m   1a10bdc..c0cde63  master     -> origin/master
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    | 11 ++++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     | 20 ++++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |  2 +
- .../aws-cloudformation.0.1.0/descr                 |  1 +
- .../aws-cloudformation.0.1.0/opam                  | 20 ++++++++++
- .../aws-cloudformation.0.1.0/url                   |  2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |  1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  | 20 ++++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |  2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |  1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                | 20 ++++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |  2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |  1 +
- .../aws-elasticloadbalancing.0.1.0/opam            | 20 ++++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |  2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |  1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                | 20 ++++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |  2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |  1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                | 20 ++++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |  2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |  1 +
- packages/aws-sts/aws-sts.0.1.0/opam                | 20 ++++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |  2 +
- packages/aws/aws.1.0.1/opam                        |  2 +-
- packages/aws/aws.1.0.2/descr                       |  6 +++
- packages/aws/aws.1.0.2/opam                        | 46 ++++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |  2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     | 36 +++++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |  2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |  3 +++
+ packages/argon2/argon2.0.2/opam  | 23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |  2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started
@@ -220,18 +154,23 @@ See 'man dnf' and 'man yum2dnf' for more information.
 To transfer transaction metadata from yum to DNF, run:
 'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
 
-[0mLast metadata expiration check performed 0:00:19 ago on Mon Mar 28 17:41:09 2016.
+[0mLast metadata expiration check performed 0:00:16 ago on Mon Apr 11 17:19:47 2016.
 Dependencies resolved.
 ================================================================================
  Package                 Arch        Version                 Repository    Size
 ================================================================================
 Installing:
+ kernel-debug-devel      x86_64      4.4.6-201.fc22          updates       10 M
  python-pip              noarch      6.0.8-1.fc22            fedora       1.7 M
  python-setuptools       noarch      17.1.1-3.fc22           updates      425 k
  sqlite-libs             x86_64      3.11.0-3.fc22           updates      449 k
      replacing  sqlite.x86_64 3.10.2-1.fc22
 Upgrading:
+ ca-certificates         noarch      2016.2.7-1.0.fc22       updates      424 k
  gnupg2                  x86_64      2.1.11-1.fc22           updates      1.9 M
+ kernel-headers          x86_64      4.4.6-201.fc22          updates      1.0 M
+ krb5-libs               x86_64      1.13.2-14.fc22          updates      839 k
+ libatomic_ops           x86_64      7.4.2-9.fc22            updates       32 k
  libssh2                 x86_64      1.5.0-2.fc22            updates      145 k
  nspr                    x86_64      4.12.0-1.fc22           updates      135 k
  nss                     x86_64      3.23.0-1.0.fc22         updates      871 k
@@ -241,108 +180,143 @@ Upgrading:
  nss-tools               x86_64      3.23.0-1.0.fc22         updates      493 k
  nss-util                x86_64      3.23.0-1.0.fc22         updates       82 k
  openssl-libs            x86_64      1:1.0.1k-14.fc22        updates      943 k
- pcre                    x86_64      8.38-3.fc22             updates      495 k
+ pcre                    x86_64      8.38-4.fc22             updates      495 k
  python                  x86_64      2.7.10-8.fc22           updates       93 k
  python-libs             x86_64      2.7.10-8.fc22           updates      5.8 M
  sqlite                  x86_64      3.11.0-3.fc22           updates      473 k
 
 Transaction Summary
 ================================================================================
-Install   3 Packages
-Upgrade  14 Packages
+Install   4 Packages
+Upgrade  18 Packages
 
-Total download size: 14 M
+Total download size: 27 M
 Downloading Packages:
-[91m/usr/share/doc/libssh2/AUTHORS: No such file or directory
+[91m/usr/share/man/man8/ca-legacy.8.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/libssh2/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/krb5-libs/NOTICE: No such file or directory
 cannot reconstruct rpm from disk files
 [0m[91m/usr/share/doc/python-libs/README: No such file or directory
 cannot reconstruct rpm from disk files
-[0mlibssh2-1.5.0-2.fc22.x86_64: Delta RPM rebuild failed
+[0mca-certificates-2016.2.7-1.0.fc22.noarch: Delta RPM rebuild failed
+libssh2-1.5.0-2.fc22.x86_64: Delta RPM rebuild failed
+krb5-libs-1.13.2-14.fc22.x86_64: Delta RPM rebuild failed
 python-libs-2.7.10-8.fc22.x86_64: Delta RPM rebuild failed
 --------------------------------------------------------------------------------
-Total                                           1.3 MB/s |  14 MB     00:10     
-Delta RPMs reduced 14.4 MB of updates to 14.3 MB (0.1% saved)
+Total                                           1.1 MB/s |  18 MB     00:16     
+Delta RPMs reduced 26.7 MB of updates to 18.0 MB (32.1% saved)
 Running transaction check
 Transaction check succeeded.
 Running transaction test
 Transaction test succeeded.
 Running transaction
-  Upgrading   : nspr-4.12.0-1.fc22.x86_64                                  1/31 
+  Upgrading   : nspr-4.12.0-1.fc22.x86_64                                  1/40 
 warning: Unable to get systemd shutdown inhibition lock
-  Upgrading   : nss-util-3.23.0-1.0.fc22.x86_64                            2/31 
-  Installing  : sqlite-libs-3.11.0-3.fc22.x86_64                           3/31 
-  Upgrading   : openssl-libs-1:1.0.1k-14.fc22.x86_64                       4/31 
-  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc22.x86_64                  5/31 
-  Upgrading   : nss-softokn-3.23.0-1.0.fc22.x86_64                         6/31 
-  Upgrading   : nss-sysinit-3.23.0-1.0.fc22.x86_64                         7/31 
-  Upgrading   : nss-3.23.0-1.0.fc22.x86_64                                 8/31 
-  Upgrading   : python-libs-2.7.10-8.fc22.x86_64                           9/31 
-  Installing  : python-setuptools-17.1.1-3.fc22.noarch                    10/31 
-  Upgrading   : python-2.7.10-8.fc22.x86_64                               11/31 
-  Installing  : python-pip-6.0.8-1.fc22.noarch                            12/31 
-  Upgrading   : nss-tools-3.23.0-1.0.fc22.x86_64                          13/31 
-  Upgrading   : libssh2-1.5.0-2.fc22.x86_64                               14/31 
-  Upgrading   : gnupg2-2.1.11-1.fc22.x86_64                               15/31 
-  Upgrading   : sqlite-3.11.0-3.fc22.x86_64                               16/31 
-  Upgrading   : pcre-8.38-3.fc22.x86_64                                   17/31 
-  Cleanup     : nss-tools-3.21.0-1.1.fc22.x86_64                          18/31 
-  Cleanup     : nss-sysinit-3.21.0-1.1.fc22.x86_64                        19/31 
-  Cleanup     : nss-3.21.0-1.1.fc22.x86_64                                20/31 
-  Cleanup     : nss-softokn-3.21.0-1.1.fc22.x86_64                        21/31 
-  Cleanup     : nss-util-3.21.0-1.0.fc22.x86_64                           22/31 
-  Cleanup     : python-2.7.9-6.fc22.x86_64                                23/31 
-  Cleanup     : python-libs-2.7.9-6.fc22.x86_64                           24/31 
-  Cleanup     : libssh2-1.5.0-1.fc22.x86_64                               25/31 
-  Cleanup     : openssl-libs-1:1.0.1k-13.fc22.x86_64                      26/31 
-  Cleanup     : sqlite-3.10.2-1.fc22.x86_64                               27/31 
-  Cleanup     : nspr-4.10.10-2.fc22.x86_64                                28/31 
-  Cleanup     : nss-softokn-freebl-3.21.0-1.1.fc22.x86_64                 29/31 
-  Cleanup     : pcre-8.38-1.fc22.x86_64                                   30/31 
-  Cleanup     : gnupg2-2.1.9-1.fc22.x86_64                                31/31 
-  Verifying   : python-pip-6.0.8-1.fc22.noarch                             1/31 
-  Verifying   : sqlite-libs-3.11.0-3.fc22.x86_64                           2/31 
-  Verifying   : python-setuptools-17.1.1-3.fc22.noarch                     3/31 
-  Verifying   : gnupg2-2.1.11-1.fc22.x86_64                                4/31 
-  Verifying   : libssh2-1.5.0-2.fc22.x86_64                                5/31 
-  Verifying   : nspr-4.12.0-1.fc22.x86_64                                  6/31 
-  Verifying   : nss-3.23.0-1.0.fc22.x86_64                                 7/31 
-  Verifying   : nss-softokn-3.23.0-1.0.fc22.x86_64                         8/31 
-  Verifying   : nss-util-3.23.0-1.0.fc22.x86_64                            9/31 
-  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc22.x86_64                 10/31 
-  Verifying   : nss-tools-3.23.0-1.0.fc22.x86_64                          11/31 
-  Verifying   : nss-sysinit-3.23.0-1.0.fc22.x86_64                        12/31 
-  Verifying   : openssl-libs-1:1.0.1k-14.fc22.x86_64                      13/31 
-  Verifying   : pcre-8.38-3.fc22.x86_64                                   14/31 
-  Verifying   : python-2.7.10-8.fc22.x86_64                               15/31 
-  Verifying   : python-libs-2.7.10-8.fc22.x86_64                          16/31 
-  Verifying   : sqlite-3.11.0-3.fc22.x86_64                               17/31 
-  Verifying   : nspr-4.10.10-2.fc22.x86_64                                18/31 
-  Verifying   : nss-3.21.0-1.1.fc22.x86_64                                19/31 
-  Verifying   : nss-softokn-3.21.0-1.1.fc22.x86_64                        20/31 
-  Verifying   : nss-softokn-freebl-3.21.0-1.1.fc22.x86_64                 21/31 
-  Verifying   : nss-sysinit-3.21.0-1.1.fc22.x86_64                        22/31 
-  Verifying   : nss-tools-3.21.0-1.1.fc22.x86_64                          23/31 
-  Verifying   : nss-util-3.21.0-1.0.fc22.x86_64                           24/31 
-  Verifying   : gnupg2-2.1.9-1.fc22.x86_64                                25/31 
-  Verifying   : libssh2-1.5.0-1.fc22.x86_64                               26/31 
-  Verifying   : openssl-libs-1:1.0.1k-13.fc22.x86_64                      27/31 
-  Verifying   : pcre-8.38-1.fc22.x86_64                                   28/31 
-  Verifying   : python-2.7.9-6.fc22.x86_64                                29/31 
-  Verifying   : sqlite-3.10.2-1.fc22.x86_64                               30/31 
-  Verifying   : python-libs-2.7.9-6.fc22.x86_64                           31/31 
+  Upgrading   : nss-util-3.23.0-1.0.fc22.x86_64                            2/40 
+  Installing  : sqlite-libs-3.11.0-3.fc22.x86_64                           3/40 
+  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc22.x86_64                  4/40 
+  Upgrading   : nss-softokn-3.23.0-1.0.fc22.x86_64                         5/40 
+  Upgrading   : nss-sysinit-3.23.0-1.0.fc22.x86_64                         6/40 
+  Upgrading   : nss-3.23.0-1.0.fc22.x86_64                                 7/40 
+  Upgrading   : ca-certificates-2016.2.7-1.0.fc22.noarch                   8/40 
+  Upgrading   : krb5-libs-1.13.2-14.fc22.x86_64                            9/40 
+  Upgrading   : openssl-libs-1:1.0.1k-14.fc22.x86_64                      10/40 
+  Upgrading   : python-libs-2.7.10-8.fc22.x86_64                          11/40 
+  Installing  : python-setuptools-17.1.1-3.fc22.noarch                    12/40 
+  Upgrading   : python-2.7.10-8.fc22.x86_64                               13/40 
+  Installing  : python-pip-6.0.8-1.fc22.noarch                            14/40 
+  Upgrading   : libssh2-1.5.0-2.fc22.x86_64                               15/40 
+  Upgrading   : nss-tools-3.23.0-1.0.fc22.x86_64                          16/40 
+  Upgrading   : gnupg2-2.1.11-1.fc22.x86_64                               17/40 
+  Upgrading   : sqlite-3.11.0-3.fc22.x86_64                               18/40 
+  Upgrading   : pcre-8.38-4.fc22.x86_64                                   19/40 
+  Upgrading   : libatomic_ops-7.4.2-9.fc22.x86_64                         20/40 
+  Upgrading   : kernel-headers-4.4.6-201.fc22.x86_64                      21/40 
+  Installing  : kernel-debug-devel-4.4.6-201.fc22.x86_64                  22/40 
+  Cleanup     : kernel-headers-4.4.6-200.fc22.x86_64                      23/40 
+  Cleanup     : nss-tools-3.21.0-1.1.fc22.x86_64                          24/40 
+  Cleanup     : nss-sysinit-3.21.0-1.1.fc22.x86_64                        25/40 
+  Cleanup     : nss-3.21.0-1.1.fc22.x86_64                                26/40 
+  Cleanup     : nss-softokn-3.21.0-1.1.fc22.x86_64                        27/40 
+  Cleanup     : nss-util-3.21.0-1.0.fc22.x86_64                           28/40 
+  Cleanup     : python-2.7.9-6.fc22.x86_64                                29/40 
+  Cleanup     : python-libs-2.7.9-6.fc22.x86_64                           30/40 
+  Cleanup     : libssh2-1.5.0-1.fc22.x86_64                               31/40 
+  Cleanup     : openssl-libs-1:1.0.1k-13.fc22.x86_64                      32/40 
+  Cleanup     : krb5-libs-1.13.2-13.fc22.x86_64                           33/40 
+  Cleanup     : ca-certificates-2015.2.6-1.0.fc22.noarch                  34/40 
+  Cleanup     : sqlite-3.10.2-1.fc22.x86_64                               35/40 
+  Cleanup     : nspr-4.10.10-2.fc22.x86_64                                36/40 
+  Cleanup     : nss-softokn-freebl-3.21.0-1.1.fc22.x86_64                 37/40 
+  Cleanup     : pcre-8.38-1.fc22.x86_64                                   38/40 
+  Cleanup     : libatomic_ops-7.4.2-4.fc22.x86_64                         39/40 
+  Cleanup     : gnupg2-2.1.9-1.fc22.x86_64                                40/40 
+  Verifying   : kernel-debug-devel-4.4.6-201.fc22.x86_64                   1/40 
+  Verifying   : python-pip-6.0.8-1.fc22.noarch                             2/40 
+  Verifying   : sqlite-libs-3.11.0-3.fc22.x86_64                           3/40 
+  Verifying   : python-setuptools-17.1.1-3.fc22.noarch                     4/40 
+  Verifying   : ca-certificates-2016.2.7-1.0.fc22.noarch                   5/40 
+  Verifying   : gnupg2-2.1.11-1.fc22.x86_64                                6/40 
+  Verifying   : kernel-headers-4.4.6-201.fc22.x86_64                       7/40 
+  Verifying   : krb5-libs-1.13.2-14.fc22.x86_64                            8/40 
+  Verifying   : libatomic_ops-7.4.2-9.fc22.x86_64                          9/40 
+  Verifying   : libssh2-1.5.0-2.fc22.x86_64                               10/40 
+  Verifying   : nspr-4.12.0-1.fc22.x86_64                                 11/40 
+  Verifying   : nss-3.23.0-1.0.fc22.x86_64                                12/40 
+  Verifying   : nss-softokn-3.23.0-1.0.fc22.x86_64                        13/40 
+  Verifying   : nss-util-3.23.0-1.0.fc22.x86_64                           14/40 
+  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc22.x86_64                 15/40 
+  Verifying   : nss-tools-3.23.0-1.0.fc22.x86_64                          16/40 
+  Verifying   : nss-sysinit-3.23.0-1.0.fc22.x86_64                        17/40 
+  Verifying   : openssl-libs-1:1.0.1k-14.fc22.x86_64                      18/40 
+  Verifying   : pcre-8.38-4.fc22.x86_64                                   19/40 
+  Verifying   : python-2.7.10-8.fc22.x86_64                               20/40 
+  Verifying   : python-libs-2.7.10-8.fc22.x86_64                          21/40 
+  Verifying   : sqlite-3.11.0-3.fc22.x86_64                               22/40 
+  Verifying   : nspr-4.10.10-2.fc22.x86_64                                23/40 
+  Verifying   : gnupg2-2.1.9-1.fc22.x86_64                                24/40 
+  Verifying   : libssh2-1.5.0-1.fc22.x86_64                               25/40 
+  Verifying   : ca-certificates-2015.2.6-1.0.fc22.noarch                  26/40 
+  Verifying   : kernel-headers-4.4.6-200.fc22.x86_64                      27/40 
+  Verifying   : krb5-libs-1.13.2-13.fc22.x86_64                           28/40 
+  Verifying   : python-2.7.9-6.fc22.x86_64                                29/40 
+  Verifying   : libatomic_ops-7.4.2-4.fc22.x86_64                         30/40 
+  Verifying   : nss-3.21.0-1.1.fc22.x86_64                                31/40 
+  Verifying   : nss-softokn-3.21.0-1.1.fc22.x86_64                        32/40 
+  Verifying   : nss-softokn-freebl-3.21.0-1.1.fc22.x86_64                 33/40 
+  Verifying   : nss-sysinit-3.21.0-1.1.fc22.x86_64                        34/40 
+  Verifying   : nss-tools-3.21.0-1.1.fc22.x86_64                          35/40 
+  Verifying   : nss-util-3.21.0-1.0.fc22.x86_64                           36/40 
+  Verifying   : python-libs-2.7.9-6.fc22.x86_64                           37/40 
+  Verifying   : openssl-libs-1:1.0.1k-13.fc22.x86_64                      38/40 
+  Verifying   : pcre-8.38-1.fc22.x86_64                                   39/40 
+  Verifying   : sqlite-3.10.2-1.fc22.x86_64                               40/40 
 
 Installed:
-  python-pip.noarch 6.0.8-1.fc22      python-setuptools.noarch 17.1.1-3.fc22   
-  sqlite-libs.x86_64 3.11.0-3.fc22   
+  kernel-debug-devel.x86_64 4.4.6-201.fc22   python-pip.noarch 6.0.8-1.fc22    
+  python-setuptools.noarch 17.1.1-3.fc22     sqlite-libs.x86_64 3.11.0-3.fc22  
 
 Upgraded:
-  gnupg2.x86_64 2.1.11-1.fc22         libssh2.x86_64 1.5.0-2.fc22               
-  nspr.x86_64 4.12.0-1.fc22           nss.x86_64 3.23.0-1.0.fc22                
-  nss-softokn.x86_64 3.23.0-1.0.fc22  nss-softokn-freebl.x86_64 3.23.0-1.0.fc22 
-  nss-sysinit.x86_64 3.23.0-1.0.fc22  nss-tools.x86_64 3.23.0-1.0.fc22          
-  nss-util.x86_64 3.23.0-1.0.fc22     openssl-libs.x86_64 1:1.0.1k-14.fc22      
-  pcre.x86_64 8.38-3.fc22             python.x86_64 2.7.10-8.fc22               
-  python-libs.x86_64 2.7.10-8.fc22    sqlite.x86_64 3.11.0-3.fc22               
+  ca-certificates.noarch 2016.2.7-1.0.fc22                                      
+  gnupg2.x86_64 2.1.11-1.fc22                                                   
+  kernel-headers.x86_64 4.4.6-201.fc22                                          
+  krb5-libs.x86_64 1.13.2-14.fc22                                               
+  libatomic_ops.x86_64 7.4.2-9.fc22                                             
+  libssh2.x86_64 1.5.0-2.fc22                                                   
+  nspr.x86_64 4.12.0-1.fc22                                                     
+  nss.x86_64 3.23.0-1.0.fc22                                                    
+  nss-softokn.x86_64 3.23.0-1.0.fc22                                            
+  nss-softokn-freebl.x86_64 3.23.0-1.0.fc22                                     
+  nss-sysinit.x86_64 3.23.0-1.0.fc22                                            
+  nss-tools.x86_64 3.23.0-1.0.fc22                                              
+  nss-util.x86_64 3.23.0-1.0.fc22                                               
+  openssl-libs.x86_64 1:1.0.1k-14.fc22                                          
+  pcre.x86_64 8.38-4.fc22                                                       
+  python.x86_64 2.7.10-8.fc22                                                   
+  python-libs.x86_64 2.7.10-8.fc22                                              
+  sqlite.x86_64 3.11.0-3.fc22                                                   
 
 Complete!
 # OS package update successful
@@ -353,7 +327,7 @@ See 'man dnf' and 'man yum2dnf' for more information.
 To transfer transaction metadata from yum to DNF, run:
 'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
 
-[0mLast metadata expiration check performed 0:00:51 ago on Mon Mar 28 17:41:09 2016.
+[0mLast metadata expiration check performed 0:01:15 ago on Mon Apr 11 17:19:47 2016.
 Dependencies resolved.
 ================================================================================
  Package             Arch         Version                    Repository    Size
@@ -371,7 +345,7 @@ Total download size: 1.2 M
 Installed size: 3.1 M
 Downloading Packages:
 --------------------------------------------------------------------------------
-Total                                           829 kB/s | 1.2 MB     00:01     
+Total                                           902 kB/s | 1.2 MB     00:01     
 Running transaction check
 Transaction check succeeded.
 Running transaction test

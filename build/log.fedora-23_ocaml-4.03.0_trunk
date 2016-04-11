@@ -3,110 +3,46 @@ FROM ocaml/opam:fedora-23_ocaml-4.03.0_trunk
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 901.1 kB
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 731.6 kB
 Step 1 : FROM ocaml/opam:fedora-23_ocaml-4.03.0_trunk
 fedora-23_ocaml-4.03.0_trunk: Pulling from ocaml/opam
 a3ed95caeb02: Already exists
-236608c7b546: Pulling fs layer
-36b56b27335b: Pulling fs layer
-c4a580fc7238: Pulling fs layer
-2872e1ecaa60: Pulling fs layer
-236608c7b546: Waiting
-36b56b27335b: Waiting
-c4a580fc7238: Waiting
-2872e1ecaa60: Waiting
-236608c7b546: Verifying Checksum
-236608c7b546: Download complete
-236608c7b546: Pull complete
-236608c7b546: Pull complete
-36b56b27335b: Verifying Checksum
-36b56b27335b: Download complete
-36b56b27335b: Pull complete
-36b56b27335b: Pull complete
-c4a580fc7238: Pull complete
-c4a580fc7238: Pull complete
-2872e1ecaa60: Verifying Checksum
-2872e1ecaa60: Download complete
-2872e1ecaa60: Pull complete
-2872e1ecaa60: Pull complete
-Digest: sha256:5ec3217d2d21895577e8a6089f8c919b874ae21555e4ca366ad25c2beb1786b0
+236608c7b546: Already exists
+4a4c96b88bc0: Pulling fs layer
+e885ea742a86: Pulling fs layer
+03469ba04a14: Pulling fs layer
+03469ba04a14: Waiting
+4a4c96b88bc0: Waiting
+e885ea742a86: Waiting
+4a4c96b88bc0: Verifying Checksum
+4a4c96b88bc0: Download complete
+e885ea742a86: Verifying Checksum
+e885ea742a86: Download complete
+4a4c96b88bc0: Pull complete
+4a4c96b88bc0: Pull complete
+e885ea742a86: Pull complete
+e885ea742a86: Pull complete
+03469ba04a14: Verifying Checksum
+03469ba04a14: Download complete
+03469ba04a14: Pull complete
+03469ba04a14: Pull complete
+Digest: sha256:190f270904ad77f969fefcf3bfbd338761ea13ba329933d707a088677e2f910a
 Status: Downloaded newer image for ocaml/opam:fedora-23_ocaml-4.03.0_trunk
- ---> 6ba44c7120c1
+ ---> 7652acf2d459
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in 7d967e990799
+ ---> Running in d7082157d5b3
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   90aa923..f7aad90  master     -> origin/master
-[0mUpdating 90aa923..f7aad90
+[0m[91m   1a10bdc..c0cde63  master     -> origin/master
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    | 11 ++++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     | 20 ++++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |  2 +
- .../aws-cloudformation.0.1.0/descr                 |  1 +
- .../aws-cloudformation.0.1.0/opam                  | 20 ++++++++++
- .../aws-cloudformation.0.1.0/url                   |  2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |  1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  | 20 ++++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |  2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |  1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                | 20 ++++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |  2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |  1 +
- .../aws-elasticloadbalancing.0.1.0/opam            | 20 ++++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |  2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |  1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                | 20 ++++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |  2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |  1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                | 20 ++++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |  2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |  1 +
- packages/aws-sts/aws-sts.0.1.0/opam                | 20 ++++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |  2 +
- packages/aws/aws.1.0.1/opam                        |  2 +-
- packages/aws/aws.1.0.2/descr                       |  6 +++
- packages/aws/aws.1.0.2/opam                        | 46 ++++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |  2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     | 36 +++++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |  2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |  3 +++
+ packages/argon2/argon2.0.2/opam  | 23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |  2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started
@@ -197,162 +133,223 @@ See 'man dnf' and 'man yum2dnf' for more information.
 To transfer transaction metadata from yum to DNF, run:
 'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
 
-[0mLast metadata expiration check performed 0:00:32 ago on Mon Mar 28 17:39:36 2016.
+[0mLast metadata expiration check performed 0:00:20 ago on Mon Apr 11 17:21:17 2016.
 Dependencies resolved.
 ================================================================================
- Package                 Arch        Version                 Repository    Size
+ Package                        Arch      Version              Repository  Size
 ================================================================================
 Installing:
- libsecret               x86_64      0.18.3-1.fc23           fedora       156 k
+ kernel-debug-devel             x86_64    4.4.6-301.fc23       updates     10 M
+ libsecret                      x86_64    0.18.3-1.fc23        fedora     156 k
 Upgrading:
- ca-certificates         noarch      2016.2.7-1.0.fc23       updates      425 k
- dbus                    x86_64      1:1.10.8-1.fc23         updates      244 k
- dbus-libs               x86_64      1:1.10.8-1.fc23         updates      173 k
- dnf                     noarch      1.1.7-2.fc23            updates      295 k
- dnf-conf                noarch      1.1.7-2.fc23            updates       92 k
- dnf-yum                 noarch      1.1.7-2.fc23            updates       86 k
- gnutls                  x86_64      3.4.10-1.fc23           updates      659 k
- krb5-libs               x86_64      1.14.1-3.fc23           updates      840 k
- libsolv                 x86_64      0.6.19-2.fc23           updates      349 k
- nss                     x86_64      3.23.0-1.0.fc23         updates      871 k
- nss-softokn             x86_64      3.23.0-1.0.fc23         updates      317 k
- nss-softokn-freebl      x86_64      3.23.0-1.0.fc23         updates      214 k
- nss-sysinit             x86_64      3.23.0-1.0.fc23         updates       57 k
- nss-tools               x86_64      3.23.0-1.0.fc23         updates      494 k
- nss-util                x86_64      3.23.0-1.0.fc23         updates       82 k
- pinentry                x86_64      0.9.6-4.fc23            updates       81 k
- python3-dnf             noarch      1.1.7-2.fc23            updates      455 k
- shadow-utils            x86_64      2:4.2.1-8.fc23          updates      1.1 M
- sqlite-libs             x86_64      3.11.0-3.fc23           updates      449 k
- tzdata                  noarch      2016c-1.fc23            updates      412 k
+ ca-certificates                noarch    2016.2.7-1.0.fc23    updates    425 k
+ dbus                           x86_64    1:1.10.8-1.fc23      updates    244 k
+ dbus-libs                      x86_64    1:1.10.8-1.fc23      updates    173 k
+ dnf                            noarch    1.1.7-2.fc23         updates    295 k
+ dnf-conf                       noarch    1.1.7-2.fc23         updates     92 k
+ dnf-yum                        noarch    1.1.7-2.fc23         updates     86 k
+ elfutils-default-yama-scope    noarch    0.166-1.fc23         updates     38 k
+ elfutils-libelf                x86_64    0.166-1.fc23         updates    215 k
+ elfutils-libs                  x86_64    0.166-1.fc23         updates    272 k
+ gnutls                         x86_64    3.4.10-1.fc23        updates    659 k
+ kernel-headers                 x86_64    4.4.6-301.fc23       updates    1.0 M
+ krb5-libs                      x86_64    1.14.1-5.fc23        updates    842 k
+ libsolv                        x86_64    0.6.19-2.fc23        updates    349 k
+ libsss_idmap                   x86_64    1.13.3-6.fc23        updates     80 k
+ libsss_nss_idmap               x86_64    1.13.3-6.fc23        updates     78 k
+ nss                            x86_64    3.23.0-1.0.fc23      updates    871 k
+ nss-softokn                    x86_64    3.23.0-1.0.fc23      updates    317 k
+ nss-softokn-freebl             x86_64    3.23.0-1.0.fc23      updates    214 k
+ nss-sysinit                    x86_64    3.23.0-1.0.fc23      updates     57 k
+ nss-tools                      x86_64    3.23.0-1.0.fc23      updates    494 k
+ nss-util                       x86_64    3.23.0-1.0.fc23      updates     82 k
+ openssh                        x86_64    7.2p2-2.fc23         updates    443 k
+ openssh-clients                x86_64    7.2p2-2.fc23         updates    663 k
+ pinentry                       x86_64    0.9.6-4.fc23         updates     81 k
+ python3                        x86_64    3.4.3-6.fc23         updates     54 k
+ python3-dnf                    noarch    1.1.7-2.fc23         updates    455 k
+ python3-libs                   x86_64    3.4.3-6.fc23         updates    6.7 M
+ shadow-utils                   x86_64    2:4.2.1-8.fc23       updates    1.1 M
+ sqlite-libs                    x86_64    3.11.0-3.fc23        updates    449 k
+ sssd-client                    x86_64    1.13.3-6.fc23        updates    136 k
+ tzdata                         noarch    2016c-1.fc23         updates    412 k
 
 Transaction Summary
 ================================================================================
-Install   1 Package
-Upgrade  20 Packages
+Install   2 Packages
+Upgrade  31 Packages
 
-Total download size: 7.7 M
+Total download size: 28 M
 Downloading Packages:
 [91m/usr/share/man/man8/ca-legacy.8.gz: No such file or directory
 cannot reconstruct rpm from disk files
 [0m[91m/usr/share/doc/dnf/AUTHORS: No such file or directory
 cannot reconstruct rpm from disk files
-[0m[91m/usr/share/doc/shadow-utils/HOWTO: No such file or directory
-cannot reconstruct rpm from disk files
-[0m[91m/usr/share/doc/libsolv/BUGS: No such file or directory
-cannot reconstruct rpm from disk files
-[0m[91m/usr/share/doc/gnutls/AUTHORS: No such file or directory
+[0m[91m/usr/share/locale/de/LC_MESSAGES/elfutils.mo: No such file or directory
 cannot reconstruct rpm from disk files
 [0m[91m/usr/share/doc/python3-dnf/AUTHORS: No such file or directory
 cannot reconstruct rpm from disk files
-[0m[91m/usr/share/doc/sqlite-libs/README.md: No such file or directory
+[0m[91m/usr/share/doc/gnutls/AUTHORS: No such file or directory
 cannot reconstruct rpm from disk files
-[0m[91m/usr/share/doc/krb5-libs/NOTICE: No such file or directory
+[0m[91m/usr/share/doc/libsolv/BUGS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/shadow-utils/HOWTO: No such file or directory
 cannot reconstruct rpm from disk files
 [0m[91m/usr/share/man/man5/cert8.db.5.gz: No such file or directory
 cannot reconstruct rpm from disk files
-[0mdnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
-shadow-utils-2:4.2.1-8.fc23.x86_64: Delta RPM rebuild failed
-nss-3.23.0-1.0.fc23.x86_64: Delta RPM rebuild failed
-libsolv-0.6.19-2.fc23.x86_64: Delta RPM rebuild failed
-ca-certificates-2016.2.7-1.0.fc23.noarch: Delta RPM rebuild failed
-krb5-libs-1.14.1-3.fc23.x86_64: Delta RPM rebuild failed
-python3-dnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
+[0m[91m/usr/share/doc/sqlite-libs/README.md: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/lib64/python3.4/email/architecture.rst: No such file or directory
+cannot reconstruct rpm from disk files
+[0mpython3-dnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
 gnutls-3.4.10-1.fc23.x86_64: Delta RPM rebuild failed
+elfutils-libelf-0.166-1.fc23.x86_64: Delta RPM rebuild failed
+libsolv-0.6.19-2.fc23.x86_64: Delta RPM rebuild failed
 sqlite-libs-3.11.0-3.fc23.x86_64: Delta RPM rebuild failed
+python3-libs-3.4.3-6.fc23.x86_64: Delta RPM rebuild failed
+shadow-utils-2:4.2.1-8.fc23.x86_64: Delta RPM rebuild failed
+dnf-1.1.7-2.fc23.noarch: Delta RPM rebuild failed
+ca-certificates-2016.2.7-1.0.fc23.noarch: Delta RPM rebuild failed
+nss-3.23.0-1.0.fc23.x86_64: Delta RPM rebuild failed
 --------------------------------------------------------------------------------
-Total                                           2.3 MB/s | 8.3 MB     00:03     
-Delta RPMs reduced 7.7 MB of updates to 8.3 MB (-7.1% saved)
+Total                                           378 kB/s |  20 MB     00:53     
+Delta RPMs reduced 27.5 MB of updates to 19.7 MB (28.1% saved)
 Running transaction check
 Transaction check succeeded.
 Running transaction test
 Transaction test succeeded.
 Running transaction
-  Upgrading   : nss-util-3.23.0-1.0.fc23.x86_64                            1/41 
-  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                  2/41 
-  Upgrading   : sqlite-libs-3.11.0-3.fc23.x86_64                           3/41 
-  Upgrading   : nss-softokn-3.23.0-1.0.fc23.x86_64                         4/41 
-  Upgrading   : nss-sysinit-3.23.0-1.0.fc23.x86_64                         5/41 
-  Upgrading   : nss-3.23.0-1.0.fc23.x86_64                                 6/41 
-  Upgrading   : shadow-utils-2:4.2.1-8.fc23.x86_64                         7/41 
-  Upgrading   : dnf-conf-1.1.7-2.fc23.noarch                               8/41 
-  Upgrading   : python3-dnf-1.1.7-2.fc23.noarch                            9/41 
-  Upgrading   : dnf-1.1.7-2.fc23.noarch                                   10/41 
-  Upgrading   : dbus-libs-1:1.10.8-1.fc23.x86_64                          11/41 
-  Installing  : libsecret-0.18.3-1.fc23.x86_64                            12/41 
-  Upgrading   : pinentry-0.9.6-4.fc23.x86_64                              13/41 
-  Upgrading   : dbus-1:1.10.8-1.fc23.x86_64                               14/41 
-  Upgrading   : dnf-yum-1.1.7-2.fc23.noarch                               15/41 
-  Upgrading   : nss-tools-3.23.0-1.0.fc23.x86_64                          16/41 
-  Upgrading   : tzdata-2016c-1.fc23.noarch                                17/41 
-  Upgrading   : libsolv-0.6.19-2.fc23.x86_64                              18/41 
-  Upgrading   : krb5-libs-1.14.1-3.fc23.x86_64                            19/41 
-  Upgrading   : gnutls-3.4.10-1.fc23.x86_64                               20/41 
-  Upgrading   : ca-certificates-2016.2.7-1.0.fc23.noarch                  21/41 
-  Cleanup     : dnf-yum-1.1.6-2.fc23.noarch                               22/41 
-  Cleanup     : dnf-1.1.6-2.fc23.noarch                                   23/41 
-  Cleanup     : python3-dnf-1.1.6-2.fc23.noarch                           24/41 
-  Cleanup     : dnf-conf-1.1.6-2.fc23.noarch                              25/41 
-  Cleanup     : tzdata-2016a-1.fc23.noarch                                26/41 
-  Cleanup     : libsolv-0.6.14-7.fc23.x86_64                              27/41 
-  Cleanup     : ca-certificates-2015.2.6-1.0.fc23.noarch                  28/41 
-  Cleanup     : nss-tools-3.22.2-1.0.fc23.x86_64                          29/41 
-  Cleanup     : nss-sysinit-3.22.2-1.0.fc23.x86_64                        30/41 
-  Cleanup     : nss-3.22.2-1.0.fc23.x86_64                                31/41 
-  Cleanup     : nss-softokn-3.22.2-1.0.fc23.x86_64                        32/41 
-  Cleanup     : dbus-1:1.10.6-1.fc23.x86_64                               33/41 
-  Cleanup     : shadow-utils-2:4.2.1-3.fc23.x86_64                        34/41 
-  Cleanup     : dbus-libs-1:1.10.6-1.fc23.x86_64                          35/41 
-  Cleanup     : nss-util-3.22.2-1.0.fc23.x86_64                           36/41 
-  Cleanup     : sqlite-libs-3.11.0-2.fc23.x86_64                          37/41 
-  Cleanup     : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 38/41 
-  Cleanup     : pinentry-0.9.6-3.fc23.x86_64                              39/41 
-  Cleanup     : krb5-libs-1.14.1-1.fc23.x86_64                            40/41 
-  Cleanup     : gnutls-3.4.9-1.fc23.x86_64                                41/41 
-  Verifying   : libsecret-0.18.3-1.fc23.x86_64                             1/41 
-  Verifying   : ca-certificates-2016.2.7-1.0.fc23.noarch                   2/41 
-  Verifying   : dbus-1:1.10.8-1.fc23.x86_64                                3/41 
-  Verifying   : dbus-libs-1:1.10.8-1.fc23.x86_64                           4/41 
-  Verifying   : dnf-1.1.7-2.fc23.noarch                                    5/41 
-  Verifying   : python3-dnf-1.1.7-2.fc23.noarch                            6/41 
-  Verifying   : dnf-conf-1.1.7-2.fc23.noarch                               7/41 
-  Verifying   : dnf-yum-1.1.7-2.fc23.noarch                                8/41 
-  Verifying   : gnutls-3.4.10-1.fc23.x86_64                                9/41 
-  Verifying   : krb5-libs-1.14.1-3.fc23.x86_64                            10/41 
-  Verifying   : libsolv-0.6.19-2.fc23.x86_64                              11/41 
-  Verifying   : nss-3.23.0-1.0.fc23.x86_64                                12/41 
-  Verifying   : nss-softokn-3.23.0-1.0.fc23.x86_64                        13/41 
-  Verifying   : nss-util-3.23.0-1.0.fc23.x86_64                           14/41 
-  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                 15/41 
-  Verifying   : nss-tools-3.23.0-1.0.fc23.x86_64                          16/41 
-  Verifying   : nss-sysinit-3.23.0-1.0.fc23.x86_64                        17/41 
-  Verifying   : pinentry-0.9.6-4.fc23.x86_64                              18/41 
-  Verifying   : shadow-utils-2:4.2.1-8.fc23.x86_64                        19/41 
-  Verifying   : sqlite-libs-3.11.0-3.fc23.x86_64                          20/41 
-  Verifying   : tzdata-2016c-1.fc23.noarch                                21/41 
-  Verifying   : gnutls-3.4.9-1.fc23.x86_64                                22/41 
-  Verifying   : ca-certificates-2015.2.6-1.0.fc23.noarch                  23/41 
-  Verifying   : krb5-libs-1.14.1-1.fc23.x86_64                            24/41 
-  Verifying   : pinentry-0.9.6-3.fc23.x86_64                              25/41 
-  Verifying   : dbus-1:1.10.6-1.fc23.x86_64                               26/41 
-  Verifying   : dbus-libs-1:1.10.6-1.fc23.x86_64                          27/41 
-  Verifying   : nss-softokn-3.22.2-1.0.fc23.x86_64                        28/41 
-  Verifying   : python3-dnf-1.1.6-2.fc23.noarch                           29/41 
-  Verifying   : nss-sysinit-3.22.2-1.0.fc23.x86_64                        30/41 
-  Verifying   : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 31/41 
-  Verifying   : nss-3.22.2-1.0.fc23.x86_64                                32/41 
-  Verifying   : dnf-1.1.6-2.fc23.noarch                                   33/41 
-  Verifying   : dnf-conf-1.1.6-2.fc23.noarch                              34/41 
-  Verifying   : dnf-yum-1.1.6-2.fc23.noarch                               35/41 
-  Verifying   : nss-tools-3.22.2-1.0.fc23.x86_64                          36/41 
-  Verifying   : nss-util-3.22.2-1.0.fc23.x86_64                           37/41 
-  Verifying   : shadow-utils-2:4.2.1-3.fc23.x86_64                        38/41 
-  Verifying   : sqlite-libs-3.11.0-2.fc23.x86_64                          39/41 
-  Verifying   : libsolv-0.6.14-7.fc23.x86_64                              40/41 
-  Verifying   : tzdata-2016a-1.fc23.noarch                                41/41 
+  Upgrading   : nss-util-3.23.0-1.0.fc23.x86_64                            1/64 
+  Upgrading   : sqlite-libs-3.11.0-3.fc23.x86_64                           2/64 
+  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                  3/64 
+  Upgrading   : nss-softokn-3.23.0-1.0.fc23.x86_64                         4/64 
+  Upgrading   : nss-sysinit-3.23.0-1.0.fc23.x86_64                         5/64 
+  Upgrading   : nss-3.23.0-1.0.fc23.x86_64                                 6/64 
+  Upgrading   : krb5-libs-1.14.1-5.fc23.x86_64                             7/64 
+  Upgrading   : python3-libs-3.4.3-6.fc23.x86_64                           8/64 
+  Upgrading   : python3-3.4.3-6.fc23.x86_64                                9/64 
+  Upgrading   : shadow-utils-2:4.2.1-8.fc23.x86_64                        10/64 
+  Upgrading   : openssh-7.2p2-2.fc23.x86_64                               11/64 
+  Upgrading   : libsss_nss_idmap-1.13.3-6.fc23.x86_64                     12/64 
+  Upgrading   : libsss_idmap-1.13.3-6.fc23.x86_64                         13/64 
+  Upgrading   : elfutils-libelf-0.166-1.fc23.x86_64                       14/64 
+  Upgrading   : elfutils-default-yama-scope-0.166-1.fc23.noarch           15/64 
+  Upgrading   : dnf-conf-1.1.7-2.fc23.noarch                              16/64 
+  Upgrading   : python3-dnf-1.1.7-2.fc23.noarch                           17/64 
+  Upgrading   : dnf-1.1.7-2.fc23.noarch                                   18/64 
+  Upgrading   : dbus-libs-1:1.10.8-1.fc23.x86_64                          19/64 
+  Installing  : libsecret-0.18.3-1.fc23.x86_64                            20/64 
+  Upgrading   : pinentry-0.9.6-4.fc23.x86_64                              21/64 
+  Upgrading   : dbus-1:1.10.8-1.fc23.x86_64                               22/64 
+  Upgrading   : dnf-yum-1.1.7-2.fc23.noarch                               23/64 
+  Upgrading   : elfutils-libs-0.166-1.fc23.x86_64                         24/64 
+  Upgrading   : sssd-client-1.13.3-6.fc23.x86_64                          25/64 
+  Upgrading   : openssh-clients-7.2p2-2.fc23.x86_64                       26/64 
+  Upgrading   : nss-tools-3.23.0-1.0.fc23.x86_64                          27/64 
+  Upgrading   : tzdata-2016c-1.fc23.noarch                                28/64 
+  Upgrading   : libsolv-0.6.19-2.fc23.x86_64                              29/64 
+  Upgrading   : kernel-headers-4.4.6-301.fc23.x86_64                      30/64 
+  Upgrading   : gnutls-3.4.10-1.fc23.x86_64                               31/64 
+  Upgrading   : ca-certificates-2016.2.7-1.0.fc23.noarch                  32/64 
+  Installing  : kernel-debug-devel-4.4.6-301.fc23.x86_64                  33/64 
+  Cleanup     : dnf-yum-1.1.6-2.fc23.noarch                               34/64 
+  Cleanup     : dnf-1.1.6-2.fc23.noarch                                   35/64 
+  Cleanup     : python3-dnf-1.1.6-2.fc23.noarch                           36/64 
+  Cleanup     : python3-libs-3.4.3-5.fc23.x86_64                          37/64 
+  Cleanup     : python3-3.4.3-5.fc23.x86_64                               38/64 
+  Cleanup     : dnf-conf-1.1.6-2.fc23.noarch                              39/64 
+  Cleanup     : tzdata-2016a-1.fc23.noarch                                40/64 
+  Cleanup     : libsolv-0.6.14-7.fc23.x86_64                              41/64 
+  Cleanup     : kernel-headers-4.4.6-300.fc23.x86_64                      42/64 
+  Cleanup     : ca-certificates-2015.2.6-1.0.fc23.noarch                  43/64 
+  Cleanup     : nss-tools-3.22.2-1.0.fc23.x86_64                          44/64 
+  Cleanup     : nss-sysinit-3.22.2-1.0.fc23.x86_64                        45/64 
+  Cleanup     : nss-3.22.2-1.0.fc23.x86_64                                46/64 
+  Cleanup     : nss-softokn-3.22.2-1.0.fc23.x86_64                        47/64 
+  Cleanup     : sssd-client-1.13.3-5.fc23.x86_64                          48/64 
+  Cleanup     : openssh-clients-7.2p2-1.fc23.x86_64                       49/64 
+  Cleanup     : elfutils-libs-0.165-2.fc23.x86_64                         50/64 
+  Cleanup     : dbus-1:1.10.6-1.fc23.x86_64                               51/64 
+  Cleanup     : elfutils-default-yama-scope-0.165-2.fc23.noarch           52/64 
+  Cleanup     : shadow-utils-2:4.2.1-3.fc23.x86_64                        53/64 
+  Cleanup     : dbus-libs-1:1.10.6-1.fc23.x86_64                          54/64 
+  Cleanup     : elfutils-libelf-0.165-2.fc23.x86_64                       55/64 
+  Cleanup     : krb5-libs-1.14.1-1.fc23.x86_64                            56/64 
+  Cleanup     : openssh-7.2p2-1.fc23.x86_64                               57/64 
+  Cleanup     : libsss_idmap-1.13.3-5.fc23.x86_64                         58/64 
+  Cleanup     : libsss_nss_idmap-1.13.3-5.fc23.x86_64                     59/64 
+  Cleanup     : nss-util-3.22.2-1.0.fc23.x86_64                           60/64 
+  Cleanup     : sqlite-libs-3.11.0-2.fc23.x86_64                          61/64 
+  Cleanup     : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 62/64 
+  Cleanup     : pinentry-0.9.6-3.fc23.x86_64                              63/64 
+  Cleanup     : gnutls-3.4.9-1.fc23.x86_64                                64/64 
+  Verifying   : kernel-debug-devel-4.4.6-301.fc23.x86_64                   1/64 
+  Verifying   : libsecret-0.18.3-1.fc23.x86_64                             2/64 
+  Verifying   : ca-certificates-2016.2.7-1.0.fc23.noarch                   3/64 
+  Verifying   : dbus-1:1.10.8-1.fc23.x86_64                                4/64 
+  Verifying   : dbus-libs-1:1.10.8-1.fc23.x86_64                           5/64 
+  Verifying   : dnf-1.1.7-2.fc23.noarch                                    6/64 
+  Verifying   : python3-dnf-1.1.7-2.fc23.noarch                            7/64 
+  Verifying   : dnf-conf-1.1.7-2.fc23.noarch                               8/64 
+  Verifying   : dnf-yum-1.1.7-2.fc23.noarch                                9/64 
+  Verifying   : elfutils-default-yama-scope-0.166-1.fc23.noarch           10/64 
+  Verifying   : elfutils-libelf-0.166-1.fc23.x86_64                       11/64 
+  Verifying   : elfutils-libs-0.166-1.fc23.x86_64                         12/64 
+  Verifying   : gnutls-3.4.10-1.fc23.x86_64                               13/64 
+  Verifying   : kernel-headers-4.4.6-301.fc23.x86_64                      14/64 
+  Verifying   : krb5-libs-1.14.1-5.fc23.x86_64                            15/64 
+  Verifying   : libsolv-0.6.19-2.fc23.x86_64                              16/64 
+  Verifying   : libsss_idmap-1.13.3-6.fc23.x86_64                         17/64 
+  Verifying   : libsss_nss_idmap-1.13.3-6.fc23.x86_64                     18/64 
+  Verifying   : nss-3.23.0-1.0.fc23.x86_64                                19/64 
+  Verifying   : nss-softokn-3.23.0-1.0.fc23.x86_64                        20/64 
+  Verifying   : nss-util-3.23.0-1.0.fc23.x86_64                           21/64 
+  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                 22/64 
+  Verifying   : nss-tools-3.23.0-1.0.fc23.x86_64                          23/64 
+  Verifying   : nss-sysinit-3.23.0-1.0.fc23.x86_64                        24/64 
+  Verifying   : openssh-7.2p2-2.fc23.x86_64                               25/64 
+  Verifying   : openssh-clients-7.2p2-2.fc23.x86_64                       26/64 
+  Verifying   : pinentry-0.9.6-4.fc23.x86_64                              27/64 
+  Verifying   : python3-3.4.3-6.fc23.x86_64                               28/64 
+  Verifying   : python3-libs-3.4.3-6.fc23.x86_64                          29/64 
+  Verifying   : shadow-utils-2:4.2.1-8.fc23.x86_64                        30/64 
+  Verifying   : sqlite-libs-3.11.0-3.fc23.x86_64                          31/64 
+  Verifying   : sssd-client-1.13.3-6.fc23.x86_64                          32/64 
+  Verifying   : tzdata-2016c-1.fc23.noarch                                33/64 
+  Verifying   : tzdata-2016a-1.fc23.noarch                                34/64 
+  Verifying   : gnutls-3.4.9-1.fc23.x86_64                                35/64 
+  Verifying   : libsss_idmap-1.13.3-5.fc23.x86_64                         36/64 
+  Verifying   : libsss_nss_idmap-1.13.3-5.fc23.x86_64                     37/64 
+  Verifying   : kernel-headers-4.4.6-300.fc23.x86_64                      38/64 
+  Verifying   : ca-certificates-2015.2.6-1.0.fc23.noarch                  39/64 
+  Verifying   : krb5-libs-1.14.1-1.fc23.x86_64                            40/64 
+  Verifying   : pinentry-0.9.6-3.fc23.x86_64                              41/64 
+  Verifying   : dbus-1:1.10.6-1.fc23.x86_64                               42/64 
+  Verifying   : python3-3.4.3-5.fc23.x86_64                               43/64 
+  Verifying   : dbus-libs-1:1.10.6-1.fc23.x86_64                          44/64 
+  Verifying   : python3-dnf-1.1.6-2.fc23.noarch                           45/64 
+  Verifying   : nss-3.22.2-1.0.fc23.x86_64                                46/64 
+  Verifying   : nss-softokn-3.22.2-1.0.fc23.x86_64                        47/64 
+  Verifying   : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 48/64 
+  Verifying   : nss-tools-3.22.2-1.0.fc23.x86_64                          49/64 
+  Verifying   : dnf-1.1.6-2.fc23.noarch                                   50/64 
+  Verifying   : dnf-conf-1.1.6-2.fc23.noarch                              51/64 
+  Verifying   : dnf-yum-1.1.6-2.fc23.noarch                               52/64 
+  Verifying   : nss-util-3.22.2-1.0.fc23.x86_64                           53/64 
+  Verifying   : nss-sysinit-3.22.2-1.0.fc23.x86_64                        54/64 
+  Verifying   : python3-libs-3.4.3-5.fc23.x86_64                          55/64 
+  Verifying   : elfutils-default-yama-scope-0.165-2.fc23.noarch           56/64 
+  Verifying   : elfutils-libelf-0.165-2.fc23.x86_64                       57/64 
+  Verifying   : elfutils-libs-0.165-2.fc23.x86_64                         58/64 
+  Verifying   : openssh-7.2p2-1.fc23.x86_64                               59/64 
+  Verifying   : openssh-clients-7.2p2-1.fc23.x86_64                       60/64 
+  Verifying   : shadow-utils-2:4.2.1-3.fc23.x86_64                        61/64 
+  Verifying   : sqlite-libs-3.11.0-2.fc23.x86_64                          62/64 
+  Verifying   : sssd-client-1.13.3-5.fc23.x86_64                          63/64 
+  Verifying   : libsolv-0.6.14-7.fc23.x86_64                              64/64 
 
 Installed:
-  libsecret.x86_64 0.18.3-1.fc23                                                
+  kernel-debug-devel.x86_64 4.4.6-301.fc23    libsecret.x86_64 0.18.3-1.fc23   
 
 Upgraded:
   ca-certificates.noarch 2016.2.7-1.0.fc23                                      
@@ -361,19 +358,30 @@ Upgraded:
   dnf.noarch 1.1.7-2.fc23                                                       
   dnf-conf.noarch 1.1.7-2.fc23                                                  
   dnf-yum.noarch 1.1.7-2.fc23                                                   
+  elfutils-default-yama-scope.noarch 0.166-1.fc23                               
+  elfutils-libelf.x86_64 0.166-1.fc23                                           
+  elfutils-libs.x86_64 0.166-1.fc23                                             
   gnutls.x86_64 3.4.10-1.fc23                                                   
-  krb5-libs.x86_64 1.14.1-3.fc23                                                
+  kernel-headers.x86_64 4.4.6-301.fc23                                          
+  krb5-libs.x86_64 1.14.1-5.fc23                                                
   libsolv.x86_64 0.6.19-2.fc23                                                  
+  libsss_idmap.x86_64 1.13.3-6.fc23                                             
+  libsss_nss_idmap.x86_64 1.13.3-6.fc23                                         
   nss.x86_64 3.23.0-1.0.fc23                                                    
   nss-softokn.x86_64 3.23.0-1.0.fc23                                            
   nss-softokn-freebl.x86_64 3.23.0-1.0.fc23                                     
   nss-sysinit.x86_64 3.23.0-1.0.fc23                                            
   nss-tools.x86_64 3.23.0-1.0.fc23                                              
   nss-util.x86_64 3.23.0-1.0.fc23                                               
+  openssh.x86_64 7.2p2-2.fc23                                                   
+  openssh-clients.x86_64 7.2p2-2.fc23                                           
   pinentry.x86_64 0.9.6-4.fc23                                                  
+  python3.x86_64 3.4.3-6.fc23                                                   
   python3-dnf.noarch 1.1.7-2.fc23                                               
+  python3-libs.x86_64 3.4.3-6.fc23                                              
   shadow-utils.x86_64 2:4.2.1-8.fc23                                            
   sqlite-libs.x86_64 3.11.0-3.fc23                                              
+  sssd-client.x86_64 1.13.3-6.fc23                                              
   tzdata.noarch 2016c-1.fc23                                                    
 
 Complete!
@@ -385,7 +393,7 @@ See 'man dnf' and 'man yum2dnf' for more information.
 To transfer transaction metadata from yum to DNF, run:
 'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
 
-[0mLast metadata expiration check: 0:01:01 ago on Mon Mar 28 17:39:36 2016.
+[0mLast metadata expiration check: 0:03:08 ago on Mon Apr 11 17:21:17 2016.
 Dependencies resolved.
 ================================================================================
  Package             Arch         Version                    Repository    Size
@@ -404,7 +412,7 @@ Total download size: 1.2 M
 Installed size: 3.2 M
 Downloading Packages:
 --------------------------------------------------------------------------------
-Total                                           963 kB/s | 1.2 MB     00:01     
+Total                                           537 kB/s | 1.2 MB     00:02     
 Running transaction check
 Transaction check succeeded.
 Running transaction test

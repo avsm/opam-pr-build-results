@@ -3,128 +3,33 @@ FROM ocaml/opam:ubuntu-16.04_ocaml-4.03.0_trunk_flambda
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.785 MBSending build context to Docker daemon 3.342 MBSending build context to Docker daemon 3.746 MB
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.785 MBSending build context to Docker daemon 3.342 MBSending build context to Docker daemon 3.508 MB
 Step 1 : FROM ocaml/opam:ubuntu-16.04_ocaml-4.03.0_trunk_flambda
 ubuntu-16.04_ocaml-4.03.0_trunk_flambda: Pulling from ocaml/opam
-6d3a6d998241: Pulling fs layer
-606b08bdd0f3: Pulling fs layer
-1d99b95ffc1c: Pulling fs layer
-a3ed95caeb02: Pulling fs layer
-e02917916789: Pulling fs layer
-06c739aff05e: Pulling fs layer
-68877ecd911c: Pulling fs layer
-a3ed95caeb02: Waiting
-6d3a6d998241: Waiting
-e02917916789: Waiting
-606b08bdd0f3: Waiting
-1d99b95ffc1c: Waiting
-06c739aff05e: Waiting
-68877ecd911c: Waiting
-6d3a6d998241: Verifying Checksum
-6d3a6d998241: Download complete
-606b08bdd0f3: Verifying Checksum
-606b08bdd0f3: Download complete
-1d99b95ffc1c: Verifying Checksum
-1d99b95ffc1c: Download complete
-a3ed95caeb02: Download complete
-6d3a6d998241: Pull complete
-6d3a6d998241: Pull complete
-606b08bdd0f3: Pull complete
-606b08bdd0f3: Pull complete
-1d99b95ffc1c: Pull complete
-1d99b95ffc1c: Pull complete
-a3ed95caeb02: Pull complete
-a3ed95caeb02: Pull complete
-e02917916789: Verifying Checksum
-e02917916789: Download complete
-06c739aff05e: Verifying Checksum
-06c739aff05e: Download complete
-68877ecd911c: Verifying Checksum
-68877ecd911c: Download complete
-e02917916789: Pull complete
-e02917916789: Pull complete
-06c739aff05e: Pull complete
-06c739aff05e: Pull complete
-68877ecd911c: Pull complete
-68877ecd911c: Pull complete
-Digest: sha256:d864955a8835dd130180df57dea7bf6d03212c29f6a92442cf89ee301bb1379e
-Status: Downloaded newer image for ocaml/opam:ubuntu-16.04_ocaml-4.03.0_trunk_flambda
- ---> 3edd547c5d6e
+0be59000882d: Already exists
+f20b6f990572: Already exists
+53662c966c9f: Already exists
+a3ed95caeb02: Already exists
+8bdfc1f5608c: Already exists
+674b1a3ec244: Already exists
+9ab0b1f098bc: Already exists
+Digest: sha256:2ce958fbdd524a6e9969fdba319992642854348a36c74d89406a9c27a3dd6d33
+Status: Image is up to date for ocaml/opam:ubuntu-16.04_ocaml-4.03.0_trunk_flambda
+ ---> 7a3dc633866e
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in 317babc64c01
+ ---> Running in cb0e8a9d94ac
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   90aa923..f7aad90  master     -> origin/master
-[0mUpdating 90aa923..f7aad90
+[0m[91m   1a10bdc..c0cde63  master     -> origin/master
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    | 11 ++++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     | 20 ++++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |  2 +
- .../aws-cloudformation.0.1.0/descr                 |  1 +
- .../aws-cloudformation.0.1.0/opam                  | 20 ++++++++++
- .../aws-cloudformation.0.1.0/url                   |  2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |  1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  | 20 ++++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |  2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |  1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                | 20 ++++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |  2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |  1 +
- .../aws-elasticloadbalancing.0.1.0/opam            | 20 ++++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |  2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |  1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                | 20 ++++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |  2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |  1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                | 20 ++++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |  2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |  1 +
- packages/aws-sts/aws-sts.0.1.0/opam                | 20 ++++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |  2 +
- packages/aws/aws.1.0.1/opam                        |  2 +-
- packages/aws/aws.1.0.2/descr                       |  6 +++
- packages/aws/aws.1.0.2/opam                        | 46 ++++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |  2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     | 36 +++++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |  2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |  3 +++
+ packages/argon2/argon2.0.2/opam  | 23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |  2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started
@@ -181,14 +86,12 @@ upgrades).
 # The following new OS packages need to be installed: libgmp-dev libxen-dev ncurses-dev time uuid-dev
 The following command needs to be run through "sudo":
     apt-get update
-Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [116 kB]
+Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [298 kB]
 Hit:2 http://archive.ubuntu.com/ubuntu xenial-updates InRelease
 Hit:3 http://archive.ubuntu.com/ubuntu xenial-security InRelease
-Get:4 http://archive.ubuntu.com/ubuntu xenial/main Sources [1410 kB]
-Get:5 http://archive.ubuntu.com/ubuntu xenial/universe Sources [9528 kB]
-Get:6 http://archive.ubuntu.com/ubuntu xenial/main amd64 Packages [1873 kB]
-Get:7 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [9465 kB]
-Fetched 22.4 MB in 16s (1368 kB/s)
+Get:4 http://archive.ubuntu.com/ubuntu xenial/universe Sources [9822 kB]
+Get:5 http://archive.ubuntu.com/ubuntu xenial/universe amd64 Packages [9766 kB]
+Fetched 19.9 MB in 13s (1437 kB/s)
 Reading package lists...
 # OS package update successful
 The following command needs to be run through "sudo":
@@ -201,7 +104,7 @@ debconf: (This frontend requires a controlling tty.)
 debconf: falling back to frontend: Teletype
 [0m[91mdpkg-preconfigure: unable to re-open stdin: 
 [0mSelecting previously unselected package libyajl2:amd64.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22818 files and directories currently installed.)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 22889 files and directories currently installed.)
 Preparing to unpack .../libyajl2_2.1.0-2_amd64.deb ...
 Unpacking libyajl2:amd64 (2.1.0-2) ...
 Selecting previously unselected package time.
@@ -223,8 +126,8 @@ Selecting previously unselected package libxen-dev:amd64.
 Preparing to unpack .../libxen-dev_4.6.0-1ubuntu4_amd64.deb ...
 Unpacking libxen-dev:amd64 (4.6.0-1ubuntu4) ...
 Selecting previously unselected package uuid-dev:amd64.
-Preparing to unpack .../uuid-dev_2.27.1-6ubuntu1_amd64.deb ...
-Unpacking uuid-dev:amd64 (2.27.1-6ubuntu1) ...
+Preparing to unpack .../uuid-dev_2.27.1-6ubuntu2_amd64.deb ...
+Unpacking uuid-dev:amd64 (2.27.1-6ubuntu2) ...
 Processing triggers for libc-bin (2.23-0ubuntu2) ...
 Setting up libyajl2:amd64 (2.1.0-2) ...
 Setting up time (1.7-25.1) ...
@@ -233,7 +136,7 @@ Setting up libgmp-dev:amd64 (2:6.1.0+dfsg-2) ...
 Setting up libxenstore3.0:amd64 (4.6.0-1ubuntu4) ...
 Setting up libxen-4.6:amd64 (4.6.0-1ubuntu4) ...
 Setting up libxen-dev:amd64 (4.6.0-1ubuntu4) ...
-Setting up uuid-dev:amd64 (2.27.1-6ubuntu1) ...
+Setting up uuid-dev:amd64 (2.27.1-6ubuntu2) ...
 Processing triggers for libc-bin (2.23-0ubuntu2) ...
 # OS packages installation successful
 The following dependencies couldn't be met:

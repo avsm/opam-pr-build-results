@@ -3,129 +3,33 @@ FROM ocaml/opam:ubuntu-15.10_ocaml-4.03.0_trunk
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.785 MBSending build context to Docker daemon  2.92 MB
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.278 MB
 Step 1 : FROM ocaml/opam:ubuntu-15.10_ocaml-4.03.0_trunk
 ubuntu-15.10_ocaml-4.03.0_trunk: Pulling from ocaml/opam
-ff12aecbe22a: Pulling fs layer
-287750ad6625: Pulling fs layer
-ca98bdf222fa: Pulling fs layer
-a3ed95caeb02: Pulling fs layer
-30bcf9e2a939: Pulling fs layer
-d26a30a97c7a: Pulling fs layer
-81542ee2020a: Pulling fs layer
-ca98bdf222fa: Waiting
-a3ed95caeb02: Waiting
-30bcf9e2a939: Waiting
-287750ad6625: Waiting
-ff12aecbe22a: Waiting
-d26a30a97c7a: Waiting
-81542ee2020a: Waiting
-ff12aecbe22a: Verifying Checksum
-ff12aecbe22a: Download complete
-287750ad6625: Verifying Checksum
-287750ad6625: Download complete
-ca98bdf222fa: Verifying Checksum
-ca98bdf222fa: Download complete
-a3ed95caeb02: Verifying Checksum
-a3ed95caeb02: Download complete
-ff12aecbe22a: Pull complete
-ff12aecbe22a: Pull complete
-287750ad6625: Pull complete
-287750ad6625: Pull complete
-ca98bdf222fa: Pull complete
-ca98bdf222fa: Pull complete
-a3ed95caeb02: Pull complete
-a3ed95caeb02: Pull complete
-30bcf9e2a939: Verifying Checksum
-30bcf9e2a939: Download complete
-d26a30a97c7a: Verifying Checksum
-d26a30a97c7a: Download complete
-81542ee2020a: Verifying Checksum
-81542ee2020a: Download complete
-30bcf9e2a939: Pull complete
-30bcf9e2a939: Pull complete
-d26a30a97c7a: Pull complete
-d26a30a97c7a: Pull complete
-81542ee2020a: Pull complete
-81542ee2020a: Pull complete
-Digest: sha256:be215f79c414a54b7f7e42b76b79944f2fc47653e47fc4c2d81f70a988bab016
-Status: Downloaded newer image for ocaml/opam:ubuntu-15.10_ocaml-4.03.0_trunk
- ---> 3694067d6a77
+b34897ca2c02: Already exists
+3c40ae3d67f6: Already exists
+a2c847abd95d: Already exists
+a3ed95caeb02: Already exists
+fafd3a7f7c25: Already exists
+2c363ad21958: Already exists
+1abd754744a6: Already exists
+Digest: sha256:1d2e21e52e2939189dbeba0e820da9acd9539818ba696125d19d5384612520aa
+Status: Image is up to date for ocaml/opam:ubuntu-15.10_ocaml-4.03.0_trunk
+ ---> 770552a6926a
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in 462b19286cc0
+ ---> Running in 64f7bc301ec5
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   90aa923..f7aad90  master     -> origin/master
-[0mUpdating 90aa923..f7aad90
+[0m[91m   1a10bdc..c0cde63  master     -> origin/master
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    | 11 ++++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     | 20 ++++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |  2 +
- .../aws-cloudformation.0.1.0/descr                 |  1 +
- .../aws-cloudformation.0.1.0/opam                  | 20 ++++++++++
- .../aws-cloudformation.0.1.0/url                   |  2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |  1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  | 20 ++++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |  2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |  1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                | 20 ++++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |  2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |  1 +
- .../aws-elasticloadbalancing.0.1.0/opam            | 20 ++++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |  2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |  1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                | 20 ++++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |  2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |  1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                | 20 ++++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |  2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |  1 +
- packages/aws-sts/aws-sts.0.1.0/opam                | 20 ++++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |  2 +
- packages/aws/aws.1.0.1/opam                        |  2 +-
- packages/aws/aws.1.0.2/descr                       |  6 +++
- packages/aws/aws.1.0.2/opam                        | 46 ++++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |  2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     | 36 +++++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |  2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |  3 +++
+ packages/argon2/argon2.0.2/opam  | 23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |  2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started
@@ -183,27 +87,27 @@ upgrades).
 The following command needs to be run through "sudo":
     apt-get update
 Hit http://archive.ubuntu.com wily InRelease
-Hit http://archive.ubuntu.com wily-updates InRelease
+Get:1 http://archive.ubuntu.com wily-updates InRelease [65.9 kB]
 Hit http://archive.ubuntu.com wily-security InRelease
-Get:1 http://archive.ubuntu.com wily/main Sources [1411 kB]
-Get:2 http://archive.ubuntu.com wily/restricted Sources [7171 B]
-Get:3 http://archive.ubuntu.com wily/universe Sources [8976 kB]
-Get:4 http://archive.ubuntu.com wily/main amd64 Packages [1833 kB]
-Get:5 http://archive.ubuntu.com wily/restricted amd64 Packages [23.1 kB]
-Get:6 http://archive.ubuntu.com wily/universe amd64 Packages [8673 kB]
-Get:7 http://archive.ubuntu.com wily-updates/main Sources [90.3 kB]
-Get:8 http://archive.ubuntu.com wily-updates/restricted Sources [3560 B]
-Get:9 http://archive.ubuntu.com wily-updates/universe Sources [23.3 kB]
-Get:10 http://archive.ubuntu.com wily-updates/main amd64 Packages [257 kB]
-Get:11 http://archive.ubuntu.com wily-updates/restricted amd64 Packages [20.4 kB]
-Get:12 http://archive.ubuntu.com wily-updates/universe amd64 Packages [109 kB]
-Get:13 http://archive.ubuntu.com wily-security/main Sources [52.3 kB]
-Get:14 http://archive.ubuntu.com wily-security/restricted Sources [2681 B]
-Get:15 http://archive.ubuntu.com wily-security/universe Sources [11.3 kB]
-Get:16 http://archive.ubuntu.com wily-security/main amd64 Packages [178 kB]
-Get:17 http://archive.ubuntu.com wily-security/restricted amd64 Packages [17.4 kB]
-Get:18 http://archive.ubuntu.com wily-security/universe amd64 Packages [60.7 kB]
-Fetched 21.7 MB in 52s (414 kB/s)
+Get:2 http://archive.ubuntu.com wily/main Sources [1411 kB]
+Get:3 http://archive.ubuntu.com wily/restricted Sources [7171 B]
+Get:4 http://archive.ubuntu.com wily/universe Sources [8976 kB]
+Get:5 http://archive.ubuntu.com wily/main amd64 Packages [1833 kB]
+Get:6 http://archive.ubuntu.com wily/restricted amd64 Packages [23.1 kB]
+Get:7 http://archive.ubuntu.com wily/universe amd64 Packages [8673 kB]
+Get:8 http://archive.ubuntu.com wily-updates/main Sources [92.9 kB]
+Get:9 http://archive.ubuntu.com wily-updates/restricted Sources [3560 B]
+Get:10 http://archive.ubuntu.com wily-updates/universe Sources [24.9 kB]
+Get:11 http://archive.ubuntu.com wily-updates/main amd64 Packages [262 kB]
+Get:12 http://archive.ubuntu.com wily-updates/restricted amd64 Packages [20.4 kB]
+Get:13 http://archive.ubuntu.com wily-updates/universe amd64 Packages [115 kB]
+Get:14 http://archive.ubuntu.com wily-security/main Sources [53.4 kB]
+Get:15 http://archive.ubuntu.com wily-security/restricted Sources [2681 B]
+Get:16 http://archive.ubuntu.com wily-security/universe Sources [11.7 kB]
+Get:17 http://archive.ubuntu.com wily-security/main amd64 Packages [182 kB]
+Get:18 http://archive.ubuntu.com wily-security/restricted amd64 Packages [17.4 kB]
+Get:19 http://archive.ubuntu.com wily-security/universe amd64 Packages [61.2 kB]
+Fetched 21.8 MB in 11s (1961 kB/s)
 Reading package lists...
 # OS package update successful
 The following command needs to be run through "sudo":
@@ -212,7 +116,7 @@ The following command needs to be run through "sudo":
 debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
 debconf: falling back to frontend: Readline
 [0m[91mdebconf: unable to initialize frontend: Readline
-[0m[91mdebconf: (This frontend requires a controlling tty.)
+debconf: (This frontend requires a controlling tty.)
 debconf: falling back to frontend: Teletype
 [0m[91mdpkg-preconfigure: unable to re-open stdin: 
 [0mSelecting previously unselected package libyajl2:amd64.

@@ -6,112 +6,48 @@ RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master 
   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 78.34 kB
 Step 1 : FROM ocaml/opam:debian-7_ocaml-4.03.0_trunk_flambda
 debian-7_ocaml-4.03.0_trunk_flambda: Pulling from ocaml/opam
-4d690fa98655: Pulling fs layer
+8dddc0afbe0a: Pulling fs layer
 a3ed95caeb02: Pulling fs layer
-9a23f747197e: Pulling fs layer
-910325b8ed40: Pulling fs layer
-ef831db556c3: Pulling fs layer
-4d690fa98655: Waiting
-910325b8ed40: Waiting
-a3ed95caeb02: Waiting
-ef831db556c3: Waiting
-9a23f747197e: Waiting
-4d690fa98655: Verifying Checksum
-4d690fa98655: Download complete
+9976d9db0d4e: Pulling fs layer
+73e4f5d48606: Pulling fs layer
+cc48734cab26: Pulling fs layer
 a3ed95caeb02: Download complete
-4d690fa98655: Pull complete
-4d690fa98655: Pull complete
+73e4f5d48606: Waiting
+cc48734cab26: Waiting
+8dddc0afbe0a: Verifying Checksum
+8dddc0afbe0a: Download complete
+8dddc0afbe0a: Pull complete
+8dddc0afbe0a: Pull complete
 a3ed95caeb02: Pull complete
 a3ed95caeb02: Pull complete
-910325b8ed40: Verifying Checksum
-910325b8ed40: Download complete
-9a23f747197e: Verifying Checksum
-9a23f747197e: Download complete
-ef831db556c3: Verifying Checksum
-ef831db556c3: Download complete
-9a23f747197e: Pull complete
-9a23f747197e: Pull complete
-910325b8ed40: Pull complete
-910325b8ed40: Pull complete
-ef831db556c3: Pull complete
-ef831db556c3: Pull complete
-Digest: sha256:7620ac30a03cfd0af235b1cefb1deef12100f43d496655fb8b13f1f75bb9c784
+9976d9db0d4e: Verifying Checksum
+9976d9db0d4e: Download complete
+9976d9db0d4e: Pull complete
+9976d9db0d4e: Pull complete
+73e4f5d48606: Verifying Checksum
+73e4f5d48606: Download complete
+73e4f5d48606: Pull complete
+73e4f5d48606: Pull complete
+cc48734cab26: Verifying Checksum
+cc48734cab26: Download complete
+cc48734cab26: Pull complete
+cc48734cab26: Pull complete
+Digest: sha256:8c8f18d3e0491dec97c0fac060df4653023aa27bfba393194927e4e0da8c10ba
 Status: Downloaded newer image for ocaml/opam:debian-7_ocaml-4.03.0_trunk_flambda
- ---> 9e726fcc922d
+ ---> 58ecf091fea6
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in 028942f517fd
+ ---> Running in aea9324a415f
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0mUpdating 90aa923..f7aad90
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    |   11 +++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |    1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |    1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     |   20 +++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |    2 +
- .../aws-cloudformation.0.1.0/descr                 |    1 +
- .../aws-cloudformation.0.1.0/opam                  |   20 +++++++++
- .../aws-cloudformation.0.1.0/url                   |    2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |    1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  |   20 +++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |    2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |    1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                |   20 +++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |    2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |    1 +
- .../aws-elasticloadbalancing.0.1.0/opam            |   20 +++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |    2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |    1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                |   20 +++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |    2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |    1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                |   20 +++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |    2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |    1 +
- packages/aws-sts/aws-sts.0.1.0/opam                |   20 +++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |    2 +
- packages/aws/aws.1.0.1/opam                        |    2 +-
- packages/aws/aws.1.0.2/descr                       |    6 +++
- packages/aws/aws.1.0.2/opam                        |   46 ++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |    2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |    1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |    1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     |   36 +++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |    2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |    3 +++
+ packages/argon2/argon2.0.2/opam  |   23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |    2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started
@@ -176,8 +112,8 @@ Get:2 http://httpredir.debian.org wheezy-updates Release.gpg [1554 B]
 Get:3 http://httpredir.debian.org wheezy Release [191 kB]
 Get:4 http://httpredir.debian.org wheezy-updates Release [151 kB]
 Hit http://httpredir.debian.org wheezy/main amd64 Packages
-Get:5 http://httpredir.debian.org wheezy-updates/main amd64 Packages [7475 B]
-Fetched 354 kB in 1s (241 kB/s)
+Hit http://httpredir.debian.org wheezy-updates/main amd64 Packages
+Fetched 347 kB in 1s (219 kB/s)
 Reading package lists...
 # OS package update successful
 The following command needs to be run through "sudo":

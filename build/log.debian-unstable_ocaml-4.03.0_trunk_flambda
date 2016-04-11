@@ -3,116 +3,31 @@ FROM ocaml/opam:debian-unstable_ocaml-4.03.0_trunk_flambda
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 413.7 kB
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 174.1 kB
 Step 1 : FROM ocaml/opam:debian-unstable_ocaml-4.03.0_trunk_flambda
 debian-unstable_ocaml-4.03.0_trunk_flambda: Pulling from ocaml/opam
-13662afcc771: Pulling fs layer
-a3ed95caeb02: Pulling fs layer
-865bbefc7b49: Pulling fs layer
-c5c611181fc4: Pulling fs layer
-13662afcc771: Waiting
-2bae41c135df: Pulling fs layer
-a3ed95caeb02: Waiting
-865bbefc7b49: Waiting
-2bae41c135df: Waiting
-c5c611181fc4: Waiting
-13662afcc771: Download complete
-a3ed95caeb02: Verifying Checksum
-a3ed95caeb02: Download complete
-13662afcc771: Pull complete
-13662afcc771: Pull complete
-a3ed95caeb02: Pull complete
-a3ed95caeb02: Pull complete
-865bbefc7b49: Verifying Checksum
-865bbefc7b49: Download complete
-2bae41c135df: Verifying Checksum
-2bae41c135df: Download complete
-865bbefc7b49: Pull complete
-865bbefc7b49: Pull complete
-c5c611181fc4: Verifying Checksum
-c5c611181fc4: Download complete
-c5c611181fc4: Pull complete
-c5c611181fc4: Pull complete
-2bae41c135df: Pull complete
-2bae41c135df: Pull complete
-Digest: sha256:1c44bb9221ae2e1a5bd66db40eeb1a24a74f5a6f7935be6ad771782d7b885687
-Status: Downloaded newer image for ocaml/opam:debian-unstable_ocaml-4.03.0_trunk_flambda
- ---> 4ad7b9fffec5
+dd26744c6d6e: Already exists
+a3ed95caeb02: Already exists
+f49aae91db54: Already exists
+6d18ec7fd17d: Already exists
+4c24fa707218: Already exists
+Digest: sha256:bc7315a6a96fa5deca20cdb53a63e17a71d702c928ed25d04dbcaa390263ad48
+Status: Image is up to date for ocaml/opam:debian-unstable_ocaml-4.03.0_trunk_flambda
+ ---> 11487893a3c8
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in 02672c3ac0e9
+ ---> Running in 6eea04565428
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   90aa923..f7aad90  master     -> origin/master
-[0mUpdating 90aa923..f7aad90
+[0m[91m   1a10bdc..c0cde63  master     -> origin/master
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    | 11 ++++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     | 20 ++++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |  2 +
- .../aws-cloudformation.0.1.0/descr                 |  1 +
- .../aws-cloudformation.0.1.0/opam                  | 20 ++++++++++
- .../aws-cloudformation.0.1.0/url                   |  2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |  1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  | 20 ++++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |  2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |  1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                | 20 ++++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |  2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |  1 +
- .../aws-elasticloadbalancing.0.1.0/opam            | 20 ++++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |  2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |  1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                | 20 ++++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |  2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |  1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                | 20 ++++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |  2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |  1 +
- packages/aws-sts/aws-sts.0.1.0/opam                | 20 ++++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |  2 +
- packages/aws/aws.1.0.1/opam                        |  2 +-
- packages/aws/aws.1.0.2/descr                       |  6 +++
- packages/aws/aws.1.0.2/opam                        | 46 ++++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |  2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     | 36 +++++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |  2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |  3 +++
+ packages/argon2/argon2.0.2/opam  | 23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |  2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started
@@ -169,15 +84,11 @@ upgrades).
 # The following new OS packages need to be installed: libgmp-dev libxen-dev ncurses-dev time uuid-dev
 The following command needs to be run through "sudo":
     apt-get update
-Get:1 http://mirror.vorboss.net/debian unstable InRelease [196 kB]
-Get:2 http://ftp.ticklers.org/debian unstable/main amd64 Packages.diff/Index [11.6 kB]
-Get:3 http://ftp.ticklers.org/debian unstable/main amd64 Packages 2016-03-27-1452.41.pdiff [8767 B]
-Get:4 http://ftp.ticklers.org/debian unstable/main amd64 Packages 2016-03-27-2056.36.pdiff [7798 B]
-Get:5 http://ftp.ticklers.org/debian unstable/main amd64 Packages 2016-03-28-0255.24.pdiff [4619 B]
-Get:6 http://ftp.ticklers.org/debian unstable/main amd64 Packages 2016-03-28-0853.37.pdiff [2190 B]
-Get:7 http://ftp.ticklers.org/debian unstable/main amd64 Packages 2016-03-28-1454.41.pdiff [11.8 kB]
-Get:7 http://ftp.ticklers.org/debian unstable/main amd64 Packages 2016-03-28-1454.41.pdiff [11.8 kB]
-Fetched 243 kB in 2s (99.9 kB/s)
+Get:1 http://mirror.positive-internet.com/debian unstable InRelease [196 kB]
+Get:2 http://mirror.positive-internet.com/debian unstable/main amd64 Packages.diff/Index [27.9 kB]
+Get:3 http://mirror.positive-internet.com/debian unstable/main amd64 Packages 2016-04-11-1452.10.pdiff [12.8 kB]
+Get:3 http://mirror.positive-internet.com/debian unstable/main amd64 Packages 2016-04-11-1452.10.pdiff [12.8 kB]
+Fetched 237 kB in 1s (177 kB/s)
 Reading package lists...
 # OS package update successful
 The following command needs to be run through "sudo":
@@ -186,11 +97,11 @@ The following command needs to be run through "sudo":
 debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
 debconf: falling back to frontend: Readline
 [0m[91mdebconf: unable to initialize frontend: Readline
-debconf: (This frontend requires a controlling tty.)
+[0m[91mdebconf: (This frontend requires a controlling tty.)
 debconf: falling back to frontend: Teletype
 [0m[91mdpkg-preconfigure: unable to re-open stdin: 
 [0mSelecting previously unselected package libyajl2:amd64.
-(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 24302 files and directories currently installed.)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 24735 files and directories currently installed.)
 Preparing to unpack .../libyajl2_2.1.0-2_amd64.deb ...
 Unpacking libyajl2:amd64 (2.1.0-2) ...
 Selecting previously unselected package libgmpxx4ldbl:amd64.
@@ -214,7 +125,7 @@ Unpacking time (1.7-25.1) ...
 Selecting previously unselected package uuid-dev:amd64.
 Preparing to unpack .../uuid-dev_2.27.1-6_amd64.deb ...
 Unpacking uuid-dev:amd64 (2.27.1-6) ...
-Processing triggers for libc-bin (2.22-4) ...
+Processing triggers for libc-bin (2.22-6) ...
 Setting up libyajl2:amd64 (2.1.0-2) ...
 Setting up libgmpxx4ldbl:amd64 (2:6.1.0+dfsg-2) ...
 Setting up libgmp-dev:amd64 (2:6.1.0+dfsg-2) ...
@@ -223,7 +134,7 @@ Setting up libxen-4.6:amd64 (4.6.0-1+nmu2) ...
 Setting up libxen-dev (4.6.0-1+nmu2) ...
 Setting up time (1.7-25.1) ...
 Setting up uuid-dev:amd64 (2.27.1-6) ...
-Processing triggers for libc-bin (2.22-4) ...
+Processing triggers for libc-bin (2.22-6) ...
 # OS packages installation successful
 The following dependencies couldn't be met:
   - aws-rds -> aws >= 0.1.0 -> nocrypto -> ctypes < 0.4.0

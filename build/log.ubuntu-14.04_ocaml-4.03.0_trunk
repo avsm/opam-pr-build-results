@@ -3,128 +3,42 @@ FROM ocaml/opam:ubuntu-14.04_ocaml-4.03.0_trunk
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.559 MB
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.449 MB
 Step 1 : FROM ocaml/opam:ubuntu-14.04_ocaml-4.03.0_trunk
 ubuntu-14.04_ocaml-4.03.0_trunk: Pulling from ocaml/opam
-203137e8afd5: Pulling fs layer
-2ff1bbbe9310: Pulling fs layer
-933ae2486129: Pulling fs layer
-a3ed95caeb02: Pulling fs layer
-fca0545b00bb: Pulling fs layer
-3a25320c536a: Pulling fs layer
-2ff1bbbe9310: Waiting
-181c9397020e: Pulling fs layer
-203137e8afd5: Waiting
-a3ed95caeb02: Waiting
-933ae2486129: Waiting
-fca0545b00bb: Waiting
-181c9397020e: Waiting
-3a25320c536a: Waiting
-2ff1bbbe9310: Verifying Checksum
-2ff1bbbe9310: Download complete
-933ae2486129: Download complete
-a3ed95caeb02: Verifying Checksum
-a3ed95caeb02: Download complete
-203137e8afd5: Verifying Checksum
-203137e8afd5: Download complete
-203137e8afd5: Pull complete
-203137e8afd5: Pull complete
-2ff1bbbe9310: Pull complete
-2ff1bbbe9310: Pull complete
-933ae2486129: Pull complete
-933ae2486129: Pull complete
-a3ed95caeb02: Pull complete
-a3ed95caeb02: Pull complete
-fca0545b00bb: Verifying Checksum
-fca0545b00bb: Download complete
-3a25320c536a: Verifying Checksum
-3a25320c536a: Download complete
-fca0545b00bb: Pull complete
-fca0545b00bb: Pull complete
-181c9397020e: Verifying Checksum
-181c9397020e: Download complete
-3a25320c536a: Pull complete
-3a25320c536a: Pull complete
-181c9397020e: Pull complete
-181c9397020e: Pull complete
-Digest: sha256:c20e22f10aaf2332463c1e3d473319bde8423f8686e5199d72a64c42c1c63c43
+87192bdbe00f: Already exists
+28e09fddaacb: Already exists
+7e15ce58ccb2: Already exists
+a3ed95caeb02: Already exists
+506cf5ef6971: Already exists
+72d1e0f6ad29: Pulling fs layer
+43f6efa8ba2d: Pulling fs layer
+72d1e0f6ad29: Waiting
+43f6efa8ba2d: Waiting
+72d1e0f6ad29: Download complete
+72d1e0f6ad29: Pull complete
+72d1e0f6ad29: Pull complete
+43f6efa8ba2d: Verifying Checksum
+43f6efa8ba2d: Download complete
+43f6efa8ba2d: Pull complete
+43f6efa8ba2d: Pull complete
+Digest: sha256:bf89bb76d1859ca0cc4b4ad0c9ec42a48ea701bea9d2a03d503748c03c0840f5
 Status: Downloaded newer image for ocaml/opam:ubuntu-14.04_ocaml-4.03.0_trunk
- ---> b607e250daaa
+ ---> 3bd808084f68
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in 5957040d784d
+ ---> Running in 6df0be631981
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   90aa923..f7aad90  master     -> origin/master
-[0mUpdating 90aa923..f7aad90
+[0m[91m   1a10bdc..c0cde63  master     -> origin/master
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    | 11 ++++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     | 20 ++++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |  2 +
- .../aws-cloudformation.0.1.0/descr                 |  1 +
- .../aws-cloudformation.0.1.0/opam                  | 20 ++++++++++
- .../aws-cloudformation.0.1.0/url                   |  2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |  1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  | 20 ++++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |  2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |  1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                | 20 ++++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |  2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |  1 +
- .../aws-elasticloadbalancing.0.1.0/opam            | 20 ++++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |  2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |  1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                | 20 ++++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |  2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |  1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                | 20 ++++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |  2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |  1 +
- packages/aws-sts/aws-sts.0.1.0/opam                | 20 ++++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |  2 +
- packages/aws/aws.1.0.1/opam                        |  2 +-
- packages/aws/aws.1.0.2/descr                       |  6 +++
- packages/aws/aws.1.0.2/opam                        | 46 ++++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |  2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     | 36 +++++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |  2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |  3 +++
+ packages/argon2/argon2.0.2/opam  | 23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |  2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started
@@ -183,34 +97,34 @@ The following command needs to be run through "sudo":
     apt-get update
 Ign http://archive.ubuntu.com trusty InRelease
 Get:1 http://archive.ubuntu.com trusty-updates InRelease [65.9 kB]
-Hit http://archive.ubuntu.com trusty-security InRelease
+Get:2 http://archive.ubuntu.com trusty-security InRelease [65.9 kB]
 Hit http://archive.ubuntu.com trusty Release.gpg
 Hit http://archive.ubuntu.com trusty Release
-Get:2 http://archive.ubuntu.com trusty-updates/main Sources [340 kB]
-Get:3 http://archive.ubuntu.com trusty-updates/restricted Sources [5217 B]
-Get:4 http://archive.ubuntu.com trusty-updates/universe Sources [190 kB]
-Get:5 http://archive.ubuntu.com trusty-updates/main amd64 Packages [933 kB]
-Get:6 http://archive.ubuntu.com trusty-updates/restricted amd64 Packages [23.5 kB]
-Get:7 http://archive.ubuntu.com trusty-updates/universe amd64 Packages [460 kB]
-Hit http://archive.ubuntu.com trusty-security/main Sources
-Hit http://archive.ubuntu.com trusty-security/restricted Sources
-Hit http://archive.ubuntu.com trusty-security/universe Sources
-Hit http://archive.ubuntu.com trusty-security/main amd64 Packages
-Hit http://archive.ubuntu.com trusty-security/restricted amd64 Packages
-Hit http://archive.ubuntu.com trusty-security/universe amd64 Packages
+Get:3 http://archive.ubuntu.com trusty-updates/main Sources [341 kB]
+Get:4 http://archive.ubuntu.com trusty-updates/restricted Sources [5217 B]
+Get:5 http://archive.ubuntu.com trusty-updates/universe Sources [192 kB]
+Get:6 http://archive.ubuntu.com trusty-updates/main amd64 Packages [945 kB]
+Get:7 http://archive.ubuntu.com trusty-updates/restricted amd64 Packages [23.5 kB]
+Get:8 http://archive.ubuntu.com trusty-updates/universe amd64 Packages [462 kB]
+Get:9 http://archive.ubuntu.com trusty-security/main Sources [140 kB]
+Get:10 http://archive.ubuntu.com trusty-security/restricted Sources [3920 B]
+Get:11 http://archive.ubuntu.com trusty-security/universe Sources [40.5 kB]
+Get:12 http://archive.ubuntu.com trusty-security/main amd64 Packages [566 kB]
+Get:13 http://archive.ubuntu.com trusty-security/restricted amd64 Packages [20.2 kB]
+Get:14 http://archive.ubuntu.com trusty-security/universe amd64 Packages [164 kB]
 Hit http://archive.ubuntu.com trusty/main Sources
 Hit http://archive.ubuntu.com trusty/restricted Sources
 Hit http://archive.ubuntu.com trusty/universe Sources
 Hit http://archive.ubuntu.com trusty/main amd64 Packages
 Hit http://archive.ubuntu.com trusty/restricted amd64 Packages
 Hit http://archive.ubuntu.com trusty/universe amd64 Packages
-Fetched 2018 kB in 7s (268 kB/s)
+Fetched 3035 kB in 9s (308 kB/s)
 Reading package lists...
 # OS package update successful
 The following command needs to be run through "sudo":
     apt-get install -qq -yy libgmp-dev libxen-dev ncurses-dev time uuid-dev
 [91mdebconf: unable to initialize frontend: Dialog
-debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+[0m[91mdebconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
 debconf: falling back to frontend: Readline
 [0m[91mdebconf: unable to initialize frontend: Readline
 debconf: (This frontend requires a controlling tty.)

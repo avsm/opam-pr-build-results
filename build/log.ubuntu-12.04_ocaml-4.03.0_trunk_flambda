@@ -3,124 +3,32 @@ FROM ocaml/opam:ubuntu-12.04_ocaml-4.03.0_trunk_flambda
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.444 MB
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 888.3 kB
 Step 1 : FROM ocaml/opam:ubuntu-12.04_ocaml-4.03.0_trunk_flambda
 ubuntu-12.04_ocaml-4.03.0_trunk_flambda: Pulling from ocaml/opam
-6f8c221e4978: Pulling fs layer
-2c2b3f3c7d41: Pulling fs layer
-2bc6bba51fb8: Pulling fs layer
-a3ed95caeb02: Pulling fs layer
-60309aa8e75e: Pulling fs layer
-ccf32f2277ba: Pulling fs layer
-7bccac0bdd2d: Pulling fs layer
-a3ed95caeb02: Waiting
-7bccac0bdd2d: Waiting
-ccf32f2277ba: Waiting
-60309aa8e75e: Waiting
-2c2b3f3c7d41: Waiting
-6f8c221e4978: Waiting
-2bc6bba51fb8: Waiting
-6f8c221e4978: Verifying Checksum
-6f8c221e4978: Download complete
-2bc6bba51fb8: Download complete
-a3ed95caeb02: Download complete
-2c2b3f3c7d41: Download complete
-6f8c221e4978: Pull complete
-6f8c221e4978: Pull complete
-2c2b3f3c7d41: Pull complete
-2c2b3f3c7d41: Pull complete
-2bc6bba51fb8: Pull complete
-2bc6bba51fb8: Pull complete
-a3ed95caeb02: Pull complete
-a3ed95caeb02: Pull complete
-60309aa8e75e: Verifying Checksum
-60309aa8e75e: Download complete
-60309aa8e75e: Pull complete
-60309aa8e75e: Pull complete
-ccf32f2277ba: Verifying Checksum
-ccf32f2277ba: Download complete
-ccf32f2277ba: Pull complete
-ccf32f2277ba: Pull complete
-7bccac0bdd2d: Download complete
-7bccac0bdd2d: Pull complete
-7bccac0bdd2d: Pull complete
-Digest: sha256:5f77a4c6b6d008c4b01b870a836686033f429c7c6e430547491d49f47a8200c1
-Status: Downloaded newer image for ocaml/opam:ubuntu-12.04_ocaml-4.03.0_trunk_flambda
- ---> d292ecac4579
+c5a3f3fe8b7c: Already exists
+7e56d59da6a8: Already exists
+1e2b0beb6a48: Already exists
+a3ed95caeb02: Already exists
+5fb1c4b7f21f: Already exists
+71b9016acf6f: Already exists
+4b96875089f2: Already exists
+Digest: sha256:405e17d5ba91e42b001aca9b4b8f3003f7901a6e0c0e7dd8921a5b67c1a71dba
+Status: Image is up to date for ocaml/opam:ubuntu-12.04_ocaml-4.03.0_trunk_flambda
+ ---> fca17b2cc737
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in d6e51bb41669
+ ---> Running in fadd8cc4597b
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0mUpdating 90aa923..f7aad90
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    |   11 +++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |    1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |    1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     |   20 +++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |    2 +
- .../aws-cloudformation.0.1.0/descr                 |    1 +
- .../aws-cloudformation.0.1.0/opam                  |   20 +++++++++
- .../aws-cloudformation.0.1.0/url                   |    2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |    1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  |   20 +++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |    2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |    1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                |   20 +++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |    2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |    1 +
- .../aws-elasticloadbalancing.0.1.0/opam            |   20 +++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |    2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |    1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                |   20 +++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |    2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |    1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                |   20 +++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |    2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |    1 +
- packages/aws-sts/aws-sts.0.1.0/opam                |   20 +++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |    2 +
- packages/aws/aws.1.0.1/opam                        |    2 +-
- packages/aws/aws.1.0.2/descr                       |    6 +++
- packages/aws/aws.1.0.2/opam                        |   46 ++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |    2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |    1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |    1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     |   36 +++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |    2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |    3 +++
+ packages/argon2/argon2.0.2/opam  |   23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |    2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started

@@ -3,110 +3,46 @@ FROM ocaml/opam:fedora-22_ocaml-4.02.3
 RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" && \
   sudo -u opam sh -c "opam depext -u aws-rds" && \
-  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 675.3 kB
+  sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"Sending build context to Docker daemon 228.9 kB
 Step 1 : FROM ocaml/opam:fedora-22_ocaml-4.02.3
 fedora-22_ocaml-4.02.3: Pulling from ocaml/opam
 a3ed95caeb02: Already exists
-0967f2c8ac7a: Pulling fs layer
-758f5c9b6266: Pulling fs layer
-3ecb6ab4673d: Pulling fs layer
-e97d98179e72: Pulling fs layer
-0967f2c8ac7a: Waiting
-758f5c9b6266: Waiting
-3ecb6ab4673d: Waiting
-e97d98179e72: Waiting
-0967f2c8ac7a: Download complete
-0967f2c8ac7a: Pull complete
-0967f2c8ac7a: Pull complete
-3ecb6ab4673d: Verifying Checksum
-3ecb6ab4673d: Download complete
-e97d98179e72: Verifying Checksum
-e97d98179e72: Download complete
-758f5c9b6266: Download complete
-758f5c9b6266: Pull complete
-758f5c9b6266: Pull complete
-3ecb6ab4673d: Pull complete
-3ecb6ab4673d: Pull complete
-e97d98179e72: Pull complete
-e97d98179e72: Pull complete
-Digest: sha256:ca7a2dc81691e987b38757092f3c98df222e3918924b1cf89894aa6642afcde2
+0967f2c8ac7a: Already exists
+ec8dd1e37ce9: Pulling fs layer
+8508779083e1: Pulling fs layer
+8930d89ca170: Pulling fs layer
+ec8dd1e37ce9: Waiting
+8508779083e1: Waiting
+8930d89ca170: Waiting
+8508779083e1: Verifying Checksum
+8508779083e1: Download complete
+8930d89ca170: Verifying Checksum
+8930d89ca170: Download complete
+ec8dd1e37ce9: Verifying Checksum
+ec8dd1e37ce9: Download complete
+ec8dd1e37ce9: Pull complete
+ec8dd1e37ce9: Pull complete
+8508779083e1: Pull complete
+8508779083e1: Pull complete
+8930d89ca170: Pull complete
+8930d89ca170: Pull complete
+Digest: sha256:3cb24bf3346235d2cbd4abf7f4aa0cb766f5de5782545e9c3100fc3d1c1418ef
 Status: Downloaded newer image for ocaml/opam:fedora-22_ocaml-4.02.3
- ---> 78082256a173
+ ---> a90c0e9bbc86
 Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"
- ---> Running in 3c4fac73b93c
+ ---> Running in fcc270c69667
 [91mFrom git://github.com/ocaml/opam-repository
  * branch            master     -> FETCH_HEAD
-[0m[91m   90aa923..f7aad90  master     -> origin/master
-[0mUpdating 90aa923..f7aad90
+[0m[91m   1a10bdc..c0cde63  master     -> origin/master
+[0mUpdating 1a10bdc..c0cde63
 Fast-forward
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp    | 11 ++++++
- compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr   |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/descr    |  1 +
- .../aws-autoscaling/aws-autoscaling.0.1.0/opam     | 20 ++++++++++
- packages/aws-autoscaling/aws-autoscaling.0.1.0/url |  2 +
- .../aws-cloudformation.0.1.0/descr                 |  1 +
- .../aws-cloudformation.0.1.0/opam                  | 20 ++++++++++
- .../aws-cloudformation.0.1.0/url                   |  2 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr |  1 +
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam  | 20 ++++++++++
- packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url   |  2 +
- packages/aws-ec2/aws-ec2.0.1.0/descr               |  1 +
- packages/aws-ec2/aws-ec2.0.1.0/opam                | 20 ++++++++++
- packages/aws-ec2/aws-ec2.0.1.0/url                 |  2 +
- .../aws-elasticloadbalancing.0.1.0/descr           |  1 +
- .../aws-elasticloadbalancing.0.1.0/opam            | 20 ++++++++++
- .../aws-elasticloadbalancing.0.1.0/url             |  2 +
- packages/aws-sdb/aws-sdb.0.1.0/descr               |  1 +
- packages/aws-sdb/aws-sdb.0.1.0/opam                | 20 ++++++++++
- packages/aws-sdb/aws-sdb.0.1.0/url                 |  2 +
- packages/aws-ssm/aws-ssm.0.1.0/descr               |  1 +
- packages/aws-ssm/aws-ssm.0.1.0/opam                | 20 ++++++++++
- packages/aws-ssm/aws-ssm.0.1.0/url                 |  2 +
- packages/aws-sts/aws-sts.0.1.0/descr               |  1 +
- packages/aws-sts/aws-sts.0.1.0/opam                | 20 ++++++++++
- packages/aws-sts/aws-sts.0.1.0/url                 |  2 +
- packages/aws/aws.1.0.1/opam                        |  2 +-
- packages/aws/aws.1.0.2/descr                       |  6 +++
- packages/aws/aws.1.0.2/opam                        | 46 ++++++++++++++++++++++
- packages/aws/aws.1.0.2/url                         |  2 +
- packages/ocp-build/ocp-build.1.99.14-beta/descr    |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/findlib  |  1 +
- packages/ocp-build/ocp-build.1.99.14-beta/opam     | 36 +++++++++++++++++
- packages/ocp-build/ocp-build.1.99.14-beta/url      |  2 +
- 34 files changed, 291 insertions(+), 1 deletion(-)
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.comp
- create mode 100644 compilers/4.04.0/4.04.0+pr526/4.04.0+pr526.descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/descr
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/opam
- create mode 100644 packages/aws-autoscaling/aws-autoscaling.0.1.0/url
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/descr
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/opam
- create mode 100644 packages/aws-cloudformation/aws-cloudformation.0.1.0/url
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/descr
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/opam
- create mode 100644 packages/aws-cloudtrail/aws-cloudtrail.0.1.0/url
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/descr
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/opam
- create mode 100644 packages/aws-ec2/aws-ec2.0.1.0/url
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/descr
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/opam
- create mode 100644 packages/aws-elasticloadbalancing/aws-elasticloadbalancing.0.1.0/url
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/descr
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/opam
- create mode 100644 packages/aws-sdb/aws-sdb.0.1.0/url
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/descr
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/opam
- create mode 100644 packages/aws-ssm/aws-ssm.0.1.0/url
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/descr
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/opam
- create mode 100644 packages/aws-sts/aws-sts.0.1.0/url
- create mode 100644 packages/aws/aws.1.0.2/descr
- create mode 100644 packages/aws/aws.1.0.2/opam
- create mode 100644 packages/aws/aws.1.0.2/url
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/descr
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/findlib
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/opam
- create mode 100644 packages/ocp-build/ocp-build.1.99.14-beta/url
+ packages/argon2/argon2.0.2/descr |  3 +++
+ packages/argon2/argon2.0.2/opam  | 23 +++++++++++++++++++++++
+ packages/argon2/argon2.0.2/url   |  2 ++
+ 3 files changed, 28 insertions(+)
+ create mode 100644 packages/argon2/argon2.0.2/descr
+ create mode 100644 packages/argon2/argon2.0.2/opam
+ create mode 100644 packages/argon2/argon2.0.2/url
 
 =-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [default: local] Command started
@@ -218,18 +154,23 @@ See 'man dnf' and 'man yum2dnf' for more information.
 To transfer transaction metadata from yum to DNF, run:
 'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
 
-[0mLast metadata expiration check performed 0:00:19 ago on Mon Mar 28 17:41:07 2016.
+[0mLast metadata expiration check performed 0:00:12 ago on Mon Apr 11 17:19:56 2016.
 Dependencies resolved.
 ================================================================================
  Package                 Arch        Version                 Repository    Size
 ================================================================================
 Installing:
+ kernel-debug-devel      x86_64      4.4.6-201.fc22          updates       10 M
  python-pip              noarch      6.0.8-1.fc22            fedora       1.7 M
  python-setuptools       noarch      17.1.1-3.fc22           updates      425 k
  sqlite-libs             x86_64      3.11.0-3.fc22           updates      449 k
      replacing  sqlite.x86_64 3.10.2-1.fc22
 Upgrading:
+ ca-certificates         noarch      2016.2.7-1.0.fc22       updates      424 k
  gnupg2                  x86_64      2.1.11-1.fc22           updates      1.9 M
+ kernel-headers          x86_64      4.4.6-201.fc22          updates      1.0 M
+ krb5-libs               x86_64      1.13.2-14.fc22          updates      839 k
+ libatomic_ops           x86_64      7.4.2-9.fc22            updates       32 k
  libssh2                 x86_64      1.5.0-2.fc22            updates      145 k
  nspr                    x86_64      4.12.0-1.fc22           updates      135 k
  nss                     x86_64      3.23.0-1.0.fc22         updates      871 k
@@ -239,108 +180,143 @@ Upgrading:
  nss-tools               x86_64      3.23.0-1.0.fc22         updates      493 k
  nss-util                x86_64      3.23.0-1.0.fc22         updates       82 k
  openssl-libs            x86_64      1:1.0.1k-14.fc22        updates      943 k
- pcre                    x86_64      8.38-3.fc22             updates      495 k
+ pcre                    x86_64      8.38-4.fc22             updates      495 k
  python                  x86_64      2.7.10-8.fc22           updates       93 k
  python-libs             x86_64      2.7.10-8.fc22           updates      5.8 M
  sqlite                  x86_64      3.11.0-3.fc22           updates      473 k
 
 Transaction Summary
 ================================================================================
-Install   3 Packages
-Upgrade  14 Packages
+Install   4 Packages
+Upgrade  18 Packages
 
-Total download size: 14 M
+Total download size: 27 M
 Downloading Packages:
-[91m/usr/share/doc/libssh2/AUTHORS: No such file or directory
+[91m/usr/share/man/man8/ca-legacy.8.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/libssh2/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/krb5-libs/NOTICE: No such file or directory
 cannot reconstruct rpm from disk files
 [0m[91m/usr/share/doc/python-libs/README: No such file or directory
 cannot reconstruct rpm from disk files
-[0mlibssh2-1.5.0-2.fc22.x86_64: Delta RPM rebuild failed
+[0mca-certificates-2016.2.7-1.0.fc22.noarch: Delta RPM rebuild failed
+libssh2-1.5.0-2.fc22.x86_64: Delta RPM rebuild failed
+krb5-libs-1.13.2-14.fc22.x86_64: Delta RPM rebuild failed
 python-libs-2.7.10-8.fc22.x86_64: Delta RPM rebuild failed
 --------------------------------------------------------------------------------
-Total                                           1.4 MB/s |  14 MB     00:10     
-Delta RPMs reduced 14.4 MB of updates to 14.3 MB (0.1% saved)
+Total                                           932 kB/s |  18 MB     00:19     
+Delta RPMs reduced 26.7 MB of updates to 18.0 MB (32.1% saved)
 Running transaction check
 Transaction check succeeded.
 Running transaction test
 Transaction test succeeded.
 Running transaction
-  Upgrading   : nspr-4.12.0-1.fc22.x86_64                                  1/31 
+  Upgrading   : nspr-4.12.0-1.fc22.x86_64                                  1/40 
 warning: Unable to get systemd shutdown inhibition lock
-  Upgrading   : nss-util-3.23.0-1.0.fc22.x86_64                            2/31 
-  Installing  : sqlite-libs-3.11.0-3.fc22.x86_64                           3/31 
-  Upgrading   : openssl-libs-1:1.0.1k-14.fc22.x86_64                       4/31 
-  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc22.x86_64                  5/31 
-  Upgrading   : nss-softokn-3.23.0-1.0.fc22.x86_64                         6/31 
-  Upgrading   : nss-sysinit-3.23.0-1.0.fc22.x86_64                         7/31 
-  Upgrading   : nss-3.23.0-1.0.fc22.x86_64                                 8/31 
-  Upgrading   : python-libs-2.7.10-8.fc22.x86_64                           9/31 
-  Installing  : python-setuptools-17.1.1-3.fc22.noarch                    10/31 
-  Upgrading   : python-2.7.10-8.fc22.x86_64                               11/31 
-  Installing  : python-pip-6.0.8-1.fc22.noarch                            12/31 
-  Upgrading   : nss-tools-3.23.0-1.0.fc22.x86_64                          13/31 
-  Upgrading   : libssh2-1.5.0-2.fc22.x86_64                               14/31 
-  Upgrading   : gnupg2-2.1.11-1.fc22.x86_64                               15/31 
-  Upgrading   : sqlite-3.11.0-3.fc22.x86_64                               16/31 
-  Upgrading   : pcre-8.38-3.fc22.x86_64                                   17/31 
-  Cleanup     : nss-tools-3.21.0-1.1.fc22.x86_64                          18/31 
-  Cleanup     : nss-sysinit-3.21.0-1.1.fc22.x86_64                        19/31 
-  Cleanup     : nss-3.21.0-1.1.fc22.x86_64                                20/31 
-  Cleanup     : nss-softokn-3.21.0-1.1.fc22.x86_64                        21/31 
-  Cleanup     : nss-util-3.21.0-1.0.fc22.x86_64                           22/31 
-  Cleanup     : python-2.7.9-6.fc22.x86_64                                23/31 
-  Cleanup     : python-libs-2.7.9-6.fc22.x86_64                           24/31 
-  Cleanup     : libssh2-1.5.0-1.fc22.x86_64                               25/31 
-  Cleanup     : openssl-libs-1:1.0.1k-13.fc22.x86_64                      26/31 
-  Cleanup     : sqlite-3.10.2-1.fc22.x86_64                               27/31 
-  Cleanup     : nspr-4.10.10-2.fc22.x86_64                                28/31 
-  Cleanup     : nss-softokn-freebl-3.21.0-1.1.fc22.x86_64                 29/31 
-  Cleanup     : pcre-8.38-1.fc22.x86_64                                   30/31 
-  Cleanup     : gnupg2-2.1.9-1.fc22.x86_64                                31/31 
-  Verifying   : python-pip-6.0.8-1.fc22.noarch                             1/31 
-  Verifying   : sqlite-libs-3.11.0-3.fc22.x86_64                           2/31 
-  Verifying   : python-setuptools-17.1.1-3.fc22.noarch                     3/31 
-  Verifying   : gnupg2-2.1.11-1.fc22.x86_64                                4/31 
-  Verifying   : libssh2-1.5.0-2.fc22.x86_64                                5/31 
-  Verifying   : nspr-4.12.0-1.fc22.x86_64                                  6/31 
-  Verifying   : nss-3.23.0-1.0.fc22.x86_64                                 7/31 
-  Verifying   : nss-softokn-3.23.0-1.0.fc22.x86_64                         8/31 
-  Verifying   : nss-util-3.23.0-1.0.fc22.x86_64                            9/31 
-  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc22.x86_64                 10/31 
-  Verifying   : nss-tools-3.23.0-1.0.fc22.x86_64                          11/31 
-  Verifying   : nss-sysinit-3.23.0-1.0.fc22.x86_64                        12/31 
-  Verifying   : openssl-libs-1:1.0.1k-14.fc22.x86_64                      13/31 
-  Verifying   : pcre-8.38-3.fc22.x86_64                                   14/31 
-  Verifying   : python-2.7.10-8.fc22.x86_64                               15/31 
-  Verifying   : python-libs-2.7.10-8.fc22.x86_64                          16/31 
-  Verifying   : sqlite-3.11.0-3.fc22.x86_64                               17/31 
-  Verifying   : nspr-4.10.10-2.fc22.x86_64                                18/31 
-  Verifying   : nss-3.21.0-1.1.fc22.x86_64                                19/31 
-  Verifying   : nss-softokn-3.21.0-1.1.fc22.x86_64                        20/31 
-  Verifying   : nss-softokn-freebl-3.21.0-1.1.fc22.x86_64                 21/31 
-  Verifying   : nss-sysinit-3.21.0-1.1.fc22.x86_64                        22/31 
-  Verifying   : nss-tools-3.21.0-1.1.fc22.x86_64                          23/31 
-  Verifying   : nss-util-3.21.0-1.0.fc22.x86_64                           24/31 
-  Verifying   : gnupg2-2.1.9-1.fc22.x86_64                                25/31 
-  Verifying   : libssh2-1.5.0-1.fc22.x86_64                               26/31 
-  Verifying   : openssl-libs-1:1.0.1k-13.fc22.x86_64                      27/31 
-  Verifying   : pcre-8.38-1.fc22.x86_64                                   28/31 
-  Verifying   : python-2.7.9-6.fc22.x86_64                                29/31 
-  Verifying   : sqlite-3.10.2-1.fc22.x86_64                               30/31 
-  Verifying   : python-libs-2.7.9-6.fc22.x86_64                           31/31 
+  Upgrading   : nss-util-3.23.0-1.0.fc22.x86_64                            2/40 
+  Installing  : sqlite-libs-3.11.0-3.fc22.x86_64                           3/40 
+  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc22.x86_64                  4/40 
+  Upgrading   : nss-softokn-3.23.0-1.0.fc22.x86_64                         5/40 
+  Upgrading   : nss-sysinit-3.23.0-1.0.fc22.x86_64                         6/40 
+  Upgrading   : nss-3.23.0-1.0.fc22.x86_64                                 7/40 
+  Upgrading   : ca-certificates-2016.2.7-1.0.fc22.noarch                   8/40 
+  Upgrading   : krb5-libs-1.13.2-14.fc22.x86_64                            9/40 
+  Upgrading   : openssl-libs-1:1.0.1k-14.fc22.x86_64                      10/40 
+  Upgrading   : python-libs-2.7.10-8.fc22.x86_64                          11/40 
+  Installing  : python-setuptools-17.1.1-3.fc22.noarch                    12/40 
+  Upgrading   : python-2.7.10-8.fc22.x86_64                               13/40 
+  Installing  : python-pip-6.0.8-1.fc22.noarch                            14/40 
+  Upgrading   : libssh2-1.5.0-2.fc22.x86_64                               15/40 
+  Upgrading   : nss-tools-3.23.0-1.0.fc22.x86_64                          16/40 
+  Upgrading   : gnupg2-2.1.11-1.fc22.x86_64                               17/40 
+  Upgrading   : sqlite-3.11.0-3.fc22.x86_64                               18/40 
+  Upgrading   : pcre-8.38-4.fc22.x86_64                                   19/40 
+  Upgrading   : libatomic_ops-7.4.2-9.fc22.x86_64                         20/40 
+  Upgrading   : kernel-headers-4.4.6-201.fc22.x86_64                      21/40 
+  Installing  : kernel-debug-devel-4.4.6-201.fc22.x86_64                  22/40 
+  Cleanup     : kernel-headers-4.4.6-200.fc22.x86_64                      23/40 
+  Cleanup     : nss-tools-3.21.0-1.1.fc22.x86_64                          24/40 
+  Cleanup     : nss-sysinit-3.21.0-1.1.fc22.x86_64                        25/40 
+  Cleanup     : nss-3.21.0-1.1.fc22.x86_64                                26/40 
+  Cleanup     : nss-softokn-3.21.0-1.1.fc22.x86_64                        27/40 
+  Cleanup     : nss-util-3.21.0-1.0.fc22.x86_64                           28/40 
+  Cleanup     : python-2.7.9-6.fc22.x86_64                                29/40 
+  Cleanup     : python-libs-2.7.9-6.fc22.x86_64                           30/40 
+  Cleanup     : libssh2-1.5.0-1.fc22.x86_64                               31/40 
+  Cleanup     : openssl-libs-1:1.0.1k-13.fc22.x86_64                      32/40 
+  Cleanup     : krb5-libs-1.13.2-13.fc22.x86_64                           33/40 
+  Cleanup     : ca-certificates-2015.2.6-1.0.fc22.noarch                  34/40 
+  Cleanup     : sqlite-3.10.2-1.fc22.x86_64                               35/40 
+  Cleanup     : nspr-4.10.10-2.fc22.x86_64                                36/40 
+  Cleanup     : nss-softokn-freebl-3.21.0-1.1.fc22.x86_64                 37/40 
+  Cleanup     : pcre-8.38-1.fc22.x86_64                                   38/40 
+  Cleanup     : libatomic_ops-7.4.2-4.fc22.x86_64                         39/40 
+  Cleanup     : gnupg2-2.1.9-1.fc22.x86_64                                40/40 
+  Verifying   : kernel-debug-devel-4.4.6-201.fc22.x86_64                   1/40 
+  Verifying   : python-pip-6.0.8-1.fc22.noarch                             2/40 
+  Verifying   : sqlite-libs-3.11.0-3.fc22.x86_64                           3/40 
+  Verifying   : python-setuptools-17.1.1-3.fc22.noarch                     4/40 
+  Verifying   : ca-certificates-2016.2.7-1.0.fc22.noarch                   5/40 
+  Verifying   : gnupg2-2.1.11-1.fc22.x86_64                                6/40 
+  Verifying   : kernel-headers-4.4.6-201.fc22.x86_64                       7/40 
+  Verifying   : krb5-libs-1.13.2-14.fc22.x86_64                            8/40 
+  Verifying   : libatomic_ops-7.4.2-9.fc22.x86_64                          9/40 
+  Verifying   : libssh2-1.5.0-2.fc22.x86_64                               10/40 
+  Verifying   : nspr-4.12.0-1.fc22.x86_64                                 11/40 
+  Verifying   : nss-3.23.0-1.0.fc22.x86_64                                12/40 
+  Verifying   : nss-softokn-3.23.0-1.0.fc22.x86_64                        13/40 
+  Verifying   : nss-util-3.23.0-1.0.fc22.x86_64                           14/40 
+  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc22.x86_64                 15/40 
+  Verifying   : nss-tools-3.23.0-1.0.fc22.x86_64                          16/40 
+  Verifying   : nss-sysinit-3.23.0-1.0.fc22.x86_64                        17/40 
+  Verifying   : openssl-libs-1:1.0.1k-14.fc22.x86_64                      18/40 
+  Verifying   : pcre-8.38-4.fc22.x86_64                                   19/40 
+  Verifying   : python-2.7.10-8.fc22.x86_64                               20/40 
+  Verifying   : python-libs-2.7.10-8.fc22.x86_64                          21/40 
+  Verifying   : sqlite-3.11.0-3.fc22.x86_64                               22/40 
+  Verifying   : nspr-4.10.10-2.fc22.x86_64                                23/40 
+  Verifying   : gnupg2-2.1.9-1.fc22.x86_64                                24/40 
+  Verifying   : libssh2-1.5.0-1.fc22.x86_64                               25/40 
+  Verifying   : ca-certificates-2015.2.6-1.0.fc22.noarch                  26/40 
+  Verifying   : kernel-headers-4.4.6-200.fc22.x86_64                      27/40 
+  Verifying   : krb5-libs-1.13.2-13.fc22.x86_64                           28/40 
+  Verifying   : python-2.7.9-6.fc22.x86_64                                29/40 
+  Verifying   : libatomic_ops-7.4.2-4.fc22.x86_64                         30/40 
+  Verifying   : nss-3.21.0-1.1.fc22.x86_64                                31/40 
+  Verifying   : nss-softokn-3.21.0-1.1.fc22.x86_64                        32/40 
+  Verifying   : nss-softokn-freebl-3.21.0-1.1.fc22.x86_64                 33/40 
+  Verifying   : nss-sysinit-3.21.0-1.1.fc22.x86_64                        34/40 
+  Verifying   : nss-tools-3.21.0-1.1.fc22.x86_64                          35/40 
+  Verifying   : nss-util-3.21.0-1.0.fc22.x86_64                           36/40 
+  Verifying   : python-libs-2.7.9-6.fc22.x86_64                           37/40 
+  Verifying   : openssl-libs-1:1.0.1k-13.fc22.x86_64                      38/40 
+  Verifying   : pcre-8.38-1.fc22.x86_64                                   39/40 
+  Verifying   : sqlite-3.10.2-1.fc22.x86_64                               40/40 
 
 Installed:
-  python-pip.noarch 6.0.8-1.fc22      python-setuptools.noarch 17.1.1-3.fc22   
-  sqlite-libs.x86_64 3.11.0-3.fc22   
+  kernel-debug-devel.x86_64 4.4.6-201.fc22   python-pip.noarch 6.0.8-1.fc22    
+  python-setuptools.noarch 17.1.1-3.fc22     sqlite-libs.x86_64 3.11.0-3.fc22  
 
 Upgraded:
-  gnupg2.x86_64 2.1.11-1.fc22         libssh2.x86_64 1.5.0-2.fc22               
-  nspr.x86_64 4.12.0-1.fc22           nss.x86_64 3.23.0-1.0.fc22                
-  nss-softokn.x86_64 3.23.0-1.0.fc22  nss-softokn-freebl.x86_64 3.23.0-1.0.fc22 
-  nss-sysinit.x86_64 3.23.0-1.0.fc22  nss-tools.x86_64 3.23.0-1.0.fc22          
-  nss-util.x86_64 3.23.0-1.0.fc22     openssl-libs.x86_64 1:1.0.1k-14.fc22      
-  pcre.x86_64 8.38-3.fc22             python.x86_64 2.7.10-8.fc22               
-  python-libs.x86_64 2.7.10-8.fc22    sqlite.x86_64 3.11.0-3.fc22               
+  ca-certificates.noarch 2016.2.7-1.0.fc22                                      
+  gnupg2.x86_64 2.1.11-1.fc22                                                   
+  kernel-headers.x86_64 4.4.6-201.fc22                                          
+  krb5-libs.x86_64 1.13.2-14.fc22                                               
+  libatomic_ops.x86_64 7.4.2-9.fc22                                             
+  libssh2.x86_64 1.5.0-2.fc22                                                   
+  nspr.x86_64 4.12.0-1.fc22                                                     
+  nss.x86_64 3.23.0-1.0.fc22                                                    
+  nss-softokn.x86_64 3.23.0-1.0.fc22                                            
+  nss-softokn-freebl.x86_64 3.23.0-1.0.fc22                                     
+  nss-sysinit.x86_64 3.23.0-1.0.fc22                                            
+  nss-tools.x86_64 3.23.0-1.0.fc22                                              
+  nss-util.x86_64 3.23.0-1.0.fc22                                               
+  openssl-libs.x86_64 1:1.0.1k-14.fc22                                          
+  pcre.x86_64 8.38-4.fc22                                                       
+  python.x86_64 2.7.10-8.fc22                                                   
+  python-libs.x86_64 2.7.10-8.fc22                                              
+  sqlite.x86_64 3.11.0-3.fc22                                                   
 
 Complete!
 # OS package update successful
@@ -351,7 +327,7 @@ See 'man dnf' and 'man yum2dnf' for more information.
 To transfer transaction metadata from yum to DNF, run:
 'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
 
-[0mLast metadata expiration check performed 0:00:52 ago on Mon Mar 28 17:41:07 2016.
+[0mLast metadata expiration check performed 0:01:32 ago on Mon Apr 11 17:19:56 2016.
 Dependencies resolved.
 ================================================================================
  Package             Arch         Version                    Repository    Size
@@ -369,7 +345,7 @@ Total download size: 1.2 M
 Installed size: 3.1 M
 Downloading Packages:
 --------------------------------------------------------------------------------
-Total                                           931 kB/s | 1.2 MB     00:01     
+Total                                           785 kB/s | 1.2 MB     00:01     
 Running transaction check
 Transaction check succeeded.
 Running transaction test
@@ -416,7 +392,7 @@ The following actions will be performed:
   - install ocaml-data-notation 0.0.11                          [required by oasis]
   - install ppx_core            113.33.00                       [required by ppx_sexp_conv]
   - install ppx_deriving        3.3                             [required by ppx_type_conv]
-  - install stringext           1.4.1                           [required by uri]
+  - install stringext           1.4.2                           [required by uri]
   - install re                  1.5.0                           [required by uri]
   - install ocplib-endian       0.8                             [required by cstruct]
   - install oasis               0.4.5                           [required by nocrypto]
@@ -438,14 +414,14 @@ The following actions will be performed:
 [calendar: http] Command started
 [calendar.2.03.2] http://forge.ocamlcore.org/frs/download.php/915/calendar-2.03.2.tar.gz downloaded
 [cppo: http] Command started
-[cppo: http] Command started
-[cppo.1.3.1] https://github.com/mjambon/cppo/archive/v1.3.1.tar.gz downloaded
-[cstruct: http] Command started
 [aws: http] Command started
 [aws.1.0.2] https://github.com/inhabitedtype/ocaml-aws/releases/download/aws-1.0.2/aws-1.0.2.tar.gz downloaded
-[ezxmlm: http] Command started
+[cstruct: http] Command started
 [aws-rds: http] Command started
 [aws-rds.0.1.0] https://github.com/inhabitedtype/ocaml-aws/releases/download/aws-1.0.2/aws-rds-0.1.0.tar.gz downloaded
+[ezxmlm: http] Command started
+[cppo: http] Command started
+[cppo.1.3.1] https://github.com/mjambon/cppo/archive/v1.3.1.tar.gz downloaded
 [nocrypto: http] Command started
 [ezxmlm: http] Command started
 [ezxmlm.1.0.1] https://github.com/avsm/ezxmlm/archive/v1.0.1.tar.gz downloaded
@@ -468,41 +444,41 @@ The following actions will be performed:
 [ocamlmod: http] Command started
 [ocamlmod.0.0.8] https://forge.ocamlcore.org/frs/download.php/1544/ocamlmod-0.0.8.tar.gz downloaded
 [ppx_core: http] Command started
-[ppx_core: http] Command started
-[ppx_core.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_core-113.33.00.tar.gz downloaded
-[ppx_deriving: http] Command started
 [ocplib-endian: http] Command started
 [ocplib-endian.0.8] https://github.com/OCamlPro/ocplib-endian/archive/0.8.tar.gz downloaded
+[ppx_deriving: http] Command started
+[ppx_core: http] Command started
+[ppx_core.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_core-113.33.00.tar.gz downloaded
 [ppx_driver: http] Command started
-[nocrypto: http] Command started
-[nocrypto.0.5.3] https://github.com/mirleft/ocaml-nocrypto/archive/v0.5.3.tar.gz downloaded
-[ppx_optcomp: http] Command started
-[ppx_optcomp: http] Command started
-[ppx_driver: http] Command started
-[ppx_optcomp.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_optcomp-113.33.00.tar.gz downloaded
-[ppx_sexp_conv: http] Command started
-[ppx_driver.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_driver-113.33.00.tar.gz downloaded
-[ppx_tools: http] Command started
 [ppx_deriving: http] Command started
 [ppx_deriving.3.3] https://github.com/whitequark/ppx_deriving/archive/v3.3.tar.gz downloaded
-[ppx_type_conv: http] Command started
+[ppx_optcomp: http] Command started
+[ppx_driver: http] Command started
+[ppx_driver.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_driver-113.33.00.tar.gz downloaded
 [ppx_sexp_conv: http] Command started
-[ppx_sexp_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_conv-113.33.00.tar.gz downloaded
-[re: http] Command started
+[ppx_optcomp: http] Command started
+[ppx_optcomp.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_optcomp-113.33.00.tar.gz downloaded
+[ppx_tools: http] Command started
+[nocrypto: http] Command started
+[nocrypto.0.5.3] https://github.com/mirleft/ocaml-nocrypto/archive/v0.5.3.tar.gz downloaded
 [ppx_type_conv: http] Command started
 [ppx_tools: http] Command started
 [ppx_tools.4.02.3] https://github.com/alainfrisch/ppx_tools/archive/v4.02.3.tar.gz downloaded
-[sexplib: http] Command started
-[ppx_type_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_type_conv-113.33.00.tar.gz downloaded
-[stringext: http] Command started
 [re: http] Command started
+[ppx_type_conv: http] Command started
+[ppx_type_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_type_conv-113.33.00.tar.gz downloaded
+[sexplib: http] Command started
+[re: http] Command started
+[sexplib: http] Command started
 [re.1.5.0] https://github.com/ocaml/ocaml-re/archive/ocaml-re-1.5.0.tar.gz downloaded
-[type_conv: http] Command started
 [stringext: http] Command started
-[stringext.1.4.1] https://github.com/rgrinberg/stringext/archive/v1.4.1.tar.gz downloaded
-[uri: http] Command started
+[sexplib.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/sexplib-113.33.00.tar.gz downloaded
+[type_conv: http] Command started
 [type_conv: http] Command started
 [type_conv.113.00.02] https://ocaml.janestreet.com/ocaml-core/113.00/files/type_conv-113.00.02.tar.gz downloaded
+[uri: http] Command started
+[stringext: http] Command started
+[stringext.1.4.2] https://github.com/rgrinberg/stringext/archive/v1.4.2.tar.gz downloaded
 [xmlm: http] Command started
 [xmlm: http] Command started
 [xmlm.1.2.0] http://erratique.ch/software/xmlm/releases/xmlm-1.2.0.tbz downloaded
@@ -511,8 +487,8 @@ The following actions will be performed:
 [zarith.1.4.1] https://forge.ocamlcore.org/frs/download.php/1574/zarith-1.4.1.tgz downloaded
 [uri: http] Command started
 [uri.1.9.2] https://github.com/mirage/ocaml-uri/archive/v1.9.2.tar.gz downloaded
-[sexplib: http] Command started
-[sexplib.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/sexplib-113.33.00.tar.gz downloaded
+[ppx_sexp_conv: http] Command started
+[ppx_sexp_conv.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_conv-113.33.00.tar.gz downloaded
 
 =-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 [conf-gmp: sh] Command started
@@ -668,19 +644,19 @@ The following actions will be performed:
 - ocamlc -I +compiler-libs -g -c fl_topo.ml
 - ocamlc -I +compiler-libs -c fl_package_base.mli
 - ocamlc -I +compiler-libs -g -c fl_package_base.ml
+- Makefile:175: depend: No such file or directory
 - ocamlc -I +compiler-libs -c findlib.mli
 - ocamlc -I +compiler-libs -g -c findlib.ml
-- Makefile:175: depend: No such file or directory
 - ocamlc -I +compiler-libs -g -c fl_args.ml
 - ocamlc -I +compiler-libs -g -c fl_lint.ml
 - ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
 - ocamlc -I +compiler-libs -g -c ocaml_args.ml
 - ocamlc -I +compiler-libs -g -c frontend.ml
+- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
+-            ocaml_args.cmo frontend.cmo
 - File "frontend.ml", line 1787, characters 16-29:
 - Warning 3: deprecated: String.create
 - Use Bytes.create instead.
-- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
--            ocaml_args.cmo frontend.cmo
 - if [ "true" = "true" ]; then                 \
 - 	cp topfind.ml.in topfind.ml;                             \
 - else                                                             \
@@ -990,8 +966,8 @@ The following actions will be performed:
 - ocamlc: ........................................ /home/opam/.opam/4.02.3/bin/ocamlc.opt
 - ocamlfind: ..................................... /home/opam/.opam/4.02.3/bin/ocamlfind
 - 
-- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlc.opt -config > /tmp/oasis-816218.txt'
-- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlfind query -format %v findlib > /tmp/oasis-8ef821.txt'
+- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlc.opt -config > /tmp/oasis-ea6c2b.txt'
+- I: Running command '/home/opam/.opam/4.02.3/bin/ocamlfind query -format %v findlib > /tmp/oasis-a4cd46.txt'
 [ocamlify: ocaml setup.ml] Command started
 + ocaml "setup.ml" "-configure" "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ocamlmod.0.0.8)
 - 
@@ -1068,11 +1044,6 @@ The following actions will be performed:
 - I: Running command '/home/opam/.opam/4.02.3/bin/ocamlbuild src/ocamlify.byte -tag debug'
 - I: Running command 'cp '_build/src/ocamlify.byte' '_build/src/ocamlify''
 [ocamlify: ocaml setup.ml] Command started
-+ ocaml "setup.ml" "-install" (CWD=/home/opam/.opam/4.02.3/build/ocamlify.0.0.1)
-- I: Copying file '/home/opam/.opam/4.02.3/build/ocamlify.0.0.1/_build/src/ocamlify' to '/home/opam/.opam/4.02.3/bin/ocamlify'
-- I: Running command 'cp '/home/opam/.opam/4.02.3/build/ocamlify.0.0.1/_build/src/ocamlify' '/home/opam/.opam/4.02.3/bin/ocamlify''
--> installed ocamlify.0.0.1
-[ocplib-endian: ocaml setup.ml] Command started
 + ocaml "setup.ml" "-build" (CWD=/home/opam/.opam/4.02.3/build/ocamlmod.0.0.8)
 - /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
 - File "_tags", line 20, characters 18-27:
@@ -1094,6 +1065,20 @@ The following actions will be performed:
 - Warning 3: deprecated: Lazy.lazy_from_fun
 - Use Lazy.from_fun instead.
 [ocamlmod: ocaml setup.ml] Command started
++ ocaml "setup.ml" "-install" (CWD=/home/opam/.opam/4.02.3/build/ocamlify.0.0.1)
+- I: Copying file '/home/opam/.opam/4.02.3/build/ocamlify.0.0.1/_build/src/ocamlify' to '/home/opam/.opam/4.02.3/bin/ocamlify'
+- I: Running command 'cp '/home/opam/.opam/4.02.3/build/ocamlify.0.0.1/_build/src/ocamlify' '/home/opam/.opam/4.02.3/bin/ocamlify''
+-> installed ocamlify.0.0.1
+[ocplib-endian: ocaml setup.ml] Command started
++ ocaml "setup.ml" "-install" (CWD=/home/opam/.opam/4.02.3/build/ocamlmod.0.0.8)
+- File "setup.ml", line 268, characters 8-26:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- File "setup.ml", line 2523, characters 6-24:
+- Warning 3: deprecated: Lazy.lazy_from_fun
+- Use Lazy.from_fun instead.
+-> installed ocamlmod.0.0.8
+[ppx_tools: make all] Command started
 + ocaml "setup.ml" "-configure" "--disable-debug" "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ocplib-endian.0.8)
 - 
 - Configuration: 
@@ -1160,15 +1145,6 @@ The following actions will be performed:
 - Warning 3: deprecated: Lazy.lazy_from_fun
 - Use Lazy.from_fun instead.
 [ocplib-endian: ocaml setup.ml] Command started
-+ ocaml "setup.ml" "-install" (CWD=/home/opam/.opam/4.02.3/build/ocamlmod.0.0.8)
-- File "setup.ml", line 268, characters 8-26:
-- Warning 3: deprecated: String.set
-- Use Bytes.set instead.
-- File "setup.ml", line 2523, characters 6-24:
-- Warning 3: deprecated: Lazy.lazy_from_fun
-- Use Lazy.from_fun instead.
--> installed ocamlmod.0.0.8
-[ppx_tools: make all] Command started
 + ocaml "setup.ml" "-build" (CWD=/home/opam/.opam/4.02.3/build/ocplib-endian.0.8)
 - /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
 - cppo -V OCAML:4.02.3 -I src/ -o src/endianString.mli src/endianString.cppo.mli
@@ -1240,50 +1216,6 @@ The following actions will be performed:
 - Installed /home/opam/.opam/4.02.3/lib/ocplib-endian/META
 -> installed ocplib-endian.0.8
 [re: ocaml setup.ml] Command started
-+ make "all" (CWD=/home/opam/.opam/4.02.3/build/ppx_tools.4.02.3)
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_convenience.mli
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_convenience.ml
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_mapper_class.mli
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_mapper_class.ml
-- ocamlc -bin-annot -a -o ppx_tools.cma ast_convenience.cmo ast_mapper_class.cmo
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c genlifter.ml
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -o genlifter ocamlcommon.cma ppx_tools.cma genlifter.cmo
-- ./genlifter -I +compiler-libs Parsetree.expression > ast_lifter.ml || rm -rf ast_lifter.ml
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_lifter.ml
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c dumpast.ml
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -o dumpast ocamlcommon.cma ocamlbytecomp.cma ast_lifter.cmo dumpast.cmo
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ppx_metaquot.ml
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -o ppx_metaquot ocamlcommon.cma ppx_tools.cma ast_lifter.cmo ppx_metaquot.cmo
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c rewriter.ml
-- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -o rewriter ocamlcommon.cma rewriter.cmo
-- ocamlopt -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_convenience.ml
-- ocamlopt -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_mapper_class.ml
-- ocamlopt -a -o ppx_tools.cmxa ast_convenience.cmx ast_mapper_class.cmx
-- ocamlopt -shared -o ppx_tools.cmxs -linkall ppx_tools.cmxa
-[ppx_tools: make install] Command started
-+ make "install" (CWD=/home/opam/.opam/4.02.3/build/ppx_tools.4.02.3)
-- ocamlfind install ppx_tools META genlifter dumpast ppx_metaquot rewriter ppx_tools.cma ppx_tools.cmxa ppx_tools.a ppx_tools.cmxs ast_convenience.mli ast_convenience.cmi ast_convenience.cmt ast_convenience.cmti ast_convenience.cmx ast_mapper_class.mli ast_mapper_class.cmi ast_mapper_class.cmt ast_mapper_class.cmti ast_mapper_class.cmx
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.cmx
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.cmti
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.cmt
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.cmi
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.mli
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.cmx
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.cmti
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.cmt
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.cmi
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.mli
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_tools.cmxs
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_tools.a
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_tools.cmxa
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_tools.cma
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/rewriter
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_metaquot
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/dumpast
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/genlifter
-- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/META
--> installed ppx_tools.4.02.3
-[ppx_core: ./configure] Command started
 + ocaml "setup.ml" "-configure" "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/re.1.5.0)
 - 
 - Configuration: 
@@ -1344,6 +1276,50 @@ The following actions will be performed:
 - ocamldoc: ............................................ /home/opam/.opam/4.02.3/bin/ocamldoc
 - 
 [re: ocaml setup.ml] Command started
++ make "all" (CWD=/home/opam/.opam/4.02.3/build/ppx_tools.4.02.3)
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_convenience.mli
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_convenience.ml
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_mapper_class.mli
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_mapper_class.ml
+- ocamlc -bin-annot -a -o ppx_tools.cma ast_convenience.cmo ast_mapper_class.cmo
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c genlifter.ml
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -o genlifter ocamlcommon.cma ppx_tools.cma genlifter.cmo
+- ./genlifter -I +compiler-libs Parsetree.expression > ast_lifter.ml || rm -rf ast_lifter.ml
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_lifter.ml
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c dumpast.ml
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -o dumpast ocamlcommon.cma ocamlbytecomp.cma ast_lifter.cmo dumpast.cmo
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ppx_metaquot.ml
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -o ppx_metaquot ocamlcommon.cma ppx_tools.cma ast_lifter.cmo ppx_metaquot.cmo
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -c rewriter.ml
+- ocamlc -bin-annot -w +A-4-17-44-45 -I +compiler-libs -safe-string -o rewriter ocamlcommon.cma rewriter.cmo
+- ocamlopt -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_convenience.ml
+- ocamlopt -w +A-4-17-44-45 -I +compiler-libs -safe-string -c ast_mapper_class.ml
+- ocamlopt -a -o ppx_tools.cmxa ast_convenience.cmx ast_mapper_class.cmx
+- ocamlopt -shared -o ppx_tools.cmxs -linkall ppx_tools.cmxa
+[ppx_tools: make install] Command started
++ make "install" (CWD=/home/opam/.opam/4.02.3/build/ppx_tools.4.02.3)
+- ocamlfind install ppx_tools META genlifter dumpast ppx_metaquot rewriter ppx_tools.cma ppx_tools.cmxa ppx_tools.a ppx_tools.cmxs ast_convenience.mli ast_convenience.cmi ast_convenience.cmt ast_convenience.cmti ast_convenience.cmx ast_mapper_class.mli ast_mapper_class.cmi ast_mapper_class.cmt ast_mapper_class.cmti ast_mapper_class.cmx
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.cmx
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.cmti
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.cmt
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.cmi
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_mapper_class.mli
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.cmx
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.cmti
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.cmt
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.cmi
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ast_convenience.mli
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_tools.cmxs
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_tools.a
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_tools.cmxa
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_tools.cma
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/rewriter
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/ppx_metaquot
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/dumpast
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/genlifter
+- Installed /home/opam/.opam/4.02.3/lib/ppx_tools/META
+-> installed ppx_tools.4.02.3
+[ppx_core: ./configure] Command started
 + ./configure "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ppx_core.113.33.00)
 - 
 - Configuration: 
@@ -2346,7 +2322,7 @@ The following actions will be performed:
 - pkg_ppx_tools_metaquot: .............................. /home/opam/.opam/4.02.3/lib/ppx_tools
 - 
 [ppx_optcomp: make] Command started
-+ ocaml "setup.ml" "-configure" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.1)
++ ocaml "setup.ml" "-configure" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.2)
 - 
 - Configuration: 
 - ocamlfind: ........................................... /home/opam/.opam/4.02.3/bin/ocamlfind
@@ -2404,6 +2380,39 @@ The following actions will be performed:
 - Compile tests executable and library and run them: ... false
 - pkg_bytes: ........................................... /home/opam/.opam/4.02.3/lib/bytes
 - 
+[stringext: ocaml setup.ml] Command started
++ ocaml "setup.ml" "-build" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.2)
+- /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
+- File "_tags", line 22, characters 41-50:
+- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 26, characters 48-57:
+- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 27, characters 48-58:
+- Warning: the tag "pkg_qcheck" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 28, characters 48-64:
+- Warning: the tag "pkg_qcheck.ounit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 31, characters 23-32:
+- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 32, characters 23-33:
+- Warning: the tag "pkg_qcheck" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- File "_tags", line 33, characters 23-39:
+- Warning: the tag "pkg_qcheck.ounit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package bytes -modules lib/stringext.mli > lib/stringext.mli.depends
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmi lib/stringext.mli
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package bytes -modules lib/stringext.ml > lib/stringext.ml.depends
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmo lib/stringext.ml
+- + /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmo lib/stringext.ml
+- File "lib/stringext.ml", line 245, characters 4-22:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -a lib/stringext.cmo -o lib/stringext.cma
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmx lib/stringext.ml
+- + /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmx lib/stringext.ml
+- File "lib/stringext.ml", line 245, characters 4-22:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -a lib/stringext.cmx -o lib/stringext.cmxa
+- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -shared lib/stringext.cmxa lib/stringext.cmx -o lib/stringext.cmxs
 [stringext: ocaml setup.ml] Command started
 + make  (CWD=/home/opam/.opam/4.02.3/build/ppx_optcomp.113.33.00)
 - ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
@@ -2499,31 +2508,20 @@ The following actions will be performed:
 - make[1]: Leaving directory '/home/opam/.opam/4.02.3/build/ppx_optcomp.113.33.00'
 -> installed ppx_optcomp.113.33.00
 [ppx_driver: ./configure] Command started
-+ ocaml "setup.ml" "-build" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.1)
-- /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
-- File "_tags", line 22, characters 41-50:
-- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 26, characters 48-57:
-- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 27, characters 48-58:
-- Warning: the tag "pkg_qcheck" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 28, characters 48-64:
-- Warning: the tag "pkg_qcheck.ounit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 31, characters 23-32:
-- Warning: the tag "pkg_oUnit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 32, characters 23-33:
-- Warning: the tag "pkg_qcheck" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- File "_tags", line 33, characters 23-39:
-- Warning: the tag "pkg_qcheck.ounit" is not used in any flag or dependency declaration, so it will have no effect; it may be a typo. Otherwise you can use `mark_tag_used` in your myocamlbuild.ml to disable this warning.
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package bytes -modules lib/stringext.mli > lib/stringext.mli.depends
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmi lib/stringext.mli
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package bytes -modules lib/stringext.ml > lib/stringext.ml.depends
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmo lib/stringext.ml
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -a lib/stringext.cmo -o lib/stringext.cma
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -bin-annot -package bytes -I lib -o lib/stringext.cmx lib/stringext.ml
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -a lib/stringext.cmx -o lib/stringext.cmxa
-- /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -shared lib/stringext.cmxa lib/stringext.cmx -o lib/stringext.cmxs
-[stringext: ocaml setup.ml] Command started
++ ocaml "setup.ml" "-install" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.2)
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.mli
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cma
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmxa
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.a
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmxs
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmi
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmti
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmt
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.annot
+- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmx
+- Installed /home/opam/.opam/4.02.3/lib/stringext/META
+-> installed stringext.1.4.2
+[type_conv: make] Command started
 + ./configure "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ppx_driver.113.33.00)
 - 
 - Configuration: 
@@ -2585,20 +2583,6 @@ The following actions will be performed:
 - pkg_ocamlbuild: ...................................... /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild
 - 
 [ppx_driver: make] Command started
-+ ocaml "setup.ml" "-install" (CWD=/home/opam/.opam/4.02.3/build/stringext.1.4.1)
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.mli
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cma
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmxa
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.a
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmxs
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmi
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmti
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmt
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.annot
-- Installed /home/opam/.opam/4.02.3/lib/stringext/stringext.cmx
-- Installed /home/opam/.opam/4.02.3/lib/stringext/META
--> installed stringext.1.4.1
-[type_conv: make] Command started
 + make  (CWD=/home/opam/.opam/4.02.3/build/ppx_driver.113.33.00)
 - ocamlopt.opt -o setup.exe setup.ml || ocamlopt -o setup.exe setup.ml || ocamlc -o setup.exe setup.ml
 - for f in setup.*; do [ $f = setup.exe -o $f = setup.ml ] || rm -f $f; done
@@ -3115,6 +3099,47 @@ The following actions will be performed:
 - + /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -g -linkpkg -package bigarray -package ppx_tools.metaquot ppx/ppx_cstruct.cmx -o ppx/ppx_cstruct.native
 - findlib: [WARNING] Interface topdirs.cmi occurs in several directories: /home/opam/.opam/4.02.3/lib/ocaml/compiler-libs, /home/opam/.opam/4.02.3/lib/ocaml
 [cstruct: make install] Command started
++ make "install" (CWD=/home/opam/.opam/4.02.3/build/cstruct.1.9.0)
+- ocaml setup.ml -install 
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.mli
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/libcstruct_stubs.a
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cma
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmxa
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.a
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmxs
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmi
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmti
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmt
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.annot
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmx
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.mli
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cma
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmxa
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.a
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmxs
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmi
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmti
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmt
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.annot
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmx
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.ml
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct-syntax.cma
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct-syntax.cmxa
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct-syntax.a
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct-syntax.cmxs
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.cmi
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.cmt
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.annot
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.cmx
+- Installed /home/opam/.opam/4.02.3/lib/cstruct/META
+- Installed /home/opam/.opam/4.02.3/lib/stublibs/dllcstruct_stubs.so
+- Installed /home/opam/.opam/4.02.3/lib/stublibs/dllcstruct_stubs.so.owner
+- ocamlfind: [WARNING] You have installed DLLs but the directory /home/opam/.opam/4.02.3/lib/stublibs is not mentioned in ld.conf
+[cstruct: make js-install] Command started
++ make "js-install" (CWD=/home/opam/.opam/4.02.3/build/cstruct.1.9.0)
+- install -m 0644 js/cstruct.js /home/opam/.opam/4.02.3/lib/cstruct
+-> installed cstruct.1.9.0
+[ppx_sexp_conv: ./configure] Command started
 + make  (CWD=/home/opam/.opam/4.02.3/build/ocaml-data-notation.0.0.11)
 - ocaml setup.ml -configure 
 - 
@@ -3220,71 +3245,6 @@ The following actions will be performed:
 - Use Lazy.from_fun instead.
 - W: Tests are turned off, consider enabling with 'ocaml setup.ml -configure --enable-tests'
 [ocaml-data-notation: make install] Command started
-+ make "install" (CWD=/home/opam/.opam/4.02.3/build/cstruct.1.9.0)
-- ocaml setup.ml -install 
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.mli
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/libcstruct_stubs.a
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cma
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmxa
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.a
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmxs
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmi
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmti
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmt
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.annot
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct.cmx
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.mli
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cma
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmxa
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.a
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmxs
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmi
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmti
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmt
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.annot
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/unix_cstruct.cmx
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.ml
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct-syntax.cma
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct-syntax.cmxa
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct-syntax.a
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/cstruct-syntax.cmxs
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.cmi
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.cmt
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.annot
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/pa_cstruct.cmx
-- Installed /home/opam/.opam/4.02.3/lib/cstruct/META
-- Installed /home/opam/.opam/4.02.3/lib/stublibs/dllcstruct_stubs.so
-- Installed /home/opam/.opam/4.02.3/lib/stublibs/dllcstruct_stubs.so.owner
-- ocamlfind: [WARNING] You have installed DLLs but the directory /home/opam/.opam/4.02.3/lib/stublibs is not mentioned in ld.conf
-[cstruct: make js-install] Command started
-+ make "js-install" (CWD=/home/opam/.opam/4.02.3/build/cstruct.1.9.0)
-- install -m 0644 js/cstruct.js /home/opam/.opam/4.02.3/lib/cstruct
--> installed cstruct.1.9.0
-[ppx_sexp_conv: ./configure] Command started
-+ make "install" (CWD=/home/opam/.opam/4.02.3/build/ocaml-data-notation.0.0.11)
-- ocaml setup.ml -install 
-- File "setup.ml", line 232, characters 8-26:
-- Warning 3: deprecated: String.set
-- Use Bytes.set instead.
-- File "setup.ml", line 1946, characters 6-24:
-- Warning 3: deprecated: Lazy.lazy_from_fun
-- Use Lazy.from_fun instead.
-- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.ml
-- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cma
-- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cmxa
-- Installed /home/opam/.opam/4.02.3/lib/odn/odn.a
-- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cmxs
-- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.cmi
-- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.cmx
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.ml
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.cma
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.cmi
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.ml
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.cma
-- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.cmi
-- Installed /home/opam/.opam/4.02.3/lib/odn/META
--> installed ocaml-data-notation.0.0.11
-[oasis: ocaml setup.ml] Command started
 + ./configure "--prefix" "/home/opam/.opam/4.02.3" (CWD=/home/opam/.opam/4.02.3/build/ppx_sexp_conv.113.33.00)
 - 
 - Configuration: 
@@ -3346,6 +3306,30 @@ The following actions will be performed:
 - pkg_ppx_type_conv: ................................... /home/opam/.opam/4.02.3/lib/ppx_type_conv
 - 
 [ppx_sexp_conv: make] Command started
++ make "install" (CWD=/home/opam/.opam/4.02.3/build/ocaml-data-notation.0.0.11)
+- ocaml setup.ml -install 
+- File "setup.ml", line 232, characters 8-26:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- File "setup.ml", line 1946, characters 6-24:
+- Warning 3: deprecated: Lazy.lazy_from_fun
+- Use Lazy.from_fun instead.
+- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.ml
+- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cma
+- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cmxa
+- Installed /home/opam/.opam/4.02.3/lib/odn/odn.a
+- Installed /home/opam/.opam/4.02.3/lib/odn/odn.cmxs
+- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.cmi
+- Installed /home/opam/.opam/4.02.3/lib/odn/ODN.cmx
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.ml
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.cma
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_noodn.cmi
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.ml
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.cma
+- Installed /home/opam/.opam/4.02.3/lib/odn/pa_odn.cmi
+- Installed /home/opam/.opam/4.02.3/lib/odn/META
+-> installed ocaml-data-notation.0.0.11
+[oasis: ocaml setup.ml] Command started
 + ocaml "setup.ml" "-configure" "--prefix" "/home/opam/.opam/4.02.3" "--disable-gettext" (CWD=/home/opam/.opam/4.02.3/build/oasis.0.4.5)
 - 
 - Configuration: 
@@ -4265,6 +4249,21 @@ The following actions will be performed:
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -I src/oasis -package odn -package unix -warn-error +8 -I src/base -I src/oasis -o src/base/BaseGenerate.cmi src/base/BaseGenerate.mli
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package odn -package unix -modules src/base/BaseGenerate.ml > src/base/BaseGenerate.ml.depends
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package odn -package unix -modules src/base/BaseSetup.mli > src/base/BaseSetup.mli.depends
+- File "src/oasis/OASISString.ml", line 148, characters 8-26:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- File "src/oasis/OASISFindlib.ml", line 262, characters 6-24:
+- Warning 3: deprecated: Lazy.lazy_from_fun
+- Use Lazy.from_fun instead.
+- W: Cannot find source file matching module 'plugins/none/NoneData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/internal/InternalData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/ocamlbuild/OCamlbuildData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/custom/CustomData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/extra/META/METAData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/extra/devfiles/DevFilesData' in library builtin-plugins
+- W: Cannot find source file matching module 'plugins/extra/stdfiles/StdFilesData' in library builtin-plugins
+- W: Cannot find source file matching module 'OASISData' in library oasis
+- W: Cannot find source file matching module 'OASISData' in library oasis
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -I src/oasis -package odn -package unix -warn-error +8 -I src/base -I src/oasis -o src/base/BaseSetup.cmi src/base/BaseSetup.mli
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package odn -package unix -modules src/base/BaseLog.ml > src/base/BaseLog.ml.depends
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package odn -package unix -modules src/base/BaseOCamlcConfig.mli > src/base/BaseOCamlcConfig.mli.depends
@@ -4309,21 +4308,6 @@ The following actions will be performed:
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -I src/oasis -package odn -package unix -warn-error +8 -I src/base -I src/oasis -o src/base/BaseStandardVar.cmx src/base/BaseStandardVar.ml
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -I src/oasis -package odn -package unix -warn-error +8 -I src/base -I src/oasis -o src/base/BaseCustom.cmx src/base/BaseCustom.ml
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -I src/oasis -package odn -package unix -warn-error +8 -I src/base -I src/oasis -o src/base/BaseData.cmx src/base/BaseData.ml
-- File "src/oasis/OASISString.ml", line 148, characters 8-26:
-- Warning 3: deprecated: String.set
-- Use Bytes.set instead.
-- File "src/oasis/OASISFindlib.ml", line 262, characters 6-24:
-- Warning 3: deprecated: Lazy.lazy_from_fun
-- Use Lazy.from_fun instead.
-- W: Cannot find source file matching module 'plugins/none/NoneData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/internal/InternalData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/ocamlbuild/OCamlbuildData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/custom/CustomData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/extra/META/METAData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/extra/devfiles/DevFilesData' in library builtin-plugins
-- W: Cannot find source file matching module 'plugins/extra/stdfiles/StdFilesData' in library builtin-plugins
-- W: Cannot find source file matching module 'OASISData' in library oasis
-- W: Cannot find source file matching module 'OASISData' in library oasis
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -I src/oasis -package odn -package unix -warn-error +8 -I src/base -I src/oasis -o src/base/BaseDoc.cmx src/base/BaseDoc.ml
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -I src/oasis -package odn -package unix -warn-error +8 -I src/base -I src/oasis -o src/base/BaseBuilt.cmx src/base/BaseBuilt.ml
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlopt -c -g -annot -I src/oasis -package odn -package unix -warn-error +8 -I src/base -I src/oasis -o src/base/BaseFileAB.cmx src/base/BaseFileAB.ml
@@ -5219,11 +5203,11 @@ The following actions will be performed:
 + ocaml "setup.ml" "-build" (CWD=/home/opam/.opam/4.02.3/build/aws-rds.0.1.0)
 - /home/opam/.opam/4.02.3/bin/ocamlopt.opt unix.cmxa -I /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuildlib.cmxa myocamlbuild.ml /home/opam/.opam/4.02.3/lib/ocaml/ocamlbuild/ocamlbuild.cmx -o myocamlbuild
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/types.ml > lib/types.ml.depends
-- W: Cannot find source file matching module 'aws-rds' in library aws-rds
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/errors.ml > lib/errors.ml.depends
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/addSourceIdentifierToSubscription.mli > lib/addSourceIdentifierToSubscription.mli.depends
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package aws -I lib -o lib/errors.cmo lib/errors.ml
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package aws -I lib -o lib/types.cmo lib/types.ml
+- W: Cannot find source file matching module 'aws-rds' in library aws-rds
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamlc -c -g -annot -bin-annot -package aws -I lib -o lib/addSourceIdentifierToSubscription.cmi lib/addSourceIdentifierToSubscription.mli
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/addSourceIdentifierToSubscription.ml > lib/addSourceIdentifierToSubscription.ml.depends
 - /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/addTagsToResource.mli > lib/addTagsToResource.mli.depends
@@ -5329,9 +5313,9 @@ The following actions will be performed:
 # path                 /home/opam/.opam/4.02.3/build/aws-rds.0.1.0
 # compiler             4.02.3
 # exit-code            1
-# env-file             /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-290-a5e08f.env
-# stdout-file          /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-290-a5e08f.out
-# stderr-file          /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-290-a5e08f.err
+# env-file             /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-311-a5e08f.env
+# stdout-file          /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-311-a5e08f.out
+# stderr-file          /home/opam/.opam/4.02.3/build/aws-rds.0.1.0/aws-rds-311-a5e08f.err
 ### stdout ###
 # [...]
 # /home/opam/.opam/4.02.3/bin/ocamlfind ocamldep -package aws -modules lib/deleteEventSubscription.ml > lib/deleteEventSubscription.ml.depends
@@ -5382,13 +5366,13 @@ The following changes have been performed
   - install ppx_type_conv       113.33.00
   - install re                  1.5.0    
   - install sexplib             113.33.00
-  - install stringext           1.4.1    
+  - install stringext           1.4.2    
   - install type_conv           113.00.02
   - install uri                 1.9.2    
   - install xmlm                1.2.0    
   - install zarith              1.4.1    
 [91m
 The former state can be restored with:
-    opam switch import "~/.opam/4.02.3/backup/state-20160228174203.export"
+    opam switch import "~/.opam/4.02.3/backup/state-20160311172132.export"
 'opam install -y -j 2 -v aws-rds' failed.
 [0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/seliopou/opam-repository.git opam-publish/aws-rds.0.1.0 && opam update -u" &&   sudo -u opam sh -c "opam depext -u aws-rds" &&   sudo -u opam sh -c "opam install -y -j 2 -v aws-rds"' returned a non-zero code: 4
