@@ -1,0 +1,5 @@
+FROM ocaml/opam:centos-7_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/backtracking/opam-repository.git master && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u ocamlgraph.1.8.7 irmin functoria" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v ocamlgraph.1.8.7 irmin functoria"
