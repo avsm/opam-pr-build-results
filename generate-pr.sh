@@ -21,7 +21,7 @@ HEADSHA=`curl -s https://api.github.com/repos/$REPO/pulls/$PR | jq -r .head.sha`
 REMOTEREPO=`curl -s https://api.github.com/repos/$REPO/pulls/$PR | jq -r .head.repo.full_name`
 git branch -D $PR || true
 git checkout -B $PR
-dockerfile-gen -o build -b origin,master -b https://github.com/${REMOTEREPO}.git,$HEADREF -c 4.02.3,4.03.0+trunk,4.03.0+trunk+flambda $PACKAGES
+dockerfile-gen -o build -b origin,master -b https://github.com/${REMOTEREPO}.git,$HEADREF -c 4.02.3 $PACKAGES
 echo "# OPAM PR [$PR](https://github.com/ocaml/opam-repository/pull/$PR)\n\nHead SHA: $HEADSHA\n\n" > build/header.md
 echo $HEADSHA > build/headsha
 (git add build && git commit -m 'sync' -a) || true
