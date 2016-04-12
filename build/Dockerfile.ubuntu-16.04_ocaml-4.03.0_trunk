@@ -1,0 +1,5 @@
+FROM ocaml/opam:ubuntu-16.04_ocaml-4.03.0_trunk
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/ocaml/opam-repository.git whitequark-patch-1 && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u lwt" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v lwt"
