@@ -1,0 +1,628 @@
+Running this Dockerfile:
+FROM ocaml/opam:debian-stable_ocaml-4.03.0_trunk_flambda
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/craff/opam-repository.git master && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u imagelib" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v imagelib"Sending build context to Docker daemon 78.34 kB
+Step 1 : FROM ocaml/opam:debian-stable_ocaml-4.03.0_trunk_flambda
+debian-stable_ocaml-4.03.0_trunk_flambda: Pulling from ocaml/opam
+28c297c6ec72: Already exists
+a3ed95caeb02: Already exists
+e4cc0c7eeb95: Already exists
+d1954595fcf1: Already exists
+ed16794556e8: Already exists
+Digest: sha256:ab846e9f0e0305acc69ab8d71def20c5153bb26b998852fa8efd3e08653feed4
+Status: Image is up to date for ocaml/opam:debian-stable_ocaml-4.03.0_trunk_flambda
+ ---> f0bb884a8336
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/craff/opam-repository.git master && opam update -u" &&   sudo -u opam sh -c "opam depext -u imagelib" &&   sudo -u opam sh -c "opam install -y -j 2 -v imagelib"
+ ---> Running in 1b2b42f52a6d
+[91mFrom git://github.com/ocaml/opam-repository
+[0m[91m * branch            master     -> FETCH_HEAD
+[0m[91m   75c44d3..2bd1001  master     -> origin/master
+[0mUpdating 75c44d3..2bd1001
+Fast-forward
+ compilers/4.04.0/4.04.0+pr336/4.04.0+pr336.comp  | 11 --------
+ compilers/4.04.0/4.04.0+pr336/4.04.0+pr336.descr |  1 -
+ compilers/4.04.0/4.04.0+pr535/4.04.0+pr535.comp  | 11 --------
+ compilers/4.04.0/4.04.0+pr535/4.04.0+pr535.descr |  1 -
+ packages/oci/oci.0.3/descr                       |  4 +++
+ packages/oci/oci.0.3/opam                        | 34 ++++++++++++++++++++++++
+ packages/oci/oci.0.3/url                         |  2 ++
+ 7 files changed, 40 insertions(+), 24 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr336/4.04.0+pr336.comp
+ delete mode 100644 compilers/4.04.0/4.04.0+pr336/4.04.0+pr336.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr535/4.04.0+pr535.comp
+ delete mode 100644 compilers/4.04.0/4.04.0+pr535/4.04.0+pr535.descr
+ create mode 100644 packages/oci/oci.0.3/descr
+ create mode 100644 packages/oci/oci.0.3/opam
+ create mode 100644 packages/oci/oci.0.3/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/craff/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/imagelib/imagelib.20160413/descr | 17 +++++++++++++++++
+ packages/imagelib/imagelib.20160413/opam  | 19 +++++++++++++++++++
+ packages/imagelib/imagelib.20160413/url   |  2 ++
+ 3 files changed, 38 insertions(+)
+ create mode 100644 packages/imagelib/imagelib.20160413/descr
+ create mode 100644 packages/imagelib/imagelib.20160413/opam
+ create mode 100644 packages/imagelib/imagelib.20160413/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux debian
+# The following system packages are needed:
+#  - m4
+#  - ncurses-dev
+#  - pkg-config
+#  - zlib1g-dev
+# The following new OS packages need to be installed: ncurses-dev zlib1g-dev
+The following command needs to be run through "sudo":
+    apt-get update
+Hit http://security.debian.org stable/updates InRelease
+Ign http://httpredir.debian.org stable InRelease
+Get:1 http://httpredir.debian.org stable-updates InRelease [142 kB]
+Get:2 http://httpredir.debian.org stable Release.gpg [2373 B]
+Get:3 http://security.debian.org stable/updates/main amd64 Packages [291 kB]
+Get:4 http://httpredir.debian.org stable Release [148 kB]
+Get:5 http://httpredir.debian.org stable-updates/main amd64 Packages [7407 B]
+Get:6 http://httpredir.debian.org stable/main amd64 Packages [9034 kB]
+Fetched 9625 kB in 6s (1442 kB/s)
+Reading package lists...
+# OS package update successful
+The following command needs to be run through "sudo":
+    apt-get install -qq -yy ncurses-dev zlib1g-dev
+[91mdebconf: unable to initialize frontend: Dialog
+debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)
+[0m[91mdebconf: falling back to frontend: Readline
+[0m[91mdebconf: unable to initialize frontend: Readline
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Teletype
+[0m[91mdpkg-preconfigure: unable to re-open stdin: 
+[0mSelecting previously unselected package zlib1g-dev:amd64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 23395 files and directories currently installed.)
+Preparing to unpack .../zlib1g-dev_1%3a1.2.8.dfsg-2+b1_amd64.deb ...
+Unpacking zlib1g-dev:amd64 (1:1.2.8.dfsg-2+b1) ...
+Setting up zlib1g-dev:amd64 (1:1.2.8.dfsg-2+b1) ...
+# OS packages installation successful
+The following actions will be performed:
+  - install conf-pkg-config 1.0                                 [required by conf-ncurses]
+  - install conf-m4         1                                   [required by ocamlfind]
+  - install conf-ncurses    1                                   [required by ocamlfind]
+  - install ocamlfind       1.6.2                               [required by imagelib]
+  - install camlzip         1.05                                [required by imagelib]
+  - install imagelib        20160413
+===== 6 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[camlzip: http] Command started
+[imagelib: http] Command started
+[ocamlfind: http] Command started
+[imagelib: http] Command started
+[imagelib.20160413] http://patoline.org/archive/imagelib/imagelib_20160413.tar.gz downloaded
+[camlzip: http] Command started
+[camlzip.1.05] http://forge.ocamlcore.org/frs/download.php/1037/camlzip-1.05.tar.gz downloaded
+[ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[conf-m4: sh echo | m4] Command started
+[conf-pkg-config: pkg-config] Command started
++ sh "-exc" "echo | m4" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/conf-m4.1)
+- 
+- + echo
+- + m4
+-> installed conf-m4.1
++ pkg-config "--help" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/conf-pkg-config.1.0)
+- Usage:
+-   pkg-config [OPTION...]
+- 
+- Help Options:
+-   -h, --help                              Show help options
+- 
+- Application Options:
+-   --version                               output version of pkg-config
+-   --modversion                            output version for package
+-   --atleast-pkgconfig-version=VERSION     require given version of pkg-config
+-   --libs                                  output all linker flags
+-   --static                                output linker flags for static linking
+-   --short-errors                          print short errors
+-   --libs-only-l                           output -l flags
+-   --libs-only-other                       output other libs (e.g. -pthread)
+-   --libs-only-L                           output -L flags
+-   --cflags                                output all pre-processor and compiler flags
+-   --cflags-only-I                         output -I flags
+-   --cflags-only-other                     output cflags not covered by the cflags-only-I option
+-   --variable=NAME                         get the value of variable named NAME
+-   --define-variable=NAME=VALUE            set variable NAME to VALUE
+-   --exists                                return 0 if the module(s) exist
+-   --print-variables                       output list of variables defined by the module
+-   --uninstalled                           return 0 if the uninstalled version of one or more module(s) or their dependencies will be used
+-   --atleast-version=VERSION               return 0 if the module is at least version VERSION
+-   --exact-version=VERSION                 return 0 if the module is at exactly version VERSION
+-   --max-version=VERSION                   return 0 if the module is at no newer than version VERSION
+-   --list-all                              list all known packages
+-   --debug                                 show verbose debug information
+-   --print-errors                          show verbose information about missing or conflicting packages (default unless --exists or --atleast/exact/max-version given on the command line)
+-   --silence-errors                        be silent about errors (default when --exists or --atleast/exact/max-version given on the command line)
+-   --errors-to-stdout                      print errors from --print-errors to stdout not stderr
+-   --print-provides                        print which packages the package provides
+-   --print-requires                        print which packages the package requires
+-   --print-requires-private                print which packages the package requires for static linking
+- 
+-> installed conf-pkg-config.1.0
+[conf-ncurses: pkg-config ncurses] Command started
++ pkg-config "ncurses" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/conf-ncurses.1)
+-> installed conf-ncurses.1
+[ocamlfind: ./configure] Command started
++ ./configure "-bindir" "/home/opam/.opam/4.03.0+trunk+flambda/bin" "-sitelib" "/home/opam/.opam/4.03.0+trunk+flambda/lib" "-mandir" "/home/opam/.opam/4.03.0+trunk+flambda/man" "-config" "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2)
+- Welcome to findlib version 1.6.2
+- Configuring core...
+- Checking for #remove_directory...
+- Testing threading model...
+- systhread_supported: true
+- Testing DLLs...
+- Testing whether ppxopt can be supported...
+- Configuring libraries...
+- native dynlink: found
+- labltk: not present
+- ocamlbuild: not present
+- camlp4: using camlp4, style 310
+- compiler-libs: found
+- dbm: not present (normal since OCaml-4.00)
+- bytes: found, installing fake library
+- Configuration for dynlink written to site-lib-src/dynlink/META
+- Configuration for graphics written to site-lib-src/graphics/META
+- Configuration for num written to site-lib-src/num/META
+- Configuration for num-top written to site-lib-src/num-top/META
+- Configuration for str written to site-lib-src/str/META
+- Configuration for threads written to site-lib-src/threads/META
+- Configuration for unix written to site-lib-src/unix/META
+- Configuration for stdlib written to site-lib-src/stdlib/META
+- Configuration for bigarray written to site-lib-src/bigarray/META
+- Configuration for ocamldoc written to site-lib-src/ocamldoc/META
+- Configuration for camlp4 written to site-lib-src/camlp4/META
+- Configuration for compiler-libs written to site-lib-src/compiler-libs/META
+- Configuration for bytes written to site-lib-src/bytes/META
+- Detecting compiler arguments: (extractor built) 
+- ok
+- 
+- About the OCAML core installation:
+-     Standard library:      /home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml
+-     Binaries:              /home/opam/.opam/4.03.0+trunk+flambda/bin
+-     Manual pages:          /home/opam/.opam/4.03.0+trunk+flambda/man
+-     Multi-threading type:  posix
+- The directory of site-specific packages will be
+-     site-lib:              /home/opam/.opam/4.03.0+trunk+flambda/lib
+- The configuration file is written to:
+-     findlib config file:   /home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf
+- Software will be installed:
+-     Libraries:             in <site-lib>/findlib
+-     Binaries:              /home/opam/.opam/4.03.0+trunk+flambda/bin
+-     Manual pages:          /home/opam/.opam/4.03.0+trunk+flambda/man
+-     topfind script:        /home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml
+- Topfind ppxopt support:    yes
+- Toolbox:                   no
+- Link custom runtime:       yes
+- Need bytes compatibility:  no
+- 
+- Configuration has been written to Makefile.config
+- 
+- You can now do 'make all', and optionally 'make opt', to build ocamlfind.
+[ocamlfind: make all] Command started
++ make "all" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make all ) || exit; done
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- ocamllex fl_meta.mll
+- 22 states, 392 transitions, table size 1700 bytes
+- ocamldep *.ml *.mli >depend
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib_config.mlp | \
+- 	../../tools/patch '@CONFIGFILE@' '/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf' | \
+- 	../../tools/patch '@STDLIB@' '/home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml' | \
+- 	sed -e 's;@AUTOLINK@;true;g' \
+- 	    -e 's;@SYSTEM@;linux;g' \
+- 	     >findlib_config.ml
+- ocamlc -I +compiler-libs -g -c findlib_config.ml
+- ocamlc -I +compiler-libs -g -c fl_split.ml
+- ocamlc -I +compiler-libs -g -c fl_metatoken.ml
+- ocamlc -I +compiler-libs -g -c fl_meta.ml
+- ocamlc -I +compiler-libs -c fl_metascanner.mli
+- ocamlc -I +compiler-libs -g -c fl_metascanner.ml
+- ocamlc -I +compiler-libs -c fl_topo.mli
+- ocamlc -I +compiler-libs -g -c fl_topo.ml
+- ocamlc -I +compiler-libs -c fl_package_base.mli
+- Makefile:175: depend: No such file or directory
+- ocamlc -I +compiler-libs -g -c fl_package_base.ml
+- ocamlc -I +compiler-libs -c findlib.mli
+- ocamlc -I +compiler-libs -g -c findlib.ml
+- ocamlc -I +compiler-libs -g -c fl_args.ml
+- ocamlc -I +compiler-libs -g -c fl_lint.ml
+- ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
+- ocamlc -I +compiler-libs -g -c ocaml_args.ml
+- ocamlc -I +compiler-libs -g -c frontend.ml
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "frontend.ml", line 2184, characters 25-41:
+- Warning 3: deprecated: String.lowercase
+- Use String.lowercase_ascii instead.
+- File "frontend.ml", line 2189, characters 16-32:
+- Warning 3: deprecated: String.lowercase
+- Use String.lowercase_ascii instead.
+- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
+-            ocaml_args.cmo frontend.cmo
+- if [ "true" = "true" ]; then                 \
+- 	cp topfind.ml.in topfind.ml;                             \
+- else                                                             \
+- 	sed -e '/PPXOPT_BEGIN/,/PPXOPT_END/ d' topfind.ml.in     \
+- 		> topfind.ml ;                                   \
+- fi
+- ocamlc -I +compiler-libs -c topfind.mli
+- ocamlc -I +compiler-libs -g -c topfind.ml
+- ocamlc -I +compiler-libs -a -o findlib_top.cma topfind.cmo
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat topfind_rd1.p | \
+- 	../../tools/patch '@SITELIB@' '/home/opam/.opam/4.03.0+trunk+flambda/lib' \
+-     	    >topfind
+- ocamlc -I +compiler-libs -c num_top_printers.mli
+- ocamlc -I +compiler-libs -g -c num_top_printers.ml
+- ocamlc -I +compiler-libs -c num_top.mli
+- ocamlc -I +compiler-libs -g -c num_top.ml
+- ocamlc -I +compiler-libs -a -o num_top.cma num_top_printers.cmo num_top.cmo
+- ocamlc -I +compiler-libs -c fl_dynload.mli
+- ocamlc -I +compiler-libs -g -c fl_dynload.ml
+- ocamlc -I +compiler-libs -a -o findlib_dynload.cma fl_dynload.cmo
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- make all-config
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib.conf.in | \
+- 	tools/patch '@SITELIB@' '/home/opam/.opam/4.03.0+trunk+flambda/lib' >findlib.conf
+- if ocamlc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlc="ocamlc.opt"' >>findlib.conf; \
+- fi
+- if ocamlopt.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlopt="ocamlopt.opt"' >>findlib.conf; \
+- fi
+- if ocamldep.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldep="ocamldep.opt"' >>findlib.conf; \
+- fi
+- if ocamldoc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldoc="ocamldoc.opt"' >>findlib.conf; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+[ocamlfind: make opt] Command started
++ make "opt" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make opt ) || exit; done
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- ocamldep *.ml *.mli >depend
+- ocamlopt -I +compiler-libs -c findlib_config.ml
+- ocamlopt -I +compiler-libs -c fl_split.ml
+- ocamlopt -I +compiler-libs -c fl_metatoken.ml
+- ocamlopt -I +compiler-libs -c fl_meta.ml
+- ocamlopt -I +compiler-libs -c fl_metascanner.ml
+- ocamlopt -I +compiler-libs -c fl_topo.ml
+- ocamlopt -I +compiler-libs -c fl_package_base.ml
+- ocamlopt -I +compiler-libs -c findlib.ml
+- ocamlopt -I +compiler-libs -c fl_args.ml
+- ocamlopt -I +compiler-libs -c fl_lint.ml
+- ocamlopt -I +compiler-libs -a -o findlib.cmxa findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib.cmxs findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx; \
+- fi
+- ocamlopt -I +compiler-libs -c ocaml_args.ml
+- ocamlopt -I +compiler-libs -c frontend.ml
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "frontend.ml", line 2184, characters 25-41:
+- Warning 3: deprecated: String.lowercase
+- Use String.lowercase_ascii instead.
+- File "frontend.ml", line 2189, characters 16-32:
+- Warning 3: deprecated: String.lowercase
+- Use String.lowercase_ascii instead.
+- ocamlopt -I +compiler-libs -o ocamlfind_opt findlib.cmxa unix.cmxa \
+- 	   ocaml_args.cmx frontend.cmx
+- ocamlopt -I +compiler-libs -c fl_dynload.ml
+- ocamlopt -I +compiler-libs -a -o findlib_dynload.cmxa fl_dynload.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib_dynload.cmxs fl_dynload.cmx; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+[ocamlfind: make install] Command started
++ make "install" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2)
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/bin"
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/man"
+- make install-config
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- mkdir -p "`dirname \"/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf\"`"
+- test -f "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf" || cp findlib.conf "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf"
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- for p in findlib; do ( cd src/$p; make install ); done
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib"
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/bin"
+- test 1 -eq 0 || cp topfind "/home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml"
+- files=`../../tools/collect_files ../../Makefile.config findlib.cmi findlib.mli findlib.cma topfind.cmi topfind.mli fl_package_base.mli fl_package_base.cmi fl_metascanner.mli fl_metascanner.cmi fl_metatoken.cmi findlib_top.cma findlib.cmxa findlib.a findlib.cmxs findlib_dynload.cma findlib_dynload.cmxa findlib_dynload.a findlib_dynload.cmxs fl_dynload.mli fl_dynload.cmi META` && \
+- cp $files "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib"
+- f="ocamlfind"; { test -f ocamlfind_opt && f="ocamlfind_opt"; }; \
+- cp $f "/home/opam/.opam/4.03.0+trunk+flambda/bin/ocamlfind"
+- # the following "if" block is only needed for 4.00beta2
+- if [ 1 -eq 0 -a -f "/home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml/compiler-libs/topdirs.cmi" ]; then \
+-     cd "/home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml/compiler-libs/"; \
+-     cp topdirs.cmi toploop.cmi "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib/"; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- make install-meta
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- for x in `ls site-lib-src`; do if [ -f "site-lib-src/$x/META" ]; then mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/lib/$x"; cp site-lib-src/$x/META "/home/opam/.opam/4.03.0+trunk+flambda/lib/$x"; fi; done
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- cd src/findlib; make install-num-top
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/lib/num-top"
+- cp num_top.cma num_top.cmi num_top_printers.cmi \
+- 	"/home/opam/.opam/4.03.0+trunk+flambda/lib/num-top"
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- if [ 1 -eq 1 ]; then \
+- 	cp tools/safe_camlp4 "/home/opam/.opam/4.03.0+trunk+flambda/bin"; \
+- fi
+- make install-doc
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/man/man1" "/home/opam/.opam/4.03.0+trunk+flambda/man/man3 /home/opam/.opam/4.03.0+trunk+flambda/man/man5"
+- cp doc/ref-man/ocamlfind.1 "/home/opam/.opam/4.03.0+trunk+flambda/man/man1"
+- cp doc/ref-man/META.5 doc/ref-man/site-lib.5 doc/ref-man/findlib.conf.5 "/home/opam/.opam/4.03.0+trunk+flambda/man/man5"
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+-> installed ocamlfind.1.6.2
+[camlzip: make all] Command started
++ make "all" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/camlzip.1.05)
+- ocamlc -g -c -ccopt -g -ccopt -I/usr/local/include zlibstubs.c
+- ocamlmklib -oc camlzip zlibstubs.o \
+-             -L/usr/local/lib -lz
+- ocamlc -g -c zlib.mli
+- ocamlc -g -c zlib.ml
+- ocamlc -g -c zip.mli
+- ocamlc -g -c zip.ml
+- ocamlc -g -c gzip.mli
+- ocamlc -g -c gzip.ml
+- File "zlib.ml", line 49, characters 14-27:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zlib.ml", line 50, characters 15-28:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zlib.ml", line 72, characters 15-28:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zlib.ml", line 91, characters 14-27:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zlib.ml", line 92, characters 15-28:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 31, characters 10-23:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 118, characters 12-25:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 270, characters 14-27:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 317, characters 18-31:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 508, characters 18-31:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- ocamlmklib -o zip -oc camlzip zlib.cmo zip.cmo gzip.cmo \
+-             -L/usr/local/lib -lz
+- File "gzip.ml", line 68, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gzip.ml", line 149, characters 18-31:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gzip.ml", line 185, characters 17-30:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gzip.ml", line 218, characters 2-22:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+[camlzip: make allopt] Command started
++ make "allopt" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/camlzip.1.05)
+- ocamlopt -c zlib.ml
+- ocamlopt -c zip.ml
+- File "zlib.ml", line 49, characters 14-27:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zlib.ml", line 50, characters 15-28:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zlib.ml", line 72, characters 15-28:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zlib.ml", line 91, characters 14-27:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zlib.ml", line 92, characters 15-28:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 31, characters 10-23:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 118, characters 12-25:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 270, characters 14-27:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 317, characters 18-31:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "zip.ml", line 508, characters 18-31:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- ocamlopt -c gzip.ml
+- File "gzip.ml", line 68, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gzip.ml", line 149, characters 18-31:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gzip.ml", line 185, characters 17-30:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "gzip.ml", line 218, characters 2-22:
+- Warning 3: deprecated: String.set
+- Use Bytes.set instead.
+- ocamlmklib -o zip -oc camlzip zlib.cmx zip.cmx gzip.cmx \
+-             -L/usr/local/lib -lz
+- ocamlopt -shared -linkall -I ./ -o zip.cmxs zip.cmxa
+[camlzip: make install-findlib] Command started
++ make "install-findlib" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/camlzip.1.05)
+- ocamlfind install zip META *.mli *.a *.cmi *.cma zip.cmx zlib.cmx gzip.cmx zip.cmxa zip.cmxs dllcamlzip.so
+- echo 'directory="../zip"' >> META && ocamlfind install camlzip META
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zip.cmxs
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zip.cmxa
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/gzip.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zlib.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zip.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zip.cma
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zlib.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zip.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/gzip.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zip.a
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/libcamlzip.a
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zlib.mli
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/zip.mli
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/gzip.mli
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/zip/META
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/stublibs/dllcamlzip.so
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/stublibs/dllcamlzip.so.owner
+- ocamlfind: [WARNING] You have installed DLLs but the directory /home/opam/.opam/4.03.0+trunk+flambda/lib/stublibs is not mentioned in ld.conf
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/camlzip/META
+-> installed camlzip.1.05
+[imagelib: make] Command started
++ make  (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/imagelib.20160413)
+- ocamlbuild -cflags -w,-3 -use-ocamlfind imagelib.cma
+- ocamlfind ocamldep -package bigarray -package zip -modules imageUtil.ml > imageUtil.ml.depends
+- ocamlfind ocamldep -package bigarray -package zip -modules image.mli > image.mli.depends
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o image.cmi image.mli
+- ocamlfind ocamldep -package bigarray -package zip -modules image.ml > image.ml.depends
+- ocamlfind ocamldep -package bigarray -package zip -modules imageGIF.ml > imageGIF.ml.depends
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o imageUtil.cmo imageUtil.ml
+- ocamlfind ocamldep -package bigarray -package zip -modules imageJPG.ml > imageJPG.ml.depends
+- ocamlfind ocamldep -package bigarray -package zip -modules imagePNG.ml > imagePNG.ml.depends
+- ocamlfind ocamldep -package bigarray -package zip -modules imagePPM.ml > imagePPM.ml.depends
+- ocamlfind ocamldep -package bigarray -package zip -modules imageXCF.ml > imageXCF.ml.depends
+- ocamlfind ocamldep -package bigarray -package zip -modules imageLib.mli > imageLib.mli.depends
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o imageLib.cmi imageLib.mli
+- ocamlfind ocamldep -package bigarray -package zip -modules imageLib.ml > imageLib.ml.depends
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o imageGIF.cmo imageGIF.ml
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o imageJPG.cmo imageJPG.ml
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o imagePNG.cmo imagePNG.ml
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o imagePPM.cmo imagePPM.ml
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o imageXCF.cmo imageXCF.ml
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o image.cmo image.ml
+- ocamlfind ocamlc -c -w -3 -package bigarray -package zip -o imageLib.cmo imageLib.ml
+- ocamlfind ocamlc -a -package bigarray -package zip imageUtil.cmo image.cmo imageGIF.cmo imageJPG.cmo imagePNG.cmo imagePPM.cmo imageXCF.cmo imageLib.cmo -o imagelib.cma
+- ocamlbuild -cflags -w,-3 -use-ocamlfind imagelib.cmxa
+- ocamlfind ocamlopt -c -w -3 -package bigarray -package zip -o image.cmx image.ml
+- ocamlfind ocamlopt -c -w -3 -package bigarray -package zip -o imageUtil.cmx imageUtil.ml
+- ocamlfind ocamlopt -c -w -3 -package bigarray -package zip -o imageGIF.cmx imageGIF.ml
+- ocamlfind ocamlopt -c -w -3 -package bigarray -package zip -o imageJPG.cmx imageJPG.ml
+- ocamlfind ocamlopt -c -w -3 -package bigarray -package zip -o imagePNG.cmx imagePNG.ml
+- ocamlfind ocamlopt -c -w -3 -package bigarray -package zip -o imagePPM.cmx imagePPM.ml
+- ocamlfind ocamlopt -c -w -3 -package bigarray -package zip -o imageXCF.cmx imageXCF.ml
+- ocamlfind ocamlopt -c -w -3 -package bigarray -package zip -o imageLib.cmx imageLib.ml
+- ocamlfind ocamlopt -a -package bigarray -package zip imageUtil.cmx image.cmx imageGIF.cmx imageJPG.cmx imagePNG.cmx imagePPM.cmx imageXCF.cmx imageLib.cmx -o imagelib.cmxa
+[imagelib: make install] Command started
++ make "install" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/imagelib.20160413)
+- ocamlbuild -cflags -w,-3 -use-ocamlfind imagelib.cma
+- ocamlbuild -cflags -w,-3 -use-ocamlfind imagelib.cmxa
+- ocamlfind: [WARNING] No such directory: /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagelib.a
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagelib.cmxa
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagelib.cma
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePNG.ml
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageUtil.ml
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageXCF.ml
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/image.ml
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageLib.ml
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePPM.ml
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageGIF.ml
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageJPG.ml
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePNG.o
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageUtil.o
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageXCF.o
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/image.o
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageLib.o
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePPM.o
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageGIF.o
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageJPG.o
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePNG.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageUtil.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageXCF.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/image.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageLib.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePPM.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageGIF.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageJPG.cmi
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePNG.cmo
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageUtil.cmo
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageXCF.cmo
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/image.cmo
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageLib.cmo
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePPM.cmo
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageGIF.cmo
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageJPG.cmo
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePNG.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageUtil.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageXCF.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/image.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageLib.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imagePPM.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageGIF.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/imageJPG.cmx
+- Installed /home/opam/.opam/4.03.0+trunk+flambda/lib/imagelib/META
+-> installed imagelib.20160413
+Done.
+
+=-=- imagelib.20160413 installed successfully -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=> imagelib requires convert (imagemagick) to handle format other than png and
+   ppm.
+ ---> 18a658edf53a
+Removing intermediate container 1b2b42f52a6d
+Successfully built 18a658edf53a
