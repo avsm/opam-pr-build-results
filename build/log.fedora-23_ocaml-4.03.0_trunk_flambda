@@ -1,0 +1,879 @@
+Running this Dockerfile:
+FROM ocaml/opam:fedora-23_ocaml-4.03.0_trunk_flambda
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/gabelevi/opam-repository.git flowtype && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u flowtype" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v flowtype"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.332 MB
+Step 1 : FROM ocaml/opam:fedora-23_ocaml-4.03.0_trunk_flambda
+fedora-23_ocaml-4.03.0_trunk_flambda: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+236608c7b546: Already exists
+4a4c96b88bc0: Already exists
+6aebeb114449: Pulling fs layer
+4c94d5f42422: Pulling fs layer
+6aebeb114449: Waiting
+4c94d5f42422: Waiting
+6aebeb114449: Verifying Checksum
+6aebeb114449: Download complete
+6aebeb114449: Pull complete
+6aebeb114449: Pull complete
+4c94d5f42422: Verifying Checksum
+4c94d5f42422: Download complete
+4c94d5f42422: Pull complete
+4c94d5f42422: Pull complete
+Digest: sha256:45925781534be794fb1378015a547ec62759dc90af9ac6745dec6beacd4234a4
+Status: Downloaded newer image for ocaml/opam:fedora-23_ocaml-4.03.0_trunk_flambda
+ ---> 8fb894339b27
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/gabelevi/opam-repository.git flowtype && opam update -u" &&   sudo -u opam sh -c "opam depext -u flowtype" &&   sudo -u opam sh -c "opam install -y -j 2 -v flowtype"
+ ---> Running in 777d2eb48bb2
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0m[91m   2bd1001..8b11952  master     -> origin/master
+[0mUpdating 2bd1001..8b11952
+Fast-forward
+ compilers/4.04.0/4.04.0+pr539/4.04.0+pr539.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr539/4.04.0+pr539.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr540/4.04.0+pr540.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr540/4.04.0+pr540.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr541/4.04.0+pr541.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr541/4.04.0+pr541.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr542/4.04.0+pr542.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr542/4.04.0+pr542.descr   |  1 +
+ packages/bisect_ppx/bisect_ppx.0.1/opam            |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.2/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.3/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.4/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.5/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.6/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2/opam            |  1 -
+ packages/bisect_ppx/bisect_ppx.1.1.0/descr         | 19 ------------
+ .../bisect_ppx.1.1.0/files/bisect_ppx.install      |  4 ---
+ packages/bisect_ppx/bisect_ppx.1.1.0/opam          | 27 -----------------
+ packages/bisect_ppx/bisect_ppx.1.1.0/url           |  2 --
+ packages/caml-mode/caml-mode.4.02/opam             |  7 +----
+ packages/conf-emacs/conf-emacs.1/descr             |  3 ++
+ packages/conf-emacs/conf-emacs.1/opam              | 16 ++++++++++
+ packages/conf-vim/conf-vim.1/descr                 |  3 ++
+ packages/conf-vim/conf-vim.1/opam                  | 16 ++++++++++
+ packages/imagelib/imagelib.20160413/descr          | 17 +++++++++++
+ packages/imagelib/imagelib.20160413/opam           | 19 ++++++++++++
+ packages/imagelib/imagelib.20160413/url            |  2 ++
+ packages/mirage-http/mirage-http.2.5.2/descr       |  1 +
+ packages/mirage-http/mirage-http.2.5.2/opam        | 21 +++++++++++++
+ packages/mirage-http/mirage-http.2.5.2/url         |  2 ++
+ .../ocamlbuild-protoc/ocamlbuild-protoc.0.1/descr  |  3 ++
+ .../ocamlbuild-protoc/ocamlbuild-protoc.0.1/opam   | 15 ++++++++++
+ .../ocamlbuild-protoc/ocamlbuild-protoc.0.1/url    |  2 ++
+ .../ppx_jsobject_conv.0.0.6/descr                  |  6 ++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/opam | 22 ++++++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/url  |  3 ++
+ .../ppx_jsobject_conv.0.1.0/descr                  |  6 ++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/opam | 22 ++++++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/url  |  3 ++
+ packages/tuareg/tuareg.2.0.9/opam                  |  7 +----
+ packages/x509/x509.0.5.2/descr                     |  4 +++
+ packages/x509/x509.0.5.2/findlib                   |  1 +
+ packages/x509/x509.0.5.2/opam                      | 35 ++++++++++++++++++++++
+ packages/x509/x509.0.5.2/url                       |  2 ++
+ 44 files changed, 274 insertions(+), 71 deletions(-)
+ create mode 100644 compilers/4.04.0/4.04.0+pr539/4.04.0+pr539.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr539/4.04.0+pr539.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr540/4.04.0+pr540.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr540/4.04.0+pr540.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr541/4.04.0+pr541.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr541/4.04.0+pr541.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr542/4.04.0+pr542.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr542/4.04.0+pr542.descr
+ delete mode 100644 packages/bisect_ppx/bisect_ppx.1.1.0/descr
+ delete mode 100644 packages/bisect_ppx/bisect_ppx.1.1.0/files/bisect_ppx.install
+ delete mode 100644 packages/bisect_ppx/bisect_ppx.1.1.0/opam
+ delete mode 100644 packages/bisect_ppx/bisect_ppx.1.1.0/url
+ create mode 100644 packages/conf-emacs/conf-emacs.1/descr
+ create mode 100644 packages/conf-emacs/conf-emacs.1/opam
+ create mode 100644 packages/conf-vim/conf-vim.1/descr
+ create mode 100644 packages/conf-vim/conf-vim.1/opam
+ create mode 100644 packages/imagelib/imagelib.20160413/descr
+ create mode 100644 packages/imagelib/imagelib.20160413/opam
+ create mode 100644 packages/imagelib/imagelib.20160413/url
+ create mode 100644 packages/mirage-http/mirage-http.2.5.2/descr
+ create mode 100644 packages/mirage-http/mirage-http.2.5.2/opam
+ create mode 100644 packages/mirage-http/mirage-http.2.5.2/url
+ create mode 100644 packages/ocamlbuild-protoc/ocamlbuild-protoc.0.1/descr
+ create mode 100644 packages/ocamlbuild-protoc/ocamlbuild-protoc.0.1/opam
+ create mode 100644 packages/ocamlbuild-protoc/ocamlbuild-protoc.0.1/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/url
+ create mode 100644 packages/x509/x509.0.5.2/descr
+ create mode 100644 packages/x509/x509.0.5.2/findlib
+ create mode 100644 packages/x509/x509.0.5.2/opam
+ create mode 100644 packages/x509/x509.0.5.2/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/gabelevi/opam-repository
+ * branch            flowtype   -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/flowtype/flowtype.0.23.0/descr            | 15 ++++++++++++
+ .../flowtype.0.23.0/files/flowtype.install         |  1 +
+ packages/flowtype/flowtype.0.23.0/opam             | 27 ++++++++++++++++++++++
+ packages/flowtype/flowtype.0.23.0/url              |  2 ++
+ 4 files changed, 45 insertions(+)
+ create mode 100644 packages/flowtype/flowtype.0.23.0/descr
+ create mode 100644 packages/flowtype/flowtype.0.23.0/files/flowtype.install
+ create mode 100644 packages/flowtype/flowtype.0.23.0/opam
+ create mode 100644 packages/flowtype/flowtype.0.23.0/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux fedora
+# The following system packages are needed:
+#  - m4
+#  - ncurses-devel
+#  - pkgconfig
+package m4 is not installed
+package ncurses-devel is not installed
+package pkgconfig is not installed
+The following command needs to be run through "sudo":
+    yum -y update
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf -y update'.
+See 'man dnf' and 'man yum2dnf' for more information.
+To transfer transaction metadata from yum to DNF, run:
+'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
+
+[0mLast metadata expiration check performed 0:00:17 ago on Thu Apr 14 08:46:48 2016.
+Dependencies resolved.
+================================================================================
+ Package                        Arch      Version              Repository  Size
+================================================================================
+Installing:
+ kernel-debug-devel             x86_64    4.4.6-301.fc23       updates     10 M
+ libsecret                      x86_64    0.18.3-1.fc23        fedora     156 k
+Upgrading:
+ ca-certificates                noarch    2016.2.7-1.0.fc23    updates    425 k
+ cpp                            x86_64    5.3.1-6.fc23         updates    8.3 M
+ dbus                           x86_64    1:1.10.8-1.fc23      updates    244 k
+ dbus-libs                      x86_64    1:1.10.8-1.fc23      updates    173 k
+ dnf                            noarch    1.1.8-1.fc23         updates    292 k
+ dnf-conf                       noarch    1.1.8-1.fc23         updates     94 k
+ dnf-yum                        noarch    1.1.8-1.fc23         updates     87 k
+ elfutils-default-yama-scope    noarch    0.166-1.fc23         updates     38 k
+ elfutils-libelf                x86_64    0.166-1.fc23         updates    215 k
+ elfutils-libs                  x86_64    0.166-1.fc23         updates    272 k
+ gcc                            x86_64    5.3.1-6.fc23         updates     19 M
+ gnutls                         x86_64    3.4.10-1.fc23        updates    659 k
+ kernel-headers                 x86_64    4.4.6-301.fc23       updates    1.0 M
+ krb5-libs                      x86_64    1.14.1-5.fc23        updates    842 k
+ libgcc                         x86_64    5.3.1-6.fc23         updates     92 k
+ libgomp                        x86_64    5.3.1-6.fc23         updates    156 k
+ libsolv                        x86_64    0.6.19-2.fc23        updates    349 k
+ libsss_idmap                   x86_64    1.13.3-6.fc23        updates     80 k
+ libsss_nss_idmap               x86_64    1.13.3-6.fc23        updates     78 k
+ libstdc++                      x86_64    5.3.1-6.fc23         updates    429 k
+ nss                            x86_64    3.23.0-1.0.fc23      updates    871 k
+ nss-softokn                    x86_64    3.23.0-1.0.fc23      updates    317 k
+ nss-softokn-freebl             x86_64    3.23.0-1.0.fc23      updates    214 k
+ nss-sysinit                    x86_64    3.23.0-1.0.fc23      updates     57 k
+ nss-tools                      x86_64    3.23.0-1.0.fc23      updates    494 k
+ nss-util                       x86_64    3.23.0-1.0.fc23      updates     82 k
+ openssh                        x86_64    7.2p2-2.fc23         updates    443 k
+ openssh-clients                x86_64    7.2p2-2.fc23         updates    663 k
+ pinentry                       x86_64    0.9.6-4.fc23         updates     81 k
+ python3                        x86_64    3.4.3-6.fc23         updates     54 k
+ python3-dnf                    noarch    1.1.8-1.fc23         updates    455 k
+ python3-libs                   x86_64    3.4.3-6.fc23         updates    6.7 M
+ shadow-utils                   x86_64    2:4.2.1-8.fc23       updates    1.1 M
+ sqlite-libs                    x86_64    3.11.0-3.fc23        updates    449 k
+ sssd-client                    x86_64    1.13.3-6.fc23        updates    136 k
+ tzdata                         noarch    2016c-1.fc23         updates    412 k
+ vim-minimal                    x86_64    2:7.4.1718-1.fc23    updates    501 k
+
+Transaction Summary
+================================================================================
+Install   2 Packages
+Upgrade  37 Packages
+
+Total download size: 56 M
+Downloading Packages:
+[91m/usr/share/man/man8/ca-legacy.8.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/locale/de/LC_MESSAGES/elfutils.mo: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/gnutls/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/libsolv/BUGS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/shadow-utils/HOWTO: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/sqlite-libs/README.md: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/man/man5/cert8.db.5.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/lib64/python3.4/email/architecture.rst: No such file or directory
+cannot reconstruct rpm from disk files
+[0mnss-3.23.0-1.0.fc23.x86_64: Delta RPM rebuild failed
+gnutls-3.4.10-1.fc23.x86_64: Delta RPM rebuild failed
+sqlite-libs-3.11.0-3.fc23.x86_64: Delta RPM rebuild failed
+python3-libs-3.4.3-6.fc23.x86_64: Delta RPM rebuild failed
+libsolv-0.6.19-2.fc23.x86_64: Delta RPM rebuild failed
+elfutils-libelf-0.166-1.fc23.x86_64: Delta RPM rebuild failed
+ca-certificates-2016.2.7-1.0.fc23.noarch: Delta RPM rebuild failed
+shadow-utils-2:4.2.1-8.fc23.x86_64: Delta RPM rebuild failed
+--------------------------------------------------------------------------------
+Total                                           1.3 MB/s |  38 MB     00:28     
+Delta RPMs reduced 56.1 MB of updates to 37.9 MB (32.1% saved)
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Upgrading   : nss-util-3.23.0-1.0.fc23.x86_64                            1/76 
+  Upgrading   : sqlite-libs-3.11.0-3.fc23.x86_64                           2/76 
+  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                  3/76 
+  Upgrading   : nss-softokn-3.23.0-1.0.fc23.x86_64                         4/76 
+  Upgrading   : nss-sysinit-3.23.0-1.0.fc23.x86_64                         5/76 
+  Upgrading   : nss-3.23.0-1.0.fc23.x86_64                                 6/76 
+  Upgrading   : krb5-libs-1.14.1-5.fc23.x86_64                             7/76 
+  Upgrading   : libgcc-5.3.1-6.fc23.x86_64                                 8/76 
+  Upgrading   : python3-libs-3.4.3-6.fc23.x86_64                           9/76 
+  Upgrading   : python3-3.4.3-6.fc23.x86_64                               10/76 
+  Upgrading   : shadow-utils-2:4.2.1-8.fc23.x86_64                        11/76 
+  Upgrading   : openssh-7.2p2-2.fc23.x86_64                               12/76 
+  Upgrading   : libsss_nss_idmap-1.13.3-6.fc23.x86_64                     13/76 
+  Upgrading   : libsss_idmap-1.13.3-6.fc23.x86_64                         14/76 
+  Upgrading   : elfutils-libelf-0.166-1.fc23.x86_64                       15/76 
+  Upgrading   : elfutils-default-yama-scope-0.166-1.fc23.noarch           16/76 
+  Upgrading   : dnf-conf-1.1.8-1.fc23.noarch                              17/76 
+  Upgrading   : python3-dnf-1.1.8-1.fc23.noarch                           18/76 
+  Upgrading   : dnf-1.1.8-1.fc23.noarch                                   19/76 
+  Upgrading   : dbus-libs-1:1.10.8-1.fc23.x86_64                          20/76 
+  Upgrading   : libgomp-5.3.1-6.fc23.x86_64                               21/76 
+  Upgrading   : cpp-5.3.1-6.fc23.x86_64                                   22/76 
+  Installing  : libsecret-0.18.3-1.fc23.x86_64                            23/76 
+  Upgrading   : pinentry-0.9.6-4.fc23.x86_64                              24/76 
+  Upgrading   : gcc-5.3.1-6.fc23.x86_64                                   25/76 
+  Upgrading   : dbus-1:1.10.8-1.fc23.x86_64                               26/76 
+  Upgrading   : dnf-yum-1.1.8-1.fc23.noarch                               27/76 
+  Upgrading   : elfutils-libs-0.166-1.fc23.x86_64                         28/76 
+  Upgrading   : sssd-client-1.13.3-6.fc23.x86_64                          29/76 
+  Upgrading   : openssh-clients-7.2p2-2.fc23.x86_64                       30/76 
+  Upgrading   : libstdc++-5.3.1-6.fc23.x86_64                             31/76 
+  Upgrading   : nss-tools-3.23.0-1.0.fc23.x86_64                          32/76 
+  Upgrading   : vim-minimal-2:7.4.1718-1.fc23.x86_64                      33/76 
+  Upgrading   : tzdata-2016c-1.fc23.noarch                                34/76 
+  Upgrading   : libsolv-0.6.19-2.fc23.x86_64                              35/76 
+  Upgrading   : kernel-headers-4.4.6-301.fc23.x86_64                      36/76 
+  Upgrading   : gnutls-3.4.10-1.fc23.x86_64                               37/76 
+  Upgrading   : ca-certificates-2016.2.7-1.0.fc23.noarch                  38/76 
+  Installing  : kernel-debug-devel-4.4.6-301.fc23.x86_64                  39/76 
+  Cleanup     : dnf-yum-1.1.6-2.fc23.noarch                               40/76 
+  Cleanup     : dnf-1.1.6-2.fc23.noarch                                   41/76 
+  Cleanup     : python3-dnf-1.1.6-2.fc23.noarch                           42/76 
+  Cleanup     : python3-libs-3.4.3-5.fc23.x86_64                          43/76 
+  Cleanup     : python3-3.4.3-5.fc23.x86_64                               44/76 
+  Cleanup     : dnf-conf-1.1.6-2.fc23.noarch                              45/76 
+  Cleanup     : tzdata-2016a-1.fc23.noarch                                46/76 
+  Cleanup     : libsolv-0.6.14-7.fc23.x86_64                              47/76 
+  Cleanup     : kernel-headers-4.4.6-300.fc23.x86_64                      48/76 
+  Cleanup     : ca-certificates-2015.2.6-1.0.fc23.noarch                  49/76 
+  Cleanup     : nss-tools-3.22.2-1.0.fc23.x86_64                          50/76 
+  Cleanup     : nss-sysinit-3.22.2-1.0.fc23.x86_64                        51/76 
+  Cleanup     : nss-3.22.2-1.0.fc23.x86_64                                52/76 
+  Cleanup     : nss-softokn-3.22.2-1.0.fc23.x86_64                        53/76 
+  Cleanup     : sssd-client-1.13.3-5.fc23.x86_64                          54/76 
+  Cleanup     : gcc-5.3.1-2.fc23.x86_64                                   55/76 
+  Cleanup     : openssh-clients-7.2p2-1.fc23.x86_64                       56/76 
+  Cleanup     : elfutils-libs-0.165-2.fc23.x86_64                         57/76 
+  Cleanup     : dbus-1:1.10.6-1.fc23.x86_64                               58/76 
+  Cleanup     : libstdc++-5.3.1-2.fc23.x86_64                             59/76 
+  Cleanup     : elfutils-default-yama-scope-0.165-2.fc23.noarch           60/76 
+  Cleanup     : libgcc-5.3.1-2.fc23.x86_64                                61/76 
+  Cleanup     : shadow-utils-2:4.2.1-3.fc23.x86_64                        62/76 
+  Cleanup     : dbus-libs-1:1.10.6-1.fc23.x86_64                          63/76 
+  Cleanup     : elfutils-libelf-0.165-2.fc23.x86_64                       64/76 
+  Cleanup     : krb5-libs-1.14.1-1.fc23.x86_64                            65/76 
+  Cleanup     : openssh-7.2p2-1.fc23.x86_64                               66/76 
+  Cleanup     : cpp-5.3.1-2.fc23.x86_64                                   67/76 
+  Cleanup     : libgomp-5.3.1-2.fc23.x86_64                               68/76 
+  Cleanup     : libsss_idmap-1.13.3-5.fc23.x86_64                         69/76 
+  Cleanup     : libsss_nss_idmap-1.13.3-5.fc23.x86_64                     70/76 
+  Cleanup     : nss-util-3.22.2-1.0.fc23.x86_64                           71/76 
+  Cleanup     : sqlite-libs-3.11.0-2.fc23.x86_64                          72/76 
+  Cleanup     : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 73/76 
+  Cleanup     : vim-minimal-2:7.4.827-1.fc23.x86_64                       74/76 
+  Cleanup     : pinentry-0.9.6-3.fc23.x86_64                              75/76 
+  Cleanup     : gnutls-3.4.9-1.fc23.x86_64                                76/76 
+  Verifying   : kernel-debug-devel-4.4.6-301.fc23.x86_64                   1/76 
+  Verifying   : libsecret-0.18.3-1.fc23.x86_64                             2/76 
+  Verifying   : ca-certificates-2016.2.7-1.0.fc23.noarch                   3/76 
+  Verifying   : cpp-5.3.1-6.fc23.x86_64                                    4/76 
+  Verifying   : gcc-5.3.1-6.fc23.x86_64                                    5/76 
+  Verifying   : libgcc-5.3.1-6.fc23.x86_64                                 6/76 
+  Verifying   : libgomp-5.3.1-6.fc23.x86_64                                7/76 
+  Verifying   : dbus-1:1.10.8-1.fc23.x86_64                                8/76 
+  Verifying   : dbus-libs-1:1.10.8-1.fc23.x86_64                           9/76 
+  Verifying   : dnf-1.1.8-1.fc23.noarch                                   10/76 
+  Verifying   : python3-dnf-1.1.8-1.fc23.noarch                           11/76 
+  Verifying   : dnf-conf-1.1.8-1.fc23.noarch                              12/76 
+  Verifying   : dnf-yum-1.1.8-1.fc23.noarch                               13/76 
+  Verifying   : elfutils-default-yama-scope-0.166-1.fc23.noarch           14/76 
+  Verifying   : elfutils-libelf-0.166-1.fc23.x86_64                       15/76 
+  Verifying   : elfutils-libs-0.166-1.fc23.x86_64                         16/76 
+  Verifying   : gnutls-3.4.10-1.fc23.x86_64                               17/76 
+  Verifying   : kernel-headers-4.4.6-301.fc23.x86_64                      18/76 
+  Verifying   : krb5-libs-1.14.1-5.fc23.x86_64                            19/76 
+  Verifying   : libsolv-0.6.19-2.fc23.x86_64                              20/76 
+  Verifying   : libsss_idmap-1.13.3-6.fc23.x86_64                         21/76 
+  Verifying   : libsss_nss_idmap-1.13.3-6.fc23.x86_64                     22/76 
+  Verifying   : libstdc++-5.3.1-6.fc23.x86_64                             23/76 
+  Verifying   : nss-3.23.0-1.0.fc23.x86_64                                24/76 
+  Verifying   : nss-softokn-3.23.0-1.0.fc23.x86_64                        25/76 
+  Verifying   : nss-util-3.23.0-1.0.fc23.x86_64                           26/76 
+  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                 27/76 
+  Verifying   : nss-tools-3.23.0-1.0.fc23.x86_64                          28/76 
+  Verifying   : nss-sysinit-3.23.0-1.0.fc23.x86_64                        29/76 
+  Verifying   : openssh-7.2p2-2.fc23.x86_64                               30/76 
+  Verifying   : openssh-clients-7.2p2-2.fc23.x86_64                       31/76 
+  Verifying   : pinentry-0.9.6-4.fc23.x86_64                              32/76 
+  Verifying   : python3-3.4.3-6.fc23.x86_64                               33/76 
+  Verifying   : python3-libs-3.4.3-6.fc23.x86_64                          34/76 
+  Verifying   : shadow-utils-2:4.2.1-8.fc23.x86_64                        35/76 
+  Verifying   : sqlite-libs-3.11.0-3.fc23.x86_64                          36/76 
+  Verifying   : sssd-client-1.13.3-6.fc23.x86_64                          37/76 
+  Verifying   : tzdata-2016c-1.fc23.noarch                                38/76 
+  Verifying   : vim-minimal-2:7.4.1718-1.fc23.x86_64                      39/76 
+  Verifying   : tzdata-2016a-1.fc23.noarch                                40/76 
+  Verifying   : libsss_idmap-1.13.3-5.fc23.x86_64                         41/76 
+  Verifying   : libsss_nss_idmap-1.13.3-5.fc23.x86_64                     42/76 
+  Verifying   : libstdc++-5.3.1-2.fc23.x86_64                             43/76 
+  Verifying   : vim-minimal-2:7.4.827-1.fc23.x86_64                       44/76 
+  Verifying   : ca-certificates-2015.2.6-1.0.fc23.noarch                  45/76 
+  Verifying   : cpp-5.3.1-2.fc23.x86_64                                   46/76 
+  Verifying   : dbus-1:1.10.6-1.fc23.x86_64                               47/76 
+  Verifying   : dbus-libs-1:1.10.6-1.fc23.x86_64                          48/76 
+  Verifying   : nss-3.22.2-1.0.fc23.x86_64                                49/76 
+  Verifying   : nss-softokn-3.22.2-1.0.fc23.x86_64                        50/76 
+  Verifying   : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                 51/76 
+  Verifying   : nss-sysinit-3.22.2-1.0.fc23.x86_64                        52/76 
+  Verifying   : nss-tools-3.22.2-1.0.fc23.x86_64                          53/76 
+  Verifying   : dnf-1.1.6-2.fc23.noarch                                   54/76 
+  Verifying   : dnf-conf-1.1.6-2.fc23.noarch                              55/76 
+  Verifying   : dnf-yum-1.1.6-2.fc23.noarch                               56/76 
+  Verifying   : nss-util-3.22.2-1.0.fc23.x86_64                           57/76 
+  Verifying   : elfutils-default-yama-scope-0.165-2.fc23.noarch           58/76 
+  Verifying   : elfutils-libelf-0.165-2.fc23.x86_64                       59/76 
+  Verifying   : elfutils-libs-0.165-2.fc23.x86_64                         60/76 
+  Verifying   : openssh-7.2p2-1.fc23.x86_64                               61/76 
+  Verifying   : openssh-clients-7.2p2-1.fc23.x86_64                       62/76 
+  Verifying   : gcc-5.3.1-2.fc23.x86_64                                   63/76 
+  Verifying   : gnutls-3.4.9-1.fc23.x86_64                                64/76 
+  Verifying   : kernel-headers-4.4.6-300.fc23.x86_64                      65/76 
+  Verifying   : krb5-libs-1.14.1-1.fc23.x86_64                            66/76 
+  Verifying   : pinentry-0.9.6-3.fc23.x86_64                              67/76 
+  Verifying   : python3-3.4.3-5.fc23.x86_64                               68/76 
+  Verifying   : python3-dnf-1.1.6-2.fc23.noarch                           69/76 
+  Verifying   : python3-libs-3.4.3-5.fc23.x86_64                          70/76 
+  Verifying   : libgcc-5.3.1-2.fc23.x86_64                                71/76 
+  Verifying   : libgomp-5.3.1-2.fc23.x86_64                               72/76 
+  Verifying   : shadow-utils-2:4.2.1-3.fc23.x86_64                        73/76 
+  Verifying   : sqlite-libs-3.11.0-2.fc23.x86_64                          74/76 
+  Verifying   : sssd-client-1.13.3-5.fc23.x86_64                          75/76 
+  Verifying   : libsolv-0.6.14-7.fc23.x86_64                              76/76 
+
+Installed:
+  kernel-debug-devel.x86_64 4.4.6-301.fc23    libsecret.x86_64 0.18.3-1.fc23   
+
+Upgraded:
+  ca-certificates.noarch 2016.2.7-1.0.fc23                                      
+  cpp.x86_64 5.3.1-6.fc23                                                       
+  dbus.x86_64 1:1.10.8-1.fc23                                                   
+  dbus-libs.x86_64 1:1.10.8-1.fc23                                              
+  dnf.noarch 1.1.8-1.fc23                                                       
+  dnf-conf.noarch 1.1.8-1.fc23                                                  
+  dnf-yum.noarch 1.1.8-1.fc23                                                   
+  elfutils-default-yama-scope.noarch 0.166-1.fc23                               
+  elfutils-libelf.x86_64 0.166-1.fc23                                           
+  elfutils-libs.x86_64 0.166-1.fc23                                             
+  gcc.x86_64 5.3.1-6.fc23                                                       
+  gnutls.x86_64 3.4.10-1.fc23                                                   
+  kernel-headers.x86_64 4.4.6-301.fc23                                          
+  krb5-libs.x86_64 1.14.1-5.fc23                                                
+  libgcc.x86_64 5.3.1-6.fc23                                                    
+  libgomp.x86_64 5.3.1-6.fc23                                                   
+  libsolv.x86_64 0.6.19-2.fc23                                                  
+  libsss_idmap.x86_64 1.13.3-6.fc23                                             
+  libsss_nss_idmap.x86_64 1.13.3-6.fc23                                         
+  libstdc++.x86_64 5.3.1-6.fc23                                                 
+  nss.x86_64 3.23.0-1.0.fc23                                                    
+  nss-softokn.x86_64 3.23.0-1.0.fc23                                            
+  nss-softokn-freebl.x86_64 3.23.0-1.0.fc23                                     
+  nss-sysinit.x86_64 3.23.0-1.0.fc23                                            
+  nss-tools.x86_64 3.23.0-1.0.fc23                                              
+  nss-util.x86_64 3.23.0-1.0.fc23                                               
+  openssh.x86_64 7.2p2-2.fc23                                                   
+  openssh-clients.x86_64 7.2p2-2.fc23                                           
+  pinentry.x86_64 0.9.6-4.fc23                                                  
+  python3.x86_64 3.4.3-6.fc23                                                   
+  python3-dnf.noarch 1.1.8-1.fc23                                               
+  python3-libs.x86_64 3.4.3-6.fc23                                              
+  shadow-utils.x86_64 2:4.2.1-8.fc23                                            
+  sqlite-libs.x86_64 3.11.0-3.fc23                                              
+  sssd-client.x86_64 1.13.3-6.fc23                                              
+  tzdata.noarch 2016c-1.fc23                                                    
+  vim-minimal.x86_64 2:7.4.1718-1.fc23                                          
+
+Complete!
+# OS package update successful
+The following command needs to be run through "sudo":
+    yum install -y m4 ncurses-devel pkgconfig
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf install -y m4 ncurses-devel pkgconfig'.
+See 'man dnf' and 'man yum2dnf' for more information.
+To transfer transaction metadata from yum to DNF, run:
+'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
+
+[0mLast metadata expiration check: 0:01:40 ago on Thu Apr 14 08:46:48 2016.
+Dependencies resolved.
+================================================================================
+ Package             Arch         Version                    Repository    Size
+================================================================================
+Installing:
+ m4                  x86_64       1.4.17-8.fc23              fedora       266 k
+ ncurses-devel       x86_64       5.9-21.20150214.fc23       fedora       732 k
+ pkgconfig           x86_64       1:0.28-9.fc23              fedora        60 k
+
+Transaction Summary
+================================================================================
+Install  3 Packages
+
+Total download size: 1.0 M
+Installed size: 2.8 M
+Downloading Packages:
+--------------------------------------------------------------------------------
+Total                                           661 kB/s | 1.0 MB     00:01     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Installing  : pkgconfig-1:0.28-9.fc23.x86_64                              1/3 
+  Installing  : ncurses-devel-5.9-21.20150214.fc23.x86_64                   2/3 
+  Installing  : m4-1.4.17-8.fc23.x86_64                                     3/3 
+  Verifying   : m4-1.4.17-8.fc23.x86_64                                     1/3 
+  Verifying   : ncurses-devel-5.9-21.20150214.fc23.x86_64                   2/3 
+  Verifying   : pkgconfig-1:0.28-9.fc23.x86_64                              3/3 
+
+Installed:
+  m4.x86_64 1.4.17-8.fc23           ncurses-devel.x86_64 5.9-21.20150214.fc23   
+  pkgconfig.x86_64 1:0.28-9.fc23   
+
+Complete!
+The following command needs to be run through "sudo":
+    rpm -q m4 ncurses-devel pkgconfig
+m4-1.4.17-8.fc23.x86_64
+ncurses-devel-5.9-21.20150214.fc23.x86_64
+pkgconfig-0.28-9.fc23.x86_64
+# OS packages installation successful
+The following actions will be performed:
+  - install conf-pkg-config 1.0                                 [required by conf-ncurses]
+  - install conf-m4         1                                   [required by ocamlfind]
+  - install conf-ncurses    1                                   [required by ocamlfind]
+  - install ocamlfind       1.6.2                               [required by base-bytes]
+  - install base-bytes      base                                [required by flowtype]
+  - install flowtype        0.23.0
+===== 6 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[flowtype: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
+[flowtype: http] Command started
+[flowtype.0.23.0] https://github.com/facebook/flow/archive/v0.23.0.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[conf-m4: sh echo | m4] Command started
+[conf-pkg-config: pkg-config] Command started
++ sh "-exc" "echo | m4" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/conf-m4.1)
+- 
+- + echo
+- + m4
+-> installed conf-m4.1
++ pkg-config "--help" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/conf-pkg-config.1.0)
+- Usage:
+-   pkg-config [OPTION...]
+- 
+- Help Options:
+-   -h, --help                              Show help options
+- 
+- Application Options:
+-   --version                               output version of pkg-config
+-   --modversion                            output version for package
+-   --atleast-pkgconfig-version=VERSION     require given version of pkg-config
+-   --libs                                  output all linker flags
+-   --static                                output linker flags for static linking
+-   --short-errors                          print short errors
+-   --libs-only-l                           output -l flags
+-   --libs-only-other                       output other libs (e.g. -pthread)
+-   --libs-only-L                           output -L flags
+-   --cflags                                output all pre-processor and compiler flags
+-   --cflags-only-I                         output -I flags
+-   --cflags-only-other                     output cflags not covered by the cflags-only-I option
+-   --variable=NAME                         get the value of variable named NAME
+-   --define-variable=NAME=VALUE            set variable NAME to VALUE
+-   --exists                                return 0 if the module(s) exist
+-   --print-variables                       output list of variables defined by the module
+-   --uninstalled                           return 0 if the uninstalled version of one or more module(s) or their dependencies will be used
+-   --atleast-version=VERSION               return 0 if the module is at least version VERSION
+-   --exact-version=VERSION                 return 0 if the module is at exactly version VERSION
+-   --max-version=VERSION                   return 0 if the module is at no newer than version VERSION
+-   --list-all                              list all known packages
+-   --debug                                 show verbose debug information
+-   --print-errors                          show verbose information about missing or conflicting packages (default unless --exists or --atleast/exact/max-version given on the command line)
+-   --silence-errors                        be silent about errors (default when --exists or --atleast/exact/max-version given on the command line)
+-   --errors-to-stdout                      print errors from --print-errors to stdout not stderr
+-   --print-provides                        print which packages the package provides
+-   --print-requires                        print which packages the package requires
+-   --print-requires-private                print which packages the package requires for static linking
+- 
+-> installed conf-pkg-config.1.0
+[conf-ncurses: pkg-config ncurses] Command started
++ pkg-config "ncurses" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/conf-ncurses.1)
+-> installed conf-ncurses.1
+[ocamlfind: ./configure] Command started
++ ./configure "-bindir" "/home/opam/.opam/4.03.0+trunk+flambda/bin" "-sitelib" "/home/opam/.opam/4.03.0+trunk+flambda/lib" "-mandir" "/home/opam/.opam/4.03.0+trunk+flambda/man" "-config" "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2)
+- Welcome to findlib version 1.6.2
+- Configuring core...
+- Checking for #remove_directory...
+- Testing threading model...
+- systhread_supported: true
+- Testing DLLs...
+- Testing whether ppxopt can be supported...
+- Configuring libraries...
+- native dynlink: found
+- labltk: not present
+- ocamlbuild: not present
+- camlp4: using camlp4, style 310
+- compiler-libs: found
+- dbm: not present (normal since OCaml-4.00)
+- bytes: found, installing fake library
+- Configuration for dynlink written to site-lib-src/dynlink/META
+- Configuration for graphics written to site-lib-src/graphics/META
+- Configuration for num written to site-lib-src/num/META
+- Configuration for num-top written to site-lib-src/num-top/META
+- Configuration for str written to site-lib-src/str/META
+- Configuration for threads written to site-lib-src/threads/META
+- Configuration for unix written to site-lib-src/unix/META
+- Configuration for stdlib written to site-lib-src/stdlib/META
+- Configuration for bigarray written to site-lib-src/bigarray/META
+- Configuration for ocamldoc written to site-lib-src/ocamldoc/META
+- Configuration for camlp4 written to site-lib-src/camlp4/META
+- Configuration for compiler-libs written to site-lib-src/compiler-libs/META
+- Configuration for bytes written to site-lib-src/bytes/META
+- Detecting compiler arguments: 
+- (extractor built) ok
+- 
+- About the OCAML core installation:
+-     Standard library:      /home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml
+-     Binaries:              /home/opam/.opam/4.03.0+trunk+flambda/bin
+-     Manual pages:          /home/opam/.opam/4.03.0+trunk+flambda/man
+-     Multi-threading type:  posix
+- The directory of site-specific packages will be
+-     site-lib:              /home/opam/.opam/4.03.0+trunk+flambda/lib
+- The configuration file is written to:
+-     findlib config file:   /home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf
+- Software will be installed:
+-     Libraries:             in <site-lib>/findlib
+-     Binaries:              /home/opam/.opam/4.03.0+trunk+flambda/bin
+-     Manual pages:          /home/opam/.opam/4.03.0+trunk+flambda/man
+-     topfind script:        /home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml
+- Topfind ppxopt support:    yes
+- Toolbox:                   no
+- Link custom runtime:       yes
+- Need bytes compatibility:  no
+- 
+- Configuration has been written to Makefile.config
+- 
+- You can now do 'make all', and optionally 'make opt', to build ocamlfind.
+[ocamlfind: make all] Command started
++ make "all" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make all ) || exit; done
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- ocamllex fl_meta.mll
+- 22 states, 392 transitions, table size 1700 bytes
+- ocamldep *.ml *.mli >depend
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib_config.mlp | \
+- 	../../tools/patch '@CONFIGFILE@' '/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf' | \
+- 	../../tools/patch '@STDLIB@' '/home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml' | \
+- 	sed -e 's;@AUTOLINK@;true;g' \
+- 	    -e 's;@SYSTEM@;linux;g' \
+- 	     >findlib_config.ml
+- ocamlc -I +compiler-libs -g -c findlib_config.ml
+- ocamlc -I +compiler-libs -g -c fl_split.ml
+- ocamlc -I +compiler-libs -g -c fl_metatoken.ml
+- ocamlc -I +compiler-libs -g -c fl_meta.ml
+- ocamlc -I +compiler-libs -c fl_metascanner.mli
+- ocamlc -I +compiler-libs -g -c fl_metascanner.ml
+- ocamlc -I +compiler-libs -c fl_topo.mli
+- Makefile:175: depend: No such file or directory
+- ocamlc -I +compiler-libs -g -c fl_topo.ml
+- ocamlc -I +compiler-libs -c fl_package_base.mli
+- ocamlc -I +compiler-libs -g -c fl_package_base.ml
+- ocamlc -I +compiler-libs -c findlib.mli
+- ocamlc -I +compiler-libs -g -c findlib.ml
+- ocamlc -I +compiler-libs -g -c fl_args.ml
+- ocamlc -I +compiler-libs -g -c fl_lint.ml
+- ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
+- ocamlc -I +compiler-libs -g -c ocaml_args.ml
+- ocamlc -I +compiler-libs -g -c frontend.ml
+- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
+-            ocaml_args.cmo frontend.cmo
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "frontend.ml", line 2184, characters 25-41:
+- Warning 3: deprecated: String.lowercase
+- Use String.lowercase_ascii instead.
+- File "frontend.ml", line 2189, characters 16-32:
+- Warning 3: deprecated: String.lowercase
+- Use String.lowercase_ascii instead.
+- if [ "true" = "true" ]; then                 \
+- 	cp topfind.ml.in topfind.ml;                             \
+- else                                                             \
+- 	sed -e '/PPXOPT_BEGIN/,/PPXOPT_END/ d' topfind.ml.in     \
+- 		> topfind.ml ;                                   \
+- fi
+- ocamlc -I +compiler-libs -c topfind.mli
+- ocamlc -I +compiler-libs -g -c topfind.ml
+- ocamlc -I +compiler-libs -a -o findlib_top.cma topfind.cmo
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat topfind_rd1.p | \
+- 	../../tools/patch '@SITELIB@' '/home/opam/.opam/4.03.0+trunk+flambda/lib' \
+-     	    >topfind
+- ocamlc -I +compiler-libs -c num_top_printers.mli
+- ocamlc -I +compiler-libs -g -c num_top_printers.ml
+- ocamlc -I +compiler-libs -c num_top.mli
+- ocamlc -I +compiler-libs -g -c num_top.ml
+- ocamlc -I +compiler-libs -a -o num_top.cma num_top_printers.cmo num_top.cmo
+- ocamlc -I +compiler-libs -c fl_dynload.mli
+- ocamlc -I +compiler-libs -g -c fl_dynload.ml
+- ocamlc -I +compiler-libs -a -o findlib_dynload.cma fl_dynload.cmo
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- make all-config
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib.conf.in | \
+- 	tools/patch '@SITELIB@' '/home/opam/.opam/4.03.0+trunk+flambda/lib' >findlib.conf
+- if ocamlc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlc="ocamlc.opt"' >>findlib.conf; \
+- fi
+- if ocamlopt.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlopt="ocamlopt.opt"' >>findlib.conf; \
+- fi
+- if ocamldep.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldep="ocamldep.opt"' >>findlib.conf; \
+- fi
+- if ocamldoc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldoc="ocamldoc.opt"' >>findlib.conf; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+[ocamlfind: make opt] Command started
++ make "opt" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make opt ) || exit; done
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- ocamldep *.ml *.mli >depend
+- ocamlopt -I +compiler-libs -c findlib_config.ml
+- ocamlopt -I +compiler-libs -c fl_split.ml
+- ocamlopt -I +compiler-libs -c fl_metatoken.ml
+- ocamlopt -I +compiler-libs -c fl_meta.ml
+- ocamlopt -I +compiler-libs -c fl_metascanner.ml
+- ocamlopt -I +compiler-libs -c fl_topo.ml
+- ocamlopt -I +compiler-libs -c fl_package_base.ml
+- ocamlopt -I +compiler-libs -c findlib.ml
+- ocamlopt -I +compiler-libs -c fl_args.ml
+- ocamlopt -I +compiler-libs -c fl_lint.ml
+- ocamlopt -I +compiler-libs -a -o findlib.cmxa findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib.cmxs findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx; \
+- fi
+- ocamlopt -I +compiler-libs -c ocaml_args.ml
+- ocamlopt -I +compiler-libs -c frontend.ml
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- File "frontend.ml", line 2184, characters 25-41:
+- Warning 3: deprecated: String.lowercase
+- Use String.lowercase_ascii instead.
+- File "frontend.ml", line 2189, characters 16-32:
+- Warning 3: deprecated: String.lowercase
+- Use String.lowercase_ascii instead.
+- ocamlopt -I +compiler-libs -o ocamlfind_opt findlib.cmxa unix.cmxa \
+- 	   ocaml_args.cmx frontend.cmx
+- ocamlopt -I +compiler-libs -c fl_dynload.ml
+- ocamlopt -I +compiler-libs -a -o findlib_dynload.cmxa fl_dynload.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib_dynload.cmxs fl_dynload.cmx; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+[ocamlfind: make install] Command started
++ make "install" (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2)
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/bin"
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/man"
+- make install-config
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- mkdir -p "`dirname \"/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf\"`"
+- test -f "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf" || cp findlib.conf "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib.conf"
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- for p in findlib; do ( cd src/$p; make install ); done
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib"
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/bin"
+- test 1 -eq 0 || cp topfind "/home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml"
+- files=`../../tools/collect_files ../../Makefile.config findlib.cmi findlib.mli findlib.cma topfind.cmi topfind.mli fl_package_base.mli fl_package_base.cmi fl_metascanner.mli fl_metascanner.cmi fl_metatoken.cmi findlib_top.cma findlib.cmxa findlib.a findlib.cmxs findlib_dynload.cma findlib_dynload.cmxa findlib_dynload.a findlib_dynload.cmxs fl_dynload.mli fl_dynload.cmi META` && \
+- cp $files "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib"
+- f="ocamlfind"; { test -f ocamlfind_opt && f="ocamlfind_opt"; }; \
+- cp $f "/home/opam/.opam/4.03.0+trunk+flambda/bin/ocamlfind"
+- # the following "if" block is only needed for 4.00beta2
+- if [ 1 -eq 0 -a -f "/home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml/compiler-libs/topdirs.cmi" ]; then \
+-     cd "/home/opam/.opam/4.03.0+trunk+flambda/lib/ocaml/compiler-libs/"; \
+-     cp topdirs.cmi toploop.cmi "/home/opam/.opam/4.03.0+trunk+flambda/lib/findlib/"; \
+- fi
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- make install-meta
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- for x in `ls site-lib-src`; do if [ -f "site-lib-src/$x/META" ]; then mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/lib/$x"; cp site-lib-src/$x/META "/home/opam/.opam/4.03.0+trunk+flambda/lib/$x"; fi; done
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- cd src/findlib; make install-num-top
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/lib/num-top"
+- cp num_top.cma num_top.cmi num_top_printers.cmi \
+- 	"/home/opam/.opam/4.03.0+trunk+flambda/lib/num-top"
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2/src/findlib'
+- if [ 1 -eq 1 ]; then \
+- 	cp tools/safe_camlp4 "/home/opam/.opam/4.03.0+trunk+flambda/bin"; \
+- fi
+- make install-doc
+- make[1]: Entering directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+- mkdir -p "/home/opam/.opam/4.03.0+trunk+flambda/man/man1" "/home/opam/.opam/4.03.0+trunk+flambda/man/man3 /home/opam/.opam/4.03.0+trunk+flambda/man/man5"
+- cp doc/ref-man/ocamlfind.1 "/home/opam/.opam/4.03.0+trunk+flambda/man/man1"
+- cp doc/ref-man/META.5 doc/ref-man/site-lib.5 doc/ref-man/findlib.conf.5 "/home/opam/.opam/4.03.0+trunk+flambda/man/man5"
+- make[1]: Leaving directory '/home/opam/.opam/4.03.0+trunk+flambda/build/ocamlfind.1.6.2'
+-> installed ocamlfind.1.6.2
+-> installed base-bytes.base
+[flowtype: make] Command started
++ make  (CWD=/home/opam/.opam/4.03.0+trunk+flambda/build/flowtype.0.23.0)
+- mkdir -p bin
+- tar czf bin/flowlib.tar.gz -C lib .
+- OUT="const char* const BuildInfo_kRevision = \"$(git rev-parse HEAD || hg id -i)\"; \
+- const unsigned long BuildInfo_kRevisionCommitTimeUnix = $(git log -1 --pretty=format:%ct || echo $(hg log -r . -T \{date\} | grep -o ^[^.]* || echo 0))ul;"; \
+- if [ "$OUT" != "$(cat utils/get_build_id.gen.c 2>/dev/null)" ]; then echo "$OUT" > hack/utils/get_build_id.gen.c; fi
+- mkdir -p _build/hack/third-party/inotify/
+- cp hack/third-party/inotify/inotify_compat.h _build/hack/third-party/inotify/inotify_compat.h
+- mkdir -p _build/hack/third-party/libancillary/
+- cp hack/third-party/libancillary/ancillary.h _build/hack/third-party/libancillary/ancillary.h
+- ocamlbuild -ocamlc "ocamlopt   -ccopt -DNO_LZ4"\
+- 	hack/third-party/inotify/inotify_stubs.o hack/heap/hh_shared.o hack/hhi/hhi_elf.o hack/utils/files.o hack/utils/get_build_id.gen.o hack/utils/get_build_id.o hack/utils/handle_stubs.o hack/utils/nproc.o hack/utils/realpath.o hack/utils/sysinfo.o hack/utils/priorities.o hack/utils/win32_support.o hack/hhi/hhi_win32res_stubs.o src/embedded/flowlib_elf.o
+- fatal: Not a git repository (or any of the parent directories): .git
+- /bin/sh: line 1: hg: command not found
+- fatal: Not a git repository (or any of the parent directories): .git
+- /bin/sh: line 1: hg: command not found
+- ocamlopt   -ccopt -DNO_LZ4 -c hack/third-party/inotify/inotify_stubs.c
+- mv inotify_stubs.o hack/third-party/inotify/inotify_stubs.o
+- ocamlopt   -ccopt -DNO_LZ4 -c hack/heap/hh_shared.c
+- + ocamlopt   -ccopt -DNO_LZ4 -c hack/heap/hh_shared.c
+- hack/heap/hh_shared.c:172:17: warning: 'MAGIC_CONSTANT' defined but not used [-Wunused-variable]
+-  static uint64_t MAGIC_CONSTANT = 0xfacefacefaceb000ll;
+-                  ^
+- mv hh_shared.o hack/heap/hh_shared.o
+- ocamlopt   -ccopt -DNO_LZ4 -c hack/hhi/hhi_elf.c
+- + ocamlopt   -ccopt -DNO_LZ4 -c hack/hhi/hhi_elf.c
+- hack/hhi/hhi_elf.c:26:18: fatal error: gelf.h: No such file or directory
+- compilation terminated.
+- Command exited with code 2.
+- Makefile:147: recipe for target 'build-flow-native-deps' failed
+- make: *** [build-flow-native-deps] Error 10
+
+
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install flowtype 0.23.0
+The following changes have been performed
+  - install base-bytes      base 
+  - install conf-m4         1    
+  - install conf-ncurses    1    
+  - install conf-pkg-config 1.0  
+  - install ocamlfind       1.6.2
+
+=-=- flowtype.0.23.0 troobleshooting =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=> This package relies on external (system) dependencies that may be missing.
+   `opam depext flowtype.0.23.0' may help you find the correct installation for
+   your system.
+[91m[ERROR] The compilation of flowtype failed at "make".
+
+#=== ERROR while installing flowtype.0.23.0 ===================================#
+# opam-version         1.2.2 (2dee5d69c0bd29731e6cb2ee537f0adf72404ba4)
+# os                   linux
+# command              make
+# path                 /home/opam/.opam/4.03.0+trunk+flambda/build/flowtype.0.23.0
+# compiler             4.03.0+trunk+flambda
+# exit-code            2
+# env-file             /home/opam/.opam/4.03.0+trunk+flambda/build/flowtype.0.23.0/flowtype-2296-548b09.env
+# stdout-file          /home/opam/.opam/4.03.0+trunk+flambda/build/flowtype.0.23.0/flowtype-2296-548b09.out
+# stderr-file          /home/opam/.opam/4.03.0+trunk+flambda/build/flowtype.0.23.0/flowtype-2296-548b09.err
+### stdout ###
+# [...]
+# hack/heap/hh_shared.c:172:17: warning: 'MAGIC_CONSTANT' defined but not used [-Wunused-variable]
+#  static uint64_t MAGIC_CONSTANT = 0xfacefacefaceb000ll;
+#                  ^
+# mv hh_shared.o hack/heap/hh_shared.o
+# ocamlopt   -ccopt -DNO_LZ4 -c hack/hhi/hhi_elf.c
+# + ocamlopt   -ccopt -DNO_LZ4 -c hack/hhi/hhi_elf.c
+# hack/hhi/hhi_elf.c:26:18: fatal error: gelf.h: No such file or directory
+# compilation terminated.
+# Command exited with code 2.
+# Makefile:147: recipe for target 'build-flow-native-deps' failed
+### stderr ###
+# fatal: Not a git repository (or any of the parent directories): .git
+# /bin/sh: line 1: hg: command not found
+# fatal: Not a git repository (or any of the parent directories): .git
+# /bin/sh: line 1: hg: command not found
+# make: *** [build-flow-native-deps] Error 10
+
+[0m[91m
+The former state can be restored with:
+    opam switch import
+"~/.opam/4.03.0+trunk+flambda/backup/state-20160314084835.export"
+'opam install -y -j 2 -v flowtype' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/gabelevi/opam-repository.git flowtype && opam update -u" &&   sudo -u opam sh -c "opam depext -u flowtype" &&   sudo -u opam sh -c "opam install -y -j 2 -v flowtype"' returned a non-zero code: 4

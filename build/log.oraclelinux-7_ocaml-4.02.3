@@ -1,0 +1,619 @@
+Running this Dockerfile:
+FROM ocaml/opam:oraclelinux-7_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/gabelevi/opam-repository.git flowtype && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u flowtype" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v flowtype"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.374 MB
+Step 1 : FROM ocaml/opam:oraclelinux-7_ocaml-4.02.3
+oraclelinux-7_ocaml-4.02.3: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+ffe36b360c6d: Already exists
+a3ed95caeb02: Already exists
+10dc5abdb7d2: Already exists
+2e03fe1e2d9a: Pulling fs layer
+8c9bad14ace2: Pulling fs layer
+8c9bad14ace2: Waiting
+2e03fe1e2d9a: Waiting
+2e03fe1e2d9a: Verifying Checksum
+2e03fe1e2d9a: Download complete
+2e03fe1e2d9a: Pull complete
+2e03fe1e2d9a: Pull complete
+8c9bad14ace2: Verifying Checksum
+8c9bad14ace2: Download complete
+8c9bad14ace2: Pull complete
+8c9bad14ace2: Pull complete
+Digest: sha256:fa0261f69ea9e38a9446562579c9d11cdd48ec297558ec4e5b993ce87aac55b3
+Status: Downloaded newer image for ocaml/opam:oraclelinux-7_ocaml-4.02.3
+ ---> 54ad34ef7836
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/gabelevi/opam-repository.git flowtype && opam update -u" &&   sudo -u opam sh -c "opam depext -u flowtype" &&   sudo -u opam sh -c "opam install -y -j 2 -v flowtype"
+ ---> Running in 452583c34cae
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 2bd1001..8b11952
+Fast-forward
+ compilers/4.04.0/4.04.0+pr539/4.04.0+pr539.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr539/4.04.0+pr539.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr540/4.04.0+pr540.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr540/4.04.0+pr540.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr541/4.04.0+pr541.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr541/4.04.0+pr541.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr542/4.04.0+pr542.comp    | 11 +++++++
+ compilers/4.04.0/4.04.0+pr542/4.04.0+pr542.descr   |  1 +
+ packages/bisect_ppx/bisect_ppx.0.1/opam            |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.2/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.3/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.4/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.5/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2.6/opam          |  1 -
+ packages/bisect_ppx/bisect_ppx.0.2/opam            |  1 -
+ packages/bisect_ppx/bisect_ppx.1.1.0/descr         | 19 ------------
+ .../bisect_ppx.1.1.0/files/bisect_ppx.install      |  4 ---
+ packages/bisect_ppx/bisect_ppx.1.1.0/opam          | 27 -----------------
+ packages/bisect_ppx/bisect_ppx.1.1.0/url           |  2 --
+ packages/caml-mode/caml-mode.4.02/opam             |  7 +----
+ packages/conf-emacs/conf-emacs.1/descr             |  3 ++
+ packages/conf-emacs/conf-emacs.1/opam              | 16 ++++++++++
+ packages/conf-vim/conf-vim.1/descr                 |  3 ++
+ packages/conf-vim/conf-vim.1/opam                  | 16 ++++++++++
+ packages/imagelib/imagelib.20160413/descr          | 17 +++++++++++
+ packages/imagelib/imagelib.20160413/opam           | 19 ++++++++++++
+ packages/imagelib/imagelib.20160413/url            |  2 ++
+ packages/mirage-http/mirage-http.2.5.2/descr       |  1 +
+ packages/mirage-http/mirage-http.2.5.2/opam        | 21 +++++++++++++
+ packages/mirage-http/mirage-http.2.5.2/url         |  2 ++
+ .../ocamlbuild-protoc/ocamlbuild-protoc.0.1/descr  |  3 ++
+ .../ocamlbuild-protoc/ocamlbuild-protoc.0.1/opam   | 15 ++++++++++
+ .../ocamlbuild-protoc/ocamlbuild-protoc.0.1/url    |  2 ++
+ .../ppx_jsobject_conv.0.0.6/descr                  |  6 ++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/opam | 22 ++++++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/url  |  3 ++
+ .../ppx_jsobject_conv.0.1.0/descr                  |  6 ++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/opam | 22 ++++++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/url  |  3 ++
+ packages/tuareg/tuareg.2.0.9/opam                  |  7 +----
+ packages/x509/x509.0.5.2/descr                     |  4 +++
+ packages/x509/x509.0.5.2/findlib                   |  1 +
+ packages/x509/x509.0.5.2/opam                      | 35 ++++++++++++++++++++++
+ packages/x509/x509.0.5.2/url                       |  2 ++
+ 44 files changed, 274 insertions(+), 71 deletions(-)
+ create mode 100644 compilers/4.04.0/4.04.0+pr539/4.04.0+pr539.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr539/4.04.0+pr539.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr540/4.04.0+pr540.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr540/4.04.0+pr540.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr541/4.04.0+pr541.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr541/4.04.0+pr541.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr542/4.04.0+pr542.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr542/4.04.0+pr542.descr
+ delete mode 100644 packages/bisect_ppx/bisect_ppx.1.1.0/descr
+ delete mode 100644 packages/bisect_ppx/bisect_ppx.1.1.0/files/bisect_ppx.install
+ delete mode 100644 packages/bisect_ppx/bisect_ppx.1.1.0/opam
+ delete mode 100644 packages/bisect_ppx/bisect_ppx.1.1.0/url
+ create mode 100644 packages/conf-emacs/conf-emacs.1/descr
+ create mode 100644 packages/conf-emacs/conf-emacs.1/opam
+ create mode 100644 packages/conf-vim/conf-vim.1/descr
+ create mode 100644 packages/conf-vim/conf-vim.1/opam
+ create mode 100644 packages/imagelib/imagelib.20160413/descr
+ create mode 100644 packages/imagelib/imagelib.20160413/opam
+ create mode 100644 packages/imagelib/imagelib.20160413/url
+ create mode 100644 packages/mirage-http/mirage-http.2.5.2/descr
+ create mode 100644 packages/mirage-http/mirage-http.2.5.2/opam
+ create mode 100644 packages/mirage-http/mirage-http.2.5.2/url
+ create mode 100644 packages/ocamlbuild-protoc/ocamlbuild-protoc.0.1/descr
+ create mode 100644 packages/ocamlbuild-protoc/ocamlbuild-protoc.0.1/opam
+ create mode 100644 packages/ocamlbuild-protoc/ocamlbuild-protoc.0.1/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.0.6/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.1.0/url
+ create mode 100644 packages/x509/x509.0.5.2/descr
+ create mode 100644 packages/x509/x509.0.5.2/findlib
+ create mode 100644 packages/x509/x509.0.5.2/opam
+ create mode 100644 packages/x509/x509.0.5.2/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/gabelevi/opam-repository
+ * branch            flowtype   -> FETCH_HEAD
+[0mMerge made by the 'recursive' strategy.
+ packages/flowtype/flowtype.0.23.0/descr            | 15 ++++++++++++
+ .../flowtype.0.23.0/files/flowtype.install         |  1 +
+ packages/flowtype/flowtype.0.23.0/opam             | 27 ++++++++++++++++++++++
+ packages/flowtype/flowtype.0.23.0/url              |  2 ++
+ 4 files changed, 45 insertions(+)
+ create mode 100644 packages/flowtype/flowtype.0.23.0/descr
+ create mode 100644 packages/flowtype/flowtype.0.23.0/files/flowtype.install
+ create mode 100644 packages/flowtype/flowtype.0.23.0/opam
+ create mode 100644 packages/flowtype/flowtype.0.23.0/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux oraclelinux
+# The following system packages are needed:
+#  - m4
+#  - ncurses-devel
+#  - pkgconfig
+Name        : m4
+Version     : 1.4.16
+Release     : 10.el7
+Architecture: x86_64
+Install Date: Fri Apr  8 10:53:28 2016
+Group       : Applications/Text
+Size        : 521587
+License     : GPLv3+
+Signature   : RSA/SHA256, Wed Sep 30 19:02:18 2015, Key ID 72f97b74ec551f03
+Source RPM  : m4-1.4.16-10.el7.src.rpm
+Build Date  : Thu Sep 10 05:22:26 2015
+Build Host  : x86-ol7-builder-04.us.oracle.com
+Relocations : (not relocatable)
+Vendor      : Oracle America
+URL         : http://www.gnu.org/software/m4/
+Summary     : The GNU macro processor
+Description :
+A GNU implementation of the traditional UNIX macro processor.  M4 is
+useful for writing text files which can be logically parsed, and is used
+by many programs as part of their build process.  M4 has built-in
+functions for including files, running shell commands, doing arithmetic,
+etc.  The autoconf program needs m4 for generating configure scripts, but
+not for running configure scripts.
+
+Install m4 if you need a macro processor.
+package ncurses-devel is not installed
+Name        : pkgconfig
+Epoch       : 1
+Version     : 0.27.1
+Release     : 4.el7
+Architecture: x86_64
+Install Date: Wed Mar  2 00:56:52 2016
+Group       : Development/Tools
+Size        : 105554
+License     : GPLv2+
+Signature   : RSA/SHA256, Wed May 14 01:02:50 2014, Key ID 72f97b74ec551f03
+Source RPM  : pkgconfig-0.27.1-4.el7.src.rpm
+Build Date  : Sat May  3 17:34:09 2014
+Build Host  : ca-buildj3.us.oracle.com
+Relocations : (not relocatable)
+Vendor      : Oracle America
+URL         : http://pkgconfig.freedesktop.org
+Summary     : A tool for determining compilation options
+Description :
+The pkgconfig tool determines compilation options. For each required
+library, it reads the configuration file and outputs the necessary
+compiler and linker flags.
+# The following new OS packages need to be installed: ncurses-devel
+The following command needs to be run through "sudo":
+    echo Skipping system update on this platform.
+Skipping system update on this platform.
+# OS package update successful
+The following command needs to be run through "sudo":
+    yum install -y ncurses-devel
+Loaded plugins: ulninfo
+Resolving Dependencies
+--> Running transaction check
+---> Package ncurses-devel.x86_64 0:5.9-13.20130511.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package            Arch        Version                   Repository       Size
+================================================================================
+Installing:
+ ncurses-devel      x86_64      5.9-13.20130511.el7       ol7_latest      712 k
+
+Transaction Summary
+================================================================================
+Install  1 Package
+
+Total download size: 712 k
+Installed size: 2.1 M
+Downloading packages:
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : ncurses-devel-5.9-13.20130511.el7.x86_64                     1/1 
+  Verifying  : ncurses-devel-5.9-13.20130511.el7.x86_64                     1/1 
+
+Installed:
+  ncurses-devel.x86_64 0:5.9-13.20130511.el7                                    
+
+Complete!
+The following command needs to be run through "sudo":
+    rpm -q ncurses-devel
+ncurses-devel-5.9-13.20130511.el7.x86_64
+# OS packages installation successful
+The following actions will be performed:
+  - install conf-pkg-config 1.0                                 [required by conf-ncurses]
+  - install conf-m4         1                                   [required by ocamlfind]
+  - install conf-ncurses    1                                   [required by ocamlfind]
+  - install ocamlfind       1.6.2                               [required by base-bytes]
+  - install base-bytes      base                                [required by flowtype]
+  - install flowtype        0.23.0
+===== 6 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[flowtype: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
+[flowtype: http] Command started
+[flowtype.0.23.0] https://github.com/facebook/flow/archive/v0.23.0.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[conf-m4: sh echo | m4] Command started
+[conf-pkg-config: pkg-config] Command started
++ sh "-exc" "echo | m4" (CWD=/home/opam/.opam/4.02.3/build/conf-m4.1)
+- 
+- + echo
+- + m4
+-> installed conf-m4.1
++ pkg-config "--help" (CWD=/home/opam/.opam/4.02.3/build/conf-pkg-config.1.0)
+- Usage:
+-   pkg-config [OPTION...]
+- 
+- Help Options:
+-   -h, --help                              Show help options
+- 
+- Application Options:
+-   --version                               output version of pkg-config
+-   --modversion                            output version for package
+-   --atleast-pkgconfig-version=VERSION     require given version of pkg-config
+-   --libs                                  output all linker flags
+-   --static                                output linker flags for static linking
+-   --short-errors                          print short errors
+-   --libs-only-l                           output -l flags
+-   --libs-only-other                       output other libs (e.g. -pthread)
+-   --libs-only-L                           output -L flags
+-   --cflags                                output all pre-processor and compiler flags
+-   --cflags-only-I                         output -I flags
+-   --cflags-only-other                     output cflags not covered by the cflags-only-I option
+-   --variable=NAME                         get the value of variable named NAME
+-   --define-variable=NAME=VALUE            set variable NAME to VALUE
+-   --exists                                return 0 if the module(s) exist
+-   --print-variables                       output list of variables defined by the module
+-   --uninstalled                           return 0 if the uninstalled version of one or more module(s) or their dependencies will be used
+-   --atleast-version=VERSION               return 0 if the module is at least version VERSION
+-   --exact-version=VERSION                 return 0 if the module is at exactly version VERSION
+-   --max-version=VERSION                   return 0 if the module is at no newer than version VERSION
+-   --list-all                              list all known packages
+-   --debug                                 show verbose debug information
+-   --print-errors                          show verbose information about missing or conflicting packages,default if --cflags or --libs given on the command line
+-   --silence-errors                        be silent about errors (default unless --cflags or --libsgiven on the command line)
+-   --errors-to-stdout                      print errors from --print-errors to stdout not stderr
+-   --print-provides                        print which packages the package provides
+-   --print-requires                        print which packages the package requires
+-   --print-requires-private                print which packages the package requires for static linking
+- 
+-> installed conf-pkg-config.1.0
+[conf-ncurses: pkg-config ncurses] Command started
++ pkg-config "ncurses" (CWD=/home/opam/.opam/4.02.3/build/conf-ncurses.1)
+-> installed conf-ncurses.1
+[ocamlfind: ./configure] Command started
++ ./configure "-bindir" "/home/opam/.opam/4.02.3/bin" "-sitelib" "/home/opam/.opam/4.02.3/lib" "-mandir" "/home/opam/.opam/4.02.3/man" "-config" "/home/opam/.opam/4.02.3/lib/findlib.conf" (CWD=/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2)
+- Welcome to findlib version 1.6.2
+- Configuring core...
+- Checking for #remove_directory...
+- Testing threading model...
+- systhread_supported: true
+- Testing DLLs...
+- Testing whether ppxopt can be supported...
+- Configuring libraries...
+- native dynlink: found
+- labltk: not present
+- ocamlbuild: found
+- camlp4: using camlp4, style 310
+- compiler-libs: found
+- dbm: not present (normal since OCaml-4.00)
+- bytes: found, installing fake library
+- Configuration for dynlink written to site-lib-src/dynlink/META
+- Configuration for graphics written to site-lib-src/graphics/META
+- Configuration for num written to site-lib-src/num/META
+- Configuration for num-top written to site-lib-src/num-top/META
+- Configuration for str written to site-lib-src/str/META
+- Configuration for threads written to site-lib-src/threads/META
+- Configuration for unix written to site-lib-src/unix/META
+- Configuration for stdlib written to site-lib-src/stdlib/META
+- Configuration for bigarray written to site-lib-src/bigarray/META
+- Configuration for ocamldoc written to site-lib-src/ocamldoc/META
+- Configuration for camlp4 written to site-lib-src/camlp4/META
+- Configuration for ocamlbuild written to site-lib-src/ocamlbuild/META
+- Configuration for compiler-libs written to site-lib-src/compiler-libs/META
+- Configuration for bytes written to site-lib-src/bytes/META
+- Detecting compiler arguments: (extractor built) ok
+- 
+- About the OCAML core installation:
+-     Standard library:      /home/opam/.opam/4.02.3/lib/ocaml
+-     Binaries:              /home/opam/.opam/4.02.3/bin
+-     Manual pages:          /home/opam/.opam/4.02.3/man
+-     Multi-threading type:  posix
+- The directory of site-specific packages will be
+-     site-lib:              /home/opam/.opam/4.02.3/lib
+- The configuration file is written to:
+-     findlib config file:   /home/opam/.opam/4.02.3/lib/findlib.conf
+- Software will be installed:
+-     Libraries:             in <site-lib>/findlib
+-     Binaries:              /home/opam/.opam/4.02.3/bin
+-     Manual pages:          /home/opam/.opam/4.02.3/man
+-     topfind script:        /home/opam/.opam/4.02.3/lib/ocaml
+- Topfind ppxopt support:    yes
+- Toolbox:                   no
+- Link custom runtime:       yes
+- Need bytes compatibility:  no
+- 
+- Configuration has been written to Makefile.config
+- 
+- You can now do 'make all', and optionally 'make opt', to build ocamlfind.
+[ocamlfind: make all] Command started
++ make "all" (CWD=/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make all ) || exit; done
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- ocamllex fl_meta.mll
+- 22 states, 392 transitions, table size 1700 bytes
+- ocamldep *.ml *.mli >depend
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib_config.mlp | \
+- 	../../tools/patch '@CONFIGFILE@' '/home/opam/.opam/4.02.3/lib/findlib.conf' | \
+- 	../../tools/patch '@STDLIB@' '/home/opam/.opam/4.02.3/lib/ocaml' | \
+- 	sed -e 's;@AUTOLINK@;true;g' \
+- 	    -e 's;@SYSTEM@;linux;g' \
+- 	     >findlib_config.ml
+- ocamlc -I +compiler-libs -g -c findlib_config.ml
+- ocamlc -I +compiler-libs -g -c fl_split.ml
+- ocamlc -I +compiler-libs -g -c fl_metatoken.ml
+- ocamlc -I +compiler-libs -g -c fl_meta.ml
+- ocamlc -I +compiler-libs -c fl_metascanner.mli
+- ocamlc -I +compiler-libs -g -c fl_metascanner.ml
+- ocamlc -I +compiler-libs -c fl_topo.mli
+- ocamlc -I +compiler-libs -g -c fl_topo.ml
+- ocamlc -I +compiler-libs -c fl_package_base.mli
+- ocamlc -I +compiler-libs -g -c fl_package_base.ml
+- ocamlc -I +compiler-libs -c findlib.mli
+- ocamlc -I +compiler-libs -g -c findlib.ml
+- Makefile:175: depend: No such file or directory
+- ocamlc -I +compiler-libs -g -c fl_args.ml
+- ocamlc -I +compiler-libs -g -c fl_lint.ml
+- ocamlc -I +compiler-libs -a -o findlib.cma findlib_config.cmo fl_split.cmo fl_metatoken.cmo fl_meta.cmo fl_metascanner.cmo fl_topo.cmo fl_package_base.cmo findlib.cmo fl_args.cmo fl_lint.cmo
+- ocamlc -I +compiler-libs -g -c ocaml_args.ml
+- ocamlc -I +compiler-libs -g -c frontend.ml
+- ocamlc -I +compiler-libs -custom -o ocamlfind -g findlib.cma unix.cma \
+-            ocaml_args.cmo frontend.cmo
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- if [ "true" = "true" ]; then                 \
+- 	cp topfind.ml.in topfind.ml;                             \
+- else                                                             \
+- 	sed -e '/PPXOPT_BEGIN/,/PPXOPT_END/ d' topfind.ml.in     \
+- 		> topfind.ml ;                                   \
+- fi
+- ocamlc -I +compiler-libs -c topfind.mli
+- ocamlc -I +compiler-libs -g -c topfind.ml
+- ocamlc -I +compiler-libs -a -o findlib_top.cma topfind.cmo
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat topfind_rd1.p | \
+- 	../../tools/patch '@SITELIB@' '/home/opam/.opam/4.02.3/lib' \
+-     	    >topfind
+- ocamlc -I +compiler-libs -c num_top_printers.mli
+- ocamlc -I +compiler-libs -g -c num_top_printers.ml
+- ocamlc -I +compiler-libs -c num_top.mli
+- ocamlc -I +compiler-libs -g -c num_top.ml
+- ocamlc -I +compiler-libs -a -o num_top.cma num_top_printers.cmo num_top.cmo
+- ocamlc -I +compiler-libs -c fl_dynload.mli
+- ocamlc -I +compiler-libs -g -c fl_dynload.ml
+- ocamlc -I +compiler-libs -a -o findlib_dynload.cma fl_dynload.cmo
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- make all-config
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- USE_CYGPATH="0"; \
+- export USE_CYGPATH; \
+- cat findlib.conf.in | \
+- 	tools/patch '@SITELIB@' '/home/opam/.opam/4.02.3/lib' >findlib.conf
+- if ocamlc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlc="ocamlc.opt"' >>findlib.conf; \
+- fi
+- if ocamlopt.opt >/dev/null 2>&1; then \
+- 	echo 'ocamlopt="ocamlopt.opt"' >>findlib.conf; \
+- fi
+- if ocamldep.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldep="ocamldep.opt"' >>findlib.conf; \
+- fi
+- if ocamldoc.opt >/dev/null 2>&1; then \
+- 	echo 'ocamldoc="ocamldoc.opt"' >>findlib.conf; \
+- fi
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+[ocamlfind: make opt] Command started
++ make "opt" (CWD=/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2)
+- for p in findlib; do ( cd src/$p; make opt ) || exit; done
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- ocamldep *.ml *.mli >depend
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- ocamlopt -I +compiler-libs -c findlib_config.ml
+- ocamlopt -I +compiler-libs -c fl_split.ml
+- ocamlopt -I +compiler-libs -c fl_metatoken.ml
+- ocamlopt -I +compiler-libs -c fl_meta.ml
+- ocamlopt -I +compiler-libs -c fl_metascanner.ml
+- ocamlopt -I +compiler-libs -c fl_topo.ml
+- ocamlopt -I +compiler-libs -c fl_package_base.ml
+- ocamlopt -I +compiler-libs -c findlib.ml
+- ocamlopt -I +compiler-libs -c fl_args.ml
+- ocamlopt -I +compiler-libs -c fl_lint.ml
+- ocamlopt -I +compiler-libs -a -o findlib.cmxa findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib.cmxs findlib_config.cmx fl_split.cmx fl_metatoken.cmx fl_meta.cmx fl_metascanner.cmx fl_topo.cmx fl_package_base.cmx findlib.cmx fl_args.cmx fl_lint.cmx; \
+- fi
+- ocamlopt -I +compiler-libs -c ocaml_args.ml
+- ocamlopt -I +compiler-libs -c frontend.ml
+- File "frontend.ml", line 1787, characters 16-29:
+- Warning 3: deprecated: String.create
+- Use Bytes.create instead.
+- ocamlopt -I +compiler-libs -o ocamlfind_opt findlib.cmxa unix.cmxa \
+- 	   ocaml_args.cmx frontend.cmx
+- ocamlopt -I +compiler-libs -c fl_dynload.ml
+- ocamlopt -I +compiler-libs -a -o findlib_dynload.cmxa fl_dynload.cmx
+- if [ 1 -gt 0 ]; then \
+-     ocamlopt -I +compiler-libs -shared -o findlib_dynload.cmxs fl_dynload.cmx; \
+- fi
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+[ocamlfind: make install] Command started
++ make "install" (CWD=/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2)
+- mkdir -p "/home/opam/.opam/4.02.3/bin"
+- mkdir -p "/home/opam/.opam/4.02.3/man"
+- make install-config
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- mkdir -p "`dirname \"/home/opam/.opam/4.02.3/lib/findlib.conf\"`"
+- test -f "/home/opam/.opam/4.02.3/lib/findlib.conf" || cp findlib.conf "/home/opam/.opam/4.02.3/lib/findlib.conf"
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- for p in findlib; do ( cd src/$p; make install ); done
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/4.02.3/lib/findlib"
+- mkdir -p "/home/opam/.opam/4.02.3/bin"
+- test 1 -eq 0 || cp topfind "/home/opam/.opam/4.02.3/lib/ocaml"
+- files=`../../tools/collect_files ../../Makefile.config findlib.cmi findlib.mli findlib.cma topfind.cmi topfind.mli fl_package_base.mli fl_package_base.cmi fl_metascanner.mli fl_metascanner.cmi fl_metatoken.cmi findlib_top.cma findlib.cmxa findlib.a findlib.cmxs findlib_dynload.cma findlib_dynload.cmxa findlib_dynload.a findlib_dynload.cmxs fl_dynload.mli fl_dynload.cmi META` && \
+- cp $files "/home/opam/.opam/4.02.3/lib/findlib"
+- f="ocamlfind"; { test -f ocamlfind_opt && f="ocamlfind_opt"; }; \
+- cp $f "/home/opam/.opam/4.02.3/bin/ocamlfind"
+- # the following "if" block is only needed for 4.00beta2
+- if [ 1 -eq 0 -a -f "/home/opam/.opam/4.02.3/lib/ocaml/compiler-libs/topdirs.cmi" ]; then \
+-     cd "/home/opam/.opam/4.02.3/lib/ocaml/compiler-libs/"; \
+-     cp topdirs.cmi toploop.cmi "/home/opam/.opam/4.02.3/lib/findlib/"; \
+- fi
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- make install-meta
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- for x in `ls site-lib-src`; do if [ -f "site-lib-src/$x/META" ]; then mkdir -p "/home/opam/.opam/4.02.3/lib/$x"; cp site-lib-src/$x/META "/home/opam/.opam/4.02.3/lib/$x"; fi; done
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- cd src/findlib; make install-num-top
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- mkdir -p "/home/opam/.opam/4.02.3/lib/num-top"
+- cp num_top.cma num_top.cmi num_top_printers.cmi \
+- 	"/home/opam/.opam/4.02.3/lib/num-top"
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2/src/findlib'
+- if [ 1 -eq 1 ]; then \
+- 	cp tools/safe_camlp4 "/home/opam/.opam/4.02.3/bin"; \
+- fi
+- make install-doc
+- make[1]: Entering directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+- mkdir -p "/home/opam/.opam/4.02.3/man/man1" "/home/opam/.opam/4.02.3/man/man3 /home/opam/.opam/4.02.3/man/man5"
+- cp doc/ref-man/ocamlfind.1 "/home/opam/.opam/4.02.3/man/man1"
+- cp doc/ref-man/META.5 doc/ref-man/site-lib.5 doc/ref-man/findlib.conf.5 "/home/opam/.opam/4.02.3/man/man5"
+- make[1]: Leaving directory `/home/opam/.opam/4.02.3/build/ocamlfind.1.6.2'
+-> installed ocamlfind.1.6.2
+-> installed base-bytes.base
+[flowtype: make] Command started
++ make  (CWD=/home/opam/.opam/4.02.3/build/flowtype.0.23.0)
+- mkdir -p bin
+- tar czf bin/flowlib.tar.gz -C lib .
+- OUT="const char* const BuildInfo_kRevision = \"$(git rev-parse HEAD || hg id -i)\"; \
+- const unsigned long BuildInfo_kRevisionCommitTimeUnix = $(git log -1 --pretty=format:%ct || echo $(hg log -r . -T \{date\} | grep -o ^[^.]* || echo 0))ul;"; \
+- if [ "$OUT" != "$(cat utils/get_build_id.gen.c 2>/dev/null)" ]; then echo "$OUT" > hack/utils/get_build_id.gen.c; fi
+- mkdir -p _build/hack/third-party/inotify/
+- cp hack/third-party/inotify/inotify_compat.h _build/hack/third-party/inotify/inotify_compat.h
+- mkdir -p _build/hack/third-party/libancillary/
+- cp hack/third-party/libancillary/ancillary.h _build/hack/third-party/libancillary/ancillary.h
+- ocamlbuild -ocamlc "ocamlopt   -ccopt -DNO_LZ4"\
+- 	hack/third-party/inotify/inotify_stubs.o hack/heap/hh_shared.o hack/hhi/hhi_elf.o hack/utils/files.o hack/utils/get_build_id.gen.o hack/utils/get_build_id.o hack/utils/handle_stubs.o hack/utils/nproc.o hack/utils/realpath.o hack/utils/sysinfo.o hack/utils/priorities.o hack/utils/win32_support.o hack/hhi/hhi_win32res_stubs.o src/embedded/flowlib_elf.o
+- ocamlopt   -ccopt -DNO_LZ4 -c hack/third-party/inotify/inotify_stubs.c
+- mv inotify_stubs.o hack/third-party/inotify/inotify_stubs.o
+- ocamlopt   -ccopt -DNO_LZ4 -c hack/heap/hh_shared.c
+- fatal: Not a git repository (or any of the parent directories): .git
+- /bin/sh: line 1: hg: command not found
+- fatal: Not a git repository (or any of the parent directories): .git
+- /bin/sh: line 1: hg: command not found
+- + ocamlopt   -ccopt -DNO_LZ4 -c hack/heap/hh_shared.c
+- hack/heap/hh_shared.c:172:17: warning: 'MAGIC_CONSTANT' defined but not used [-Wunused-variable]
+-  static uint64_t MAGIC_CONSTANT = 0xfacefacefaceb000ll;
+-                  ^
+- mv hh_shared.o hack/heap/hh_shared.o
+- ocamlopt   -ccopt -DNO_LZ4 -c hack/hhi/hhi_elf.c
+- + ocamlopt   -ccopt -DNO_LZ4 -c hack/hhi/hhi_elf.c
+- hack/hhi/hhi_elf.c:26:18: fatal error: gelf.h: No such file or directory
+-  #include <gelf.h>
+-                   ^
+- compilation terminated.
+- Command exited with code 2.
+- make: *** [build-flow-native-deps] Error 10
+[91m[ERROR] The compilation of flowtype failed at "make".
+[0m[91m
+#=== ERROR while installing flowtype.0.23.0 ===================================#
+# opam-version         1.2.2 (2dee5d69c0bd29731e6cb2ee537f0adf72404ba4)
+# os                   linux
+# command              make
+# path                 /home/opam/.opam/4.02.3/build/flowtype.0.23.0
+# compiler             4.02.3
+# exit-code            2
+# env-file             /home/opam/.opam/4.02.3/build/flowtype.0.23.0/flowtype-234-548b09.env
+# stdout-file          /home/opam/.opam/4.02.3/build/flowtype.0.23.0/flowtype-234-548b09.out
+# stderr-file          /home/opam/.opam/4.02.3/build/flowtype.0.23.0/flowtype-234-548b09.err
+### stdout ###
+# hack/heap/hh_shared.c:172:17: warning: 'MAGIC_CONSTANT' defined but not used [-Wunused-variable]
+# [...]
+#                  ^
+# mv hh_shared.o hack/heap/hh_shared.o
+# ocamlopt   -ccopt -DNO_LZ4 -c hack/hhi/hhi_elf.c
+# + ocamlopt   -ccopt -DNO_LZ4 -c hack/hhi/hhi_elf.c
+# hack/hhi/hhi_elf.c:26:18: fatal error: gelf.h: No such file or directory
+#  #include <gelf.h>
+#                   ^
+# compilation terminated.
+# Command exited with code 2.
+### stderr ###
+# fatal: Not a git repository (or any of the parent directories): .git
+# /bin/sh: line 1: hg: command not found
+# fatal: Not a git repository (or any of the parent directories): .git
+# /bin/sh: line 1: hg: command not found
+# make: *** [build-flow-native-deps] Error 10
+
+[0m
+
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install flowtype 0.23.0
+The following changes have been performed
+  - install base-bytes      base 
+  - install conf-m4         1    
+  - install conf-ncurses    1    
+  - install conf-pkg-config 1.0  
+  - install ocamlfind       1.6.2
+
+=-=- flowtype.0.23.0 troobleshooting =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=> This package relies on external (system) dependencies that may be missing.
+   `opam depext flowtype.0.23.0' may help you find the correct installation for
+   your system.
+[91m
+The former state can be restored with:
+    opam switch import "~/.opam/4.02.3/backup/state-20160314084539.export"
+'opam install -y -j 2 -v flowtype' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/gabelevi/opam-repository.git flowtype && opam update -u" &&   sudo -u opam sh -c "opam depext -u flowtype" &&   sudo -u opam sh -c "opam install -y -j 2 -v flowtype"' returned a non-zero code: 4
