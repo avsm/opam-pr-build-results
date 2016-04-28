@@ -1,0 +1,772 @@
+Running this Dockerfile:
+FROM ocaml/opam:fedora-23_ocaml-4.02.3
+RUN sudo -u opam sh -c "opam switch 4.03.0+flambda" && \
+  sudo -u opam sh -c "opam depext -u core_extended jenga" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v core_extended jenga"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 1.114 MBSending build context to Docker daemon 1.671 MBSending build context to Docker daemon 2.228 MBSending build context to Docker daemon 2.785 MBSending build context to Docker daemon 3.342 MBSending build context to Docker daemon 3.899 MBSending build context to Docker daemon 4.456 MBSending build context to Docker daemon 5.014 MBSending build context to Docker daemon 5.571 MBSending build context to Docker daemon 6.128 MBSending build context to Docker daemon 6.685 MBSending build context to Docker daemon 7.242 MBSending build context to Docker daemon 7.799 MBSending build context to Docker daemon 8.356 MBSending build context to Docker daemon 8.913 MBSending build context to Docker daemon  9.47 MBSending build context to Docker daemon 10.03 MBSending build context to Docker daemon 10.58 MBSending build context to Docker daemon 11.14 MBSending build context to Docker daemon  11.7 MBSending build context to Docker daemon 12.26 MBSending build context to Docker daemon 12.81 MBSending build context to Docker daemon 13.37 MBSending build context to Docker daemon 13.93 MBSending build context to Docker daemon 14.48 MBSending build context to Docker daemon 15.04 MBSending build context to Docker daemon  15.6 MBSending build context to Docker daemon 16.15 MBSending build context to Docker daemon 16.71 MBSending build context to Docker daemon 17.27 MBSending build context to Docker daemon 17.83 MBSending build context to Docker daemon 18.38 MBSending build context to Docker daemon 18.94 MBSending build context to Docker daemon  19.5 MBSending build context to Docker daemon 20.05 MBSending build context to Docker daemon 20.61 MBSending build context to Docker daemon 21.17 MBSending build context to Docker daemon 21.73 MBSending build context to Docker daemon 22.28 MBSending build context to Docker daemon 22.84 MBSending build context to Docker daemon  23.4 MBSending build context to Docker daemon 23.95 MBSending build context to Docker daemon 24.51 MBSending build context to Docker daemon 25.07 MBSending build context to Docker daemon 25.62 MBSending build context to Docker daemon 26.18 MBSending build context to Docker daemon 26.74 MBSending build context to Docker daemon  27.3 MBSending build context to Docker daemon 27.85 MBSending build context to Docker daemon 28.41 MBSending build context to Docker daemon 28.97 MBSending build context to Docker daemon 29.52 MBSending build context to Docker daemon 30.08 MBSending build context to Docker daemon 30.64 MBSending build context to Docker daemon  31.2 MBSending build context to Docker daemon 31.75 MBSending build context to Docker daemon 32.31 MBSending build context to Docker daemon 32.87 MBSending build context to Docker daemon 33.42 MBSending build context to Docker daemon 33.98 MBSending build context to Docker daemon 34.54 MBSending build context to Docker daemon 35.09 MBSending build context to Docker daemon 35.65 MBSending build context to Docker daemon 36.21 MBSending build context to Docker daemon 36.77 MBSending build context to Docker daemon 37.32 MBSending build context to Docker daemon 37.88 MBSending build context to Docker daemon 38.44 MBSending build context to Docker daemon 38.99 MBSending build context to Docker daemon 39.55 MBSending build context to Docker daemon 40.11 MBSending build context to Docker daemon 40.67 MBSending build context to Docker daemon 41.22 MBSending build context to Docker daemon 41.78 MBSending build context to Docker daemon 42.34 MBSending build context to Docker daemon 42.89 MBSending build context to Docker daemon 43.45 MBSending build context to Docker daemon 44.01 MBSending build context to Docker daemon 44.56 MBSending build context to Docker daemon 45.12 MBSending build context to Docker daemon 45.68 MBSending build context to Docker daemon 46.24 MBSending build context to Docker daemon 46.79 MBSending build context to Docker daemon 47.35 MBSending build context to Docker daemon 47.91 MBSending build context to Docker daemon 48.46 MBSending build context to Docker daemon 49.02 MBSending build context to Docker daemon 49.58 MBSending build context to Docker daemon 50.14 MBSending build context to Docker daemon 50.69 MBSending build context to Docker daemon 51.25 MBSending build context to Docker daemon 51.81 MBSending build context to Docker daemon 52.36 MBSending build context to Docker daemon 52.92 MBSending build context to Docker daemon 53.48 MBSending build context to Docker daemon 54.03 MBSending build context to Docker daemon 54.59 MBSending build context to Docker daemon 55.15 MBSending build context to Docker daemon 55.71 MBSending build context to Docker daemon 56.26 MBSending build context to Docker daemon 56.82 MBSending build context to Docker daemon 57.38 MBSending build context to Docker daemon 57.79 MB
+Step 1 : FROM ocaml/opam:fedora-23_ocaml-4.02.3
+fedora-23_ocaml-4.02.3: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+236608c7b546: Already exists
+e75578a67242: Already exists
+a4ba1ee72230: Already exists
+ba50b444da2a: Already exists
+Digest: sha256:0054f6b972fbb2d9ba49fa57e80fbaf974508fe41e60485c1561607f31670da9
+Status: Image is up to date for ocaml/opam:fedora-23_ocaml-4.02.3
+ ---> 4ea46934a325
+Step 2 : RUN sudo -u opam sh -c "opam switch 4.03.0+flambda" &&   sudo -u opam sh -c "opam depext -u core_extended jenga" &&   sudo -u opam sh -c "opam install -y -j 2 -v core_extended jenga"
+ ---> Running in 4ecb570de100
+
+=-=- Installing compiler 4.03.0+flambda -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[4.03.0+flambda: http]
+[4.03.0+flambda: http]
+[default.comp] https://github.com/ocaml/ocaml/archive/4.03.0.tar.gz downloaded
+Now compiling OCaml. This may take a while, please bear with us...
+[4.03.0+flambda: mkdir]
+[4.03.0+flambda: ./configure]
+[4.03.0+flambda: make world]
+[4.03.0+flambda: make world.opt]
+[4.03.0+flambda: make install]
+Done.
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+-> installed base-bigarray.base
+-> installed base-threads.base
+-> installed base-unix.base
+Done.
+# To setup the new switch in the current shell, you need to run:
+eval `opam config env`
+OPAM plugin depext is not installed. Install it on the current switch? [Y/n] y
+The following actions will be performed:
+  - install ocamlbuild 0.9.1                                    [required by cmdliner]
+  - install cmdliner   0.9.8                                    [required by depext]
+  - install depext     0.9.1
+===== 3 to install =====
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: http] Command started
+[ocamlbuild: http] Command started
+[depext: http] Command started
+[depext.0.9.1] https://github.com/ocaml/opam-depext/archive/v0.9.1.tar.gz downloaded
+[ocamlbuild: http] Command started
+[ocamlbuild.0.9.1] https://github.com/ocaml/ocamlbuild/archive/0.9.1.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[ocamlbuild: make configure.make] Command started
+[ocamlbuild: make check-if-preinstalled] Command started
+-> installed ocamlbuild.0.9.1
+[cmdliner: ocaml] Command started
+[cmdliner: ocaml] Command started
+-> installed cmdliner.0.9.8
+[depext: ocamlopt unix.cmxa] Command started
+-> installed depext.0.9.1
+Done.
+
+=-=- Carrying on to "opam depext -u core_extended jenga" =-=-=-=-=-=-=-=-=-=-=-=
+
+# Detecting depexts using flags: x86_64 linux fedora
+# The following system packages are needed:
+#  - gcc-c++
+#  - m4
+#  - ncurses-devel
+#  - pcre-devel
+#  - pkgconfig
+package gcc-c++ is not installed
+package m4 is not installed
+package ncurses-devel is not installed
+package pcre-devel is not installed
+package pkgconfig is not installed
+Not running as root, the following command will be run through "sudo":
+    yum -y update
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf -y update'.
+See 'man dnf' and 'man yum2dnf' for more information.
+To transfer transaction metadata from yum to DNF, run:
+'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
+
+[0mLast metadata expiration check performed 0:00:27 ago on Thu Apr 28 12:33:49 2016.
+Dependencies resolved.
+================================================================================
+ Package                       Arch     Version                 Repository
+                                                                           Size
+================================================================================
+Installing:
+ kernel-debug-devel            x86_64   4.4.8-300.fc23          updates    10 M
+ libsecret                     x86_64   0.18.3-1.fc23           fedora    156 k
+Upgrading:
+ audit-libs                    x86_64   2.5.1-1.fc23            updates    95 k
+ avahi-libs                    x86_64   0.6.32-1.fc23           updates    62 k
+ ca-certificates               noarch   2016.2.7-1.0.fc23       updates   425 k
+ cpp                           x86_64   5.3.1-6.fc23            updates   8.3 M
+ dbus                          x86_64   1:1.10.8-1.fc23         updates   244 k
+ dbus-libs                     x86_64   1:1.10.8-1.fc23         updates   173 k
+ dnf                           noarch   1.1.8-1.fc23            updates   292 k
+ dnf-conf                      noarch   1.1.8-1.fc23            updates    94 k
+ dnf-yum                       noarch   1.1.8-1.fc23            updates    87 k
+ elfutils-default-yama-scope   noarch   0.166-1.fc23            updates    38 k
+ elfutils-libelf               x86_64   0.166-1.fc23            updates   215 k
+ elfutils-libs                 x86_64   0.166-1.fc23            updates   272 k
+ emacs-filesystem              noarch   1:24.5-10.fc23          updates    65 k
+ expat                         x86_64   2.1.1-1.fc23            updates    86 k
+ gcc                           x86_64   5.3.1-6.fc23            updates    19 M
+ gnutls                        x86_64   3.4.11-1.fc23           updates   660 k
+ kernel-headers                x86_64   4.4.8-300.fc23          updates   1.0 M
+ krb5-libs                     x86_64   1.14.1-5.fc23           updates   842 k
+ less                          x86_64   481-5.fc23              updates   157 k
+ libblkid                      x86_64   2.28-1.fc23             updates   179 k
+ libfdisk                      x86_64   2.28-1.fc23             updates   221 k
+ libgcc                        x86_64   5.3.1-6.fc23            updates    92 k
+ libgomp                       x86_64   5.3.1-6.fc23            updates   156 k
+ libmount                      x86_64   2.28-1.fc23             updates   198 k
+ libreport-filesystem          x86_64   2.6.4-2.fc23            updates    46 k
+ libseccomp                    x86_64   2.3.1-0.fc23            updates    61 k
+ libsmartcols                  x86_64   2.28-1.fc23             updates   142 k
+ libsolv                       x86_64   0.6.20-1.fc23           updates   336 k
+ libsss_idmap                  x86_64   1.13.4-2.fc23           updates    80 k
+ libsss_nss_idmap              x86_64   1.13.4-2.fc23           updates    78 k
+ libstdc++                     x86_64   5.3.1-6.fc23            updates   429 k
+ libtasn1                      x86_64   4.8-1.fc23              updates   325 k
+ libuuid                       x86_64   2.28-1.fc23             updates    79 k
+ nss                           x86_64   3.23.0-1.0.fc23         updates   871 k
+ nss-softokn                   x86_64   3.23.0-1.0.fc23         updates   317 k
+ nss-softokn-freebl            x86_64   3.23.0-1.0.fc23         updates   214 k
+ nss-sysinit                   x86_64   3.23.0-1.0.fc23         updates    57 k
+ nss-tools                     x86_64   3.23.0-1.0.fc23         updates   494 k
+ nss-util                      x86_64   3.23.0-1.0.fc23         updates    82 k
+ openssh                       x86_64   7.2p2-3.fc23            updates   443 k
+ openssh-clients               x86_64   7.2p2-3.fc23            updates   664 k
+ pinentry                      x86_64   0.9.6-4.fc23            updates    81 k
+ python3                       x86_64   3.4.3-6.fc23            updates    54 k
+ python3-dnf                   noarch   1.1.8-1.fc23            updates   455 k
+ python3-libs                  x86_64   3.4.3-6.fc23            updates   6.7 M
+ rpm                           x86_64   4.13.0-0.rc1.13.fc23    updates   510 k
+ rpm-build-libs                x86_64   4.13.0-0.rc1.13.fc23    updates   116 k
+ rpm-libs                      x86_64   4.13.0-0.rc1.13.fc23    updates   294 k
+ rpm-plugin-selinux            x86_64   4.13.0-0.rc1.13.fc23    updates    51 k
+ rpm-plugin-systemd-inhibit    x86_64   4.13.0-0.rc1.13.fc23    updates    51 k
+ rpm-python3                   x86_64   4.13.0-0.rc1.13.fc23    updates   101 k
+ shadow-utils                  x86_64   2:4.2.1-8.fc23          updates   1.1 M
+ sqlite-libs                   x86_64   3.11.0-3.fc23           updates   449 k
+ sssd-client                   x86_64   1.13.4-2.fc23           updates   137 k
+ tzdata                        noarch   2016d-1.fc23            updates   413 k
+ util-linux                    x86_64   2.28-1.fc23             updates   2.2 M
+ vim-minimal                   x86_64   2:7.4.1718-1.fc23       updates   501 k
+
+Transaction Summary
+================================================================================
+Install   2 Packages
+Upgrade  57 Packages
+
+Total download size: 61 M
+Downloading Packages:
+[91m/usr/share/locale/fi/LC_MESSAGES/rpm.mo: No such file or directory
+/usr/share/doc/shadow-utils/HOWTO: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91mcannot reconstruct rpm from disk files
+[0m[91m/usr/share/man/man8/ca-legacy.8.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/expat/README: No such file or directory
+[0m[91mcannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/libseccomp/CHANGELOG: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/sqlite-libs/README.md: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/locale/de/LC_MESSAGES/elfutils.mo: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/doc/libtasn1/AUTHORS: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/share/man/man5/libaudit.conf.5.gz: No such file or directory
+[0m[91mcannot reconstruct rpm from disk files
+[0m[91m/usr/share/man/man5/cert8.db.5.gz: No such file or directory
+cannot reconstruct rpm from disk files
+[0m[91m/usr/lib64/python3.4/email/architecture.rst: No such file or directory
+cannot reconstruct rpm from disk files
+[0mpython3-libs-3.4.3-6.fc23.x86_64: Delta RPM rebuild failed
+libtasn1-4.8-1.fc23.x86_64: Delta RPM rebuild failed
+shadow-utils-2:4.2.1-8.fc23.x86_64: Delta RPM rebuild failed
+nss-3.23.0-1.0.fc23.x86_64: Delta RPM rebuild failed
+libseccomp-2.3.1-0.fc23.x86_64: Delta RPM rebuild failed
+elfutils-libelf-0.166-1.fc23.x86_64: Delta RPM rebuild failed
+expat-2.1.1-1.fc23.x86_64: Delta RPM rebuild failed
+sqlite-libs-3.11.0-3.fc23.x86_64: Delta RPM rebuild failed
+rpm-4.13.0-0.rc1.13.fc23.x86_64: Delta RPM rebuild failed
+ca-certificates-2016.2.7-1.0.fc23.noarch: Delta RPM rebuild failed
+audit-libs-2.5.1-1.fc23.x86_64: Delta RPM rebuild failed
+--------------------------------------------------------------------------------
+Total                                           1.8 MB/s |  61 MB     00:33     
+Delta RPMs reduced 61.1 MB of updates to 61.1 MB (0.1% saved)
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Upgrading   : elfutils-libelf-0.166-1.fc23.x86_64                       1/116 
+  Upgrading   : nss-util-3.23.0-1.0.fc23.x86_64                           2/116 
+  Upgrading   : libuuid-2.28-1.fc23.x86_64                                3/116 
+  Upgrading   : audit-libs-2.5.1-1.fc23.x86_64                            4/116 
+  Upgrading   : libblkid-2.28-1.fc23.x86_64                               5/116 
+  Upgrading   : expat-2.1.1-1.fc23.x86_64                                 6/116 
+  Upgrading   : dbus-libs-1:1.10.8-1.fc23.x86_64                          7/116 
+  Upgrading   : sqlite-libs-3.11.0-3.fc23.x86_64                          8/116 
+  Upgrading   : python3-3.4.3-6.fc23.x86_64                               9/116 
+  Upgrading   : python3-libs-3.4.3-6.fc23.x86_64                         10/116 
+  Upgrading   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                11/116 
+  Upgrading   : nss-softokn-3.23.0-1.0.fc23.x86_64                       12/116 
+  Upgrading   : nss-sysinit-3.23.0-1.0.fc23.x86_64                       13/116 
+  Upgrading   : nss-3.23.0-1.0.fc23.x86_64                               14/116 
+  Upgrading   : rpm-4.13.0-0.rc1.13.fc23.x86_64                          15/116 
+  Upgrading   : rpm-libs-4.13.0-0.rc1.13.fc23.x86_64                     16/116 
+  Upgrading   : rpm-plugin-selinux-4.13.0-0.rc1.13.fc23.x86_64           17/116 
+  Upgrading   : krb5-libs-1.14.1-5.fc23.x86_64                           18/116 
+  Upgrading   : libgcc-5.3.1-6.fc23.x86_64                               19/116 
+  Upgrading   : rpm-plugin-systemd-inhibit-4.13.0-0.rc1.13.fc23.x86_6    20/116 
+  Upgrading   : rpm-build-libs-4.13.0-0.rc1.13.fc23.x86_64               21/116 
+  Upgrading   : rpm-python3-4.13.0-0.rc1.13.fc23.x86_64                  22/116 
+  Upgrading   : libmount-2.28-1.fc23.x86_64                              23/116 
+  Upgrading   : libfdisk-2.28-1.fc23.x86_64                              24/116 
+  Upgrading   : shadow-utils-2:4.2.1-8.fc23.x86_64                       25/116 
+  Upgrading   : libtasn1-4.8-1.fc23.x86_64                               26/116 
+  Upgrading   : libsss_nss_idmap-1.13.4-2.fc23.x86_64                    27/116 
+  Upgrading   : libsss_idmap-1.13.4-2.fc23.x86_64                        28/116 
+  Upgrading   : libreport-filesystem-2.6.4-2.fc23.x86_64                 29/116 
+  Upgrading   : dnf-conf-1.1.8-1.fc23.noarch                             30/116 
+  Upgrading   : python3-dnf-1.1.8-1.fc23.noarch                          31/116 
+  Upgrading   : dnf-1.1.8-1.fc23.noarch                                  32/116 
+  Upgrading   : libsmartcols-2.28-1.fc23.x86_64                          33/116 
+  Upgrading   : util-linux-2.28-1.fc23.x86_64                            34/116 
+  Upgrading   : openssh-7.2p2-3.fc23.x86_64                              35/116 
+  Upgrading   : elfutils-default-yama-scope-0.166-1.fc23.noarch          36/116 
+  Upgrading   : libgomp-5.3.1-6.fc23.x86_64                              37/116 
+  Upgrading   : cpp-5.3.1-6.fc23.x86_64                                  38/116 
+  Installing  : libsecret-0.18.3-1.fc23.x86_64                           39/116 
+  Upgrading   : pinentry-0.9.6-4.fc23.x86_64                             40/116 
+  Upgrading   : gcc-5.3.1-6.fc23.x86_64                                  41/116 
+  Upgrading   : elfutils-libs-0.166-1.fc23.x86_64                        42/116 
+  Upgrading   : openssh-clients-7.2p2-3.fc23.x86_64                      43/116 
+  Upgrading   : dnf-yum-1.1.8-1.fc23.noarch                              44/116 
+  Upgrading   : sssd-client-1.13.4-2.fc23.x86_64                         45/116 
+  Upgrading   : gnutls-3.4.11-1.fc23.x86_64                              46/116 
+  Upgrading   : dbus-1:1.10.8-1.fc23.x86_64                              47/116 
+  Upgrading   : libstdc++-5.3.1-6.fc23.x86_64                            48/116 
+  Upgrading   : libsolv-0.6.20-1.fc23.x86_64                             49/116 
+  Upgrading   : nss-tools-3.23.0-1.0.fc23.x86_64                         50/116 
+  Upgrading   : avahi-libs-0.6.32-1.fc23.x86_64                          51/116 
+  Upgrading   : vim-minimal-2:7.4.1718-1.fc23.x86_64                     52/116 
+  Upgrading   : tzdata-2016d-1.fc23.noarch                               53/116 
+  Upgrading   : libseccomp-2.3.1-0.fc23.x86_64                           54/116 
+  Upgrading   : less-481-5.fc23.x86_64                                   55/116 
+  Upgrading   : kernel-headers-4.4.8-300.fc23.x86_64                     56/116 
+  Upgrading   : emacs-filesystem-1:24.5-10.fc23.noarch                   57/116 
+  Upgrading   : ca-certificates-2016.2.7-1.0.fc23.noarch                 58/116 
+  Installing  : kernel-debug-devel-4.4.8-300.fc23.x86_64                 59/116 
+  Cleanup     : nss-tools-3.22.2-1.0.fc23.x86_64                         60/116 
+  Cleanup     : dbus-1:1.10.6-1.fc23.x86_64                              61/116 
+  Cleanup     : sssd-client-1.13.3-5.fc23.x86_64                         62/116 
+  Cleanup     : gcc-5.1.1-4.fc23.x86_64                                  63/116 
+  Cleanup     : libsolv-0.6.14-7.fc23.x86_64                             64/116 
+  Cleanup     : dnf-yum-1.1.6-2.fc23.noarch                              65/116 
+  Cleanup     : openssh-clients-7.2p2-2.fc23.x86_64                      66/116 
+  Cleanup     : openssh-7.2p2-2.fc23.x86_64                              67/116 
+  Cleanup     : util-linux-2.27.1-2.fc23.x86_64                          68/116 
+  Cleanup     : libfdisk-2.27.1-2.fc23.x86_64                            69/116 
+  Cleanup     : libmount-2.27.1-2.fc23.x86_64                            70/116 
+  Cleanup     : elfutils-libs-0.165-2.fc23.x86_64                        71/116 
+  Cleanup     : dnf-1.1.6-2.fc23.noarch                                  72/116 
+  Cleanup     : python3-dnf-1.1.6-2.fc23.noarch                          73/116 
+  Cleanup     : rpm-python3-4.13.0-0.rc1.12.fc23.x86_64                  74/116 
+  Cleanup     : python3-libs-3.4.3-5.fc23.x86_64                         75/116 
+  Cleanup     : python3-3.4.3-5.fc23.x86_64                              76/116 
+  Cleanup     : rpm-plugin-systemd-inhibit-4.13.0-0.rc1.12.fc23.x86_6    77/116 
+  Cleanup     : dnf-conf-1.1.6-2.fc23.noarch                             78/116 
+  Cleanup     : rpm-build-libs-4.13.0-0.rc1.12.fc23.x86_64               79/116 
+  Cleanup     : rpm-plugin-selinux-4.13.0-0.rc1.12.fc23.x86_64           80/116 
+  Cleanup     : rpm-libs-4.13.0-0.rc1.12.fc23.x86_64                     81/116 
+  Cleanup     : rpm-4.13.0-0.rc1.12.fc23.x86_64                          82/116 
+  Cleanup     : nss-sysinit-3.22.2-1.0.fc23.x86_64                       83/116 
+  Cleanup     : nss-3.22.2-1.0.fc23.x86_64                               84/116 
+  Cleanup     : nss-softokn-3.22.2-1.0.fc23.x86_64                       85/116 
+  Cleanup     : libblkid-2.27.1-2.fc23.x86_64                            86/116 
+  Cleanup     : shadow-utils-2:4.2.1-3.fc23.x86_64                       87/116 
+  Cleanup     : libstdc++-5.3.1-2.fc23.x86_64                            88/116 
+  Cleanup     : gnutls-3.4.9-1.fc23.x86_64                               89/116 
+  Cleanup     : avahi-libs-0.6.32-0.4.rc.fc23.x86_64                     90/116 
+  Cleanup     : libreport-filesystem-2.6.4-1.fc23.x86_64                 91/116 
+  Cleanup     : elfutils-default-yama-scope-0.165-2.fc23.noarch          92/116 
+  Cleanup     : tzdata-2016a-1.fc23.noarch                               93/116 
+  Cleanup     : kernel-headers-4.4.6-301.fc23.x86_64                     94/116 
+  Cleanup     : emacs-filesystem-1:24.5-7.fc23.noarch                    95/116 
+  Cleanup     : ca-certificates-2015.2.6-1.0.fc23.noarch                 96/116 
+  Cleanup     : dbus-libs-1:1.10.6-1.fc23.x86_64                         97/116 
+  Cleanup     : libtasn1-4.5-2.fc23.x86_64                               98/116 
+  Cleanup     : libgcc-5.3.1-2.fc23.x86_64                               99/116 
+  Cleanup     : audit-libs-2.4.5-1.fc23.x86_64                          100/116 
+  Cleanup     : libuuid-2.27.1-2.fc23.x86_64                            101/116 
+  Cleanup     : nss-util-3.22.2-1.0.fc23.x86_64                         102/116 
+  Cleanup     : sqlite-libs-3.11.0-2.fc23.x86_64                        103/116 
+  Cleanup     : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64               104/116 
+  Cleanup     : elfutils-libelf-0.165-2.fc23.x86_64                     105/116 
+  Cleanup     : expat-2.1.0-12.fc23.x86_64                              106/116 
+  Cleanup     : libsmartcols-2.27.1-2.fc23.x86_64                       107/116 
+  Cleanup     : krb5-libs-1.14.1-1.fc23.x86_64                          108/116 
+  Cleanup     : cpp-5.1.1-4.fc23.x86_64                                 109/116 
+  Cleanup     : libgomp-5.1.1-4.fc23.x86_64                             110/116 
+  Cleanup     : libsss_idmap-1.13.3-5.fc23.x86_64                       111/116 
+  Cleanup     : libsss_nss_idmap-1.13.3-5.fc23.x86_64                   112/116 
+  Cleanup     : vim-minimal-2:7.4.827-1.fc23.x86_64                     113/116 
+  Cleanup     : pinentry-0.9.6-3.fc23.x86_64                            114/116 
+  Cleanup     : libseccomp-2.3.0-0.fc23.x86_64                          115/116 
+  Cleanup     : less-481-1.fc23.x86_64                                  116/116 
+  Verifying   : kernel-debug-devel-4.4.8-300.fc23.x86_64                  1/116 
+  Verifying   : libsecret-0.18.3-1.fc23.x86_64                            2/116 
+  Verifying   : audit-libs-2.5.1-1.fc23.x86_64                            3/116 
+  Verifying   : avahi-libs-0.6.32-1.fc23.x86_64                           4/116 
+  Verifying   : ca-certificates-2016.2.7-1.0.fc23.noarch                  5/116 
+  Verifying   : cpp-5.3.1-6.fc23.x86_64                                   6/116 
+  Verifying   : gcc-5.3.1-6.fc23.x86_64                                   7/116 
+  Verifying   : libgcc-5.3.1-6.fc23.x86_64                                8/116 
+  Verifying   : libgomp-5.3.1-6.fc23.x86_64                               9/116 
+  Verifying   : dbus-1:1.10.8-1.fc23.x86_64                              10/116 
+  Verifying   : dbus-libs-1:1.10.8-1.fc23.x86_64                         11/116 
+  Verifying   : dnf-1.1.8-1.fc23.noarch                                  12/116 
+  Verifying   : python3-dnf-1.1.8-1.fc23.noarch                          13/116 
+  Verifying   : dnf-conf-1.1.8-1.fc23.noarch                             14/116 
+  Verifying   : dnf-yum-1.1.8-1.fc23.noarch                              15/116 
+  Verifying   : elfutils-default-yama-scope-0.166-1.fc23.noarch          16/116 
+  Verifying   : elfutils-libelf-0.166-1.fc23.x86_64                      17/116 
+  Verifying   : elfutils-libs-0.166-1.fc23.x86_64                        18/116 
+  Verifying   : emacs-filesystem-1:24.5-10.fc23.noarch                   19/116 
+  Verifying   : expat-2.1.1-1.fc23.x86_64                                20/116 
+  Verifying   : gnutls-3.4.11-1.fc23.x86_64                              21/116 
+  Verifying   : kernel-headers-4.4.8-300.fc23.x86_64                     22/116 
+  Verifying   : krb5-libs-1.14.1-5.fc23.x86_64                           23/116 
+  Verifying   : less-481-5.fc23.x86_64                                   24/116 
+  Verifying   : libblkid-2.28-1.fc23.x86_64                              25/116 
+  Verifying   : libuuid-2.28-1.fc23.x86_64                               26/116 
+  Verifying   : util-linux-2.28-1.fc23.x86_64                            27/116 
+  Verifying   : libmount-2.28-1.fc23.x86_64                              28/116 
+  Verifying   : libfdisk-2.28-1.fc23.x86_64                              29/116 
+  Verifying   : libsmartcols-2.28-1.fc23.x86_64                          30/116 
+  Verifying   : libreport-filesystem-2.6.4-2.fc23.x86_64                 31/116 
+  Verifying   : libseccomp-2.3.1-0.fc23.x86_64                           32/116 
+  Verifying   : libsolv-0.6.20-1.fc23.x86_64                             33/116 
+  Verifying   : libsss_idmap-1.13.4-2.fc23.x86_64                        34/116 
+  Verifying   : libsss_nss_idmap-1.13.4-2.fc23.x86_64                    35/116 
+  Verifying   : libstdc++-5.3.1-6.fc23.x86_64                            36/116 
+  Verifying   : libtasn1-4.8-1.fc23.x86_64                               37/116 
+  Verifying   : nss-3.23.0-1.0.fc23.x86_64                               38/116 
+  Verifying   : nss-softokn-3.23.0-1.0.fc23.x86_64                       39/116 
+  Verifying   : nss-util-3.23.0-1.0.fc23.x86_64                          40/116 
+  Verifying   : nss-softokn-freebl-3.23.0-1.0.fc23.x86_64                41/116 
+  Verifying   : nss-tools-3.23.0-1.0.fc23.x86_64                         42/116 
+  Verifying   : nss-sysinit-3.23.0-1.0.fc23.x86_64                       43/116 
+  Verifying   : openssh-7.2p2-3.fc23.x86_64                              44/116 
+  Verifying   : openssh-clients-7.2p2-3.fc23.x86_64                      45/116 
+  Verifying   : pinentry-0.9.6-4.fc23.x86_64                             46/116 
+  Verifying   : python3-3.4.3-6.fc23.x86_64                              47/116 
+  Verifying   : python3-libs-3.4.3-6.fc23.x86_64                         48/116 
+  Verifying   : rpm-4.13.0-0.rc1.13.fc23.x86_64                          49/116 
+  Verifying   : rpm-python3-4.13.0-0.rc1.13.fc23.x86_64                  50/116 
+  Verifying   : rpm-libs-4.13.0-0.rc1.13.fc23.x86_64                     51/116 
+  Verifying   : rpm-plugin-selinux-4.13.0-0.rc1.13.fc23.x86_64           52/116 
+  Verifying   : rpm-plugin-systemd-inhibit-4.13.0-0.rc1.13.fc23.x86_6    53/116 
+  Verifying   : rpm-build-libs-4.13.0-0.rc1.13.fc23.x86_64               54/116 
+  Verifying   : shadow-utils-2:4.2.1-8.fc23.x86_64                       55/116 
+  Verifying   : sqlite-libs-3.11.0-3.fc23.x86_64                         56/116 
+  Verifying   : sssd-client-1.13.4-2.fc23.x86_64                         57/116 
+  Verifying   : tzdata-2016d-1.fc23.noarch                               58/116 
+  Verifying   : vim-minimal-2:7.4.1718-1.fc23.x86_64                     59/116 
+  Verifying   : tzdata-2016a-1.fc23.noarch                               60/116 
+  Verifying   : libsss_idmap-1.13.3-5.fc23.x86_64                        61/116 
+  Verifying   : util-linux-2.27.1-2.fc23.x86_64                          62/116 
+  Verifying   : libsss_nss_idmap-1.13.3-5.fc23.x86_64                    63/116 
+  Verifying   : audit-libs-2.4.5-1.fc23.x86_64                           64/116 
+  Verifying   : avahi-libs-0.6.32-0.4.rc.fc23.x86_64                     65/116 
+  Verifying   : libstdc++-5.3.1-2.fc23.x86_64                            66/116 
+  Verifying   : libtasn1-4.5-2.fc23.x86_64                               67/116 
+  Verifying   : libuuid-2.27.1-2.fc23.x86_64                             68/116 
+  Verifying   : vim-minimal-2:7.4.827-1.fc23.x86_64                      69/116 
+  Verifying   : ca-certificates-2015.2.6-1.0.fc23.noarch                 70/116 
+  Verifying   : cpp-5.1.1-4.fc23.x86_64                                  71/116 
+  Verifying   : dbus-1:1.10.6-1.fc23.x86_64                              72/116 
+  Verifying   : dbus-libs-1:1.10.6-1.fc23.x86_64                         73/116 
+  Verifying   : nss-3.22.2-1.0.fc23.x86_64                               74/116 
+  Verifying   : nss-softokn-3.22.2-1.0.fc23.x86_64                       75/116 
+  Verifying   : nss-softokn-freebl-3.22.2-1.0.fc23.x86_64                76/116 
+  Verifying   : nss-sysinit-3.22.2-1.0.fc23.x86_64                       77/116 
+  Verifying   : nss-tools-3.22.2-1.0.fc23.x86_64                         78/116 
+  Verifying   : dnf-1.1.6-2.fc23.noarch                                  79/116 
+  Verifying   : dnf-conf-1.1.6-2.fc23.noarch                             80/116 
+  Verifying   : dnf-yum-1.1.6-2.fc23.noarch                              81/116 
+  Verifying   : nss-util-3.22.2-1.0.fc23.x86_64                          82/116 
+  Verifying   : elfutils-default-yama-scope-0.165-2.fc23.noarch          83/116 
+  Verifying   : elfutils-libelf-0.165-2.fc23.x86_64                      84/116 
+  Verifying   : elfutils-libs-0.165-2.fc23.x86_64                        85/116 
+  Verifying   : emacs-filesystem-1:24.5-7.fc23.noarch                    86/116 
+  Verifying   : expat-2.1.0-12.fc23.x86_64                               87/116 
+  Verifying   : openssh-7.2p2-2.fc23.x86_64                              88/116 
+  Verifying   : openssh-clients-7.2p2-2.fc23.x86_64                      89/116 
+  Verifying   : gcc-5.1.1-4.fc23.x86_64                                  90/116 
+  Verifying   : gnutls-3.4.9-1.fc23.x86_64                               91/116 
+  Verifying   : kernel-headers-4.4.6-301.fc23.x86_64                     92/116 
+  Verifying   : krb5-libs-1.14.1-1.fc23.x86_64                           93/116 
+  Verifying   : less-481-1.fc23.x86_64                                   94/116 
+  Verifying   : pinentry-0.9.6-3.fc23.x86_64                             95/116 
+  Verifying   : libblkid-2.27.1-2.fc23.x86_64                            96/116 
+  Verifying   : python3-dnf-1.1.6-2.fc23.noarch                          97/116 
+  Verifying   : python3-3.4.3-5.fc23.x86_64                              98/116 
+  Verifying   : python3-libs-3.4.3-5.fc23.x86_64                         99/116 
+  Verifying   : libfdisk-2.27.1-2.fc23.x86_64                           100/116 
+  Verifying   : libgcc-5.3.1-2.fc23.x86_64                              101/116 
+  Verifying   : rpm-4.13.0-0.rc1.12.fc23.x86_64                         102/116 
+  Verifying   : libgomp-5.1.1-4.fc23.x86_64                             103/116 
+  Verifying   : rpm-libs-4.13.0-0.rc1.12.fc23.x86_64                    104/116 
+  Verifying   : rpm-plugin-selinux-4.13.0-0.rc1.12.fc23.x86_64          105/116 
+  Verifying   : rpm-plugin-systemd-inhibit-4.13.0-0.rc1.12.fc23.x86_6   106/116 
+  Verifying   : rpm-python3-4.13.0-0.rc1.12.fc23.x86_64                 107/116 
+  Verifying   : rpm-build-libs-4.13.0-0.rc1.12.fc23.x86_64              108/116 
+  Verifying   : libmount-2.27.1-2.fc23.x86_64                           109/116 
+  Verifying   : shadow-utils-2:4.2.1-3.fc23.x86_64                      110/116 
+  Verifying   : sqlite-libs-3.11.0-2.fc23.x86_64                        111/116 
+  Verifying   : sssd-client-1.13.3-5.fc23.x86_64                        112/116 
+  Verifying   : libreport-filesystem-2.6.4-1.fc23.x86_64                113/116 
+  Verifying   : libseccomp-2.3.0-0.fc23.x86_64                          114/116 
+  Verifying   : libsmartcols-2.27.1-2.fc23.x86_64                       115/116 
+  Verifying   : libsolv-0.6.14-7.fc23.x86_64                            116/116 
+
+Installed:
+  kernel-debug-devel.x86_64 4.4.8-300.fc23    libsecret.x86_64 0.18.3-1.fc23   
+
+Upgraded:
+  audit-libs.x86_64 2.5.1-1.fc23                                                
+  avahi-libs.x86_64 0.6.32-1.fc23                                               
+  ca-certificates.noarch 2016.2.7-1.0.fc23                                      
+  cpp.x86_64 5.3.1-6.fc23                                                       
+  dbus.x86_64 1:1.10.8-1.fc23                                                   
+  dbus-libs.x86_64 1:1.10.8-1.fc23                                              
+  dnf.noarch 1.1.8-1.fc23                                                       
+  dnf-conf.noarch 1.1.8-1.fc23                                                  
+  dnf-yum.noarch 1.1.8-1.fc23                                                   
+  elfutils-default-yama-scope.noarch 0.166-1.fc23                               
+  elfutils-libelf.x86_64 0.166-1.fc23                                           
+  elfutils-libs.x86_64 0.166-1.fc23                                             
+  emacs-filesystem.noarch 1:24.5-10.fc23                                        
+  expat.x86_64 2.1.1-1.fc23                                                     
+  gcc.x86_64 5.3.1-6.fc23                                                       
+  gnutls.x86_64 3.4.11-1.fc23                                                   
+  kernel-headers.x86_64 4.4.8-300.fc23                                          
+  krb5-libs.x86_64 1.14.1-5.fc23                                                
+  less.x86_64 481-5.fc23                                                        
+  libblkid.x86_64 2.28-1.fc23                                                   
+  libfdisk.x86_64 2.28-1.fc23                                                   
+  libgcc.x86_64 5.3.1-6.fc23                                                    
+  libgomp.x86_64 5.3.1-6.fc23                                                   
+  libmount.x86_64 2.28-1.fc23                                                   
+  libreport-filesystem.x86_64 2.6.4-2.fc23                                      
+  libseccomp.x86_64 2.3.1-0.fc23                                                
+  libsmartcols.x86_64 2.28-1.fc23                                               
+  libsolv.x86_64 0.6.20-1.fc23                                                  
+  libsss_idmap.x86_64 1.13.4-2.fc23                                             
+  libsss_nss_idmap.x86_64 1.13.4-2.fc23                                         
+  libstdc++.x86_64 5.3.1-6.fc23                                                 
+  libtasn1.x86_64 4.8-1.fc23                                                    
+  libuuid.x86_64 2.28-1.fc23                                                    
+  nss.x86_64 3.23.0-1.0.fc23                                                    
+  nss-softokn.x86_64 3.23.0-1.0.fc23                                            
+  nss-softokn-freebl.x86_64 3.23.0-1.0.fc23                                     
+  nss-sysinit.x86_64 3.23.0-1.0.fc23                                            
+  nss-tools.x86_64 3.23.0-1.0.fc23                                              
+  nss-util.x86_64 3.23.0-1.0.fc23                                               
+  openssh.x86_64 7.2p2-3.fc23                                                   
+  openssh-clients.x86_64 7.2p2-3.fc23                                           
+  pinentry.x86_64 0.9.6-4.fc23                                                  
+  python3.x86_64 3.4.3-6.fc23                                                   
+  python3-dnf.noarch 1.1.8-1.fc23                                               
+  python3-libs.x86_64 3.4.3-6.fc23                                              
+  rpm.x86_64 4.13.0-0.rc1.13.fc23                                               
+  rpm-build-libs.x86_64 4.13.0-0.rc1.13.fc23                                    
+  rpm-libs.x86_64 4.13.0-0.rc1.13.fc23                                          
+  rpm-plugin-selinux.x86_64 4.13.0-0.rc1.13.fc23                                
+  rpm-plugin-systemd-inhibit.x86_64 4.13.0-0.rc1.13.fc23                        
+  rpm-python3.x86_64 4.13.0-0.rc1.13.fc23                                       
+  shadow-utils.x86_64 2:4.2.1-8.fc23                                            
+  sqlite-libs.x86_64 3.11.0-3.fc23                                              
+  sssd-client.x86_64 1.13.4-2.fc23                                              
+  tzdata.noarch 2016d-1.fc23                                                    
+  util-linux.x86_64 2.28-1.fc23                                                 
+  vim-minimal.x86_64 2:7.4.1718-1.fc23                                          
+
+Complete!
+# OS package update successful
+Not running as root, the following command will be run through "sudo":
+    yum install -y gcc-c++ m4 ncurses-devel pcre-devel pkgconfig
+Not running as root, the following command will be run through "sudo":
+    rpm -q gcc-c++ m4 ncurses-devel pcre-devel pkgconfig
+[91mYum command has been deprecated, redirecting to '/usr/bin/dnf install -y gcc-c++ m4 ncurses-devel pcre-devel pkgconfig'.
+See 'man dnf' and 'man yum2dnf' for more information.
+To transfer transaction metadata from yum to DNF, run:
+'dnf install python-dnf-plugins-extras-migrate && dnf-2 migrate'
+
+[0mLast metadata expiration check: 0:07:41 ago on Thu Apr 28 12:33:49 2016.
+Dependencies resolved.
+================================================================================
+ Package              Arch        Version                    Repository    Size
+================================================================================
+Installing:
+ gcc-c++              x86_64      5.3.1-6.fc23               updates      9.8 M
+ libstdc++-devel      x86_64      5.3.1-6.fc23               updates      1.8 M
+ m4                   x86_64      1.4.17-8.fc23              fedora       266 k
+ ncurses-devel        x86_64      5.9-21.20150214.fc23       fedora       732 k
+ pcre-devel           x86_64      8.38-7.fc23                updates      542 k
+ pkgconfig            x86_64      1:0.28-9.fc23              fedora        60 k
+
+Transaction Summary
+================================================================================
+Install  6 Packages
+
+Total download size: 13 M
+Installed size: 37 M
+Downloading Packages:
+--------------------------------------------------------------------------------
+Total                                           3.9 MB/s |  13 MB     00:03     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Installing  : pkgconfig-1:0.28-9.fc23.x86_64                              1/6 
+  Installing  : libstdc++-devel-5.3.1-6.fc23.x86_64                         2/6 
+  Installing  : gcc-c++-5.3.1-6.fc23.x86_64                                 3/6 
+  Installing  : ncurses-devel-5.9-21.20150214.fc23.x86_64                   4/6 
+  Installing  : pcre-devel-8.38-7.fc23.x86_64                               5/6 
+  Installing  : m4-1.4.17-8.fc23.x86_64                                     6/6 
+  Verifying   : m4-1.4.17-8.fc23.x86_64                                     1/6 
+  Verifying   : gcc-c++-5.3.1-6.fc23.x86_64                                 2/6 
+  Verifying   : ncurses-devel-5.9-21.20150214.fc23.x86_64                   3/6 
+  Verifying   : pcre-devel-8.38-7.fc23.x86_64                               4/6 
+  Verifying   : pkgconfig-1:0.28-9.fc23.x86_64                              5/6 
+  Verifying   : libstdc++-devel-5.3.1-6.fc23.x86_64                         6/6 
+
+Installed:
+  gcc-c++.x86_64 5.3.1-6.fc23      libstdc++-devel.x86_64 5.3.1-6.fc23         
+  m4.x86_64 1.4.17-8.fc23          ncurses-devel.x86_64 5.9-21.20150214.fc23   
+  pcre-devel.x86_64 8.38-7.fc23    pkgconfig.x86_64 1:0.28-9.fc23              
+
+Complete!
+gcc-c++-5.3.1-6.fc23.x86_64
+m4-1.4.17-8.fc23.x86_64
+ncurses-devel-5.9-21.20150214.fc23.x86_64
+pcre-devel-8.38-7.fc23.x86_64
+pkgconfig-0.28-9.fc23.x86_64
+# OS packages installation successful
+The following actions will be performed:
+  - install conf-m4           1                                 [required by ocamlfind]
+  - install conf-pkg-config   1.0                               [required by conf-ncurses]
+  - install result            1.2                               [required by core_kernel]
+  - install conf-ncurses      1                                 [required by ocamlfind]
+  - install ocamlfind         1.6.2                             [required by core_extended, jenga]
+  - install variantslib       113.24.00                         [required by core_extended, jenga]
+  - install typerep           113.24.00                         [required by core_extended, jenga]
+  - install sexplib           113.33.00+4.03                    [required by core_extended, jenga]
+  - install ppx_tools         4.03.0                            [required by ppx_bench, ppx_assert, ppx_expect]
+  - install fieldslib         113.24.00                         [required by core_extended, jenga]
+  - install cppo              1.3.2                             [required by ppx_deriving]
+  - install bin_prot          113.33.00+4.03                    [required by core_extended, jenga]
+  - install base-bytes        base                              [required by inotify]
+  - install ppx_core          113.33.01+4.03                    [required by ppx_bench, ppx_assert, ppx_expect]
+  - install ppx_deriving      3.3                               [required by ppx_type_conv]
+  - install re                1.5.0                             [required by ppx_expect]
+  - install inotify           2.2                               [required by async_inotify]
+  - install ppx_optcomp       113.33.00+4.03                    [required by ppx_driver]
+  - install ppx_driver        113.33.01+4.03                    [required by core_extended, jenga]
+  - install ppx_type_conv     113.33.01+4.03                    [required by ppx_assert]
+  - install ppx_pipebang      113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_let           113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_inline_test   113.33.00+4.03                    [required by core_extended, jenga]
+  - install ppx_here          113.33.00                         [required by ppx_assert, ppx_jane]
+  - install ppx_variants_conv 113.33.00+4.03                    [required by ppx_expect, ppx_jane]
+  - install ppx_typerep_conv  113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_sexp_conv     113.33.01+4.03                    [required by ppx_expect, ppx_assert, ppx_jane]
+  - install ppx_fields_conv   113.33.00+4.03                    [required by ppx_expect, ppx_jane]
+  - install ppx_enumerate     113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_compare       113.33.00+4.03                    [required by ppx_expect, ppx_assert, ppx_jane]
+  - install ppx_bin_prot      113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_bench         113.33.00+4.03                    [required by core_extended, jenga]
+  - install ppx_fail          113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_sexp_value    113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_sexp_message  113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_custom_printf 113.33.00+4.03                    [required by ppx_expect, ppx_jane]
+  - install ppx_assert        113.33.00                         [required by core_extended, jenga]
+  - install ppx_expect        113.33.01+4.03                    [required by core_extended, jenga]
+  - install ppx_jane          113.33.00                         [required by core_extended, jenga]
+  - install core_kernel       113.33.01+4.03                    [required by core, re2]
+  - install re2               113.33.00+4.03                    [required by core_extended, jenga]
+  - install core              113.33.02+4.03                    [required by core_extended, jenga]
+  - install async_kernel      113.33.00                         [required by async]
+  - install textutils         113.33.00                         [required by core_extended]
+  - install async_unix        113.33.00+4.03                    [required by async]
+  - install async_rpc_kernel  113.33.00                         [required by async_extra]
+  - install core_extended     113.33.00+4.03
+  - install async_extra       113.33.00+4.03                    [required by async]
+  - install async             113.33.00                         [required by jenga]
+  - install ocaml_plugin      113.33.00+4.03                    [required by jenga]
+  - install async_parallel    113.33.00                         [required by jenga]
+  - install async_find        113.33.00                         [required by async_inotify]
+  - install async_inotify     113.33.00                         [required by jenga]
+  - install jenga             113.33.00+4.03
+===== 54 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[async: http] Command started
+[async_extra: http] Command started
+[async_find: http] Command started
+[async: http] Command started
+[async.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async-113.33.00.tar.gz downloaded
+[async_inotify: http] Command started
+[async_find: http] Command started
+[async_find.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_find-113.33.00.tar.gz downloaded
+[async_kernel: http] Command started
+[async_extra: http] Command started
+[async_extra.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_extra-113.33.00+4.03.tar.gz downloaded
+[async_parallel: http] Command started
+[async_inotify: http] Command started
+[async_inotify.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_inotify-113.33.00.tar.gz downloaded
+[async_rpc_kernel: http] Command started
+[async_kernel: http] Command started
+[async_kernel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_kernel-113.33.00.tar.gz downloaded
+[async_unix: http] Command started
+[async_parallel: http] Command started
+[async_parallel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_parallel-113.33.00.tar.gz downloaded
+[bin_prot: http] Command started
+[async_rpc_kernel: http] Command started
+[async_rpc_kernel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_rpc_kernel-113.33.00.tar.gz downloaded
+[core: http] Command started
+[async_unix: http] Command started
+[async_unix.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_unix-113.33.00+4.03.tar.gz downloaded
+[core_extended: http] Command started
+[bin_prot: http] Command started
+[bin_prot.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/bin_prot-113.33.00+4.03.tar.gz downloaded
+[core_kernel: http] Command started
+[core_extended: http] Command started
+[core_extended.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/core_extended-113.33.00+4.03.tar.gz downloaded
+[cppo: http] Command started
+[core: http] Command started
+[core.113.33.02+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/core-113.33.02+4.03.tar.gz downloaded
+[fieldslib: http] Command started
+[core_kernel: http] Command started
+[core_kernel.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/core_kernel-113.33.01+4.03.tar.gz downloaded
+[inotify: http] Command started
+[fieldslib: http] Command started
+[fieldslib.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/fieldslib-113.24.00.tar.gz downloaded
+[jenga: http] Command started
+[cppo: http] Command started
+[cppo.1.3.2] https://github.com/mjambon/cppo/archive/v1.3.2.tar.gz downloaded
+[ocaml_plugin: http] Command started
+[jenga: http] Command started
+[inotify: http] Command started
+[jenga.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/jenga-113.33.00+4.03.tar.gz downloaded
+[ocamlfind: http] Command started
+[inotify.2.2] https://github.com/whitequark/ocaml-inotify/archive/v2.2.tar.gz downloaded
+[ppx_assert: http] Command started
+[ocaml_plugin: http] Command started
+[ocaml_plugin.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ocaml_plugin-113.33.00+4.03.tar.gz downloaded
+[ppx_bench: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
+[ppx_bin_prot: http] Command started
+[ppx_assert: http] Command started
+[ppx_assert.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_assert-113.33.00.tar.gz downloaded
+[ppx_compare: http] Command started
+[ppx_bench: http] Command started
+[ppx_bench.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_bench-113.33.00+4.03.tar.gz downloaded
+[ppx_core: http] Command started
+[ppx_bin_prot: http] Command started
+[ppx_bin_prot.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_bin_prot-113.33.00+4.03.tar.gz downloaded
+[ppx_custom_printf: http] Command started
+[ppx_compare: http] Command started
+[ppx_compare.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_compare-113.33.00+4.03.tar.gz downloaded
+[ppx_deriving: http] Command started
+[ppx_core: http] Command started
+[ppx_custom_printf: http] Command started
+[ppx_core.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_core-113.33.01+4.03.tar.gz downloaded
+[ppx_driver: http] Command started
+[ppx_custom_printf.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_custom_printf-113.33.00+4.03.tar.gz downloaded
+[ppx_enumerate: http] Command started
+[ppx_driver: http] Command started
+[ppx_driver.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_driver-113.33.01+4.03.tar.gz downloaded
+[ppx_expect: http] Command started
+[ppx_enumerate: http] Command started
+[ppx_enumerate.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_enumerate-113.33.00+4.03.tar.gz downloaded
+[ppx_fail: http] Command started
+[ppx_fields_conv: http] Command started
+[ppx_expect: http] Command started
+[ppx_expect.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_expect-113.33.01+4.03.tar.gz downloaded
+[ppx_here: http] Command started
+[ppx_fail: http] Command started
+[ppx_fail.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_fail-113.33.00+4.03.tar.gz downloaded
+[ppx_inline_test: http] Command started
+[ppx_fields_conv: http] Command started
+[ppx_fields_conv.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_fields_conv-113.33.00+4.03.tar.gz downloaded
+[ppx_jane: http] Command started
+[ppx_here: http] Command started
+[ppx_here.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_here-113.33.00.tar.gz downloaded
+[ppx_let: http] Command started
+[ppx_inline_test: http] Command started
+[ppx_inline_test.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_inline_test-113.33.00+4.03.tar.gz downloaded
+[ppx_optcomp: http] Command started
+[ppx_jane: http] Command started
+[ppx_jane.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_jane-113.33.00.tar.gz downloaded
+[ppx_pipebang: http] Command started
+[ppx_let: http] Command started
+[ppx_let.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_let-113.33.00+4.03.tar.gz downloaded
+[ppx_sexp_conv: http] Command started
+[ppx_optcomp: http] Command started
+[ppx_pipebang: http] Command started
+[ppx_optcomp.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_optcomp-113.33.00+4.03.tar.gz downloaded
+[ppx_sexp_message: http] Command started
+[ppx_pipebang.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_pipebang-113.33.00+4.03.tar.gz downloaded
+[ppx_sexp_value: http] Command started
+[ppx_sexp_message: http] Command started
+[ppx_sexp_conv: http] Command started
+[ppx_sexp_message.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_message-113.33.00+4.03.tar.gz downloaded
+[ppx_tools: http] Command started
+[ppx_sexp_value: http] Command started
+[ppx_sexp_conv.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_conv-113.33.01+4.03.tar.gz downloaded
+[ppx_type_conv: http] Command started
+[ppx_sexp_value.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_value-113.33.00+4.03.tar.gz downloaded
+[ppx_typerep_conv: http] Command started
+[ppx_type_conv: http] Command started
+[ppx_typerep_conv: http] Command started
+[ppx_typerep_conv.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_typerep_conv-113.33.00+4.03.tar.gz downloaded
+[ppx_variants_conv: http] Command started
+[ppx_type_conv.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_type_conv-113.33.01+4.03.tar.gz downloaded
+[re: http] Command started
+[ppx_tools: http] Command started
+[ppx_tools.4.03.0] https://github.com/alainfrisch/ppx_tools/archive/v4.03.0.tar.gz downloaded
+[re2: http] Command started
+[ppx_variants_conv: http] Command started
+[ppx_variants_conv.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_variants_conv-113.33.00+4.03.tar.gz downloaded
+[result: http] Command started
+[re: http] Command started
+[re.1.5.0] https://github.com/ocaml/ocaml-re/archive/ocaml-re-1.5.0.tar.gz downloaded
+[sexplib: http] Command started
+[re2: http] Command started
+[re2.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/re2-113.33.00+4.03.tar.gz downloaded
+[textutils: http] Command started
+[result: http] Command started
+[result.1.2] https://github.com/janestreet/result/archive/1.2.tar.gz downloaded
+[typerep: http] Command started
+[sexplib: http] Command started
+[sexplib.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/sexplib-113.33.00+4.03.tar.gz downloaded
+[variantslib: http] Command started
+[textutils: http] Command started
+[textutils.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/textutils-113.33.00.tar.gz downloaded
+[typerep: http] Command started
+[typerep.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/typerep-113.24.00.tar.gz downloaded
+[variantslib: http] Command started
+[variantslib.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/variantslib-113.24.00.tar.gz downloaded
+[91m[ERROR] The sources of the following couldn't be obtained, aborting:
+          - ppx_deriving.3.3
+        (This may be fixed by running 'opam update')
+[0m[91m'opam install -y -j 2 -v core_extended jenga' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "opam switch 4.03.0+flambda" &&   sudo -u opam sh -c "opam depext -u core_extended jenga" &&   sudo -u opam sh -c "opam install -y -j 2 -v core_extended jenga"' returned a non-zero code: 66
