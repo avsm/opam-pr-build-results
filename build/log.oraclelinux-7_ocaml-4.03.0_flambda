@@ -1,0 +1,447 @@
+Running this Dockerfile:
+FROM ocaml/opam:oraclelinux-7_ocaml-4.02.3
+RUN sudo -u opam sh -c "opam switch 4.03.0+flambda" && \
+  sudo -u opam sh -c "opam depext -u jenga async_ssl" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v jenga async_ssl"Sending build context to Docker daemon 557.1 kBSending build context to Docker daemon 821.8 kB
+Step 1 : FROM ocaml/opam:oraclelinux-7_ocaml-4.02.3
+oraclelinux-7_ocaml-4.02.3: Pulling from ocaml/opam
+a3ed95caeb02: Already exists
+ffe36b360c6d: Already exists
+a3ed95caeb02: Already exists
+92d8025b419d: Already exists
+967cec239cf4: Already exists
+b06fd3709b22: Already exists
+Digest: sha256:4aedc27e238f2d723dd31cf78e14b83327516ac4f545ea26b601ae1948a8bbb4
+Status: Image is up to date for ocaml/opam:oraclelinux-7_ocaml-4.02.3
+ ---> 79c4bb8f2bac
+Step 2 : RUN sudo -u opam sh -c "opam switch 4.03.0+flambda" &&   sudo -u opam sh -c "opam depext -u jenga async_ssl" &&   sudo -u opam sh -c "opam install -y -j 2 -v jenga async_ssl"
+ ---> Running in 8751e560ccd4
+
+=-=- Installing compiler 4.03.0+flambda -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[4.03.0+flambda: http]
+[4.03.0+flambda: http]
+[default.comp] https://github.com/ocaml/ocaml/archive/4.03.0.tar.gz downloaded
+Now compiling OCaml. This may take a while, please bear with us...
+[4.03.0+flambda: mkdir]
+[4.03.0+flambda: ./configure]
+[4.03.0+flambda: make world]
+[4.03.0+flambda: make world.opt]
+[4.03.0+flambda: make install]
+Done.
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+-> installed base-bigarray.base
+-> installed base-threads.base
+-> installed base-unix.base
+Done.
+# To setup the new switch in the current shell, you need to run:
+eval `opam config env`
+OPAM plugin depext is not installed. Install it on the current switch? [Y/n] y
+The following actions will be performed:
+  - install ocamlbuild 0.9.2                                    [required by cmdliner]
+  - install cmdliner   0.9.8                                    [required by depext]
+  - install depext     0.9.1
+===== 3 to install =====
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: http] Command started
+[ocamlbuild: http] Command started
+[depext: http] Command started
+[depext.0.9.1] https://github.com/ocaml/opam-depext/archive/v0.9.1.tar.gz downloaded
+[ocamlbuild: http] Command started
+[ocamlbuild.0.9.2] https://github.com/ocaml/ocamlbuild/archive/0.9.2.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[ocamlbuild: make configure.make] Command started
+[ocamlbuild: make check-if-preinstalled] Command started
+-> installed ocamlbuild.0.9.2
+[cmdliner: ocaml] Command started
+[cmdliner: ocaml] Command started
+-> installed cmdliner.0.9.8
+[depext: ocamlopt unix.cmxa] Command started
+-> installed depext.0.9.1
+Done.
+
+=-=- Carrying on to "opam depext -u jenga async_ssl" =-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+# Detecting depexts using flags: x86_64 linux ol
+# No extra OS packages requirements found.
+The following actions will be performed:
+  - install conf-m4           1                                 [required by ocamlfind]
+  - install conf-pkg-config   1.0                               [required by conf-openssl, ctypes]
+  - install ctypes-foreign    0.4.0                             [required by async_ssl]
+  - install result            1.2                               [required by core_kernel]
+  - install conf-openssl      1                                 [required by async_ssl]
+  - install conf-ncurses      1                                 [required by ocamlfind]
+  - install ocamlfind         1.6.2                             [required by async_ssl, jenga]
+  - install variantslib       113.24.00                         [required by async_ssl, jenga]
+  - install typerep           113.24.00                         [required by async_ssl, jenga]
+  - install sexplib           113.33.00+4.03                    [required by async_ssl, jenga]
+  - install ppx_tools         5.0+4.03.0                        [required by ppx_bench, ppx_assert, ppx_expect]
+  - install fieldslib         113.24.00                         [required by async_ssl, jenga]
+  - install cppo              1.3.2                             [required by ppx_deriving]
+  - install bin_prot          113.33.00+4.03                    [required by async_ssl, jenga]
+  - install base-bytes        base                              [required by ctypes]
+  - install ppx_core          113.33.01+4.03                    [required by ppx_bench, ppx_assert, ppx_expect]
+  - install ppx_deriving      3.3                               [required by ppx_type_conv]
+  - install re                1.5.0                             [required by ppx_expect]
+  - install inotify           2.2                               [required by async_inotify]
+  - install ctypes            0.5.1                             [required by async_ssl]
+  - install ppx_optcomp       113.33.00+4.03                    [required by ppx_driver]
+  - install ppx_driver        113.33.01+4.03                    [required by async_ssl, jenga]
+  - install ppx_type_conv     113.33.01+4.03                    [required by ppx_assert]
+  - install ppx_pipebang      113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_let           113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_inline_test   113.33.00+4.03                    [required by async_ssl, jenga]
+  - install ppx_here          113.33.00                         [required by ppx_assert, ppx_jane]
+  - install ppx_variants_conv 113.33.00+4.03                    [required by ppx_expect, ppx_jane]
+  - install ppx_typerep_conv  113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_sexp_conv     113.33.01+4.03                    [required by ppx_expect, ppx_assert, ppx_jane]
+  - install ppx_fields_conv   113.33.00+4.03                    [required by ppx_expect, ppx_jane]
+  - install ppx_enumerate     113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_compare       113.33.00+4.03                    [required by ppx_expect, ppx_assert, ppx_jane]
+  - install ppx_bin_prot      113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_bench         113.33.00+4.03                    [required by async_ssl, jenga]
+  - install ppx_fail          113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_sexp_value    113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_sexp_message  113.33.00+4.03                    [required by ppx_jane]
+  - install ppx_custom_printf 113.33.00+4.03                    [required by ppx_expect, ppx_jane]
+  - install ppx_assert        113.33.00                         [required by async_ssl, jenga]
+  - install ppx_expect        113.33.01+4.03                    [required by async_ssl, jenga]
+  - install ppx_jane          113.33.00                         [required by async_ssl, jenga]
+  - install core_kernel       113.33.01+4.03                    [required by re2]
+  - install re2               113.33.00+4.03                    [required by jenga]
+  - install core              113.33.02+4.03                    [required by async_ssl, jenga]
+  - install async_kernel      113.33.00                         [required by async]
+  - install async_unix        113.33.00+4.03                    [required by async]
+  - install async_rpc_kernel  113.33.00                         [required by async_extra]
+  - install async_extra       113.33.00+4.03                    [required by async]
+  - install async             113.33.00                         [required by async_ssl, jenga]
+  - install ocaml_plugin      113.33.00+4.03                    [required by jenga]
+  - install async_ssl         113.33.01     
+  - install async_parallel    113.33.00                         [required by jenga]
+  - install async_find        113.33.00                         [required by async_inotify]
+  - install async_inotify     113.33.00                         [required by jenga]
+  - install jenga             113.33.00+4.03
+===== 56 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[async: http] Command started
+[async_extra: http] Command started
+[async_find: http] Command started
+[async: http] Command started
+[async_find: http] Command started
+[async.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async-113.33.00.tar.gz downloaded
+[async_inotify: http] Command started
+[async_find.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_find-113.33.00.tar.gz downloaded
+[async_kernel: http] Command started
+[async_extra: http] Command started
+[async_extra.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_extra-113.33.00+4.03.tar.gz downloaded
+[async_parallel: http] Command started
+[async_inotify: http] Command started
+[async_inotify.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_inotify-113.33.00.tar.gz downloaded
+[async_rpc_kernel: http] Command started
+[async_parallel: http] Command started
+[async_parallel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_parallel-113.33.00.tar.gz downloaded
+[async_ssl: http] Command started
+[async_kernel: http] Command started
+[async_kernel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_kernel-113.33.00.tar.gz downloaded
+[async_unix: http] Command started
+[async_rpc_kernel: http] Command started
+[async_rpc_kernel.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_rpc_kernel-113.33.00.tar.gz downloaded
+[bin_prot: http] Command started
+[async_ssl: http] Command started
+[async_ssl.113.33.01] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_ssl-113.33.01.tar.gz downloaded
+[core: http] Command started
+[async_unix: http] Command started
+[async_unix.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/async_unix-113.33.00+4.03.tar.gz downloaded
+[core_kernel: http] Command started
+[bin_prot: http] Command started
+[bin_prot.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/bin_prot-113.33.00+4.03.tar.gz downloaded
+[cppo: http] Command started
+[core: http] Command started
+[core.113.33.02+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/core-113.33.02+4.03.tar.gz downloaded
+[ctypes: http] Command started
+[core_kernel: http] Command started
+[core_kernel.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/core_kernel-113.33.01+4.03.tar.gz downloaded
+[fieldslib: http] Command started
+[cppo: http] Command started
+[cppo.1.3.2] https://github.com/mjambon/cppo/archive/v1.3.2.tar.gz downloaded
+[inotify: http] Command started
+[fieldslib: http] Command started
+[fieldslib.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/fieldslib-113.24.00.tar.gz downloaded
+[jenga: http] Command started
+[ctypes: http] Command started
+[ctypes.0.5.1] https://github.com/ocamllabs/ocaml-ctypes/archive/0.5.1.tar.gz downloaded
+[ocaml_plugin: http] Command started
+[inotify: http] Command started
+[inotify.2.2] https://github.com/whitequark/ocaml-inotify/archive/v2.2.tar.gz downloaded
+[ocamlfind: http] Command started
+[ocamlfind: http] Command started
+[ocamlfind.1.6.2] http://download.camlcity.org/download/findlib-1.6.2.tar.gz downloaded
+[ppx_assert: http] Command started
+[jenga: http] Command started
+[jenga.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/jenga-113.33.00+4.03.tar.gz downloaded
+[ppx_bench: http] Command started
+[ocaml_plugin: http] Command started
+[ocaml_plugin.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ocaml_plugin-113.33.00+4.03.tar.gz downloaded
+[ppx_bin_prot: http] Command started
+[ppx_assert: http] Command started
+[ppx_assert.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_assert-113.33.00.tar.gz downloaded
+[ppx_compare: http] Command started
+[ppx_bench: http] Command started
+[ppx_bench.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_bench-113.33.00+4.03.tar.gz downloaded
+[ppx_core: http] Command started
+[ppx_bin_prot: http] Command started
+[ppx_bin_prot.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_bin_prot-113.33.00+4.03.tar.gz downloaded
+[ppx_custom_printf: http] Command started
+[ppx_compare: http] Command started
+[ppx_compare.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_compare-113.33.00+4.03.tar.gz downloaded
+[ppx_deriving: http] Command started
+[ppx_core: http] Command started
+[ppx_core.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_core-113.33.01+4.03.tar.gz downloaded
+[ppx_driver: http] Command started
+[ppx_custom_printf: http] Command started
+[ppx_custom_printf.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_custom_printf-113.33.00+4.03.tar.gz downloaded
+[ppx_enumerate: http] Command started
+[ppx_driver: http] Command started
+[ppx_driver.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_driver-113.33.01+4.03.tar.gz downloaded
+[ppx_expect: http] Command started
+[ppx_enumerate: http] Command started
+[ppx_enumerate.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_enumerate-113.33.00+4.03.tar.gz downloaded
+[ppx_fail: http] Command started
+[ppx_deriving: http] Command started
+[ppx_deriving.3.3] https://github.com/whitequark/ppx_deriving/archive/v3.3.tar.gz downloaded
+[ppx_fields_conv: http] Command started
+[ppx_expect: http] Command started
+[ppx_expect.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_expect-113.33.01+4.03.tar.gz downloaded
+[ppx_here: http] Command started
+[ppx_fail: http] Command started
+[ppx_fail.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_fail-113.33.00+4.03.tar.gz downloaded
+[ppx_inline_test: http] Command started
+[ppx_fields_conv: http] Command started
+[ppx_fields_conv.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_fields_conv-113.33.00+4.03.tar.gz downloaded
+[ppx_jane: http] Command started
+[ppx_here: http] Command started
+[ppx_here.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_here-113.33.00.tar.gz downloaded
+[ppx_let: http] Command started
+[ppx_inline_test: http] Command started
+[ppx_inline_test.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_inline_test-113.33.00+4.03.tar.gz downloaded
+[ppx_optcomp: http] Command started
+[ppx_jane: http] Command started
+[ppx_jane.113.33.00] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_jane-113.33.00.tar.gz downloaded
+[ppx_pipebang: http] Command started
+[ppx_let: http] Command started
+[ppx_let.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_let-113.33.00+4.03.tar.gz downloaded
+[ppx_sexp_conv: http] Command started
+[ppx_optcomp: http] Command started
+[ppx_optcomp.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_optcomp-113.33.00+4.03.tar.gz downloaded
+[ppx_sexp_message: http] Command started
+[ppx_pipebang: http] Command started
+[ppx_pipebang.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_pipebang-113.33.00+4.03.tar.gz downloaded
+[ppx_sexp_value: http] Command started
+[ppx_sexp_conv: http] Command started
+[ppx_sexp_conv.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_conv-113.33.01+4.03.tar.gz downloaded
+[ppx_tools: http] Command started
+[ppx_sexp_message: http] Command started
+[ppx_sexp_message.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_message-113.33.00+4.03.tar.gz downloaded
+[ppx_type_conv: http] Command started
+[ppx_sexp_value: http] Command started
+[ppx_sexp_value.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_sexp_value-113.33.00+4.03.tar.gz downloaded
+[ppx_typerep_conv: http] Command started
+[ppx_type_conv: http] Command started
+[ppx_type_conv.113.33.01+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_type_conv-113.33.01+4.03.tar.gz downloaded
+[ppx_variants_conv: http] Command started
+[ppx_typerep_conv: http] Command started
+[ppx_typerep_conv.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_typerep_conv-113.33.00+4.03.tar.gz downloaded
+[re: http] Command started
+[ppx_tools: http] Command started
+[ppx_tools.5.0+4.03.0] https://github.com/alainfrisch/ppx_tools/archive/5.0+4.03.0.tar.gz downloaded
+[re2: http] Command started
+[ppx_variants_conv: http] Command started
+[ppx_variants_conv.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/ppx_variants_conv-113.33.00+4.03.tar.gz downloaded
+[result: http] Command started
+[re: http] Command started
+[re.1.5.0] https://github.com/ocaml/ocaml-re/archive/ocaml-re-1.5.0.tar.gz downloaded
+[sexplib: http] Command started
+[re2: http] Command started
+[re2.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/re2-113.33.00+4.03.tar.gz downloaded
+[typerep: http] Command started
+[result: http] Command started
+[result.1.2] https://github.com/janestreet/result/archive/1.2.tar.gz downloaded
+[variantslib: http] Command started
+[sexplib: http] Command started
+[sexplib.113.33.00+4.03] https://ocaml.janestreet.com/ocaml-core/113.33/files/sexplib-113.33.00+4.03.tar.gz downloaded
+[typerep: http] Command started
+[typerep.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/typerep-113.24.00.tar.gz downloaded
+[variantslib: http] Command started
+[variantslib.113.24.00] https://ocaml.janestreet.com/ocaml-core/113.24/files/variantslib-113.24.00.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[conf-m4: sh echo | m4] Command started
+[conf-pkg-config: pkg-config] Command started
++ sh "-exc" "echo | m4" (CWD=/home/opam/.opam/4.03.0+flambda/build/conf-m4.1)
+- 
+- + echo
+- + m4
+-> installed conf-m4.1
+-> installed ctypes-foreign.0.4.0
+[result: make] Command started
++ pkg-config "--help" (CWD=/home/opam/.opam/4.03.0+flambda/build/conf-pkg-config.1.0)
+- Usage:
+-   pkg-config [OPTION...]
+- 
+- Help Options:
+-   -h, --help                              Show help options
+- 
+- Application Options:
+-   --version                               output version of pkg-config
+-   --modversion                            output version for package
+-   --atleast-pkgconfig-version=VERSION     require given version of pkg-config
+-   --libs                                  output all linker flags
+-   --static                                output linker flags for static linking
+-   --short-errors                          print short errors
+-   --libs-only-l                           output -l flags
+-   --libs-only-other                       output other libs (e.g. -pthread)
+-   --libs-only-L                           output -L flags
+-   --cflags                                output all pre-processor and compiler flags
+-   --cflags-only-I                         output -I flags
+-   --cflags-only-other                     output cflags not covered by the cflags-only-I option
+-   --variable=NAME                         get the value of variable named NAME
+-   --define-variable=NAME=VALUE            set variable NAME to VALUE
+-   --exists                                return 0 if the module(s) exist
+-   --print-variables                       output list of variables defined by the module
+-   --uninstalled                           return 0 if the uninstalled version of one or more module(s) or their dependencies will be used
+-   --atleast-version=VERSION               return 0 if the module is at least version VERSION
+-   --exact-version=VERSION                 return 0 if the module is at exactly version VERSION
+-   --max-version=VERSION                   return 0 if the module is at no newer than version VERSION
+-   --list-all                              list all known packages
+-   --debug                                 show verbose debug information
+-   --print-errors                          show verbose information about missing or conflicting packages,default if --cflags or --libs given on the command line
+-   --silence-errors                        be silent about errors (default unless --cflags or --libsgiven on the command line)
+-   --errors-to-stdout                      print errors from --print-errors to stdout not stderr
+-   --print-provides                        print which packages the package provides
+-   --print-requires                        print which packages the package requires
+-   --print-requires-private                print which packages the package requires for static linking
+- 
+-> installed conf-pkg-config.1.0
+[conf-ncurses: pkg-config ncurses] Command started
++ pkg-config "ncurses" (CWD=/home/opam/.opam/4.03.0+flambda/build/conf-ncurses.1)
+[91m[ERROR] The compilation of conf-ncurses failed at "pkg-config ncurses".
+[0m[conf-openssl: pkg-config openssl] Command started
++ pkg-config "openssl" (CWD=/home/opam/.opam/4.03.0+flambda/build/conf-openssl.1)
+[91m[ERROR] The compilation of conf-openssl failed at "pkg-config openssl".
+[0m+ make  (CWD=/home/opam/.opam/4.03.0+flambda/build/result.1.2)
+- cp `ocaml which_result.ml` result.ml
+- ocamlc -c result.ml
+- ocamlc -a -o result.cma result.cmo
+- ocamlopt -c result.ml
+- ocamlopt -a -o result.cmxa result.cmx
+- ocamlopt -shared -linkall -o result.cmxs result.cmxa || true
+- ocaml gen_result_install.ml
+-> installed result.1.2
+[91m
+#=== ERROR while installing conf-ncurses.1 ====================================#
+# opam-version         1.2.2 (2dee5d69c0bd29731e6cb2ee537f0adf72404ba4)
+# os                   linux
+# command              pkg-config ncurses
+# path                 /home/opam/.opam/4.03.0+flambda/build/conf-ncurses.1
+# compiler             4.03.0+flambda
+# exit-code            1
+# env-file             /home/opam/.opam/4.03.0+flambda/build/conf-ncurses.1/conf-ncurses-5769-427793.env
+# stdout-file          /home/opam/.opam/4.03.0+flambda/build/conf-ncurses.1/conf-ncurses-5769-427793.out
+# stderr-file          /home/opam/.opam/4.03.0+flambda/build/conf-ncurses.1/conf-ncurses-5769-427793.err
+
+
+#=== ERROR while installing conf-openssl.1 ====================================#
+# opam-version         1.2.2 (2dee5d69c0bd29731e6cb2ee537f0adf72404ba4)
+# os                   linux
+# command              pkg-config openssl
+# path                 /home/opam/.opam/4.03.0+flambda/build/conf-openssl.1
+# compiler             4.03.0+flambda
+# exit-code            1
+# env-file             /home/opam/.opam/4.03.0+flambda/build/conf-openssl.1/conf-openssl-5769-2f17b7.env
+# stdout-file          /home/opam/.opam/4.03.0+flambda/build/conf-openssl.1/conf-openssl-5769-2f17b7.out
+# stderr-file          /home/opam/.opam/4.03.0+flambda/build/conf-openssl.1/conf-openssl-5769-2f17b7.err
+
+[0m
+
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions were aborted
+  - install async             113.33.00     
+  - install async_extra       113.33.00+4.03
+  - install async_find        113.33.00     
+  - install async_inotify     113.33.00     
+  - install async_kernel      113.33.00     
+  - install async_parallel    113.33.00     
+  - install async_rpc_kernel  113.33.00     
+  - install async_ssl         113.33.01     
+  - install async_unix        113.33.00+4.03
+  - install base-bytes        base          
+  - install bin_prot          113.33.00+4.03
+  - install core              113.33.02+4.03
+  - install core_kernel       113.33.01+4.03
+  - install cppo              1.3.2         
+  - install ctypes            0.5.1         
+  - install fieldslib         113.24.00     
+  - install inotify           2.2           
+  - install jenga             113.33.00+4.03
+  - install ocaml_plugin      113.33.00+4.03
+  - install ocamlfind         1.6.2         
+  - install ppx_assert        113.33.00     
+  - install ppx_bench         113.33.00+4.03
+  - install ppx_bin_prot      113.33.00+4.03
+  - install ppx_compare       113.33.00+4.03
+  - install ppx_core          113.33.01+4.03
+  - install ppx_custom_printf 113.33.00+4.03
+  - install ppx_deriving      3.3           
+  - install ppx_driver        113.33.01+4.03
+  - install ppx_enumerate     113.33.00+4.03
+  - install ppx_expect        113.33.01+4.03
+  - install ppx_fail          113.33.00+4.03
+  - install ppx_fields_conv   113.33.00+4.03
+  - install ppx_here          113.33.00     
+  - install ppx_inline_test   113.33.00+4.03
+  - install ppx_jane          113.33.00     
+  - install ppx_let           113.33.00+4.03
+  - install ppx_optcomp       113.33.00+4.03
+  - install ppx_pipebang      113.33.00+4.03
+  - install ppx_sexp_conv     113.33.01+4.03
+  - install ppx_sexp_message  113.33.00+4.03
+  - install ppx_sexp_value    113.33.00+4.03
+  - install ppx_tools         5.0+4.03.0    
+  - install ppx_type_conv     113.33.01+4.03
+  - install ppx_typerep_conv  113.33.00+4.03
+  - install ppx_variants_conv 113.33.00+4.03
+  - install re                1.5.0         
+  - install re2               113.33.00+4.03
+  - install sexplib           113.33.00+4.03
+  - install typerep           113.24.00     
+  - install variantslib       113.24.00     
+The following actions failed
+  - install conf-ncurses 1
+  - install conf-openssl 1
+The following changes have been performed
+  - install conf-m4         1    
+  - install conf-pkg-config 1.0  
+  - install ctypes-foreign  0.4.0
+  - install result          1.2  
+
+=-=- conf-ncurses.1 troobleshooting -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=> This package relies on external (system) dependencies that may be missing.
+   `opam depext conf-ncurses.1' may help you find the correct installation for
+   your system.
+
+=-=- conf-openssl.1 troobleshooting -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+=> This package relies on external (system) dependencies that may be missing.
+   `opam depext conf-openssl.1' may help you find the correct installation for
+   your system.
+[91m
+The former state can be restored with:
+    opam switch import
+"~/.opam/4.03.0+flambda/backup/state-20160409130148.export"
+'opam install -y -j 2 -v jenga async_ssl' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "opam switch 4.03.0+flambda" &&   sudo -u opam sh -c "opam depext -u jenga async_ssl" &&   sudo -u opam sh -c "opam install -y -j 2 -v jenga async_ssl"' returned a non-zero code: 4
