@@ -1,0 +1,271 @@
+Running this Dockerfile:
+FROM ocaml/opam:alpine-armhf_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lwt-ncurses && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u lwt" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v lwt"Sending build context to Docker daemon 43.52 kB
+Step 1 : FROM ocaml/opam:alpine-armhf_ocaml-4.02.3
+alpine-armhf_ocaml-4.02.3: Pulling from ocaml/opam
+147f8050a4fd: Pulling fs layer
+36a1e6666077: Pulling fs layer
+2b48df9a160f: Pulling fs layer
+d331475a757c: Pulling fs layer
+36a1e6666077: Waiting
+d331475a757c: Waiting
+2b48df9a160f: Waiting
+147f8050a4fd: Verifying Checksum
+147f8050a4fd: Download complete
+2b48df9a160f: Verifying Checksum
+2b48df9a160f: Download complete
+d331475a757c: Verifying Checksum
+d331475a757c: Download complete
+147f8050a4fd: Pull complete
+36a1e6666077: Verifying Checksum
+36a1e6666077: Download complete
+36a1e6666077: Pull complete
+2b48df9a160f: Pull complete
+d331475a757c: Pull complete
+Digest: sha256:dcd6a82640a00e6a32a7c53735328ba56beb3927bfd3fbad1656db944c02a077
+Status: Downloaded newer image for ocaml/opam:alpine-armhf_ocaml-4.02.3
+ ---> 613937492c09
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lwt-ncurses && opam update -u" &&   sudo -u opam sh -c "opam depext -u lwt" &&   sudo -u opam sh -c "opam install -y -j 2 -v lwt"
+ ---> Running in 5939dd07b8f5
+[91mFrom git://github.com/ocaml/opam-repository
+[0m[91m * branch            master     -> FETCH_HEAD
+[0m[91m   a332c27..252203c  master     -> origin/master
+[0mUpdating a332c27..252203c
+Fast-forward
+ compilers/4.04.0/4.04.0+pr351/4.04.0+pr351.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr520/4.04.0+pr520.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr644/4.04.0+pr644.comp    | 11 +++++
+ compilers/4.04.0/4.04.0+pr644/4.04.0+pr644.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr645/4.04.0+pr645.comp    | 11 +++++
+ compilers/4.04.0/4.04.0+pr645/4.04.0+pr645.descr   |  1 +
+ .../4.04.0+pr646.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr646/4.04.0+pr646.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr647/4.04.0+pr647.comp    | 11 +++++
+ compilers/4.04.0/4.04.0+pr647/4.04.0+pr647.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr648/4.04.0+pr648.comp    | 11 +++++
+ compilers/4.04.0/4.04.0+pr648/4.04.0+pr648.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr649/4.04.0+pr649.comp    | 11 +++++
+ compilers/4.04.0/4.04.0+pr649/4.04.0+pr649.descr   |  1 +
+ .../4.04.0+pr650.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr650/4.04.0+pr650.descr   |  1 +
+ packages/bos/bos.0.1.0/opam                        |  6 +--
+ packages/bos/bos.0.1.1/opam                        |  6 +--
+ packages/bos/bos.0.1.2/opam                        |  2 +-
+ packages/cowabloga/cowabloga.0.2.1/descr           |  3 ++
+ packages/cowabloga/cowabloga.0.2.1/opam            | 21 ++++++++
+ packages/cowabloga/cowabloga.0.2.1/url             |  2 +
+ packages/cstruct/cstruct.2.2.0/descr               | 22 +++++++++
+ packages/cstruct/cstruct.2.2.0/opam                | 57 ++++++++++++++++++++++
+ packages/cstruct/cstruct.2.2.0/url                 |  2 +
+ packages/edn/edn.0.1.2-1-g09b142a/descr            |  2 +
+ packages/edn/edn.0.1.2-1-g09b142a/opam             | 21 ++++++++
+ packages/edn/edn.0.1.2-1-g09b142a/url              |  2 +
+ packages/fmt/fmt.0.8.0/opam                        |  8 +--
+ packages/fpath/fpath.0.7.0/opam                    |  4 +-
+ packages/iocaml/iocaml.0.4.8/opam                  |  2 +-
+ packages/iocaml/iocaml.0.4.9/descr                 |  1 +
+ packages/iocaml/iocaml.0.4.9/files/iocaml.install  |  3 ++
+ packages/iocaml/iocaml.0.4.9/opam                  | 26 ++++++++++
+ packages/iocaml/iocaml.0.4.9/url                   |  2 +
+ packages/ketrew/ketrew.1.0.0/opam                  |  2 +-
+ packages/ketrew/ketrew.1.1.0/opam                  |  2 +-
+ packages/ketrew/ketrew.1.1.1/opam                  |  2 +-
+ packages/ketrew/ketrew.2.0.0/opam                  |  2 +-
+ packages/lemonade/lemonade.0.6.0/descr             |  3 ++
+ packages/lemonade/lemonade.0.6.0/opam              | 35 +++++++++++++
+ packages/lemonade/lemonade.0.6.0/url               |  2 +
+ packages/logs/logs.0.6.0/opam                      |  8 +--
+ packages/logs/logs.0.6.1/opam                      |  8 +--
+ packages/mixture/mixture.1.0.0/opam                |  2 +-
+ .../ocplib-json-typed/ocplib-json-typed.0.4/descr  | 24 +++++++++
+ .../ocplib-json-typed/ocplib-json-typed.0.4/opam   | 17 +++++++
+ .../ocplib-json-typed/ocplib-json-typed.0.4/url    |  2 +
+ packages/posix-time/posix-time.1.0.0-0/descr       |  4 ++
+ packages/posix-time/posix-time.1.0.0-0/findlib     |  1 +
+ packages/posix-time/posix-time.1.0.0-0/opam        | 21 ++++++++
+ packages/posix-time/posix-time.1.0.0-0/url         |  2 +
+ .../ppx_jsobject_conv.0.2.5/descr                  |  8 +++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.2.5/opam | 23 +++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.2.5/url  |  3 ++
+ packages/rresult/rresult.0.4.0/opam                |  4 +-
+ packages/socketcan/socketcan.0.8.6-0/descr         |  3 ++
+ packages/socketcan/socketcan.0.8.6-0/findlib       |  1 +
+ packages/socketcan/socketcan.0.8.6-0/opam          | 26 ++++++++++
+ packages/socketcan/socketcan.0.8.6-0/url           |  2 +
+ packages/topkg-care/topkg-care.0.7.0/descr         | 24 ---------
+ packages/topkg-care/topkg-care.0.7.0/opam          | 24 ---------
+ packages/topkg-care/topkg-care.0.7.0/url           |  2 -
+ packages/topkg-care/topkg-care.0.7.1/descr         | 24 ---------
+ packages/topkg-care/topkg-care.0.7.1/opam          | 24 ---------
+ packages/topkg-care/topkg-care.0.7.1/url           |  2 -
+ packages/topkg-care/topkg-care.0.7.2/descr         | 24 ---------
+ packages/topkg-care/topkg-care.0.7.2/opam          | 24 ---------
+ packages/topkg-care/topkg-care.0.7.2/url           |  2 -
+ packages/topkg-care/topkg-care.0.7.3/descr         | 24 ---------
+ packages/topkg-care/topkg-care.0.7.3/opam          | 26 ----------
+ packages/topkg-care/topkg-care.0.7.3/url           |  2 -
+ packages/topkg-care/topkg-care.0.7.4/descr         | 24 ---------
+ packages/topkg-care/topkg-care.0.7.4/opam          | 26 ----------
+ packages/topkg-care/topkg-care.0.7.4/url           |  2 -
+ packages/topkg/topkg.0.7.0/descr                   | 24 ---------
+ packages/topkg/topkg.0.7.0/opam                    | 18 -------
+ packages/topkg/topkg.0.7.0/url                     |  2 -
+ packages/topkg/topkg.0.7.1/descr                   | 24 ---------
+ packages/topkg/topkg.0.7.1/opam                    | 18 -------
+ packages/topkg/topkg.0.7.1/url                     |  2 -
+ packages/topkg/topkg.0.7.2/descr                   | 24 ---------
+ packages/topkg/topkg.0.7.2/opam                    | 18 -------
+ packages/topkg/topkg.0.7.2/url                     |  2 -
+ packages/topkg/topkg.0.7.3/descr                   | 24 ---------
+ packages/topkg/topkg.0.7.3/opam                    | 20 --------
+ packages/topkg/topkg.0.7.3/url                     |  2 -
+ packages/topkg/topkg.0.7.4/descr                   | 24 ---------
+ packages/topkg/topkg.0.7.4/opam                    | 20 --------
+ packages/topkg/topkg.0.7.4/url                     |  2 -
+ packages/uwt/uwt.0.0.3/descr                       |  5 ++
+ packages/uwt/uwt.0.0.3/findlib                     |  1 +
+ packages/uwt/uwt.0.0.3/opam                        | 40 +++++++++++++++
+ packages/uwt/uwt.0.0.3/url                         |  2 +
+ packages/websocket/websocket.2.3/descr             |  1 +
+ packages/websocket/websocket.2.3/findlib           |  1 +
+ packages/websocket/websocket.2.3/opam              | 42 ++++++++++++++++
+ packages/websocket/websocket.2.3/url               |  2 +
+ 98 files changed, 528 insertions(+), 511 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr351/4.04.0+pr351.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr520/4.04.0+pr520.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr644/4.04.0+pr644.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr644/4.04.0+pr644.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr645/4.04.0+pr645.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr645/4.04.0+pr645.descr
+ rename compilers/4.04.0/{4.04.0+pr520/4.04.0+pr520.comp => 4.04.0+pr646/4.04.0+pr646.comp} (76%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr646/4.04.0+pr646.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr647/4.04.0+pr647.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr647/4.04.0+pr647.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr648/4.04.0+pr648.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr648/4.04.0+pr648.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr649/4.04.0+pr649.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr649/4.04.0+pr649.descr
+ rename compilers/4.04.0/{4.04.0+pr351/4.04.0+pr351.comp => 4.04.0+pr650/4.04.0+pr650.comp} (78%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr650/4.04.0+pr650.descr
+ create mode 100644 packages/cowabloga/cowabloga.0.2.1/descr
+ create mode 100644 packages/cowabloga/cowabloga.0.2.1/opam
+ create mode 100644 packages/cowabloga/cowabloga.0.2.1/url
+ create mode 100644 packages/cstruct/cstruct.2.2.0/descr
+ create mode 100644 packages/cstruct/cstruct.2.2.0/opam
+ create mode 100644 packages/cstruct/cstruct.2.2.0/url
+ create mode 100644 packages/edn/edn.0.1.2-1-g09b142a/descr
+ create mode 100644 packages/edn/edn.0.1.2-1-g09b142a/opam
+ create mode 100644 packages/edn/edn.0.1.2-1-g09b142a/url
+ create mode 100644 packages/iocaml/iocaml.0.4.9/descr
+ create mode 100644 packages/iocaml/iocaml.0.4.9/files/iocaml.install
+ create mode 100644 packages/iocaml/iocaml.0.4.9/opam
+ create mode 100644 packages/iocaml/iocaml.0.4.9/url
+ create mode 100644 packages/lemonade/lemonade.0.6.0/descr
+ create mode 100644 packages/lemonade/lemonade.0.6.0/opam
+ create mode 100644 packages/lemonade/lemonade.0.6.0/url
+ create mode 100644 packages/ocplib-json-typed/ocplib-json-typed.0.4/descr
+ create mode 100644 packages/ocplib-json-typed/ocplib-json-typed.0.4/opam
+ create mode 100644 packages/ocplib-json-typed/ocplib-json-typed.0.4/url
+ create mode 100644 packages/posix-time/posix-time.1.0.0-0/descr
+ create mode 100644 packages/posix-time/posix-time.1.0.0-0/findlib
+ create mode 100644 packages/posix-time/posix-time.1.0.0-0/opam
+ create mode 100644 packages/posix-time/posix-time.1.0.0-0/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.2.5/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.2.5/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.2.5/url
+ create mode 100644 packages/socketcan/socketcan.0.8.6-0/descr
+ create mode 100644 packages/socketcan/socketcan.0.8.6-0/findlib
+ create mode 100644 packages/socketcan/socketcan.0.8.6-0/opam
+ create mode 100644 packages/socketcan/socketcan.0.8.6-0/url
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.0/descr
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.0/opam
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.0/url
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.1/descr
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.1/opam
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.1/url
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.2/descr
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.2/opam
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.2/url
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.3/descr
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.3/opam
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.3/url
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.4/descr
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.4/opam
+ delete mode 100644 packages/topkg-care/topkg-care.0.7.4/url
+ delete mode 100644 packages/topkg/topkg.0.7.0/descr
+ delete mode 100644 packages/topkg/topkg.0.7.0/opam
+ delete mode 100644 packages/topkg/topkg.0.7.0/url
+ delete mode 100644 packages/topkg/topkg.0.7.1/descr
+ delete mode 100644 packages/topkg/topkg.0.7.1/opam
+ delete mode 100644 packages/topkg/topkg.0.7.1/url
+ delete mode 100644 packages/topkg/topkg.0.7.2/descr
+ delete mode 100644 packages/topkg/topkg.0.7.2/opam
+ delete mode 100644 packages/topkg/topkg.0.7.2/url
+ delete mode 100644 packages/topkg/topkg.0.7.3/descr
+ delete mode 100644 packages/topkg/topkg.0.7.3/opam
+ delete mode 100644 packages/topkg/topkg.0.7.3/url
+ delete mode 100644 packages/topkg/topkg.0.7.4/descr
+ delete mode 100644 packages/topkg/topkg.0.7.4/opam
+ delete mode 100644 packages/topkg/topkg.0.7.4/url
+ create mode 100644 packages/uwt/uwt.0.0.3/descr
+ create mode 100644 packages/uwt/uwt.0.0.3/findlib
+ create mode 100644 packages/uwt/uwt.0.0.3/opam
+ create mode 100644 packages/uwt/uwt.0.0.3/url
+ create mode 100644 packages/websocket/websocket.2.3/descr
+ create mode 100644 packages/websocket/websocket.2.3/findlib
+ create mode 100644 packages/websocket/websocket.2.3/opam
+ create mode 100644 packages/websocket/websocket.2.3/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/mirage/opam-repository
+ * branch            lwt-ncurses -> FETCH_HEAD
+[0mAuto-merging packages/lwt/lwt.2.4.8/opam
+Auto-merging packages/lwt/lwt.2.4.7/opam
+Auto-merging packages/lwt/lwt.2.4.6/opam
+Auto-merging packages/lwt/lwt.2.4.5/opam
+Merge made by the 'recursive' strategy.
+ packages/lwt/lwt.2.4.5/opam | 1 +
+ packages/lwt/lwt.2.4.6/opam | 1 +
+ packages/lwt/lwt.2.4.7/opam | 1 +
+ packages/lwt/lwt.2.4.8/opam | 1 +
+ packages/lwt/lwt.2.5.0/opam | 1 +
+ packages/lwt/lwt.2.5.1/opam | 1 +
+ packages/lwt/lwt.2.5.2/opam | 1 +
+ 7 files changed, 7 insertions(+)
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mopam: unknown command `depext'.
+Usage: opam COMMAND ...
+Try `opam --help' for more information.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lwt-ncurses && opam update -u" &&   sudo -u opam sh -c "opam depext -u lwt" &&   sudo -u opam sh -c "opam install -y -j 2 -v lwt"' returned a non-zero code: 1

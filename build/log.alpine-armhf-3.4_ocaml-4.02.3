@@ -1,0 +1,9 @@
+Running this Dockerfile:
+FROM ocaml/opam:alpine-armhf-3.4_ocaml-4.02.3
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mirage/opam-repository.git lwt-ncurses && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u lwt" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v lwt"Sending build context to Docker daemon 43.52 kB
+Step 1 : FROM ocaml/opam:alpine-armhf-3.4_ocaml-4.02.3
+Pulling repository docker.io/ocaml/opam
+Tag alpine-armhf-3.4_ocaml-4.02.3 not found in repository docker.io/ocaml/opam
