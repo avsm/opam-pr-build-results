@@ -1,0 +1,5 @@
+FROM ocaml/opam:oraclelinux-7_ocaml-4.03.0_flambda
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mato/opam-repository.git opam-publish/solo5-kernel-virtio.0.1.1 && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u solo5-kernel-virtio" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v solo5-kernel-virtio"
