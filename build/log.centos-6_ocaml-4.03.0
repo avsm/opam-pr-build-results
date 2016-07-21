@@ -1,0 +1,405 @@
+Running this Dockerfile:
+FROM ocaml/opam:centos-6_ocaml-4.03.0
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mato/opam-repository.git opam-publish/solo5-kernel-virtio.0.1.1 && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u solo5-kernel-virtio" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v solo5-kernel-virtio"Sending build context to Docker daemon 102.4 kB
+Step 1 : FROM ocaml/opam:centos-6_ocaml-4.03.0
+centos-6_ocaml-4.03.0: Pulling from ocaml/opam
+9614861c9275: Pulling fs layer
+c826f49eaa25: Pulling fs layer
+6465b0819908: Pulling fs layer
+e3ac3b43fee0: Pulling fs layer
+c826f49eaa25: Waiting
+e3ac3b43fee0: Waiting
+9614861c9275: Waiting
+6465b0819908: Waiting
+9614861c9275: Verifying Checksum
+9614861c9275: Download complete
+9614861c9275: Pull complete
+c826f49eaa25: Verifying Checksum
+c826f49eaa25: Download complete
+c826f49eaa25: Pull complete
+6465b0819908: Verifying Checksum
+6465b0819908: Download complete
+6465b0819908: Pull complete
+e3ac3b43fee0: Verifying Checksum
+e3ac3b43fee0: Download complete
+e3ac3b43fee0: Pull complete
+Digest: sha256:e942aa80f8e5accfbe9ba6b145d912324269a9e708e94de3bb36770172936cd6
+Status: Downloaded newer image for ocaml/opam:centos-6_ocaml-4.03.0
+ ---> a4b853199c5e
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mato/opam-repository.git opam-publish/solo5-kernel-virtio.0.1.1 && opam update -u" &&   sudo -u opam sh -c "opam depext -u solo5-kernel-virtio" &&   sudo -u opam sh -c "opam install -y -j 2 -v solo5-kernel-virtio"
+ ---> Running in 886fc093b56a
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 92467be..e91db28
+Fast-forward
+ compilers/4.04.0/4.04.0+pr508/4.04.0+pr508.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr628/4.04.0+pr628.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr648/4.04.0+pr648.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr678/4.04.0+pr678.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr684/4.04.0+pr684.comp    | 11 ------
+ compilers/4.04.0/4.04.0+pr684/4.04.0+pr684.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr687/4.04.0+pr687.comp    | 11 ------
+ compilers/4.04.0/4.04.0+pr687/4.04.0+pr687.descr   |  1 -
+ compilers/4.04.0/4.04.0+pr694/4.04.0+pr694.descr   |  1 -
+ .../4.04.0+pr695.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr695/4.04.0+pr695.descr   |  1 +
+ .../4.04.0+pr696.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr696/4.04.0+pr696.descr   |  1 +
+ compilers/4.04.0/4.04.0+pr697/4.04.0+pr697.comp    | 11 ++++++
+ compilers/4.04.0/4.04.0+pr697/4.04.0+pr697.descr   |  1 +
+ .../4.04.0+pr699.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr699/4.04.0+pr699.descr   |  1 +
+ .../4.04.0+pr700.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr700/4.04.0+pr700.descr   |  1 +
+ .../4.04.0+pr701.comp}                             |  2 +-
+ compilers/4.04.0/4.04.0+pr701/4.04.0+pr701.descr   |  1 +
+ packages/angstrom/angstrom.0.1.0/descr             |  9 +++++
+ packages/angstrom/angstrom.0.1.0/findlib           |  1 +
+ packages/angstrom/angstrom.0.1.0/opam              | 33 +++++++++++++++++
+ packages/angstrom/angstrom.0.1.0/url               |  2 +
+ packages/depext/depext.1.0.0/descr                 |  7 ++++
+ packages/depext/depext.1.0.0/opam                  | 39 ++++++++++++++++++++
+ packages/depext/depext.1.0.0/url                   |  2 +
+ packages/depext/depext.1.0.1/descr                 |  7 ++++
+ packages/depext/depext.1.0.1/opam                  | 39 ++++++++++++++++++++
+ packages/depext/depext.1.0.1/url                   |  2 +
+ .../js-build-tools/js-build-tools.113.33.04/opam   |  2 +-
+ packages/lwt/lwt.2.4.5/opam                        |  1 +
+ packages/lwt/lwt.2.4.6/opam                        |  1 +
+ packages/lwt/lwt.2.4.7/opam                        |  1 +
+ packages/lwt/lwt.2.4.8/opam                        |  1 +
+ packages/lwt/lwt.2.5.0/opam                        |  1 +
+ packages/lwt/lwt.2.5.1/opam                        |  1 +
+ packages/lwt/lwt.2.5.2/opam                        |  1 +
+ packages/mirage-no-solo5/mirage-no-solo5.1/descr   |  1 +
+ packages/mirage-no-solo5/mirage-no-solo5.1/opam    |  6 +++
+ packages/mirage-no-xen/mirage-no-xen.1/opam        |  7 ++--
+ packages/named-pipe/named-pipe.0.3/descr           |  5 +++
+ packages/named-pipe/named-pipe.0.3/findlib         |  2 +
+ packages/named-pipe/named-pipe.0.3/opam            | 30 +++++++++++++++
+ packages/named-pipe/named-pipe.0.3/url             |  2 +
+ packages/ocplib-endian/ocplib-endian.1.0/descr     |  6 +++
+ packages/ocplib-endian/ocplib-endian.1.0/opam      | 20 ++++++++++
+ packages/ocplib-endian/ocplib-endian.1.0/url       |  2 +
+ .../ppx_jsobject_conv.0.2.6/descr                  |  8 ++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.2.6/opam | 23 ++++++++++++
+ .../ppx_jsobject_conv/ppx_jsobject_conv.0.2.6/url  |  3 ++
+ packages/protocol-9p/protocol-9p.0.7.3/descr       | 26 +++++++++++++
+ packages/protocol-9p/protocol-9p.0.7.3/opam        | 43 ++++++++++++++++++++++
+ packages/protocol-9p/protocol-9p.0.7.3/url         |  2 +
+ packages/ssl/ssl.0.5.2/opam                        |  1 +
+ packages/xapi-forkexecd/xapi-forkexecd.0.9.2/opam  | 10 +++--
+ packages/xapi-idl/xapi-idl.0.11.0/opam             | 11 ++++--
+ packages/xapi-inventory/xapi-inventory.0.9.1/opam  |  9 +++--
+ packages/xapi-netdev/xapi-netdev.0.9.1/opam        |  9 +++--
+ packages/xapi-rrd/xapi-rrd.0.10.1/opam             | 22 ++++++-----
+ packages/xapi-rrd/xapi-rrd.0.12.0/opam             | 22 ++++++-----
+ packages/xapi-rrd/xapi-rrd.0.9.0/descr             |  5 ---
+ packages/xapi-rrd/xapi-rrd.0.9.0/opam              | 13 -------
+ packages/xapi-rrd/xapi-rrd.0.9.0/url               |  2 -
+ packages/xapi-rrd/xapi-rrd.0.9.1/descr             |  5 ---
+ packages/xapi-rrd/xapi-rrd.0.9.1/opam              | 13 -------
+ packages/xapi-rrd/xapi-rrd.0.9.1/url               |  2 -
+ packages/xapi-tapctl/xapi-tapctl.0.9.2/opam        |  9 +++--
+ 69 files changed, 413 insertions(+), 112 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr508/4.04.0+pr508.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr628/4.04.0+pr628.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr648/4.04.0+pr648.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr678/4.04.0+pr678.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr684/4.04.0+pr684.comp
+ delete mode 100644 compilers/4.04.0/4.04.0+pr684/4.04.0+pr684.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr687/4.04.0+pr687.comp
+ delete mode 100644 compilers/4.04.0/4.04.0+pr687/4.04.0+pr687.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr694/4.04.0+pr694.descr
+ rename compilers/4.04.0/{4.04.0+pr508/4.04.0+pr508.comp => 4.04.0+pr695/4.04.0+pr695.comp} (77%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr695/4.04.0+pr695.descr
+ rename compilers/4.04.0/{4.04.0+pr648/4.04.0+pr648.comp => 4.04.0+pr696/4.04.0+pr696.comp} (76%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr696/4.04.0+pr696.descr
+ create mode 100644 compilers/4.04.0/4.04.0+pr697/4.04.0+pr697.comp
+ create mode 100644 compilers/4.04.0/4.04.0+pr697/4.04.0+pr697.descr
+ rename compilers/4.04.0/{4.04.0+pr628/4.04.0+pr628.comp => 4.04.0+pr699/4.04.0+pr699.comp} (76%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr699/4.04.0+pr699.descr
+ rename compilers/4.04.0/{4.04.0+pr694/4.04.0+pr694.comp => 4.04.0+pr700/4.04.0+pr700.comp} (81%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr700/4.04.0+pr700.descr
+ rename compilers/4.04.0/{4.04.0+pr678/4.04.0+pr678.comp => 4.04.0+pr701/4.04.0+pr701.comp} (80%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr701/4.04.0+pr701.descr
+ create mode 100644 packages/angstrom/angstrom.0.1.0/descr
+ create mode 100644 packages/angstrom/angstrom.0.1.0/findlib
+ create mode 100644 packages/angstrom/angstrom.0.1.0/opam
+ create mode 100644 packages/angstrom/angstrom.0.1.0/url
+ create mode 100644 packages/depext/depext.1.0.0/descr
+ create mode 100644 packages/depext/depext.1.0.0/opam
+ create mode 100644 packages/depext/depext.1.0.0/url
+ create mode 100644 packages/depext/depext.1.0.1/descr
+ create mode 100644 packages/depext/depext.1.0.1/opam
+ create mode 100644 packages/depext/depext.1.0.1/url
+ create mode 100644 packages/mirage-no-solo5/mirage-no-solo5.1/descr
+ create mode 100644 packages/mirage-no-solo5/mirage-no-solo5.1/opam
+ create mode 100644 packages/named-pipe/named-pipe.0.3/descr
+ create mode 100644 packages/named-pipe/named-pipe.0.3/findlib
+ create mode 100644 packages/named-pipe/named-pipe.0.3/opam
+ create mode 100644 packages/named-pipe/named-pipe.0.3/url
+ create mode 100644 packages/ocplib-endian/ocplib-endian.1.0/descr
+ create mode 100644 packages/ocplib-endian/ocplib-endian.1.0/opam
+ create mode 100644 packages/ocplib-endian/ocplib-endian.1.0/url
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.2.6/descr
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.2.6/opam
+ create mode 100644 packages/ppx_jsobject_conv/ppx_jsobject_conv.0.2.6/url
+ create mode 100644 packages/protocol-9p/protocol-9p.0.7.3/descr
+ create mode 100644 packages/protocol-9p/protocol-9p.0.7.3/opam
+ create mode 100644 packages/protocol-9p/protocol-9p.0.7.3/url
+ delete mode 100644 packages/xapi-rrd/xapi-rrd.0.9.0/descr
+ delete mode 100644 packages/xapi-rrd/xapi-rrd.0.9.0/opam
+ delete mode 100644 packages/xapi-rrd/xapi-rrd.0.9.0/url
+ delete mode 100644 packages/xapi-rrd/xapi-rrd.0.9.1/descr
+ delete mode 100644 packages/xapi-rrd/xapi-rrd.0.9.1/opam
+ delete mode 100644 packages/xapi-rrd/xapi-rrd.0.9.1/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git updated
+[depext] Installing new package description from
+https://github.com/ocaml/opam-depext.git
+
+The following actions will be performed:
+  - upgrade depext 1.0.0 to 1.0.1*
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+-> removed   depext.1.0.0
+[depext: ocamlopt unix.cmxa] Command started
+-> installed depext.1.0.1
+Done.
+[91mFrom https://github.com/mato/opam-repository
+ * branch            opam-publish/solo5-kernel-virtio.0.1.1 -> FETCH_HEAD
+[0mUpdating e91db28..6207480
+Fast-forward
+ .../solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/descr |  3 +++
+ .../solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/opam  | 17 +++++++++++++++++
+ .../solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/url   |  2 ++
+ 3 files changed, 22 insertions(+)
+ create mode 100644 packages/solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/descr
+ create mode 100644 packages/solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/opam
+ create mode 100644 packages/solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+=-=- Synchronizing development packages -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+The following actions will be performed:
+  - recompile depext 1.0.1*                                     [upstream changes]
+Do you want to continue ? [Y/n] y
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext: git] Command started
+[depext] https://github.com/ocaml/opam-depext.git already up-to-date
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+-> removed   depext.1.0.1
+[depext: ocamlopt unix.cmxa] Command started
+-> installed depext.1.0.1
+Done.
+# Detecting depexts using flags: x86_64 linux centos
+# The following system packages are needed:
+#  - pkgconfig
+Name        : pkgconfig                    Relocations: (not relocatable)
+Version     : 0.23                              Vendor: CentOS
+Release     : 9.1.el6                       Build Date: Thu Aug 19 03:30:32 2010
+Install Date: Fri Jul  1 20:21:59 2016         Build Host: c6b1.bsys.dev.centos.org
+Group       : Development/Tools             Source RPM: pkgconfig-0.23-9.1.el6.src.rpm
+Size        : 140091                           License: GPLv2+
+Signature   : RSA/8, Sun Jul  3 04:57:05 2011, Key ID 0946fca2c105b9de
+Packager    : CentOS BuildSystem <http://bugs.centos.org>
+URL         : http://pkgconfig.freedesktop.org
+Summary     : A tool for determining compilation options
+Description :
+The pkgconfig tool determines compilation options. For each required
+library, it reads the configuration file and outputs the necessary
+compiler and linker flags.
+# All required OS packages found.
+The following actions will be performed:
+  - install conf-pkg-config     1.0                             [required by solo5-kernel-virtio]
+  - install solo5-kernel-virtio 0.1.1
+===== 2 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[solo5-kernel-virtio: http] Command started
+[solo5-kernel-virtio: http] Command started
+[solo5-kernel-virtio.0.1.1] https://github.com/Solo5/solo5/archive/v0.1.1.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[conf-pkg-config: pkg-config] Command started
++ pkg-config "--help" (CWD=/home/opam/.opam/4.03.0/build/conf-pkg-config.1.0)
+- Usage: pkg-config [OPTION...]
+-   --version                                      output version of pkg-config
+-   --modversion                                   output version for package
+-   --atleast-pkgconfig-version=VERSION            require given version of
+-                                                  pkg-config
+-   --libs                                         output all linker flags
+-   --static                                       output linker flags for
+-                                                  static linking
+-   --short-errors                                 print short errors
+-   --libs-only-l                                  output -l flags
+-   --libs-only-other                              output other libs (e.g.
+-                                                  -pthread)
+-   --libs-only-L                                  output -L flags
+-   --cflags                                       output all pre-processor and
+-                                                  compiler flags
+-   --cflags-only-I                                output -I flags
+-   --cflags-only-other                            output cflags not covered by
+-                                                  the cflags-only-I option
+-   --variable=VARIABLENAME                        get the value of a variable
+-   --define-variable=VARIABLENAME=VARIABLEVALUE   set the value of a variable
+-   --exists                                       return 0 if the module(s)
+-                                                  exist
+-   --uninstalled                                  return 0 if the uninstalled
+-                                                  version of one or more
+-                                                  module(s) or their
+-                                                  dependencies will be used
+-   --atleast-version=VERSION                      return 0 if the module is at
+-                                                  least version VERSION
+-   --exact-version=VERSION                        return 0 if the module is at
+-                                                  exactly version VERSION
+-   --max-version=VERSION                          return 0 if the module is at
+-                                                  no newer than version VERSION
+-   --list-all                                     list all known packages
+-   --debug                                        show verbose debug information
+-   --print-errors                                 show verbose information
+-                                                  about missing or conflicting
+-                                                  packages
+-   --silence-errors                               show verbose information
+-                                                  about missing or conflicting
+-                                                  packages
+-   --errors-to-stdout                             print errors from
+-                                                  --print-errors to stdout not
+-                                                  stderr
+-   --print-provides                               print which packages the
+-                                                  package provides
+-   --print-requires                               print which packages the
+-                                                  package requires
+- 
+- Help options
+-   -?, --help                                     Show this help message
+-   --usage                                        Display brief usage message
+-> installed conf-pkg-config.1.0
+[solo5-kernel-virtio: make virtio] Command started
++ make "virtio" (CWD=/home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1)
+[91m[ERROR] The compilation of solo5-kernel-virtio failed at "make virtio".
+[0m- make -C kernel virtio
+- make[1]: Entering directory `/home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1/kernel'
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c ee_printf.c -o ee_printf.o
+- make[1]: Leaving directory `/home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1/kernel'
+- In file included from kernel.h:22,
+-                  from ee_printf.c:32:
+- solo5.h:5:20: error: stdint.h: No such file or directory
+- In file included from kernel.h:22,
+-                  from ee_printf.c:32:
+- solo5.h:13: error: expected ')' before '*' token
+- solo5.h:14: error: expected ')' before '*' token
+- solo5.h:18: error: expected ')' before 'sec'
+- solo5.h:19: error: expected ')' before 'sec'
+- solo5.h:21: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'solo5_blk_sectors'
+- solo5.h:37: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'solo5_clock_monotonic'
+- solo5.h:38: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'solo5_clock_wall'
+- solo5.h:46: error: expected ')' before 'until_nsecs'
+- In file included from ee_printf.c:32:
+- kernel.h:73: error: expected ')' before 'irq'
+- kernel.h:74: error: expected ')' before 'irq'
+- kernel.h:78: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'mem_max_addr'
+- kernel.h:79: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'read_cr3'
+- kernel.h:80: error: expected ')' before 'increment'
+- kernel.h:92: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'rdtsc'
+- kernel.h:102: error: expected declaration specifiers or '...' before 'uint8_t'
+- kernel.h:113: error: expected ')' before 'base'
+- kernel.h:114: error: expected ')' before 'base'
+- kernel.h:116: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'virtio_net_mac'
+- kernel.h:117: error: expected '=', ',', ';', 'asm' or '__attribute__' before '*' token
+- kernel.h:137: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'pvclock_monotonic'
+- kernel.h:138: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'pvclock_epochoffset'
+- kernel.h:142: error: expected ')' before 'port'
+- kernel.h:146: error: expected ')' before 'port'
+- kernel.h:150: error: expected ')' before 'port'
+- kernel.h:154: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'inb'
+- kernel.h:161: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'inw'
+- kernel.h:168: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'inl'
+- kernel.h:176: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'inq'
+- kernel.h:187: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'mul64_32'
+- make[1]: *** [ee_printf.o] Error 1
+- make: *** [virtio] Error 2
+[solo5-kernel-virtio: make opam-virtio-uninstall] Command started
++ make "opam-virtio-uninstall" "PREFIX=/home/opam/.opam/4.03.0" (CWD=/home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1)
+- rm -rf /home/opam/.opam/4.03.0/include/solo5-kernel-virtio/include /home/opam/.opam/4.03.0/lib/solo5-kernel-virtio
+- rm -f /home/opam/.opam/4.03.0/lib/pkgconfig/solo5-kernel-virtio.pc
+- rm -f /home/opam/.opam/4.03.0/bin/solo5-build-iso.bash
+[91m
+#=== ERROR while installing solo5-kernel-virtio.0.1.1 =========================#
+# opam-version         1.2.2 (5f4b54942903acdcb37daa54559f69a86db137a8)
+# os                   linux
+# command              make virtio
+# path                 /home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1
+# compiler             4.03.0
+# exit-code            2
+# env-file             /home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1/solo5-kernel-virtio-254-6d07ae.env
+# stdout-file          /home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1/solo5-kernel-virtio-254-6d07ae.out
+# stderr-file          /home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1/solo5-kernel-virtio-254-6d07ae.err
+### stdout ###
+# make -C kernel virtio
+# make[1]: Entering directory `/home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1/kernel'
+# cc -nostdinc -isystem /usr/lib/gcc/x86_64-redhat-linux/4.4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c ee_printf.c -o ee_printf.o
+# make[1]: Leaving directory `/home/opam/.opam/4.03.0/build/solo5-kernel-virtio.0.1.1/kernel'
+### stderr ###
+# [...]
+# kernel.h:142: error: expected ')' before 'port'
+# kernel.h:146: error: expected ')' before 'port'
+# kernel.h:150: error: expected ')' before 'port'
+# kernel.h:154: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'inb'
+# kernel.h:161: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'inw'
+# kernel.h:168: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'inl'
+# kernel.h:176: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'inq'
+# kernel.h:187: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'mul64_32'
+# make[1]: *** [ee_printf.o] Error 1
+# make: *** [virtio] Error 2
+
+[0m
+
+=-=- Error report -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+The following actions failed
+  - install solo5-kernel-virtio 0.1.1
+The following changes have been performed
+  - install conf-pkg-config 1.0
+[91m
+The former state can be restored with:
+    opam switch import "~/.opam/4.03.0/backup/state-20160621113856.export"
+'opam install -y -j 2 -v solo5-kernel-virtio' failed.
+[0mThe command '/bin/sh -c sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mato/opam-repository.git opam-publish/solo5-kernel-virtio.0.1.1 && opam update -u" &&   sudo -u opam sh -c "opam depext -u solo5-kernel-virtio" &&   sudo -u opam sh -c "opam install -y -j 2 -v solo5-kernel-virtio"' returned a non-zero code: 4

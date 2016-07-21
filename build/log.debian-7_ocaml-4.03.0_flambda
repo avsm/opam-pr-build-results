@@ -1,0 +1,242 @@
+Running this Dockerfile:
+FROM ocaml/opam:debian-7_ocaml-4.03.0_flambda
+RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" && \
+  sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mato/opam-repository.git opam-publish/solo5-kernel-virtio.0.1.1 && opam update -u" && \
+  sudo -u opam sh -c "opam depext -u solo5-kernel-virtio" && \
+  sudo -u opam sh -c "opam install -y -j 2 -v solo5-kernel-virtio"Sending build context to Docker daemon 105.5 kB
+Step 1 : FROM ocaml/opam:debian-7_ocaml-4.03.0_flambda
+debian-7_ocaml-4.03.0_flambda: Pulling from ocaml/opam
+8ceedfe606fc: Pulling fs layer
+eeb21a85fbc9: Pulling fs layer
+ec46a85a9cf3: Pulling fs layer
+8ceedfe606fc: Waiting
+fbe01ac3be1c: Pulling fs layer
+eeb21a85fbc9: Waiting
+ec46a85a9cf3: Waiting
+fbe01ac3be1c: Waiting
+8ceedfe606fc: Download complete
+8ceedfe606fc: Pull complete
+ec46a85a9cf3: Verifying Checksum
+ec46a85a9cf3: Download complete
+eeb21a85fbc9: Verifying Checksum
+eeb21a85fbc9: Download complete
+eeb21a85fbc9: Pull complete
+ec46a85a9cf3: Pull complete
+fbe01ac3be1c: Verifying Checksum
+fbe01ac3be1c: Download complete
+fbe01ac3be1c: Pull complete
+Digest: sha256:50bfff886ef1972a34123501559f3e2350e42489848f9b34b7f68aab917deaf3
+Status: Downloaded newer image for ocaml/opam:debian-7_ocaml-4.03.0_flambda
+ ---> 534b49db1d06
+Step 2 : RUN sudo -u opam sh -c "cd /home/opam/opam-repository && git pull origin master && opam update -u" &&   sudo -u opam sh -c "cd /home/opam/opam-repository && git pull https://github.com/mato/opam-repository.git opam-publish/solo5-kernel-virtio.0.1.1 && opam update -u" &&   sudo -u opam sh -c "opam depext -u solo5-kernel-virtio" &&   sudo -u opam sh -c "opam install -y -j 2 -v solo5-kernel-virtio"
+ ---> Running in 73337c5720eb
+[91mFrom git://github.com/ocaml/opam-repository
+ * branch            master     -> FETCH_HEAD
+[0mUpdating 04cccc9..e91db28
+Fast-forward
+ compilers/4.04.0/4.04.0+pr678/4.04.0+pr678.descr   |    1 -
+ compilers/4.04.0/4.04.0+pr698/4.04.0+pr698.descr   |    1 -
+ .../4.04.0+pr700.comp}                             |    2 +-
+ compilers/4.04.0/4.04.0+pr700/4.04.0+pr700.descr   |    1 +
+ .../4.04.0+pr701.comp}                             |    2 +-
+ compilers/4.04.0/4.04.0+pr701/4.04.0+pr701.descr   |    1 +
+ packages/angstrom/angstrom.0.1.0/descr             |    9 ++++++
+ packages/angstrom/angstrom.0.1.0/findlib           |    1 +
+ packages/angstrom/angstrom.0.1.0/opam              |   33 ++++++++++++++++++++
+ packages/angstrom/angstrom.0.1.0/url               |    2 ++
+ 10 files changed, 49 insertions(+), 4 deletions(-)
+ delete mode 100644 compilers/4.04.0/4.04.0+pr678/4.04.0+pr678.descr
+ delete mode 100644 compilers/4.04.0/4.04.0+pr698/4.04.0+pr698.descr
+ rename compilers/4.04.0/{4.04.0+pr678/4.04.0+pr678.comp => 4.04.0+pr700/4.04.0+pr700.comp} (80%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr700/4.04.0+pr700.descr
+ rename compilers/4.04.0/{4.04.0+pr698/4.04.0+pr698.comp => 4.04.0+pr701/4.04.0+pr701.comp} (77%)
+ create mode 100644 compilers/4.04.0/4.04.0+pr701/4.04.0+pr701.descr
+ create mode 100644 packages/angstrom/angstrom.0.1.0/descr
+ create mode 100644 packages/angstrom/angstrom.0.1.0/findlib
+ create mode 100644 packages/angstrom/angstrom.0.1.0/opam
+ create mode 100644 packages/angstrom/angstrom.0.1.0/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+[91mFrom https://github.com/mato/opam-repository
+ * branch            opam-publish/solo5-kernel-virtio.0.1.1 -> FETCH_HEAD
+[0mUpdating e91db28..6207480
+Fast-forward
+ .../solo5-kernel-virtio.0.1.1/descr                   |    3 +++
+ .../solo5-kernel-virtio.0.1.1/opam                    |   17 +++++++++++++++++
+ .../solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/url |    2 ++
+ 3 files changed, 22 insertions(+)
+ create mode 100644 packages/solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/descr
+ create mode 100644 packages/solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/opam
+ create mode 100644 packages/solo5-kernel-virtio/solo5-kernel-virtio.0.1.1/url
+
+=-=- Updating package repositories =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[default: local] Command started
+[default: local] Command started
+[default: local] Command started
+[default] /home/opam/opam-repository synchronized
+
+Everything as up-to-date as possible (run with --verbose to show unavailable
+upgrades).
+# Detecting depexts using flags: x86_64 linux debian
+# The following system packages are needed:
+#  - pkg-config
+# All required OS packages found.
+The following actions will be performed:
+  - install conf-pkg-config     1.0                             [required by solo5-kernel-virtio]
+  - install solo5-kernel-virtio 0.1.1
+===== 2 to install =====
+
+=-=- Gathering sources =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[solo5-kernel-virtio: http] Command started
+[solo5-kernel-virtio: http] Command started
+[solo5-kernel-virtio.0.1.1] https://github.com/Solo5/solo5/archive/v0.1.1.tar.gz downloaded
+
+=-=- Processing actions -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+[conf-pkg-config: pkg-config] Command started
++ pkg-config "--help" (CWD=/home/opam/.opam/4.03.0+flambda/build/conf-pkg-config.1.0)
+- Usage: pkg-config [OPTION...]
+-       --version                               output version of pkg-config
+-       --modversion                            output version for package
+-       --atleast-pkgconfig-version=VERSION     require given version of
+-                                               pkg-config
+-       --libs                                  output all linker flags
+-       --static                                output linker flags for static
+-                                               linking
+-       --short-errors                          print short errors
+-       --libs-only-l                           output -l flags
+-       --libs-only-other                       output other libs (e.g. -pthread)
+-       --libs-only-L                           output -L flags
+-       --cflags                                output all pre-processor and
+-                                               compiler flags
+-       --cflags-only-I                         output -I flags
+-       --cflags-only-other                     output cflags not covered by the
+-                                               cflags-only-I option
+-       --variable=NAME                         get the value of variable named
+-                                               NAME
+-       --define-variable=NAME=VALUE            set variable NAME to VALUE
+-       --exists                                return 0 if the module(s) exist
+-       --print-variables                       output list of variables defined
+-                                               by the module
+-       --uninstalled                           return 0 if the uninstalled
+-                                               version of one or more module(s)
+-                                               or their dependencies will be
+-                                               used
+-       --atleast-version=VERSION               return 0 if the module is at
+-                                               least version VERSION
+-       --exact-version=VERSION                 return 0 if the module is at
+-                                               exactly version VERSION
+-       --max-version=VERSION                   return 0 if the module is at no
+-                                               newer than version VERSION
+-       --list-all                              list all known packages
+-       --debug                                 show verbose debug information
+-       --print-errors                          show verbose information about
+-                                               missing or conflicting
+-                                               packages,default if --cflags or
+-                                               --libs given on the command line
+-       --silence-errors                        be silent about errors (default
+-                                               unless --cflags or --libsgiven
+-                                               on the command line)
+-       --errors-to-stdout                      print errors from --print-errors
+-                                               to stdout not stderr
+-       --print-provides                        print which packages the package
+-                                               provides
+-       --print-requires                        print which packages the package
+-                                               requires
+-       --print-requires-private                print which packages the package
+-                                               requires for static linking
+- 
+- Help options:
+-   -?, --help                                  Show this help message
+-       --usage                                 Display brief usage message
+-> installed conf-pkg-config.1.0
+[solo5-kernel-virtio: make virtio] Command started
++ make "virtio" (CWD=/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1)
+- make -C kernel virtio
+- make[1]: Entering directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/kernel'
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c ee_printf.c -o ee_printf.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c interrupts.c -o interrupts.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c lib.c -o lib.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c malloc.c -o malloc.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c stubs.c -o stubs.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c pvclock.c -o pvclock.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -DASM_FILE -c virtio/boot.S -o virtio/boot.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/low_level.c -o virtio/low_level.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/low_level_interrupts.c -o virtio/low_level_interrupts.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/kernel.c -o virtio/kernel.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/mem.c -o virtio/mem.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/net.c -o virtio/net.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/pci.c -o virtio/pci.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/serial.c -o virtio/serial.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/time.c -o virtio/time.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/virtio.c -o virtio/virtio.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/tscclock.c -o virtio/tscclock.o
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -c virtio/clock_subr.c -o virtio/clock_subr.o
+- bash gen_interrupts.bash > interrupt_vectors.s
+- as kernel.s -o kernel_s.o
+- as mem.s -o mem_s.o
+- as interrupts.s -o interrupts_s.o
+- ld -r -nostdlib -z max-page-size=0x1000 -static -o virtio/solo5.o ee_printf.o interrupts.o lib.o malloc.o stubs.o pvclock.o virtio/boot.o virtio/low_level.o virtio/low_level_interrupts.o virtio/kernel.o virtio/mem.o virtio/net.o virtio/pci.o virtio/serial.o virtio/time.o virtio/virtio.o virtio/tscclock.o virtio/clock_subr.o kernel_s.o mem_s.o interrupts_s.o 
+- objcopy -w -G solo5_\* -G _start virtio/solo5.o virtio/solo5.o
+- make[1]: Leaving directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/kernel'
+- make -C tests virtio
+- make[1]: Entering directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests'
+- make -C   test_hello virtio
+- make[2]: Entering directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_hello'
+- ../../ukvm/ukvm-configure ../../ukvm 
+- make[2]: Leaving directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_hello'
+- make[2]: Entering directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_hello'
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -I../../kernel -c test_hello.c -o test_hello.o
+- ld -T ../../kernel/virtio/solo5.lds \
+- 			 -nostdlib -z max-page-size=0x1000 -static -o test_hello.virtio ../../kernel/virtio/solo5.o test_hello.o 
+- rm test_hello.o
+- make[2]: Leaving directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_hello'
+- make -C   test_ping_serve virtio
+- make[2]: Entering directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_ping_serve'
+- cc -nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow -std=gnu99 -Wall -Wextra -Werror -O2 -g -I../../kernel -c test_ping_serve.c -o test_ping_serve.o
+- ld -T ../../kernel/virtio/solo5.lds \
+- 			 -nostdlib -z max-page-size=0x1000 -static -o test_ping_serve.virtio ../../kernel/virtio/solo5.o test_ping_serve.o 
+- rm test_ping_serve.o
+- make[2]: Leaving directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_ping_serve'
+- make[1]: Leaving directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests'
+- ../Makefile.tests:20: Makefile.ukvm: No such file or directory
+[solo5-kernel-virtio: make opam-virtio-install] Command started
++ make "opam-virtio-install" "PREFIX=/home/opam/.opam/4.03.0+flambda" (CWD=/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1)
+- sed <solo5-kernel-virtio.pc.in > solo5-kernel-virtio.pc \
+- 	    -e 's#!CFLAGS!#-nostdinc -isystem /usr/lib/gcc/x86_64-linux-gnu/4.7/include -ffreestanding -mno-red-zone -mno-3dnow#g;' \
+- 	    -e 's#!LDFLAGS!#-nostdlib -z max-page-size=0x1000 -static#g;'
+- make -C kernel virtio
+- make[1]: Entering directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/kernel'
+- make[1]: Nothing to be done for `virtio'.
+- make[1]: Leaving directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/kernel'
+- make -C tests virtio
+- make[1]: Entering directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests'
+- make -C   test_hello virtio
+- make[2]: Entering directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_hello'
+- make[2]: Nothing to be done for `virtio'.
+- make[2]: Leaving directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_hello'
+- make -C   test_ping_serve virtio
+- make[2]: Entering directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_ping_serve'
+- make[2]: Nothing to be done for `virtio'.
+- make[2]: Leaving directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests/test_ping_serve'
+- make[1]: Leaving directory `/home/opam/.opam/4.03.0+flambda/build/solo5-kernel-virtio.0.1.1/tests'
+- mkdir -p /home/opam/.opam/4.03.0+flambda/include/solo5-kernel-virtio/include /home/opam/.opam/4.03.0+flambda/lib/solo5-kernel-virtio
+- cp kernel/solo5.h /home/opam/.opam/4.03.0+flambda/include/solo5-kernel-virtio/include/solo5.h
+- cp iso/boot/grub/menu.lst /home/opam/.opam/4.03.0+flambda/lib/solo5-kernel-virtio
+- cp iso/boot/grub/stage2_eltorito /home/opam/.opam/4.03.0+flambda/lib/solo5-kernel-virtio
+- cp kernel/virtio/solo5.o kernel/virtio/solo5.lds /home/opam/.opam/4.03.0+flambda/lib/solo5-kernel-virtio
+- mkdir -p /home/opam/.opam/4.03.0+flambda/bin
+- mkdir -p /home/opam/.opam/4.03.0+flambda/lib/pkgconfig
+- cp solo5-kernel-virtio.pc /home/opam/.opam/4.03.0+flambda/lib/pkgconfig
+- cp solo5-build-iso.bash /home/opam/.opam/4.03.0+flambda/bin
+-> installed solo5-kernel-virtio.0.1.1
+Done.
+ ---> 067c664ffec4
+Removing intermediate container 73337c5720eb
+Successfully built 067c664ffec4
